@@ -1,0 +1,58 @@
+{
+  "track_A_grok": {
+    "total_runs": 3,
+    "correct_decisions": 0,
+    "avg_time_ms": 0.027418136596679688,
+    "domains": {
+      "technical": {
+        "runs": 2,
+        "issues_found": 0
+      },
+      "medical": {
+        "runs": 1,
+        "issues_found": 0
+      }
+    }
+  },
+  "track_B_pattern": {
+    "total_runs": 3,
+    "correct_decisions": 0,
+    "avg_time_ms": 0.0209808349609375,
+    "domains": {
+      "technical": {
+        "runs": 2,
+        "issues_found": 0
+      },
+      "medical": {
+        "runs": 1,
+        "issues_found": 0
+      }
+    }
+  },
+  "track_C_pattern": {
+    "total_runs": 3,
+    "correct_decisions": 0,
+    "avg_time_ms": 0.015656153361002605,
+    "domains": {
+      "technical": {
+        "runs": 2,
+        "issues_found": 0
+      },
+      "medical": {
+        "runs": 1,
+        "issues_found": 0
+      }
+    }
+  },
+  "grok_challenger": {
+    "total_runs": 2,
+    "correct_decisions": 0,
+    "avg_time_ms": 12220.658540725708,
+    "domains": {
+      "technical": {
+        "runs": 2,
+        "issues_found": 5
+      }
+    }
+  }
+}

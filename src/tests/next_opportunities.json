@@ -1,0 +1,26 @@
+[
+  {
+    "priority": "CRITICAL",
+    "area": "Overall Detection",
+    "description": "85% still failing",
+    "action": "Systematic pattern expansion for each failure category"
+  },
+  {
+    "priority": "HIGH",
+    "area": "QUERY_ANALYZER Group",
+    "description": "3 POOR claims in this group",
+    "action": "Deep dive into QUERY_ANALYZER-specific patterns"
+  },
+  {
+    "priority": "MEDIUM",
+    "area": "Learning Integration",
+    "description": "Thresholds adapting but not affecting detection yet",
+    "action": "Connect adapted thresholds to actual evaluation decisions"
+  },
+  {
+    "priority": "MEDIUM",
+    "area": "Test Methodology",
+    "description": "PPA2 Components need functional tests",
+    "action": "Create unit tests for mathematical/algorithmic claims"
+  }
+]

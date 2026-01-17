@@ -1,0 +1,149 @@
+{
+  "memories": [
+    {
+      "id": "c7be201ae1720276",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "medical",
+      "trigger": "medical advice recommendation",
+      "content": "Always add disclaimer to consult healthcare provider",
+      "evidence": [
+        "Medical advice requires professional verification"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.566587",
+      "last_used": null
+    },
+    {
+      "id": "2b7fa1c0938d4300",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "medical",
+      "trigger": "treatment recommendation certainty",
+      "content": "Replace absolute certainty with hedged language",
+      "evidence": [
+        "Medical outcomes vary by individual"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.566874",
+      "last_used": null
+    },
+    {
+      "id": "0402c3e4e464fe49",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "financial",
+      "trigger": "investment recommendation",
+      "content": "Add risk warnings and professional advice disclaimer",
+      "evidence": [
+        "Financial advice regulated, outcomes uncertain"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.567206",
+      "last_used": null
+    },
+    {
+      "id": "8011b7cfb5a8d619",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "financial",
+      "trigger": "guaranteed returns claim",
+      "content": "Flag and remove guarantee language - no investment is guaranteed",
+      "evidence": [
+        "No legitimate investment guarantees returns"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.567335",
+      "last_used": null
+    },
+    {
+      "id": "7d556efaf0c3a6db",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "general",
+      "trigger": "bandwagon argument",
+      "content": "Popularity does not equal validity - flag bandwagon fallacy",
+      "evidence": [
+        "Everyone doing X is not evidence X is correct"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.567454",
+      "last_used": null
+    },
+    {
+      "id": "72300372b87f962e",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "general",
+      "trigger": "appeal to authority without citation",
+      "content": "Require specific citations for authority claims",
+      "evidence": [
+        "Vague authority claims are manipulation"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.567588",
+      "last_used": null
+    },
+    {
+      "id": "9e6c62808b6eb12e",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "development",
+      "trigger": "declaring completion prematurely",
+      "content": "Verify completion against objective criteria before declaring done",
+      "evidence": [
+        "Mission drift occurred from premature completion claims"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.567733",
+      "last_used": null
+    },
+    {
+      "id": "e0f5047c7a1038e9",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "development",
+      "trigger": "blocking instead of improving",
+      "content": "Goal is to IMPROVE outputs, not block/reject them",
+      "evidence": [
+        "Mission drift: blocking is not improvement"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.567875",
+      "last_used": null
+    },
+    {
+      "id": "f688efa0edc55911",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "development",
+      "trigger": "simulated testing",
+      "content": "Use real data and actual testing, not simulations",
+      "evidence": [
+        "Simulated tests missed real issues"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T00:18:07.568029",
+      "last_used": null
+    }
+  ],
+  "saved_at": "2025-12-23T00:18:07.568041"
+}

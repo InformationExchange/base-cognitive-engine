@@ -1,0 +1,75 @@
+{
+  "total": 11,
+  "track_b_wins": 11,
+  "track_a_wins": 0,
+  "ties": 0,
+  "avg_detection": 0.29545454545454547,
+  "results": [
+    {
+      "test_id": "FP-001",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.3333333333333333,
+      "issues_found": 7
+    },
+    {
+      "test_id": "FP-002",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.6666666666666666,
+      "issues_found": 8
+    },
+    {
+      "test_id": "FP-003",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.25,
+      "issues_found": 10
+    },
+    {
+      "test_id": "PROP-001",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.5,
+      "issues_found": 6
+    },
+    {
+      "test_id": "PROP-002",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.0,
+      "issues_found": 3
+    },
+    {
+      "test_id": "FAB-001",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.3333333333333333,
+      "issues_found": 7
+    },
+    {
+      "test_id": "PREM-001",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.5,
+      "issues_found": 8
+    },
+    {
+      "test_id": "PREM-002",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.6666666666666666,
+      "issues_found": 8
+    },
+    {
+      "test_id": "TODO-001",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.0,
+      "issues_found": 7
+    },
+    {
+      "test_id": "GAME-001",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.0,
+      "issues_found": 3
+    },
+    {
+      "test_id": "GOAL-001",
+      "winner": "Track B (BAIS)",
+      "detection_rate": 0.0,
+      "issues_found": 5
+    }
+  ]
+}

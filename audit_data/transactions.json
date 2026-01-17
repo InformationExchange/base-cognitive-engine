@@ -1,0 +1,786 @@
+[
+  {
+    "transaction_id": "TX-20251226202058-073872",
+    "case_id": "CASE-20251226-99E632AC",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:20:58.131564"
+  },
+  {
+    "transaction_id": "TX-20251226202104-DC156F",
+    "case_id": "CASE-20251226-99E632AC",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:21:04.068596"
+  },
+  {
+    "transaction_id": "TX-20251226202109-C10872",
+    "case_id": "CASE-20251226-99E632AC",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:21:09.617201"
+  },
+  {
+    "transaction_id": "TX-20251226202347-944BD8",
+    "case_id": "CASE-20251226-EFA224AD",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:23:47.372875"
+  },
+  {
+    "transaction_id": "TX-20251226202356-54E05E",
+    "case_id": "CASE-20251226-EFA224AD",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:23:56.417147"
+  },
+  {
+    "transaction_id": "TX-20251226202406-4721E0",
+    "case_id": "CASE-20251226-EFA224AD",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:24:06.194633"
+  },
+  {
+    "transaction_id": "TX-20251226202414-E252CD",
+    "case_id": "CASE-20251226-EFA224AD",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-26T20:24:14.732314"
+  },
+  {
+    "transaction_id": "TX-20251226202732-A3B065",
+    "case_id": "CASE-20251226-5E28B744",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:27:32.857093"
+  },
+  {
+    "transaction_id": "TX-20251226202738-D5DFD3",
+    "case_id": "CASE-20251226-5E28B744",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:27:38.958173"
+  },
+  {
+    "transaction_id": "TX-20251226202747-E9F1ED",
+    "case_id": "CASE-20251226-5E28B744",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-26T20:27:47.523148"
+  },
+  {
+    "transaction_id": "TX-20251226202754-8B268B",
+    "case_id": "CASE-20251226-5E28B744",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:27:54.546509"
+  },
+  {
+    "transaction_id": "TX-20251226202833-0EEC55",
+    "case_id": "CASE-20251226-45016005",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:28:33.731786"
+  },
+  {
+    "transaction_id": "TX-20251226202841-197E95",
+    "case_id": "CASE-20251226-45016005",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:28:41.095440"
+  },
+  {
+    "transaction_id": "TX-20251226202911-4B6476",
+    "case_id": "CASE-20251226-E6754F04",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-26T20:29:11.914691"
+  },
+  {
+    "transaction_id": "TX-20251227052434-36C6E4",
+    "case_id": "CASE-20251227-24B80090",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-27T05:24:34.874645"
+  },
+  {
+    "transaction_id": "TX-20251227055231-9F9CA4",
+    "case_id": "CASE-20251227-24B80090",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-27T05:52:31.263591"
+  },
+  {
+    "transaction_id": "TX-20251227061642-4644D8",
+    "case_id": "CASE-20251227-24B80090",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-27T06:16:42.324823"
+  },
+  {
+    "transaction_id": "TX-20251229232822-15F239",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-29T23:28:22.185248"
+  },
+  {
+    "transaction_id": "TX-20251229232949-2EC4C7",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-29T23:29:49.867037"
+  },
+  {
+    "transaction_id": "TX-20251230043019-C70611",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T04:30:19.730747"
+  },
+  {
+    "transaction_id": "TX-20251230045249-7FA2B5",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-30T04:52:49.235970"
+  },
+  {
+    "transaction_id": "TX-20251230050852-2F6CB1",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-30T05:08:52.653787"
+  },
+  {
+    "transaction_id": "TX-20251230051258-0A94D8",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T05:12:58.811955"
+  },
+  {
+    "transaction_id": "TX-20251230053007-A38756",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T05:30:07.631649"
+  },
+  {
+    "transaction_id": "TX-20251230054150-19BDB5",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T05:41:50.022851"
+  },
+  {
+    "transaction_id": "TX-20251230055153-3689D2",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T05:51:53.876311"
+  },
+  {
+    "transaction_id": "TX-20251230060000-E81EAF",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T06:00:00.214807"
+  },
+  {
+    "transaction_id": "TX-20251230061045-812FDE",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T06:10:45.942430"
+  },
+  {
+    "transaction_id": "TX-20251230134137-5C96BB",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T13:41:37.328103"
+  },
+  {
+    "transaction_id": "TX-20251230135031-3F057F",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T13:50:31.952918"
+  },
+  {
+    "transaction_id": "TX-20251230135353-937154",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T13:53:53.189101"
+  },
+  {
+    "transaction_id": "TX-20251230135655-90BC24",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T13:56:55.281782"
+  },
+  {
+    "transaction_id": "TX-20251230140336-1A205B",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T14:03:36.673884"
+  },
+  {
+    "transaction_id": "TX-20251230140633-783E01",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-30T14:06:33.291294"
+  },
+  {
+    "transaction_id": "TX-20251230140713-7377CD",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-30T14:07:13.538925"
+  },
+  {
+    "transaction_id": "TX-20251230141403-433EDC",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-30T14:14:03.025789"
+  },
+  {
+    "transaction_id": "TX-20251230141844-3F6F10",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-30T14:18:44.208419"
+  },
+  {
+    "transaction_id": "TX-20251230152228-4CC1D3",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-30T15:22:28.585009"
+  },
+  {
+    "transaction_id": "TX-20251231170508-A9EE0C",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-31T17:05:08.727827"
+  },
+  {
+    "transaction_id": "TX-20251231171931-B4E3E7",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-31T17:19:31.447503"
+  },
+  {
+    "transaction_id": "TX-20251231173018-614A39",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-31T17:30:18.088263"
+  },
+  {
+    "transaction_id": "TX-20251231174139-F08A84",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-31T17:41:39.084666"
+  },
+  {
+    "transaction_id": "TX-20251231200127-BB24F2",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-31T20:01:27.664209"
+  },
+  {
+    "transaction_id": "TX-20251231200536-79BCDF",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2025-12-31T20:05:36.459169"
+  },
+  {
+    "transaction_id": "TX-20251231200559-328723",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-31T20:05:59.438704"
+  },
+  {
+    "transaction_id": "TX-20251231200833-1CE718",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-31T20:08:33.269351"
+  },
+  {
+    "transaction_id": "TX-20251231234535-F0C998",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2025-12-31T23:45:35.115771"
+  },
+  {
+    "transaction_id": "TX-20260102050444-1B8A68",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-02T05:04:44.930120"
+  },
+  {
+    "transaction_id": "TX-20260102051733-EFD353",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-02T05:17:33.985965"
+  },
+  {
+    "transaction_id": "TX-20260102052618-4D4BD2",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-02T05:26:18.384964"
+  },
+  {
+    "transaction_id": "TX-20260102052757-D16037",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-02T05:27:57.200974"
+  },
+  {
+    "transaction_id": "TX-20260102053459-381701",
+    "case_id": "CASE-20251229-E79B1C41",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-02T05:34:59.215230"
+  },
+  {
+    "transaction_id": "TX-20260102054837-3A0692",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-02T05:48:37.872794"
+  },
+  {
+    "transaction_id": "TX-20260102055347-1B2F24",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-02T05:53:47.776004"
+  },
+  {
+    "transaction_id": "TX-20260102060046-E4C785",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-02T06:00:46.845926"
+  },
+  {
+    "transaction_id": "TX-20260103063016-84C23A",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T06:30:16.484454"
+  },
+  {
+    "transaction_id": "TX-20260103063118-367A96",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T06:31:18.930498"
+  },
+  {
+    "transaction_id": "TX-20260103063141-9C0565",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T06:31:41.359913"
+  },
+  {
+    "transaction_id": "TX-20260103071756-065A49",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T07:17:56.247963"
+  },
+  {
+    "transaction_id": "TX-20260103072322-97EA0F",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T07:23:22.569214"
+  },
+  {
+    "transaction_id": "TX-20260103133653-485F0B",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T13:36:53.163065"
+  },
+  {
+    "transaction_id": "TX-20260103150146-E94207",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T15:01:46.274003"
+  },
+  {
+    "transaction_id": "TX-20260103150209-8B6281",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T15:02:09.246293"
+  },
+  {
+    "transaction_id": "TX-20260103152127-2BE1B3",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-03T15:21:27.640557"
+  },
+  {
+    "transaction_id": "TX-20260103152441-904F44",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T15:24:41.572185"
+  },
+  {
+    "transaction_id": "TX-20260103153735-41B11C",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T15:37:35.750219"
+  },
+  {
+    "transaction_id": "TX-20260103153850-501AD9",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T15:38:50.880087"
+  },
+  {
+    "transaction_id": "TX-20260103155308-509E8C",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-03T15:53:08.505132"
+  },
+  {
+    "transaction_id": "TX-20260103155637-18E223",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-03T15:56:37.570910"
+  },
+  {
+    "transaction_id": "TX-20260103165340-9827A0",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T16:53:40.869418"
+  },
+  {
+    "transaction_id": "TX-20260103171052-91118E",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T17:10:52.036123"
+  },
+  {
+    "transaction_id": "TX-20260103171702-2D9A9A",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T17:17:02.527630"
+  },
+  {
+    "transaction_id": "TX-20260103171742-AB2FD5",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T17:17:42.139397"
+  },
+  {
+    "transaction_id": "TX-20260103181713-F5A11E",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-03T18:17:13.808752"
+  },
+  {
+    "transaction_id": "TX-20260104055553-92D6FC",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T05:55:53.930666"
+  },
+  {
+    "transaction_id": "TX-20260104060029-4C41A9",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T06:00:29.613926"
+  },
+  {
+    "transaction_id": "TX-20260104060325-A076EE",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T06:03:25.957097"
+  },
+  {
+    "transaction_id": "TX-20260104061232-D8F699",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T06:12:32.378286"
+  },
+  {
+    "transaction_id": "TX-20260104062441-55EB6B",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T06:24:41.521552"
+  },
+  {
+    "transaction_id": "TX-20260104070802-64759D",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T07:08:02.516892"
+  },
+  {
+    "transaction_id": "TX-20260104070843-20A0F8",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T07:08:43.992084"
+  },
+  {
+    "transaction_id": "TX-20260104074229-CE6551",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-04T07:42:29.048200"
+  },
+  {
+    "transaction_id": "TX-20260104074246-A19350",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-04T07:42:46.374039"
+  },
+  {
+    "transaction_id": "TX-20260105060621-A78F11",
+    "case_id": "CASE-20260102-EA63B29F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-05T06:06:21.265019"
+  },
+  {
+    "transaction_id": "TX-20260109032605-B543BB",
+    "case_id": "CASE-20260109-7F5DDF6D",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-09T03:26:05.392175"
+  },
+  {
+    "transaction_id": "TX-20260109033058-EDBA81",
+    "case_id": "CASE-20260109-7F5DDF6D",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-09T03:30:58.489841"
+  },
+  {
+    "transaction_id": "TX-20260111185814-559F5F",
+    "case_id": "CASE-20260111-042E0428",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-11T18:58:14.904530"
+  },
+  {
+    "transaction_id": "TX-20260111190043-3E6BBB",
+    "case_id": "CASE-20260111-042E0428",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-11T19:00:43.685762"
+  },
+  {
+    "transaction_id": "TX-20260111191519-BCB395",
+    "case_id": "CASE-20260111-042E0428",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-11T19:15:19.108844"
+  },
+  {
+    "transaction_id": "TX-20260111210705-26B389",
+    "case_id": "CASE-20260111-042E0428",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-11T21:07:05.872892"
+  },
+  {
+    "transaction_id": "TX-20260111211731-3D50CF",
+    "case_id": "CASE-20260111-042E0428",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-11T21:17:31.307744"
+  },
+  {
+    "transaction_id": "TX-20260111211741-86C1B9",
+    "case_id": "CASE-20260111-042E0428",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-11T21:17:41.507487"
+  },
+  {
+    "transaction_id": "TX-20260111212344-F3F940",
+    "case_id": "CASE-20260111-361DEC90",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-11T21:23:44.534020"
+  },
+  {
+    "transaction_id": "TX-20260112050812-BEA020",
+    "case_id": "CASE-20260112-3187639D",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-12T05:08:12.318710"
+  },
+  {
+    "transaction_id": "TX-20260112213054-521044",
+    "case_id": "CASE-20260112-0F64D67F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-12T21:30:54.031301"
+  },
+  {
+    "transaction_id": "TX-20260112221206-5A527E",
+    "case_id": "CASE-20260112-0F64D67F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-12T22:12:06.928337"
+  },
+  {
+    "transaction_id": "TX-20260112222700-88927B",
+    "case_id": "CASE-20260112-0F64D67F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-12T22:27:00.123671"
+  },
+  {
+    "transaction_id": "TX-20260114054412-5F7D02",
+    "case_id": "CASE-20260114-221C2A99",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-14T05:44:12.550123"
+  },
+  {
+    "transaction_id": "TX-20260114055416-41CEC1",
+    "case_id": "CASE-20260114-221C2A99",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-14T05:54:16.891014"
+  },
+  {
+    "transaction_id": "TX-20260114083000-D11425",
+    "case_id": "CASE-20260114-A8F4C2D5",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-14T08:30:00.917754"
+  },
+  {
+    "transaction_id": "TX-20260114141231-058111",
+    "case_id": "CASE-20260114-A8F4C2D5",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-14T14:12:31.621155"
+  },
+  {
+    "transaction_id": "TX-20260114152210-F8B5BB",
+    "case_id": "CASE-20260114-A8F4C2D5",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-14T15:22:10.721481"
+  },
+  {
+    "transaction_id": "TX-20260114154345-6FA9C5",
+    "case_id": "CASE-20260114-A8F4C2D5",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-14T15:43:45.363363"
+  },
+  {
+    "transaction_id": "TX-20260114171630-904D46",
+    "case_id": "CASE-20260114-A8F4C2D5",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-14T17:16:30.281529"
+  },
+  {
+    "transaction_id": "TX-20260114172913-A9F746",
+    "case_id": "CASE-20260114-A8F4C2D5",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-14T17:29:13.356201"
+  },
+  {
+    "transaction_id": "TX-20260115064159-C4DFBE",
+    "case_id": "CASE-20260115-4EFFCF52",
+    "action": "verify_completion",
+    "decision": "accept",
+    "timestamp": "2026-01-15T06:41:59.942045"
+  },
+  {
+    "transaction_id": "TX-20260116202532-1E1A74",
+    "case_id": "CASE-20260116-F45AAC0A",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-16T20:25:32.687003"
+  },
+  {
+    "transaction_id": "TX-20260116202648-B20B59",
+    "case_id": "CASE-20260116-1D1737FB",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-16T20:26:48.735977"
+  },
+  {
+    "transaction_id": "TX-20260116202656-79CA93",
+    "case_id": "CASE-20260116-1D1737FB",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-16T20:26:56.226652"
+  },
+  {
+    "transaction_id": "TX-20260116202807-6EFA48",
+    "case_id": "CASE-20260116-1FD2920F",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-16T20:28:07.061741"
+  },
+  {
+    "transaction_id": "TX-20260116203120-0CD516",
+    "case_id": "CASE-20260116-7CDDE3AF",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-16T20:31:20.932098"
+  },
+  {
+    "transaction_id": "TX-20260116203304-E46FB5",
+    "case_id": "CASE-20260116-74156317",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-16T20:33:04.093691"
+  }
+]

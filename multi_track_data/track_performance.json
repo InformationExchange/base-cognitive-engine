@@ -1,0 +1,61 @@
+{
+  "grok-citation-verifier": {
+    "total_runs": 3,
+    "correct_decisions": 0,
+    "avg_time_ms": 11695.314725240072,
+    "domains": {
+      "medical": {
+        "runs": 2,
+        "issues_found": 8
+      },
+      "general": {
+        "runs": 1,
+        "issues_found": 0
+      }
+    }
+  },
+  "track_test_1": {
+    "total_runs": 4,
+    "correct_decisions": 0,
+    "avg_time_ms": 0.026524066925048828,
+    "domains": {
+      "coding": {
+        "runs": 4,
+        "issues_found": 0
+      }
+    }
+  },
+  "track_test_2": {
+    "total_runs": 4,
+    "correct_decisions": 0,
+    "avg_time_ms": 0.016629695892333984,
+    "domains": {
+      "coding": {
+        "runs": 4,
+        "issues_found": 0
+      }
+    }
+  },
+  "track_1": {
+    "total_runs": 2,
+    "correct_decisions": 0,
+    "avg_time_ms": 0.04458427429199219,
+    "domains": {
+      "coding": {
+        "runs": 2,
+        "issues_found": 0
+      }
+    }
+  },
+  "track_2": {
+    "total_runs": 2,
+    "correct_decisions": 0,
+    "avg_time_ms": 0.029921531677246094,
+    "domains": {
+      "coding": {
+        "runs": 2,
+        "issues_found": 0
+      }
+    }
+  }
+}

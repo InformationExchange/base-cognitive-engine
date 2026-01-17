@@ -1,0 +1,165 @@
+{
+  "memories": [
+    {
+      "id": "410b714670bedab1",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "medical",
+      "trigger": "medical advice recommendation",
+      "content": "Always add disclaimer to consult healthcare provider",
+      "evidence": [
+        "Medical advice requires professional verification"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.759740",
+      "last_used": null
+    },
+    {
+      "id": "035faa6b1afd6033",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "medical",
+      "trigger": "treatment recommendation certainty",
+      "content": "Replace absolute certainty with hedged language",
+      "evidence": [
+        "Medical outcomes vary by individual"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.759960",
+      "last_used": null
+    },
+    {
+      "id": "d1e430fe18301eee",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "financial",
+      "trigger": "investment recommendation",
+      "content": "Add risk warnings and professional advice disclaimer",
+      "evidence": [
+        "Financial advice regulated, outcomes uncertain"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.760121",
+      "last_used": null
+    },
+    {
+      "id": "f633cec4e88df577",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "financial",
+      "trigger": "guaranteed returns claim",
+      "content": "Flag and remove guarantee language - no investment is guaranteed",
+      "evidence": [
+        "No legitimate investment guarantees returns"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.760260",
+      "last_used": null
+    },
+    {
+      "id": "8022e8db2a0d74cd",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "general",
+      "trigger": "bandwagon argument",
+      "content": "Popularity does not equal validity - flag bandwagon fallacy",
+      "evidence": [
+        "Everyone doing X is not evidence X is correct"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.760390",
+      "last_used": null
+    },
+    {
+      "id": "f47c515e634b2907",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "general",
+      "trigger": "appeal to authority without citation",
+      "content": "Require specific citations for authority claims",
+      "evidence": [
+        "Vague authority claims are manipulation"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.760533",
+      "last_used": null
+    },
+    {
+      "id": "6807a0aa53ac6c1f",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "development",
+      "trigger": "declaring completion prematurely",
+      "content": "Verify completion against objective criteria before declaring done",
+      "evidence": [
+        "Mission drift occurred from premature completion claims"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.760683",
+      "last_used": null
+    },
+    {
+      "id": "d033f12e0696e2d1",
+      "memory_type": "pattern",
+      "priority": "critical",
+      "domain": "development",
+      "trigger": "blocking instead of improving",
+      "content": "Goal is to IMPROVE outputs, not block/reject them",
+      "evidence": [
+        "Mission drift: blocking is not improvement"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.760835",
+      "last_used": null
+    },
+    {
+      "id": "9f333ad593843816",
+      "memory_type": "pattern",
+      "priority": "high",
+      "domain": "development",
+      "trigger": "simulated testing",
+      "content": "Use real data and actual testing, not simulations",
+      "evidence": [
+        "Simulated tests missed real issues"
+      ],
+      "confidence": 0.9,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2025-12-23T19:22:01.760998",
+      "last_used": null
+    },
+    {
+      "id": "2ec3467a5f298ede",
+      "memory_type": "success",
+      "priority": "medium",
+      "domain": "medical",
+      "trigger": "Query: What's the recommended dosage for ibuprofen?",
+      "content": "Enhancement successful with moderate improvements",
+      "evidence": [
+        "Quality improved from 0.56 to 0.69"
+      ],
+      "confidence": 0.625,
+      "times_applied": 0,
+      "times_successful": 0,
+      "created_at": "2026-01-11T23:47:44.393884",
+      "last_used": null
+    }
+  ],
+  "saved_at": "2026-01-11T23:47:44.393959"
+}

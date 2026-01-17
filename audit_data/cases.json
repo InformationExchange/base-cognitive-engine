@@ -1,0 +1,399 @@
+{
+  "CASE-20251226-99E632AC": {
+    "case_id": "CASE-20251226-99E632AC",
+    "created": "2025-12-26T20:20:58.130596",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20251226202058-073872",
+      "TX-20251226202104-DC156F",
+      "TX-20251226202109-C10872"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251226-EFA224AD": {
+    "case_id": "CASE-20251226-EFA224AD",
+    "created": "2025-12-26T20:23:47.371537",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20251226202347-944BD8",
+      "TX-20251226202356-54E05E",
+      "TX-20251226202406-4721E0",
+      "TX-20251226202414-E252CD"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251226-5E28B744": {
+    "case_id": "CASE-20251226-5E28B744",
+    "created": "2025-12-26T20:27:32.854701",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20251226202732-A3B065",
+      "TX-20251226202738-D5DFD3",
+      "TX-20251226202747-E9F1ED",
+      "TX-20251226202754-8B268B"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251226-45016005": {
+    "case_id": "CASE-20251226-45016005",
+    "created": "2025-12-26T20:28:33.727615",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20251226202833-0EEC55",
+      "TX-20251226202841-197E95"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251226-E6754F04": {
+    "case_id": "CASE-20251226-E6754F04",
+    "created": "2025-12-26T20:29:11.912559",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20251226202911-4B6476"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251226-6E7D3746": {
+    "case_id": "CASE-20251226-6E7D3746",
+    "created": "2025-12-26T23:24:22.888899",
+    "status": "open",
+    "domain": "test",
+    "description": {},
+    "related_cases": [],
+    "audit_records": [],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251226-0D64ABD9": {
+    "case_id": "CASE-20251226-0D64ABD9",
+    "created": "2025-12-26T23:28:32.300464",
+    "status": "open",
+    "domain": "test",
+    "description": "Test case",
+    "related_cases": [],
+    "audit_records": [],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251226-A70C9C58": {
+    "case_id": "CASE-20251226-A70C9C58",
+    "created": "2025-12-26T23:29:59.622033",
+    "status": "open",
+    "domain": "test",
+    "description": "Test",
+    "related_cases": [],
+    "audit_records": [],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251227-24B80090": {
+    "case_id": "CASE-20251227-24B80090",
+    "created": "2025-12-27T05:24:34.872470",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20251227052434-36C6E4",
+      "TX-20251227055231-9F9CA4",
+      "TX-20251227061642-4644D8"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20251229-E79B1C41": {
+    "case_id": "CASE-20251229-E79B1C41",
+    "created": "2025-12-29T23:28:22.181478",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20251229232822-15F239",
+      "TX-20251229232949-2EC4C7",
+      "TX-20251230043019-C70611",
+      "TX-20251230045249-7FA2B5",
+      "TX-20251230050852-2F6CB1",
+      "TX-20251230051258-0A94D8",
+      "TX-20251230053007-A38756",
+      "TX-20251230054150-19BDB5",
+      "TX-20251230055153-3689D2",
+      "TX-20251230060000-E81EAF",
+      "TX-20251230061045-812FDE",
+      "TX-20251230134137-5C96BB",
+      "TX-20251230135031-3F057F",
+      "TX-20251230135353-937154",
+      "TX-20251230135655-90BC24",
+      "TX-20251230140336-1A205B",
+      "TX-20251230140633-783E01",
+      "TX-20251230140713-7377CD",
+      "TX-20251230141403-433EDC",
+      "TX-20251230141844-3F6F10",
+      "TX-20251230152228-4CC1D3",
+      "TX-20251231170508-A9EE0C",
+      "TX-20251231171931-B4E3E7",
+      "TX-20251231173018-614A39",
+      "TX-20251231174139-F08A84",
+      "TX-20251231200127-BB24F2",
+      "TX-20251231200536-79BCDF",
+      "TX-20251231200559-328723",
+      "TX-20251231200833-1CE718",
+      "TX-20251231234535-F0C998",
+      "TX-20260102050444-1B8A68",
+      "TX-20260102051733-EFD353",
+      "TX-20260102052618-4D4BD2",
+      "TX-20260102052757-D16037",
+      "TX-20260102053459-381701"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260102-EA63B29F": {
+    "case_id": "CASE-20260102-EA63B29F",
+    "created": "2026-01-02T05:48:37.862561",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260102054837-3A0692",
+      "TX-20260102055347-1B2F24",
+      "TX-20260102060046-E4C785",
+      "TX-20260103063016-84C23A",
+      "TX-20260103063118-367A96",
+      "TX-20260103063141-9C0565",
+      "TX-20260103071756-065A49",
+      "TX-20260103072322-97EA0F",
+      "TX-20260103133653-485F0B",
+      "TX-20260103150146-E94207",
+      "TX-20260103150209-8B6281",
+      "TX-20260103152127-2BE1B3",
+      "TX-20260103152441-904F44",
+      "TX-20260103153735-41B11C",
+      "TX-20260103153850-501AD9",
+      "TX-20260103155308-509E8C",
+      "TX-20260103155637-18E223",
+      "TX-20260103165340-9827A0",
+      "TX-20260103171052-91118E",
+      "TX-20260103171702-2D9A9A",
+      "TX-20260103171742-AB2FD5",
+      "TX-20260103181713-F5A11E",
+      "TX-20260104055553-92D6FC",
+      "TX-20260104060029-4C41A9",
+      "TX-20260104060325-A076EE",
+      "TX-20260104061232-D8F699",
+      "TX-20260104062441-55EB6B",
+      "TX-20260104070802-64759D",
+      "TX-20260104070843-20A0F8",
+      "TX-20260104074229-CE6551",
+      "TX-20260104074246-A19350",
+      "TX-20260105060621-A78F11"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260109-7F5DDF6D": {
+    "case_id": "CASE-20260109-7F5DDF6D",
+    "created": "2026-01-09T03:26:05.380489",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260109032605-B543BB",
+      "TX-20260109033058-EDBA81"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260111-042E0428": {
+    "case_id": "CASE-20260111-042E0428",
+    "created": "2026-01-11T18:58:14.893398",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260111185814-559F5F",
+      "TX-20260111190043-3E6BBB",
+      "TX-20260111191519-BCB395",
+      "TX-20260111210705-26B389",
+      "TX-20260111211731-3D50CF",
+      "TX-20260111211741-86C1B9"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260111-361DEC90": {
+    "case_id": "CASE-20260111-361DEC90",
+    "created": "2026-01-11T21:23:44.520480",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260111212344-F3F940"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260112-3187639D": {
+    "case_id": "CASE-20260112-3187639D",
+    "created": "2026-01-12T05:08:12.302341",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260112050812-BEA020"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260112-0F64D67F": {
+    "case_id": "CASE-20260112-0F64D67F",
+    "created": "2026-01-12T21:30:54.010558",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260112213054-521044",
+      "TX-20260112221206-5A527E",
+      "TX-20260112222700-88927B"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260114-221C2A99": {
+    "case_id": "CASE-20260114-221C2A99",
+    "created": "2026-01-14T05:44:12.523340",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260114054412-5F7D02",
+      "TX-20260114055416-41CEC1"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260114-A8F4C2D5": {
+    "case_id": "CASE-20260114-A8F4C2D5",
+    "created": "2026-01-14T08:30:00.903517",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260114083000-D11425",
+      "TX-20260114141231-058111",
+      "TX-20260114152210-F8B5BB",
+      "TX-20260114154345-6FA9C5",
+      "TX-20260114171630-904D46",
+      "TX-20260114172913-A9F746"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260115-4EFFCF52": {
+    "case_id": "CASE-20260115-4EFFCF52",
+    "created": "2026-01-15T06:41:59.928432",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260115064159-C4DFBE"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260116-F45AAC0A": {
+    "case_id": "CASE-20260116-F45AAC0A",
+    "created": "2026-01-16T20:25:32.671137",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260116202532-1E1A74"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260116-1D1737FB": {
+    "case_id": "CASE-20260116-1D1737FB",
+    "created": "2026-01-16T20:26:48.726849",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260116202648-B20B59",
+      "TX-20260116202656-79CA93"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260116-1FD2920F": {
+    "case_id": "CASE-20260116-1FD2920F",
+    "created": "2026-01-16T20:28:07.051098",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260116202807-6EFA48"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260116-7CDDE3AF": {
+    "case_id": "CASE-20260116-7CDDE3AF",
+    "created": "2026-01-16T20:31:20.915016",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260116203120-0CD516"
+    ],
+    "tags": [],
+    "metadata": {}
+  },
+  "CASE-20260116-74156317": {
+    "case_id": "CASE-20260116-74156317",
+    "created": "2026-01-16T20:33:04.079824",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260116203304-E46FB5"
+    ],
+    "tags": [],
+    "metadata": {}
+  }
+}

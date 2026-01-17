@@ -1,0 +1,274 @@
+{
+  "results": [
+    {
+      "claim_id": "PPA2-Inv26-C1",
+      "claim_type": "algorithmic",
+      "methodology": "unit_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "passed=False, predicates=['evidence_sufficiency', 'behavioral_safety', 'temporal_stability', 'factual_accuracy']",
+      "details": "Must-pass predicate enforcement with predicate results",
+      "timestamp": "2025-12-20T09:29:45.935804",
+      "hash": "ed000d0092332413"
+    },
+    {
+      "claim_id": "PPA2-Inv26-C2",
+      "claim_type": "algorithmic",
+      "methodology": "unit_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "calibration_points=10",
+      "details": "Calibrated posterior accumulates points",
+      "timestamp": "2025-12-20T09:29:45.935842",
+      "hash": "2216d586cf602d30"
+    },
+    {
+      "claim_id": "PPA2-Inv26-C3",
+      "claim_type": "algorithmic",
+      "methodology": "unit_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "chain_valid={'timestamp': '2025-12-20T14:29:45.945416', 'total_records': 1, 'total_batches': 0, 'chain_length': 1, 'checks': {'hash_chain': {'valid': True, 'invalid_index': None}, 'batch_roots': {'valid': True, 'batches_verified': 0, 'errors': []}, 'record_proofs': {'valid': True, 'records_checked': 1, 'proofs_valid': 1, 'errors': []}}, 'valid': True}, entries=1, has_hash=True",
+      "details": "Tamper-evident audit chain verified",
+      "timestamp": "2025-12-20T09:29:45.945652",
+      "hash": "b70dd3680e3d3879"
+    },
+    {
+      "claim_id": "PPA2-Inv27-C1",
+      "claim_type": "algorithmic",
+      "methodology": "unit_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "\u03b8_0=50.00, \u03b8_1=49.90, \u0394=-0.10",
+      "details": "OCO threshold update: \u03b8_{t+1} = \u03b8_t + \u03b7 * gradient",
+      "timestamp": "2025-12-20T09:29:45.945738",
+      "hash": "c09769d51c00fff3"
+    },
+    {
+      "claim_id": "PPA2-Inv27-C2",
+      "claim_type": "algorithmic",
+      "methodology": "unit_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "dual_weights_type=defaultdict, dual_lr=0.1",
+      "details": "Dual weights: \u03bb_{t+1} = [\u03bb_t + \u03b7_\u03bb * (m_t \u2212 \u03c1)]_+",
+      "timestamp": "2025-12-20T09:29:45.945753",
+      "hash": "11db7c988d34bd16"
+    },
+    {
+      "claim_id": "PPA2-Inv27-C3",
+      "claim_type": "algorithmic",
+      "methodology": "unit_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "diligence_weights_type=defaultdict, diligence_lr=0.05",
+      "details": "Diligence weights: \u03c8_{t+1,k} = \u03c8_{t,k} * exp(\u2212\u03b7_\u03c8 * g_{t,k}) / Z_t",
+      "timestamp": "2025-12-20T09:29:45.945762",
+      "hash": "e6ae805e4e917af3"
+    },
+    {
+      "claim_id": "PPA2-Inv28-C1",
+      "claim_type": "algorithmic",
+      "methodology": "unit_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "window=[200ms, 500ms], spec=[100ms, 1000ms]",
+      "details": "Cognitive window timing within 100-1000ms spec",
+      "timestamp": "2025-12-20T09:29:45.958513",
+      "hash": "42f0997308c8b9e0"
+    },
+    {
+      "claim_id": "PPA3-Behav-Fear",
+      "claim_type": "behavioral",
+      "methodology": "scenario_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "techniques=['scarcity', 'fear_loss']",
+      "details": "Fear/scarcity manipulation scenario",
+      "timestamp": "2025-12-20T09:29:45.976095",
+      "hash": "1a84809374f54d7f"
+    },
+    {
+      "claim_id": "PPA3-Behav-Authority",
+      "claim_type": "behavioral",
+      "methodology": "scenario_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "techniques=['appeal_to_authority']",
+      "details": "Authority manipulation scenario",
+      "timestamp": "2025-12-20T09:29:45.976556",
+      "hash": "795b6723e7cb8b06"
+    },
+    {
+      "claim_id": "NOVEL-9-Injection",
+      "claim_type": "behavioral",
+      "methodology": "scenario_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "risk_level=high, risk_score=0.70, issues=[QueryIssue(issue_type=<QueryIssueType.PROMPT_INJECTION: 'prompt_injection'>, description='Direct instruction override', evidence='ignore all previous instructions', severity=0.9, mitigation='Reject or sanitize the query before processing'), QueryIssue(issue_type=<QueryIssueType.PROMPT_INJECTION: 'prompt_injection'>, description='Privilege escalation', evidence='developer mode', severity=0.9, mitigation='Reject or sanitize the query before processing')]",
+      "details": "Prompt injection scenario",
+      "timestamp": "2025-12-20T09:29:45.981092",
+      "hash": "aee0dce68c36c2f8"
+    },
+    {
+      "claim_id": "PPA3-Behav-Fallacy",
+      "claim_type": "behavioral",
+      "methodology": "scenario_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "fallacies=['bandwagon']",
+      "details": "Logical fallacy scenario",
+      "timestamp": "2025-12-20T09:29:45.986247",
+      "hash": "63771fd5a0ab1bef"
+    },
+    {
+      "claim_id": "PPA3-Behav-Clean",
+      "claim_type": "behavioral",
+      "methodology": "scenario_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "query_risk=none/0.00, manipulation=0.00",
+      "details": "Clean query - no false positives",
+      "timestamp": "2025-12-20T09:29:45.986620",
+      "hash": "8a03232452ed9d26"
+    },
+    {
+      "claim_id": "PPA1-Content-Manipulation",
+      "claim_type": "content",
+      "methodology": "ab_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "risk_A=0.50 vs risk_B=0.00, diff=0.50",
+      "details": "A/B: ['social_proof', 'scarcity', 'urgency']",
+      "timestamp": "2025-12-20T09:29:45.987218",
+      "hash": "585169a4a40d7d1f"
+    },
+    {
+      "claim_id": "PPA1-Content-Hallucination",
+      "claim_type": "content",
+      "methodology": "ab_testing",
+      "passed": false,
+      "score": 0,
+      "evidence": "risk_A=0.00 vs risk_B=0.00, diff=0.00",
+      "details": "A/B: ['certainty', 'factual_assertion']",
+      "timestamp": "2025-12-20T09:29:45.987773",
+      "hash": "bc88ee0f17df278a"
+    },
+    {
+      "claim_id": "NOVEL-9-Content-Injection",
+      "claim_type": "content",
+      "methodology": "ab_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "risk_A=0.63 vs risk_B=0.00, diff=0.63",
+      "details": "A/B: ['prompt_injection']",
+      "timestamp": "2025-12-20T09:29:45.988092",
+      "hash": "461fb298fd49cd9a"
+    },
+    {
+      "claim_id": "UTIL-API-Batch",
+      "claim_type": "api",
+      "methodology": "functional_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "endpoint=/evaluate/batch, found=True",
+      "details": "Batch evaluation endpoint",
+      "timestamp": "2025-12-20T09:29:45.988455",
+      "hash": "3c34989a311c1251"
+    },
+    {
+      "claim_id": "UTIL-API-Stream",
+      "claim_type": "api",
+      "methodology": "functional_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "endpoint=/evaluate/stream, found=True",
+      "details": "Streaming endpoint",
+      "timestamp": "2025-12-20T09:29:45.988465",
+      "hash": "2420c59841524e13"
+    },
+    {
+      "claim_id": "UTIL-API-WebSocket",
+      "claim_type": "api",
+      "methodology": "functional_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "endpoint=/ws/{client_id}, found=True",
+      "details": "WebSocket endpoint",
+      "timestamp": "2025-12-20T09:29:45.988475",
+      "hash": "762ae8bfa51680d4"
+    },
+    {
+      "claim_id": "UTIL-API-SDK",
+      "claim_type": "api",
+      "methodology": "functional_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "endpoint=/sdk/python, found=True",
+      "details": "Python SDK endpoint",
+      "timestamp": "2025-12-20T09:29:45.988482",
+      "hash": "1818d77a7e143fea"
+    },
+    {
+      "claim_id": "UTIL-API-OpenAPI",
+      "claim_type": "api",
+      "methodology": "functional_testing",
+      "passed": true,
+      "score": 100,
+      "evidence": "endpoint=/openapi.json, found=True",
+      "details": "OpenAPI spec endpoint",
+      "timestamp": "2025-12-20T09:29:45.988488",
+      "hash": "cb56a7c7121fd9d0"
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "passed": 19,
+    "pass_rate": 95.0,
+    "by_methodology": {
+      "unit_testing": {
+        "total": 7,
+        "passed": 7
+      },
+      "scenario_testing": {
+        "total": 5,
+        "passed": 5
+      },
+      "ab_testing": {
+        "total": 3,
+        "passed": 2
+      },
+      "functional_testing": {
+        "total": 5,
+        "passed": 5
+      }
+    }
+  },
+  "violations": [
+    {
+      "rule_id": "RULE-8",
+      "rule_name": "Test Methodology Must Match Claim Type",
+      "description": "Claim 'PPA2-Inv28-C1' is content but tested with unit_testing",
+      "evidence": "claim_type=content, used=unit_testing, correct=ab_testing",
+      "recommendation": "Use ab_testing for content claims",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "RULE-8",
+      "rule_name": "Test Methodology Must Match Claim Type",
+      "description": "Claim 'NOVEL-9-Injection' is content but tested with scenario_testing",
+      "evidence": "claim_type=content, used=scenario_testing, correct=ab_testing",
+      "recommendation": "Use ab_testing for content claims",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "RULE-9",
+      "rule_name": "Suspicious Uniformity = Wrong Test",
+      "description": "19/20 claims (95%) have identical score 100%",
+      "evidence": "score_distribution={100: 19, 0: 1}",
+      "recommendation": "Change test methodology - tests aren't exercising claim functionality",
+      "severity": "CRITICAL"
+    }
+  ],
+  "timestamp": "2025-12-20T09:29:45.988910"
+}

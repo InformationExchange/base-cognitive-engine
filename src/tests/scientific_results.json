@@ -1,0 +1,46 @@
+{
+  "passed": 4,
+  "total": 4,
+  "results": [
+    {
+      "claim_id": "CONTENT-1",
+      "claim_type": "ClaimType.CONTENT_DETECTION",
+      "test_methodology": "Direct pattern detection test",
+      "hypothesis": "BAIS detects manipulation and injection patterns",
+      "result": true,
+      "evidence": "manipulation: \u2713, injection: \u2713, clean: \u2713",
+      "confidence": 1.0,
+      "notes": "3/3 test cases passed"
+    },
+    {
+      "claim_id": "PPA3-Behav-1",
+      "claim_type": "ClaimType.BEHAVIORAL",
+      "test_methodology": "Behavioral scenario testing",
+      "hypothesis": "BAIS detects behavioral manipulation patterns",
+      "result": true,
+      "evidence": "Fear-based manipulation: \u2713 detected ['scarcity', 'fear_loss']; Social proof manipulation: \u2713 detected ['social_proof']; Authority manipulation: \u2713 detected ['appeal_to_authority']",
+      "confidence": 1.0,
+      "notes": "3/3 scenarios detected"
+    },
+    {
+      "claim_id": "PPA2-C1-1",
+      "claim_type": "ClaimType.ALGORITHMIC",
+      "test_methodology": "Structure and formula verification",
+      "hypothesis": "OCO learner implements PPA2 mathematical formulas",
+      "result": true,
+      "evidence": "thresholds: ['medical', 'financial', 'legal', 'technical', 'general'], dual_weights: present, diligence_weights: present",
+      "confidence": 0.8,
+      "notes": "Note: Full mathematical proof requires integration test"
+    },
+    {
+      "claim_id": "NOVEL-3-1",
+      "claim_type": "ClaimType.INTEGRATION",
+      "test_methodology": "Integration flow verification",
+      "hypothesis": "Evaluation results flow to learning systems",
+      "result": true,
+      "evidence": "feedback_recorded: True, calibration_updated: True",
+      "confidence": 1.0,
+      "notes": "Tests that learning integration is connected"
+    }
+  ]
+}

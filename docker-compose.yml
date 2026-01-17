@@ -1,0 +1,128 @@
+# BAIS Cognitive Governance Engine
+# Docker Compose for local development and production
+
+version: '3.8'
+
+services:
+  # ==========================================================================
+  # BAIS API Server
+  # ==========================================================================
+  bais-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bais-api
+    ports:
+      - "${BAIS_PORT:-8000}:8000"
+    environment:
+      # LLM Provider API Keys (set via .env or secrets)
+      - GROK_API_KEY=${GROK_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY:-}
+      
+      # Database Configuration
+      - DATABASE_URL=postgresql://bais:${DB_PASSWORD:-bais_secret}@postgres:5432/bais
+      - REDIS_URL=redis://redis:6379/0
+      
+      # Application Settings
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+    volumes:
+      - bais-data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - bais-network
+
+  # ==========================================================================
+  # PostgreSQL Database
+  # ==========================================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: bais-postgres
+    environment:
+      POSTGRES_USER: bais
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-bais_secret}
+      POSTGRES_DB: bais
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bais -d bais"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - bais-network
+
+  # ==========================================================================
+  # Redis Cache
+  # ==========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: bais-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - bais-network
+
+  # ==========================================================================
+  # Nginx Reverse Proxy (Production)
+  # ==========================================================================
+  nginx:
+    image: nginx:alpine
+    container_name: bais-nginx
+    ports:
+      - "${NGINX_HTTP_PORT:-80}:80"
+      - "${NGINX_HTTPS_PORT:-443}:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - bais-api
+    restart: unless-stopped
+    networks:
+      - bais-network
+    profiles:
+      - production
+
+# ==========================================================================
+# Volumes
+# ==========================================================================
+volumes:
+  bais-data:
+    driver: local
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+
+# ==========================================================================
+# Networks
+# ==========================================================================
+networks:
+  bais-network:
+    driver: bridge

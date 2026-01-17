@@ -1,0 +1,14 @@
+{
+  "3d69b288c53c6f47": {
+    "decision_id": "3d69b288c53c6f47",
+    "circumstance": {
+      "domain": "technical"
+    },
+    "threshold_used": 50.0,
+    "detection_applied": [
+      "self_awareness"
+    ],
+    "outcome_quality": 1.0,
+    "times_reused": 0
+  }
+}

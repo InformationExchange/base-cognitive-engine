@@ -1,0 +1,182 @@
+{
+  "universal_learnings": {
+    "pattern_100_percent": {
+      "learning_id": "pattern_100_percent",
+      "learning_type": "pattern",
+      "content": {
+        "regex": "\\b100\\s*%",
+        "description": "100% certainty claim"
+      },
+      "source_llm": "grok",
+      "source_model": "grok-4-1-fast-reasoning",
+      "applicable_llms": [
+        "mistral",
+        "anthropic",
+        "local",
+        "cohere",
+        "meta",
+        "unknown",
+        "google",
+        "openai",
+        "grok"
+      ],
+      "effectiveness_per_llm": {
+        "grok": 0.757,
+        "anthropic": 0.5950000000000001
+      },
+      "transferability": "universal",
+      "transfer_success_rate": 0.676,
+      "created_at": "2025-12-25T16:02:10.125800",
+      "last_updated": "2025-12-25T16:02:10.127156",
+      "total_applications": 4,
+      "successful_applications": 4
+    }
+  },
+  "per_llm_learnings": {
+    "grok": {
+      "grok_sycophancy_pattern": {
+        "learning_id": "grok_sycophancy_pattern",
+        "learning_type": "pattern",
+        "content": {
+          "keywords": [
+            "excellent",
+            "amazing",
+            "great job"
+          ],
+          "description": "Grok sycophancy"
+        },
+        "source_llm": "grok",
+        "source_model": "grok-4-1-fast-reasoning",
+        "applicable_llms": [
+          "grok"
+        ],
+        "effectiveness_per_llm": {
+          "grok": 0.73
+        },
+        "transferability": "unknown",
+        "transfer_success_rate": 0.0,
+        "created_at": "2025-12-25T16:02:10.126095",
+        "last_updated": "2025-12-25T16:02:10.126649",
+        "total_applications": 1,
+        "successful_applications": 1
+      },
+      "false_completion_20251226182832": {
+        "learning_id": "false_completion_20251226182832",
+        "learning_type": "pattern",
+        "content": {
+          "pattern_type": "false_completion",
+          "model_name": "grok-3",
+          "was_correct": true,
+          "severity": 0.5
+        },
+        "source_llm": "grok",
+        "source_model": "grok",
+        "applicable_llms": [
+          "grok"
+        ],
+        "effectiveness_per_llm": {
+          "grok": 0.7
+        },
+        "transferability": "unknown",
+        "transfer_success_rate": 0.0,
+        "created_at": "2025-12-26T18:28:32.306131",
+        "last_updated": "2025-12-26T18:28:32.306132",
+        "total_applications": 0,
+        "successful_applications": 0
+      },
+      "test_20251226182959": {
+        "learning_id": "test_20251226182959",
+        "learning_type": "pattern",
+        "content": {
+          "pattern_type": "test",
+          "model_name": "grok-3",
+          "was_correct": true,
+          "severity": 0.5
+        },
+        "source_llm": "grok",
+        "source_model": "grok",
+        "applicable_llms": [
+          "grok"
+        ],
+        "effectiveness_per_llm": {
+          "grok": 0.7
+        },
+        "transferability": "unknown",
+        "transfer_success_rate": 0.0,
+        "created_at": "2025-12-26T18:29:59.626075",
+        "last_updated": "2025-12-26T18:29:59.626077",
+        "total_applications": 0,
+        "successful_applications": 0
+      }
+    },
+    "anthropic": {
+      "claude_hedging_pattern": {
+        "learning_id": "claude_hedging_pattern",
+        "learning_type": "pattern",
+        "content": {
+          "keywords": [
+            "might",
+            "possibly",
+            "it's possible"
+          ],
+          "description": "Claude hedging"
+        },
+        "source_llm": "anthropic",
+        "source_model": "claude-sonnet-4-20250514",
+        "applicable_llms": [
+          "anthropic"
+        ],
+        "effectiveness_per_llm": {
+          "anthropic": 0.7
+        },
+        "transferability": "unknown",
+        "transfer_success_rate": 0.0,
+        "created_at": "2025-12-25T16:02:10.126789",
+        "last_updated": "2025-12-25T16:02:10.126791",
+        "total_applications": 0,
+        "successful_applications": 0
+      }
+    }
+  },
+  "bias_profiles": {
+    "grok": {
+      "llm_provider": "grok",
+      "model_id": "grok-4-1-fast-reasoning",
+      "common_biases": [
+        "sycophancy",
+        "overconfidence"
+      ],
+      "bias_severity": {
+        "sycophancy": 0.5,
+        "overconfidence": 0.5
+      },
+      "threshold_adjustments": {},
+      "avg_overconfidence": 0.0,
+      "avg_hallucination_rate": 0.0,
+      "avg_sycophancy_score": 0.0,
+      "specific_patterns": []
+    },
+    "anthropic": {
+      "llm_provider": "anthropic",
+      "model_id": "claude-sonnet-4-20250514",
+      "common_biases": [
+        "hedging",
+        "safety_conscious"
+      ],
+      "bias_severity": {
+        "hedging": 0.5,
+        "safety_conscious": 0.5
+      },
+      "threshold_adjustments": {},
+      "avg_overconfidence": 0.0,
+      "avg_hallucination_rate": 0.0,
+      "avg_sycophancy_score": 0.0,
+      "specific_patterns": []
+    }
+  },
+  "statistics": {
+    "transfer_attempts": 2,
+    "successful_transfers": 2
+  },
+  "saved_at": "2025-12-26T18:29:59.626095"
+}

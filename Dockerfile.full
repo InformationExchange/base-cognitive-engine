@@ -1,0 +1,57 @@
+# BAIS Cognitive Governance Engine v16.2
+# FULL Mode Dockerfile (ML-based)
+# Neural embeddings + NLI, ~90% accuracy
+# Image size: ~4GB
+# Memory: 2GB minimum, 4GB recommended
+
+FROM python:3.11-slim
+
+LABEL maintainer="Invitas"
+LABEL version="16.2.0"
+LABEL mode="full"
+LABEL description="BAIS Cognitive Governance Engine - FULL Mode (ML)"
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements-full.txt ./requirements.txt
+
+# Install Python dependencies (this takes ~10 minutes)
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Download spaCy model
+RUN python -m spacy download en_core_web_sm || echo "spaCy model download skipped"
+
+# Pre-download sentence-transformer models (optional, caches them)
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')" || echo "Model pre-download skipped"
+
+# Copy source code
+COPY src/ ./src/
+
+# Set Python path
+ENV PYTHONPATH=/app/src
+
+# Set BAIS mode
+ENV BAIS_MODE=full
+
+# Create data directory
+RUN mkdir -p /data/bais
+
+# Expose port
+EXPOSE 8090
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD curl -f http://localhost:8090/health || exit 1
+
+# Run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8090"]
+
