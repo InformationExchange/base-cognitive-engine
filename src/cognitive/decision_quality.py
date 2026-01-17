@@ -1,5 +1,5 @@
 """
-BAIS Decision Quality Enhancer
+BASE Decision Quality Enhancer
 
 Improves the quality of decision-making in LLM outputs.
 Ensures recommendations are well-reasoned and appropriate.

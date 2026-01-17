@@ -10,7 +10,7 @@
 ### Theory of Mind (R&D Invention 1)
 
 **Original Vision:**
-> "Enable BAIS to infer mental states (beliefs, desires, intentions), model perspective-taking and empathy, detect manipulation/persuasion attempts, and analyze social dynamics in AI responses."
+> "Enable BASE to infer mental states (beliefs, desires, intentions), model perspective-taking and empathy, detect manipulation/persuasion attempts, and analyze social dynamics in AI responses."
 
 **The Goal:** Catch when an AI is being psychologically manipulative, making assumptions about user beliefs, or failing to consider different perspectives.
 
@@ -401,7 +401,7 @@ The R&D modules have **sound architectural design** and **clear value propositio
 
 ---
 
-*Document prepared by BAIS Clinical Assessment System*
+*Document prepared by BASE Clinical Assessment System*
 
 
 

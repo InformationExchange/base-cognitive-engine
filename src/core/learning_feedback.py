@@ -1,5 +1,5 @@
 """
-BAIS Learning Feedback (Layer 6 - Basal Ganglia)
+BASE Learning Feedback (Layer 6 - Basal Ganglia)
 
 Manages the feedback loop for continuous learning:
 1. Outcome recording
@@ -61,7 +61,7 @@ class FeedbackSummary:
 
 class LearningFeedback:
     """
-    Manages learning feedback for BAIS modules.
+    Manages learning feedback for BASE modules.
     
     Brain Layer: 6 (Basal Ganglia)
     

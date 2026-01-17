@@ -1,5 +1,5 @@
 """
-BAIS Module Registry - Self-Aware Capability Management
+BASE Module Registry - Self-Aware Capability Management
 Central catalog of all governance modules and their capabilities.
 
 This ensures the Query Router ALWAYS knows what modules are available,
@@ -191,7 +191,7 @@ class ModuleRegistry:
         self._register_builtin_modules()
     
     def _register_builtin_modules(self):
-        """Register all built-in BAIS modules."""
+        """Register all built-in BASE modules."""
         
         # Core Detectors
         self.register(ModuleCapability(
@@ -716,7 +716,7 @@ class ModuleRegistry:
     def print_status(self):
         """Print current registry status."""
         print("\n" + "="*70)
-        print("BAIS MODULE REGISTRY STATUS")
+        print("BASE MODULE REGISTRY STATUS")
         print("="*70)
         
         by_status = {}

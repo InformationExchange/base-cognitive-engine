@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.0
+BASE Cognitive Governance Engine v16.0
 Clinical-Grade AI Governance with True Learning
 """
 

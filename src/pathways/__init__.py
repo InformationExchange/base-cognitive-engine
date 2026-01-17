@@ -1,6 +1,6 @@
 """
-BAIS Pathways Module
-Migrated from Onyx Governance - Adapted for BAIS Architecture
+BASE Pathways Module
+Migrated from Onyx Governance - Adapted for BASE Architecture
 
 Pathways:
 - knowledge_graph: Entity/relationship extraction and verification

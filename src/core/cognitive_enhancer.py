@@ -1,7 +1,7 @@
 """
-BAIS Cognitive Enhancer - The Core Intelligence System
+BASE Cognitive Enhancer - The Core Intelligence System
 
-This is the main orchestrator that transforms BAIS from a "gate" to an "enhancer".
+This is the main orchestrator that transforms BASE from a "gate" to an "enhancer".
 It integrates all cognitive capabilities to IMPROVE LLM outputs, not just detect issues.
 
 Patent Alignment: Core Novel Invention - Cognitive Enhancement Architecture
@@ -184,7 +184,7 @@ class CognitiveEnhancer:
         }
     
     def _set_default_mission(self):
-        """Set the default mission for BAIS"""
+        """Set the default mission for BASE"""
         mission = MissionContext(
             primary_objective="Improve LLM output quality for accuracy, safety, and usefulness",
             secondary_objectives=[

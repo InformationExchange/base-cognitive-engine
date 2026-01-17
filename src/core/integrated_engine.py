@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.3
+BASE Cognitive Governance Engine v16.3
 Integrated Engine - Phase 5
 
 This is the main production engine that integrates:
@@ -34,7 +34,7 @@ import time
 import httpx
 
 # Import configuration
-from core.config import get_config, BAISConfig, DeploymentMode
+from core.config import get_config, BASEConfig, DeploymentMode
 
 # Import learning components (Phase 1)
 from learning.algorithms import (
@@ -67,7 +67,7 @@ from validation.clinical import (
 )
 
 # Import governance rules (Phase 5) - ENFORCED AT RUNTIME
-from core.governance_rules import BAISGovernanceRules, GovernanceViolation, ClaimType
+from core.governance_rules import BASEGovernanceRules, GovernanceViolation, ClaimType
 
 # Import LLM registry for unified LLM access (Phase 5)
 from core.llm_registry import LLMRegistry, LLMProvider
@@ -119,9 +119,9 @@ except ImportError:
 
 # Phase 19: Redis Cache for Learning Persistence (NOVEL-35)
 try:
-    from core.redis_cache import BAISRedisCache, get_redis_cache, CachedLearning
+    from core.redis_cache import BASERedisCache, get_redis_cache, CachedLearning
 except ImportError:
-    BAISRedisCache = None
+    BASERedisCache = None
     get_redis_cache = None
     CachedLearning = None
 
@@ -892,14 +892,14 @@ except ImportError:
     context_classifier = None
 
 # ========================================
-# BAIS v2.0 ENFORCEMENT MODULES (NOVEL-40 to NOVEL-54)
+# BASE v2.0 ENFORCEMENT MODULES (NOVEL-40 to NOVEL-54)
 # ========================================
 
 # NOVEL-42, NOVEL-43, NOVEL-49: Governance Modes, Evidence Classification, Approval Gates
 try:
     from core.governance_modes import (
         GovernanceModeController, GovernanceConfig, EvidenceClassifier,
-        EvidenceStrength, ApprovalInterface, BAISMode
+        EvidenceStrength, ApprovalInterface, BASEMode
     )
 except ImportError:
     GovernanceModeController = None
@@ -907,7 +907,7 @@ except ImportError:
     EvidenceClassifier = None
     EvidenceStrength = None
     ApprovalInterface = None
-    BAISMode = None
+    BASEMode = None
 
 # NOVEL-45: Skeptical Learning Manager
 try:
@@ -1044,7 +1044,7 @@ class GovernanceSignals:
     # Phase 50: ZPD and Knowledge Graph
     zpd_assessment: Any = None  # ZPDResult (PPA1-Inv12, NOVEL-4)
     knowledge_graph: Any = None  # KnowledgeQueryResult (PPA1-Inv6)
-    # BAIS v2.0 Enforcement Signals (NOVEL-40 to NOVEL-54)
+    # BASE v2.0 Enforcement Signals (NOVEL-40 to NOVEL-54)
     governance_mode: Any = None  # NOVEL-42/43/49 GovernanceModeController result
     skeptical_learning: Any = None  # NOVEL-45 SkepticalLearningManager result
     realtime_assistance: Any = None  # NOVEL-46 RealTimeAssistanceEngine result
@@ -1206,7 +1206,7 @@ class IntegratedGovernanceEngine:
     """
     Production-ready integrated governance engine.
     
-    Connects all BAIS components:
+    Connects all BASE components:
     - Learning algorithms with adaptive thresholds
     - Detectors for grounding, factual, behavioral, temporal
     - Signal fusion with multiple methods
@@ -1245,7 +1245,7 @@ class IntegratedGovernanceEngine:
     }
     
     def __init__(self,
-                 config: BAISConfig = None,
+                 config: BASEConfig = None,
                  data_dir: Path = None,
                  llm_api_key: str = None,
                  llm_model: str = None,
@@ -1345,7 +1345,7 @@ class IntegratedGovernanceEngine:
         # ========================================
         
         # Initialize governance rules - ENFORCED AT RUNTIME
-        self.governance_rules = BAISGovernanceRules()
+        self.governance_rules = BASEGovernanceRules()
         
         # Initialize LLM registry - SINGLE UNIFIED LLM ACCESS
         self.llm_registry = LLMRegistry()
@@ -1354,7 +1354,7 @@ class IntegratedGovernanceEngine:
         self.query_analyzer = QueryAnalyzer()
         
         # Initialize response improver - ACTIVE IMPROVEMENT (NOVEL-20)
-        # This transforms BAIS from a GATE (accept/reject) to an ENHANCER (improve/refine)
+        # This transforms BASE from a GATE (accept/reject) to an ENHANCER (improve/refine)
         self.response_improver = ResponseImprover(
             llm_helper=self.llm_helper,
             max_iterations=3
@@ -1533,7 +1533,7 @@ class IntegratedGovernanceEngine:
         # Three Distinct LLM Roles:
         # 1. LLM for Dimension Identification - Pattern-based for simple, LLM for complex
         # 2. LLM for Task Execution - Always (performs the actual task)
-        # 3. LLM for Governance - Always (BAIS monitors output)
+        # 3. LLM for Governance - Always (BASE monitors output)
         
         # Agent configuration manager - allows users to configure LLMs per role
         self.agent_config = None
@@ -1580,7 +1580,7 @@ class IntegratedGovernanceEngine:
         # ========================================
         # PHASE 15: ENHANCED PATTERN LEARNING & REASONING ANALYSIS
         # ========================================
-        # These enhancements make BAIS BETTER than Claude at catching issues
+        # These enhancements make BASE BETTER than Claude at catching issues
         # by learning patterns from exposure and analyzing reasoning structure
         
         # Domain Pattern Learner - learns patterns from exposure
@@ -1768,7 +1768,7 @@ class IntegratedGovernanceEngine:
                 print(f"[Phase 50] BiasAwareKnowledgeGraph init failed: {e}")
         
         # ========================================
-        # BAIS v2.0 ENFORCEMENT MODULES (NOVEL-40 to NOVEL-54)
+        # BASE v2.0 ENFORCEMENT MODULES (NOVEL-40 to NOVEL-54)
         # ========================================
         
         # NOVEL-42, NOVEL-43, NOVEL-49: Governance Mode Controller
@@ -1776,9 +1776,9 @@ class IntegratedGovernanceEngine:
         if GovernanceModeController:
             try:
                 self.governance_mode_controller = GovernanceModeController()
-                print("[BAIS v2.0] GovernanceModeController (NOVEL-42/43/49) initialized")
+                print("[BASE v2.0] GovernanceModeController (NOVEL-42/43/49) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] GovernanceModeController init failed: {e}")
+                print(f"[BASE v2.0] GovernanceModeController init failed: {e}")
         
         # NOVEL-45: Skeptical Learning Manager
         self.skeptical_learning = None
@@ -1787,72 +1787,72 @@ class IntegratedGovernanceEngine:
                 self.skeptical_learning = SkepticalLearningManager(
                     storage_path=self.data_dir / "skeptical_learning"
                 )
-                print("[BAIS v2.0] SkepticalLearningManager (NOVEL-45) initialized")
+                print("[BASE v2.0] SkepticalLearningManager (NOVEL-45) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] SkepticalLearningManager init failed: {e}")
+                print(f"[BASE v2.0] SkepticalLearningManager init failed: {e}")
         
         # NOVEL-46: Real-Time Assistance Engine
         self.realtime_assistance = None
         if RealTimeAssistanceEngine:
             try:
                 self.realtime_assistance = RealTimeAssistanceEngine()
-                print("[BAIS v2.0] RealTimeAssistanceEngine (NOVEL-46) initialized")
+                print("[BASE v2.0] RealTimeAssistanceEngine (NOVEL-46) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] RealTimeAssistanceEngine init failed: {e}")
+                print(f"[BASE v2.0] RealTimeAssistanceEngine init failed: {e}")
         
         # NOVEL-47: Governance Output Manager
         self.governance_output = None
         if GovernanceOutputManager:
             try:
                 self.governance_output = GovernanceOutputManager()
-                print("[BAIS v2.0] GovernanceOutputManager (NOVEL-47) initialized")
+                print("[BASE v2.0] GovernanceOutputManager (NOVEL-47) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] GovernanceOutputManager init failed: {e}")
+                print(f"[BASE v2.0] GovernanceOutputManager init failed: {e}")
         
         # NOVEL-48: Semantic Mode Selector
         self.semantic_mode_selector = None
         if SemanticModeSelector:
             try:
                 self.semantic_mode_selector = SemanticModeSelector()
-                print("[BAIS v2.0] SemanticModeSelector (NOVEL-48) initialized")
+                print("[BASE v2.0] SemanticModeSelector (NOVEL-48) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] SemanticModeSelector init failed: {e}")
+                print(f"[BASE v2.0] SemanticModeSelector init failed: {e}")
         
         # NOVEL-50: Functional Completeness Enforcer
         self.functional_completeness = None
         if FunctionalCompletenessEnforcer:
             try:
                 self.functional_completeness = FunctionalCompletenessEnforcer()
-                print("[BAIS v2.0] FunctionalCompletenessEnforcer (NOVEL-50) initialized")
+                print("[BASE v2.0] FunctionalCompletenessEnforcer (NOVEL-50) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] FunctionalCompletenessEnforcer init failed: {e}")
+                print(f"[BASE v2.0] FunctionalCompletenessEnforcer init failed: {e}")
         
         # NOVEL-51: Interface Compliance Checker
         self.interface_compliance = None
         if InterfaceComplianceChecker:
             try:
                 self.interface_compliance = InterfaceComplianceChecker()
-                print("[BAIS v2.0] InterfaceComplianceChecker (NOVEL-51) initialized")
+                print("[BASE v2.0] InterfaceComplianceChecker (NOVEL-51) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] InterfaceComplianceChecker init failed: {e}")
+                print(f"[BASE v2.0] InterfaceComplianceChecker init failed: {e}")
         
         # NOVEL-52: Domain-Agnostic Proof Engine
         self.domain_proof_engine = None
         if DomainAgnosticProofEngine:
             try:
                 self.domain_proof_engine = DomainAgnosticProofEngine()
-                print("[BAIS v2.0] DomainAgnosticProofEngine (NOVEL-52) initialized")
+                print("[BASE v2.0] DomainAgnosticProofEngine (NOVEL-52) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] DomainAgnosticProofEngine init failed: {e}")
+                print(f"[BASE v2.0] DomainAgnosticProofEngine init failed: {e}")
         
         # NOVEL-53: Evidence Verification Module
         self.evidence_verification = None
         if EvidenceVerificationModule:
             try:
                 self.evidence_verification = EvidenceVerificationModule()
-                print("[BAIS v2.0] EvidenceVerificationModule (NOVEL-53) initialized")
+                print("[BASE v2.0] EvidenceVerificationModule (NOVEL-53) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] EvidenceVerificationModule init failed: {e}")
+                print(f"[BASE v2.0] EvidenceVerificationModule init failed: {e}")
         
         # NOVEL-54: Dynamic Plugin Orchestrator
         self.dynamic_plugins = None
@@ -1861,9 +1861,9 @@ class IntegratedGovernanceEngine:
                 self.dynamic_plugins = DynamicPluginOrchestrator(
                     storage_path=self.data_dir / "dynamic_plugins"
                 )
-                print("[BAIS v2.0] DynamicPluginOrchestrator (NOVEL-54) initialized")
+                print("[BASE v2.0] DynamicPluginOrchestrator (NOVEL-54) initialized")
             except Exception as e:
-                print(f"[BAIS v2.0] DynamicPluginOrchestrator init failed: {e}")
+                print(f"[BASE v2.0] DynamicPluginOrchestrator init failed: {e}")
         
         # ========================================
         # FINAL 3 GAP FIXES
@@ -2028,7 +2028,7 @@ class IntegratedGovernanceEngine:
         if ProductionHardeningManager:
             try:
                 self.production_manager = ProductionHardeningManager(
-                    service_name="bais-governance-engine"
+                    service_name="base-governance-engine"
                 )
                 print("[Production] Production Hardening Manager initialized")
             except Exception as e:
@@ -3552,7 +3552,7 @@ Return JSON: {{"issues": [], "is_safe": true/false, "assessment": "reason"}}"""
         4. Re-evaluate the improved response
         5. Remember what worked, learn from what didn't
         
-        This is the CORE DIFFERENTIATOR: BAIS doesn't just accept/reject,
+        This is the CORE DIFFERENTIATOR: BASE doesn't just accept/reject,
         it actively IMPROVES responses and LEARNS from outcomes.
         
         Args:
@@ -4325,7 +4325,7 @@ Return JSON: {{"issues": [], "is_safe": true/false, "assessment": "reason"}}"""
                 pass
         
         # ========================================
-        # BAIS v2.0 ENFORCEMENT MODULES (NOVEL-40 to NOVEL-54)
+        # BASE v2.0 ENFORCEMENT MODULES (NOVEL-40 to NOVEL-54)
         # ========================================
         
         # NOVEL-48: Semantic Mode Selection
@@ -5751,7 +5751,7 @@ Return JSON: {{"issues": [], "is_safe": true/false, "assessment": "reason"}}"""
         """
         Get learning statistics from all detectors.
         
-        This tracks whether BAIS is learning and improving.
+        This tracks whether BASE is learning and improving.
         """
         stats = {
             'timestamp': datetime.now().isoformat(),
@@ -5876,7 +5876,7 @@ Return JSON: {{"issues": [], "is_safe": true/false, "assessment": "reason"}}"""
         """
         Configure LLM agents for different roles.
         
-        Allows users to specify which LLM handles which function in BAIS.
+        Allows users to specify which LLM handles which function in BASE.
         
         Args:
             config: Dictionary mapping role names to configuration:
@@ -5984,7 +5984,7 @@ Return JSON: {{"issues": [], "is_safe": true/false, "assessment": "reason"}}"""
         """
         Record outcome for dimensional learning.
         
-        Call this after evaluation to help BAIS learn which dimensions
+        Call this after evaluation to help BASE learn which dimensions
         were useful for which task types.
         
         Args:

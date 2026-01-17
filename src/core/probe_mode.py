@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v30.0
+BASE Cognitive Governance Engine v30.0
 Probe Mode - Quarantine & Shadow Model System
 
 Phase 30: Addresses PPA2-C1-13, PPA2-C3-8
@@ -335,7 +335,7 @@ class QuarantineManager:
 
 class ProbeModeManager:
     """
-    Main probe mode manager for the BAIS system.
+    Main probe mode manager for the BASE system.
     
     Implements:
     - PPA2-C1-13: Probe mode with quarantine/shadow model

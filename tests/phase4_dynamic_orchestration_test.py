@@ -184,7 +184,7 @@ def run_dual_track_ab_test() -> Dict:
         track_a_layers = 0
     track_a_time = (time.time() - track_a_start) * 1000
     
-    # Track B: BAIS-governed with dynamic orchestration
+    # Track B: BASE-governed with dynamic orchestration
     track_b_start = time.time()
     try:
         engine = IntegratedGovernanceEngine()
@@ -192,11 +192,11 @@ def run_dual_track_ab_test() -> Dict:
         async def run_eval():
             return await engine.evaluate(test_query, test_response)
         
-        bais_result = asyncio.run(run_eval())
-        track_b_score = bais_result.accuracy
-        track_b_issues = len(bais_result.issues)
-        track_b_accepted = bais_result.accepted
-        track_b_pathway = bais_result.pathway
+        base_result = asyncio.run(run_eval())
+        track_b_score = base_result.accuracy
+        track_b_issues = len(base_result.issues)
+        track_b_accepted = base_result.accepted
+        track_b_pathway = base_result.pathway
     except Exception as e:
         track_b_score = 0
         track_b_issues = 0

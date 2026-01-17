@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 Comprehensive Validation Tests - Phase 5
 
 Production-ready test suite that validates:
@@ -76,11 +76,11 @@ class ComprehensiveValidator:
     """
     Comprehensive validation test suite.
     
-    Tests all BAIS components for production readiness.
+    Tests all BASE components for production readiness.
     """
     
     def __init__(self, data_dir: Path = None):
-        self.data_dir = data_dir or Path('/tmp/bais_validation')
+        self.data_dir = data_dir or Path('/tmp/base_validation')
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
         self.results: List[TestResult] = []
@@ -104,7 +104,7 @@ class ComprehensiveValidator:
         failed = len(self.results) - passed
         
         return TestSuiteResult(
-            suite_name='BAIS Comprehensive Validation',
+            suite_name='BASE Comprehensive Validation',
             timestamp=datetime.utcnow(),
             total_tests=len(self.results),
             passed_tests=passed,
@@ -127,7 +127,7 @@ class ComprehensiveValidator:
     async def _test_detectors(self):
         """Test all detector components."""
         import os
-        os.environ['BAIS_MODE'] = 'lite'
+        os.environ['BASE_MODE'] = 'lite'
         
         # Test GroundingDetector
         start = time.time()

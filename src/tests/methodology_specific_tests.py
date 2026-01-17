@@ -1,5 +1,5 @@
 """
-BAIS Methodology-Specific Test Suites
+BASE Methodology-Specific Test Suites
 Following RULE 8: Test methodology must match claim type
 
 This module implements proper testing for each claim type:
@@ -20,7 +20,7 @@ from enum import Enum
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from core.governance_rules import BAISGovernanceRules, ClaimType, TestMethodology
+from core.governance_rules import BASEGovernanceRules, ClaimType, TestMethodology
 
 
 @dataclass
@@ -52,7 +52,7 @@ class MethodologySpecificTests:
     
     def __init__(self):
         self.results: List[TestResult] = []
-        self.governance = BAISGovernanceRules()
+        self.governance = BASEGovernanceRules()
         
     # =========================================================================
     # ALGORITHMIC CLAIMS: Unit Tests with Formula Verification
@@ -701,7 +701,7 @@ class MethodologySpecificTests:
         """
         Test content detection claims with A/B testing.
         
-        Compare detection with and without BAIS.
+        Compare detection with and without BASE.
         """
         print("\n" + "=" * 70)
         print("CONTENT CLAIMS: A/B Testing")
@@ -885,7 +885,7 @@ class MethodologySpecificTests:
     def run_all_tests(self) -> Dict[str, Any]:
         """Run all methodology-specific tests."""
         print("=" * 70)
-        print("BAIS METHODOLOGY-SPECIFIC TEST SUITE")
+        print("BASE METHODOLOGY-SPECIFIC TEST SUITE")
         print("Following RULE 8: Test methodology must match claim type")
         print("=" * 70)
         

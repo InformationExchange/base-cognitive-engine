@@ -111,7 +111,7 @@ def run_dual_track_ab_test() -> Dict:
         track_a_score = 0.0
     track_a_time = (time.time() - track_a_start) * 1000
     
-    # Track B: BAIS-governed verification
+    # Track B: BASE-governed verification
     track_b_start = time.time()
     try:
         engine = IntegratedGovernanceEngine()

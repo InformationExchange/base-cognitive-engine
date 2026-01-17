@@ -1,5 +1,5 @@
 """
-BAIS Zone of Proximal Development Manager (PPA1-Inv12, NOVEL-4)
+BASE Zone of Proximal Development Manager (PPA1-Inv12, NOVEL-4)
 
 Implements adaptive difficulty based on Vygotsky's ZPD theory:
 1. Assess user's current understanding level

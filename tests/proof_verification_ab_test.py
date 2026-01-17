@@ -5,10 +5,10 @@ PROOF VERIFICATION A/B TEST SUITE
 Empirical assessment of proof-based verification capabilities.
 
 This test suite:
-1. Applies BAIS to A/B test proof verification capabilities
+1. Applies BASE to A/B test proof verification capabilities
 2. Based on documented LLM failure patterns from REAL_LLM_FAILURE_PATTERNS.md
 3. Tests integration with existing inventions
-4. Applies dual-track methodology (Track A: Direct, Track B: BAIS-governed)
+4. Applies dual-track methodology (Track A: Direct, Track B: BASE-governed)
 
 Test Categories (from documented failures):
 - False Completion Claims
@@ -55,10 +55,10 @@ class ABTestResult:
     """Result of A/B testing a scenario."""
     scenario_id: str
     track_a_score: float  # Direct verification
-    track_b_score: float  # BAIS-governed
+    track_b_score: float  # BASE-governed
     track_b_issues_found: List[str]
     track_b_inventions_used: List[str]
-    bais_won: bool
+    base_won: bool
     detection_correct: bool
 
 
@@ -264,7 +264,7 @@ REAL_FAILURE_SCENARIOS = [
 
 async def run_track_a_direct(scenario: TestScenario) -> Tuple[float, List[str]]:
     """
-    Track A: Direct verification without BAIS.
+    Track A: Direct verification without BASE.
     
     This simulates what an unassisted LLM would do - basic pattern matching
     without proof-based verification.
@@ -289,14 +289,14 @@ async def run_track_a_direct(scenario: TestScenario) -> Tuple[float, List[str]]:
     return score, issues
 
 
-async def run_track_b_bais(scenario: TestScenario, engine) -> Tuple[float, List[str], List[str]]:
+async def run_track_b_base(scenario: TestScenario, engine) -> Tuple[float, List[str], List[str]]:
     """
-    Track B: BAIS-governed verification with proof checking.
+    Track B: BASE-governed verification with proof checking.
     
     Uses the full IntegratedGovernanceEngine with EnhancedEvidenceDemandLoop.
     """
     try:
-        # Run BAIS evaluation (without domain parameter - use context instead)
+        # Run BASE evaluation (without domain parameter - use context instead)
         decision = await engine.evaluate_and_improve(
             query=scenario.query,
             response=scenario.response,
@@ -318,16 +318,16 @@ async def run_ab_test_suite():
     
     print("=" * 80)
     print("PROOF VERIFICATION A/B TEST SUITE")
-    print("Scientific Assessment of BAIS Enhancement Claims")
+    print("Scientific Assessment of BASE Enhancement Claims")
     print("=" * 80)
     print(f"\nTest Date: {datetime.now().isoformat()}")
     print(f"Test Scenarios: {len(REAL_FAILURE_SCENARIOS)}")
-    print("Methodology: Dual-Track A/B (Direct vs BAIS-Governed)")
+    print("Methodology: Dual-Track A/B (Direct vs BASE-Governed)")
     print("Source: REAL_LLM_FAILURE_PATTERNS.md (actual development failures)")
     
-    # Initialize BAIS engine
+    # Initialize BASE engine
     print("\n" + "-" * 80)
-    print("Initializing BAIS Engine...")
+    print("Initializing BASE Engine...")
     
     try:
         engine = IntegratedGovernanceEngine()
@@ -362,14 +362,14 @@ async def run_ab_test_suite():
             # Track A: Direct
             track_a_score, track_a_issues = await run_track_a_direct(scenario)
             
-            # Track B: BAIS
-            track_b_score, track_b_issues, track_b_inventions = await run_track_b_bais(
+            # Track B: BASE
+            track_b_score, track_b_issues, track_b_inventions = await run_track_b_base(
                 scenario, engine
             )
             
             # Determine winner
-            # BAIS "wins" if it detected more issues (lower score = more issues found)
-            bais_won = len(track_b_issues) > len(track_a_issues) or track_b_score < track_a_score
+            # BASE "wins" if it detected more issues (lower score = more issues found)
+            base_won = len(track_b_issues) > len(track_a_issues) or track_b_score < track_a_score
             
             # Check if detection was correct
             detection_correct = (len(track_b_issues) > 0) == scenario.expected_detection
@@ -380,17 +380,17 @@ async def run_ab_test_suite():
                 track_b_score=track_b_score,
                 track_b_issues_found=track_b_issues,
                 track_b_inventions_used=track_b_inventions,
-                bais_won=bais_won,
+                base_won=base_won,
                 detection_correct=detection_correct
             )
             results.append(result)
             
             # Print results
             print(f"\nTrack A (Direct): Score {track_a_score:.1f}, Issues: {len(track_a_issues)}")
-            print(f"Track B (BAIS):   Score {track_b_score:.1f}, Issues: {len(track_b_issues)}")
+            print(f"Track B (BASE):   Score {track_b_score:.1f}, Issues: {len(track_b_issues)}")
             
             if track_b_issues:
-                print("\nBAIS Issues Detected:")
+                print("\nBASE Issues Detected:")
                 for issue in track_b_issues[:5]:
                     issue_str = str(issue)[:70]
                     print(f"  → {issue_str}...")
@@ -404,7 +404,7 @@ async def run_ab_test_suite():
             else:
                 print(f"\n⚠️ Expected {expected_invs} but got: {track_b_inventions[:3]}")
             
-            winner = "BAIS ✅" if bais_won else "Direct ❌"
+            winner = "BASE ✅" if base_won else "Direct ❌"
             correct = "CORRECT ✅" if detection_correct else "INCORRECT ❌"
             print(f"\nWinner: {winner} | Detection: {correct}")
     
@@ -416,11 +416,11 @@ async def run_ab_test_suite():
     print("=" * 80)
     
     total = len(results)
-    bais_wins = sum(1 for r in results if r.bais_won)
+    base_wins = sum(1 for r in results if r.base_won)
     correct_detections = sum(1 for r in results if r.detection_correct)
     
     print(f"\nTotal Scenarios: {total}")
-    print(f"BAIS Wins: {bais_wins}/{total} ({100*bais_wins/total:.1f}%)")
+    print(f"BASE Wins: {base_wins}/{total} ({100*base_wins/total:.1f}%)")
     print(f"Correct Detections: {correct_detections}/{total} ({100*correct_detections/total:.1f}%)")
     
     # By category
@@ -430,9 +430,9 @@ async def run_ab_test_suite():
             s.id == r.scenario_id and s.category == category 
             for s in REAL_FAILURE_SCENARIOS
         )]
-        cat_wins = sum(1 for r in cat_results if r.bais_won)
+        cat_wins = sum(1 for r in cat_results if r.base_won)
         cat_correct = sum(1 for r in cat_results if r.detection_correct)
-        print(f"  {category}: {cat_wins}/{len(cat_results)} BAIS wins, {cat_correct}/{len(cat_results)} correct")
+        print(f"  {category}: {cat_wins}/{len(cat_results)} BASE wins, {cat_correct}/{len(cat_results)} correct")
     
     # Invention coverage
     print("\nInvention Coverage:")
@@ -449,17 +449,17 @@ async def run_ab_test_suite():
     print("VERDICT")
     print("=" * 80)
     
-    if bais_wins == total and correct_detections == total:
+    if base_wins == total and correct_detections == total:
         print("✅ PROOF VERIFICATION CLAIMS VERIFIED")
         print("   All scenarios detected correctly")
-        print("   BAIS outperformed direct verification in all cases")
-    elif bais_wins >= total * 0.8:
+        print("   BASE outperformed direct verification in all cases")
+    elif base_wins >= total * 0.8:
         print("⚠️ PROOF VERIFICATION MOSTLY WORKING")
-        print(f"   {bais_wins}/{total} scenarios won by BAIS")
+        print(f"   {base_wins}/{total} scenarios won by BASE")
         print(f"   {correct_detections}/{total} detections correct")
     else:
         print("❌ PROOF VERIFICATION NEEDS IMPROVEMENT")
-        print(f"   Only {bais_wins}/{total} scenarios won by BAIS")
+        print(f"   Only {base_wins}/{total} scenarios won by BASE")
     
     return results
 

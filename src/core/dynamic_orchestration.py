@@ -1,5 +1,5 @@
 """
-BAIS Dynamic Orchestration System
+BASE Dynamic Orchestration System
 =================================
 
 Phase 4 Enhancement: Intelligent pathway selection and orchestration.
@@ -121,7 +121,7 @@ class DynamicPathwaySelector:
     def __init__(self, storage_path: Path = None):
         # Use temp directory if no path provided
         if storage_path is None:
-            storage_path = Path(tempfile.mkdtemp(prefix="bais_orchestration_"))
+            storage_path = Path(tempfile.mkdtemp(prefix="base_orchestration_"))
         self.storage_path = storage_path
         self.storage_path.mkdir(parents=True, exist_ok=True)
         

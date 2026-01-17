@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.4
+BASE Cognitive Governance Engine v16.4
 Cognitive Window Intervention System
 
 PPA-1 Invention 17: FULL IMPLEMENTATION

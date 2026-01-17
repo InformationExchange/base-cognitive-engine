@@ -1,5 +1,5 @@
 """
-BAIS Action Selector (Layer 6 - Basal Ganglia)
+BASE Action Selector (Layer 6 - Basal Ganglia)
 
 Selects the best action/response from multiple candidates:
 1. Action evaluation

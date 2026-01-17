@@ -1,7 +1,7 @@
-# BAIS R&D Modules - Clinical Assessment Report
+# BASE R&D Modules - Clinical Assessment Report
 
 **Date:** December 19, 2025  
-**Assessor:** BAIS Self-Audit  
+**Assessor:** BASE Self-Audit  
 **Classification:** Factual, Non-Optimistic  
 **Version:** 2.0.0
 
@@ -118,7 +118,7 @@
 - Dangerous request detection: 6 patterns (weapons, harm, etc.)
 - Domain risk detection: medical, legal, financial, safety
 
-**Key Innovation:** BAIS now analyzes BOTH queries AND responses for complete governance.
+**Key Innovation:** BASE now analyzes BOTH queries AND responses for complete governance.
 
 ---
 
@@ -223,9 +223,9 @@ Query → [QueryAnalyzer] → Risk assessment
 
 ## Conclusion
 
-The BAIS R&D modules are **production-ready** for their intended purpose: providing supplementary governance signals with optional LLM fallback for complex cases.
+The BASE R&D modules are **production-ready** for their intended purpose: providing supplementary governance signals with optional LLM fallback for complex cases.
 
-**Key Achievement:** NOVEL-9 Query Analyzer fills the gap where BAIS previously only analyzed responses. Now both inputs and outputs are governed.
+**Key Achievement:** NOVEL-9 Query Analyzer fills the gap where BASE previously only analyzed responses. Now both inputs and outputs are governed.
 
 **Bottom Line:** 96% pass rate with no critical failures. Modules work as designed for pattern-based detection with documented limitations.
 
@@ -237,7 +237,7 @@ The BAIS R&D modules are **production-ready** for their intended purpose: provid
 
 ### Governance Rules Engine Added
 
-BAIS now includes codified governance rules from lessons learned:
+BASE now includes codified governance rules from lessons learned:
 
 | Rule | Description | Implementation |
 |------|-------------|----------------|
@@ -265,5 +265,5 @@ File: `core/governance_rules.py`
 
 ---
 
-*This assessment was conducted using BAIS self-audit with methodology-specific clinical tests.*  
+*This assessment was conducted using BASE self-audit with methodology-specific clinical tests.*  
 *Last Updated: December 20, 2025*

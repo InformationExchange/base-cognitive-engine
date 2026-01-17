@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BAIS A/B Test: Implementation Verification
+BASE A/B Test: Implementation Verification
 ==========================================
 Clinical audit of claimed implementation improvements.
 
@@ -10,8 +10,8 @@ Tests whether the +29 module implementations are:
 3. Independently functional
 4. System-integrated
 
-Track A: Direct assessment (no BAIS)
-Track B: BAIS-governed assessment
+Track A: Direct assessment (no BASE)
+Track B: BASE-governed assessment
 """
 
 import sys
@@ -73,7 +73,7 @@ class ImplementationVerifier:
         ("OCOLearner", "threshold", "learning.algorithms"),
         ("ContinuousFeedbackLoop", "__init__", "learning.feedback_loop"),
         ("OutcomeMemory", "__init__", "learning.outcome_memory"),
-        ("BAISGovernanceRules", "rules", "core.governance_rules"),
+        ("BASEGovernanceRules", "rules", "core.governance_rules"),
         ("FactualDetector", "analyze", "detectors.factual"),
     ]
     
@@ -179,13 +179,13 @@ class ImplementationVerifier:
     
     def run_track_a_verification(self) -> Dict[str, Any]:
         """
-        Track A: Direct verification without BAIS.
+        Track A: Direct verification without BASE.
         Clinical assessment of what is actually implemented.
         """
         results = {
             "timestamp": datetime.utcnow().isoformat(),
             "track": "A",
-            "description": "Direct verification (no BAIS)",
+            "description": "Direct verification (no BASE)",
             "newly_wired_modules": [],
             "signature_fixes": [],
             "summary": {}
@@ -320,15 +320,15 @@ class ImplementationVerifier:
     
     async def run_track_b_verification(self, track_a_results: Dict) -> Dict[str, Any]:
         """
-        Track B: BAIS-governed verification.
-        Uses BAIS to audit Track A's assessment.
+        Track B: BASE-governed verification.
+        Uses BASE to audit Track A's assessment.
         """
         try:
             from core.integrated_engine import IntegratedGovernanceEngine
             from pathlib import Path
             import tempfile
             
-            # Format Track A assessment as a response for BAIS to audit
+            # Format Track A assessment as a response for BASE to audit
             track_a_summary = json.dumps(track_a_results["summary"], indent=2)
             track_a_assessment = track_a_results["summary"]["overall_assessment"]
             
@@ -351,8 +351,8 @@ class ImplementationVerifier:
             with tempfile.TemporaryDirectory() as tmpdir:
                 engine = IntegratedGovernanceEngine(data_dir=Path(tmpdir))
                 
-                # Run BAIS evaluation on the Track A assessment
-                bais_result = await engine.evaluate_and_improve(
+                # Run BASE evaluation on the Track A assessment
+                base_result = await engine.evaluate_and_improve(
                     query=query,
                     response=response,
                     documents=[],
@@ -362,23 +362,23 @@ class ImplementationVerifier:
                 return {
                     "timestamp": datetime.utcnow().isoformat(),
                     "track": "B",
-                    "description": "BAIS-governed verification",
-                    "bais_evaluation": {
-                        "accuracy": bais_result.accuracy,
-                        "accepted": bais_result.accepted,
-                        "pathway": bais_result.pathway.value if hasattr(bais_result.pathway, 'value') else str(bais_result.pathway),
-                        "warnings": bais_result.warnings[:5] if bais_result.warnings else [],
-                        "improvement_applied": bais_result.improvement_applied,
-                        "improvement_score": bais_result.improvement_score
+                    "description": "BASE-governed verification",
+                    "base_evaluation": {
+                        "accuracy": base_result.accuracy,
+                        "accepted": base_result.accepted,
+                        "pathway": base_result.pathway.value if hasattr(base_result.pathway, 'value') else str(base_result.pathway),
+                        "warnings": base_result.warnings[:5] if base_result.warnings else [],
+                        "improvement_applied": base_result.improvement_applied,
+                        "improvement_score": base_result.improvement_score
                     },
-                    "bais_improved_response": bais_result.improved_response[:500] if bais_result.improved_response else None,
+                    "base_improved_response": base_result.improved_response[:500] if base_result.improved_response else None,
                     "evidence_verification": {
-                        "claims_verified": getattr(bais_result, 'verified_claims', 0),
-                        "claims_unverified": getattr(bais_result, 'unverified_claims', 0),
+                        "claims_verified": getattr(base_result, 'verified_claims', 0),
+                        "claims_unverified": getattr(base_result, 'unverified_claims', 0),
                     },
                     "self_awareness_check": {
-                        "triggered": getattr(bais_result, 'self_awareness_triggered', False),
-                        "corrections_applied": getattr(bais_result, 'corrections_applied', [])
+                        "triggered": getattr(base_result, 'self_awareness_triggered', False),
+                        "corrections_applied": getattr(base_result, 'corrections_applied', [])
                     }
                 }
                 
@@ -386,9 +386,9 @@ class ImplementationVerifier:
             return {
                 "timestamp": datetime.utcnow().isoformat(),
                 "track": "B",
-                "description": "BAIS-governed verification",
+                "description": "BASE-governed verification",
                 "error": str(e),
-                "bais_evaluation": None
+                "base_evaluation": None
             }
     
     def compare_tracks(self, track_a: Dict, track_b: Dict) -> Dict[str, Any]:
@@ -396,8 +396,8 @@ class ImplementationVerifier:
         comparison = {
             "timestamp": datetime.utcnow().isoformat(),
             "track_a_pass_rate": track_a["summary"]["newly_wired"]["pass_rate"],
-            "track_b_accepted": track_b.get("bais_evaluation", {}).get("accepted", "ERROR"),
-            "track_b_accuracy": track_b.get("bais_evaluation", {}).get("accuracy", "ERROR"),
+            "track_b_accepted": track_b.get("base_evaluation", {}).get("accepted", "ERROR"),
+            "track_b_accuracy": track_b.get("base_evaluation", {}).get("accuracy", "ERROR"),
             "discrepancies": [],
             "winner": None,
             "clinical_conclusion": ""
@@ -407,27 +407,27 @@ class ImplementationVerifier:
         track_a_overall_pass = track_a["summary"]["newly_wired"]["failed"] == 0 and \
                                track_a["summary"]["signature_fixes"]["failed"] == 0
         
-        bais_accepted = track_b.get("bais_evaluation", {}).get("accepted", False)
-        bais_accuracy = track_b.get("bais_evaluation", {}).get("accuracy", 0)
+        base_accepted = track_b.get("base_evaluation", {}).get("accepted", False)
+        base_accuracy = track_b.get("base_evaluation", {}).get("accuracy", 0)
         
-        if track_a_overall_pass and not bais_accepted:
+        if track_a_overall_pass and not base_accepted:
             comparison["discrepancies"].append(
-                "Track A claims full pass but BAIS rejected - BAIS may have detected issues Track A missed"
+                "Track A claims full pass but BASE rejected - BASE may have detected issues Track A missed"
             )
         
-        if not track_a_overall_pass and bais_accepted:
+        if not track_a_overall_pass and base_accepted:
             comparison["discrepancies"].append(
-                "Track A found failures but BAIS accepted - possible BAIS false positive"
+                "Track A found failures but BASE accepted - possible BASE false positive"
             )
         
         # Clinical conclusion
         if track_b.get("error"):
-            comparison["clinical_conclusion"] = f"BAIS evaluation failed: {track_b['error']}. Using Track A results only."
+            comparison["clinical_conclusion"] = f"BASE evaluation failed: {track_b['error']}. Using Track A results only."
             comparison["winner"] = "A (by default)"
-        elif bais_accuracy and bais_accuracy < 50:
-            comparison["clinical_conclusion"] = f"BAIS assigned low accuracy ({bais_accuracy:.1f}%) - claims are QUESTIONABLE"
+        elif base_accuracy and base_accuracy < 50:
+            comparison["clinical_conclusion"] = f"BASE assigned low accuracy ({base_accuracy:.1f}%) - claims are QUESTIONABLE"
             comparison["winner"] = "B (more critical)"
-        elif track_a_overall_pass and bais_accepted:
+        elif track_a_overall_pass and base_accepted:
             comparison["clinical_conclusion"] = "Both tracks agree: Implementation claims are VERIFIED"
             comparison["winner"] = "TIE"
         else:
@@ -439,7 +439,7 @@ class ImplementationVerifier:
 def main():
     """Run the verification A/B test."""
     print("=" * 80)
-    print("BAIS IMPLEMENTATION VERIFICATION A/B TEST")
+    print("BASE IMPLEMENTATION VERIFICATION A/B TEST")
     print("Clinical Audit of Claimed Implementation Improvements")
     print("=" * 80)
     print()
@@ -447,7 +447,7 @@ def main():
     verifier = ImplementationVerifier()
     
     # Track A: Direct verification
-    print("TRACK A: Direct Verification (No BAIS)")
+    print("TRACK A: Direct Verification (No BASE)")
     print("-" * 40)
     track_a_results = verifier.run_track_a_verification()
     
@@ -467,24 +467,24 @@ def main():
         if not fix["passed"]:
             print(f"  ❌ {fix['class']}.{fix['method']}: {fix['evidence']}")
     
-    # Track B: BAIS verification
+    # Track B: BASE verification
     print()
-    print("TRACK B: BAIS-Governed Verification")
+    print("TRACK B: BASE-Governed Verification")
     print("-" * 40)
     track_b_results = asyncio.run(verifier.run_track_b_verification(track_a_results))
     
     if track_b_results.get("error"):
         print(f"ERROR: {track_b_results['error']}")
     else:
-        bais_eval = track_b_results.get("bais_evaluation", {})
-        print(f"BAIS Accuracy: {bais_eval.get('accuracy', 'N/A')}")
-        print(f"BAIS Accepted: {bais_eval.get('accepted', 'N/A')}")
-        print(f"BAIS Pathway: {bais_eval.get('pathway', 'N/A')}")
-        print(f"Improvement Applied: {bais_eval.get('improvement_applied', 'N/A')}")
+        base_eval = track_b_results.get("base_evaluation", {})
+        print(f"BASE Accuracy: {base_eval.get('accuracy', 'N/A')}")
+        print(f"BASE Accepted: {base_eval.get('accepted', 'N/A')}")
+        print(f"BASE Pathway: {base_eval.get('pathway', 'N/A')}")
+        print(f"Improvement Applied: {base_eval.get('improvement_applied', 'N/A')}")
         
-        if bais_eval.get("warnings"):
-            print("\nBAIS Warnings:")
-            for w in bais_eval["warnings"][:5]:
+        if base_eval.get("warnings"):
+            print("\nBASE Warnings:")
+            for w in base_eval["warnings"][:5]:
                 print(f"  ⚠️ {w}")
     
     # Comparison
@@ -494,8 +494,8 @@ def main():
     comparison = verifier.compare_tracks(track_a_results, track_b_results)
     
     print(f"Track A Pass Rate: {comparison['track_a_pass_rate']}")
-    print(f"Track B (BAIS) Accepted: {comparison['track_b_accepted']}")
-    print(f"Track B (BAIS) Accuracy: {comparison['track_b_accuracy']}")
+    print(f"Track B (BASE) Accepted: {comparison['track_b_accepted']}")
+    print(f"Track B (BASE) Accuracy: {comparison['track_b_accuracy']}")
     print(f"Winner: {comparison['winner']}")
     print(f"\nClinical Conclusion: {comparison['clinical_conclusion']}")
     

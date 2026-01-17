@@ -1,5 +1,5 @@
 """
-BAIS LLM-Aware Learning Persistence
+BASE LLM-Aware Learning Persistence
 
 Ensures learnings persist and transfer appropriately when switching between LLMs.
 

@@ -1,16 +1,16 @@
 """
-BAIS Integration Module
+BASE Integration Module
 =======================
 Real-time governance integration for LLMs and development tools.
 
 Components:
 - LLMGovernanceWrapper: Intercepts and governs LLM responses
-- BAISMCPServer: MCP server for Cursor integration
+- BASEMCPServer: MCP server for Cursor integration
 - GovernanceProxy: HTTP proxy for LLM API governance
 """
 
 from integration.llm_governance_wrapper import (
-    BAISGovernanceWrapper,
+    BASEGovernanceWrapper,
     GovernanceConfig,
     GovernanceResult,
     GovernanceDecision,
@@ -18,7 +18,7 @@ from integration.llm_governance_wrapper import (
 )
 
 __all__ = [
-    "BAISGovernanceWrapper",
+    "BASEGovernanceWrapper",
     "GovernanceConfig", 
     "GovernanceResult",
     "GovernanceDecision",

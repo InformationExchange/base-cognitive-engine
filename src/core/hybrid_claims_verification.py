@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine - Hybrid Claims Verification System
+BASE Cognitive Governance Engine - Hybrid Claims Verification System
 Phase R1-R3: Extended verification with Pattern + ML + LLM hybrid approach
 
 This module provides:

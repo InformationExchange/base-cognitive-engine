@@ -1,10 +1,10 @@
-# BAIS Cognitive Governance Engine v16.2
+# BASE Cognitive Governance Engine v16.2
 
 **Clinical-grade AI governance with true adaptive learning**
 
 ## Dual-Mode Deployment
 
-BAIS supports two deployment modes to accommodate different customer needs:
+BASE supports two deployment modes to accommodate different customer needs:
 
 | Feature | LITE Mode | FULL Mode |
 |---------|-----------|-----------|
@@ -46,7 +46,7 @@ curl http://localhost:8090/health
 XAI_API_KEY=your-xai-api-key
 
 # Optional
-BAIS_MODE=lite          # or 'full' or 'auto'
+BASE_MODE=lite          # or 'full' or 'auto'
 LLM_MODEL=grok-4-1-fast-reasoning
 LEARNING_ALGORITHM=oco  # oco, bayesian, thompson, ucb, exp3
 
@@ -123,7 +123,7 @@ docker-compose -f docker-compose.yml -f docker-compose.full.yml up -d
 
 ## Learning Algorithms
 
-BAIS supports 5 pluggable learning algorithms:
+BASE supports 5 pluggable learning algorithms:
 
 1. **OCO** (Online Convex Optimization) - Default, fast convergence
 2. **Bayesian** - Principled uncertainty quantification
@@ -143,15 +143,15 @@ curl -X POST http://localhost:8090/algorithm \
 | Document | Purpose | Audience |
 |----------|---------|----------|
 | `MASTER_PATENT_CAPABILITIES_INVENTORY.md` | Single source of truth for 67 inventions, 300 claims | Technical, Patent |
-| `BAIS_BRAIN_ARCHITECTURE.md` | Technical mapping of inventions to 10 brain layers | Technical, Patent |
-| `AI_BRAIN_ARCHITECTURE.md` | Ecosystem mapping (LLMs + BAIS + RAG) to human brain | Executives, Investors |
+| `BASE_BRAIN_ARCHITECTURE.md` | Technical mapping of inventions to 10 brain layers | Technical, Patent |
+| `AI_BRAIN_ARCHITECTURE.md` | Ecosystem mapping (LLMs + BASE + RAG) to human brain | Executives, Investors |
 | `COMPREHENSIVE_300_CLAIMS_VERIFICATION.md` | Detailed verification status of all 300 patent claims | Technical, Patent |
 
-**Note:** `AI_BRAIN_ARCHITECTURE.md` provides ecosystem context, `BAIS_BRAIN_ARCHITECTURE.md` provides technical depth. Use both together for complete understanding.
+**Note:** `AI_BRAIN_ARCHITECTURE.md` provides ecosystem context, `BASE_BRAIN_ARCHITECTURE.md` provides technical depth. Use both together for complete understanding.
 
 ## Patent Compliance
 
-BAIS implements all inventions from:
+BASE implements all inventions from:
 - **PPA 1**: Multi-Modal Cognitive Fusion (26 inventions)
 - **PPA 2**: Acceptance Controller (13 inventions)
 - **PPA 3**: Behavioral Detector (5 inventions)
@@ -163,7 +163,7 @@ Check compliance: `GET /patents`
 
 ## Data Persistence
 
-Learning data is stored in `/data/bais/`:
+Learning data is stored in `/data/base/`:
 - `outcome_memory.db` - Decision history (SQLite)
 - `state_machine.json` - State machine state
 - `thresholds.json` - Learned thresholds
@@ -173,7 +173,7 @@ Learning data is stored in `/data/bais/`:
 Mount as volume for persistence:
 ```yaml
 volumes:
-  - /path/to/data:/data/bais
+  - /path/to/data:/data/base
 ```
 
 ## License

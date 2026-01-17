@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine - AI-Enhanced Learning Manager
+BASE Cognitive Governance Engine - AI-Enhanced Learning Manager
 Phase G1: Addresses critical gap - Learning layer NOT connected to LLM
 
 This module provides:
@@ -196,7 +196,7 @@ class MLPatternPredictor:
 
 class AIEnhancedLearningManager:
     """
-    AI-Enhanced Learning Manager for BAIS.
+    AI-Enhanced Learning Manager for BASE.
     
     Connects the learning layer to LLM for hybrid AI+statistical learning.
     
@@ -268,7 +268,7 @@ class AIEnhancedLearningManager:
         Connect to the centralized LLM registry.
         
         This ensures the learning layer uses the same LLM configuration
-        as the rest of BAIS, allowing users to switch LLMs centrally.
+        as the rest of BASE, allowing users to switch LLMs centrally.
         """
         try:
             from core.llm_registry import LLMRegistry, get_registry

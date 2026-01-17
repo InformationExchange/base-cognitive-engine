@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Adaptive Difficulty Adjustment System
 
 PPA-1 Invention 12: FULL IMPLEMENTATION
@@ -201,7 +201,7 @@ class AdaptiveDifficultyEngine:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_difficulty_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_difficulty_"))
             storage_path = temp_dir / "adaptive_difficulty.json"
         self.storage_path = storage_path
         

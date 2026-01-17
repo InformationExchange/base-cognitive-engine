@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v24.0
+BASE Cognitive Governance Engine v24.0
 Trigger Intelligence Module - LLM-Assisted Module Selection
 
 Patent Alignment:
@@ -53,7 +53,7 @@ class TriggerReason(Enum):
 
 @dataclass
 class ModuleProfile:
-    """Profile of a BAIS module for trigger decisions."""
+    """Profile of a BASE module for trigger decisions."""
     module_id: str
     module_name: str
     cost: float  # Relative computational cost (0-1)
@@ -128,7 +128,7 @@ class TriggerIntelligence:
     """
     LLM-Assisted Trigger Intelligence.
     
-    Determines which BAIS modules should be activated for a given query.
+    Determines which BASE modules should be activated for a given query.
     Uses a combination of:
     1. Pattern-based quick classification
     2. LLM-based semantic understanding
@@ -136,7 +136,7 @@ class TriggerIntelligence:
     4. Learning from effectiveness
     """
     
-    # Module profiles for all BAIS components
+    # Module profiles for all BASE components
     MODULE_PROFILES = {
         # Core detectors (always on)
         'grounding': ModuleProfile(

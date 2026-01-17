@@ -1,5 +1,5 @@
 """
-Redis Cache Module for BAIS Cognitive Engine
+Redis Cache Module for BASE Cognitive Engine
 
 Provides:
 - Learning persistence across sessions
@@ -72,9 +72,9 @@ class CachedLearning:
         self._outcomes = state.get('outcomes', [])
 
 
-class BAISRedisCache:
+class BASERedisCache:
     """
-    Redis-based caching for BAIS learning persistence.
+    Redis-based caching for BASE learning persistence.
     
     Features:
     - Pattern effectiveness caching
@@ -84,11 +84,11 @@ class BAISRedisCache:
     """
     
     # Key prefixes for different data types
-    PREFIX_LEARNING = "bais:learning:"
-    PREFIX_BIAS_PROFILE = "bais:bias:"
-    PREFIX_RATE_LIMIT = "bais:rate:"
-    PREFIX_SESSION = "bais:session:"
-    PREFIX_TENANT = "bais:tenant:"
+    PREFIX_LEARNING = "base:learning:"
+    PREFIX_BIAS_PROFILE = "base:bias:"
+    PREFIX_RATE_LIMIT = "base:rate:"
+    PREFIX_SESSION = "base:session:"
+    PREFIX_TENANT = "base:tenant:"
     
     # Default TTLs
     LEARNING_TTL = 60 * 60 * 24 * 30  # 30 days
@@ -481,7 +481,7 @@ class BAISRedisCache:
     
     def flush_all(self) -> bool:
         """
-        Flush all BAIS-related cache data.
+        Flush all BASE-related cache data.
         
         WARNING: This will delete all cached learnings!
         
@@ -490,7 +490,7 @@ class BAISRedisCache:
         """
         if self.is_connected:
             try:
-                # Only delete BAIS keys, not other Redis data
+                # Only delete BASE keys, not other Redis data
                 for prefix in [
                     self.PREFIX_LEARNING,
                     self.PREFIX_BIAS_PROFILE,
@@ -528,13 +528,13 @@ class BAISRedisCache:
 
 
 # Singleton instance
-_cache_instance: Optional[BAISRedisCache] = None
+_cache_instance: Optional[BASERedisCache] = None
 
 
-def get_redis_cache() -> BAISRedisCache:
+def get_redis_cache() -> BASERedisCache:
     """Get the singleton Redis cache instance."""
     global _cache_instance
     if _cache_instance is None:
-        _cache_instance = BAISRedisCache()
+        _cache_instance = BASERedisCache()
     return _cache_instance
 

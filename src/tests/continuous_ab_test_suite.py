@@ -1,5 +1,5 @@
 """
-BAIS Continuous A/B Test Suite
+BASE Continuous A/B Test Suite
 
 Phase 16D: Comprehensive testing framework for verifying brain architecture effectiveness.
 
@@ -16,7 +16,7 @@ Patent Alignment:
 - PPA1-Inv12: Adaptive Difficulty Adjustment (test difficulty scaling)
 - NOVEL-30: Dimensional Learning (learn from test results)
 
-This suite runs continuously or on-demand to verify that BAIS
+This suite runs continuously or on-demand to verify that BASE
 catches more issues than unmonitored LLM output.
 """
 
@@ -87,12 +87,12 @@ class TestResult:
     """Result of a single A/B test."""
     test_case: TestCase
     track_a_issues: List[str]      # What direct approach would catch
-    track_b_issues: List[str]      # What BAIS caught
-    track_b_inventions: List[str]  # Inventions used by BAIS
+    track_b_issues: List[str]      # What BASE caught
+    track_b_inventions: List[str]  # Inventions used by BASE
     
     winner: str                    # "A", "B", or "tie"
-    bais_accuracy: float
-    bais_confidence: str
+    base_accuracy: float
+    base_confidence: str
     execution_time_ms: float
     
     # Success metrics
@@ -111,7 +111,7 @@ class TestResult:
             "winner": self.winner,
             "track_a_issues": len(self.track_a_issues),
             "track_b_issues": len(self.track_b_issues),
-            "bais_accuracy": round(self.bais_accuracy, 2),
+            "base_accuracy": round(self.base_accuracy, 2),
             "execution_time_ms": round(self.execution_time_ms, 2),
             "caught_expected": len(self.caught_expected),
             "missed_expected": len(self.missed_expected),
@@ -124,9 +124,9 @@ class SuiteResult:
     """Result of running a test suite."""
     suite_name: str
     total_tests: int
-    bais_wins: int
+    base_wins: int
     ties: int
-    bais_losses: int
+    base_losses: int
     
     # Success rates
     overall_win_rate: float
@@ -143,9 +143,9 @@ class SuiteResult:
         return {
             "suite_name": self.suite_name,
             "total_tests": self.total_tests,
-            "bais_wins": self.bais_wins,
+            "base_wins": self.base_wins,
             "ties": self.ties,
-            "bais_losses": self.bais_losses,
+            "base_losses": self.base_losses,
             "win_rate": round(self.overall_win_rate, 3),
             "per_domain": self.per_domain_results,
             "per_layer": self.per_layer_results,
@@ -566,8 +566,8 @@ class ContinuousABTestSuite:
     """
     Runs continuous A/B testing across all brain layers.
     
-    Compares BAIS-governed output against unmonitored output
-    to verify BAIS effectiveness.
+    Compares BASE-governed output against unmonitored output
+    to verify BASE effectiveness.
     """
     
     def __init__(self, engine=None):
@@ -632,15 +632,15 @@ class ContinuousABTestSuite:
         
         engine = self._get_engine()
         
-        # Track A: What would be caught without BAIS (simulated as empty)
+        # Track A: What would be caught without BASE (simulated as empty)
         # In reality, unmonitored LLM output catches nothing
         track_a_issues = []
         
-        # Track B: What BAIS catches
+        # Track B: What BASE catches
         track_b_issues = []
         track_b_inventions = []
-        bais_accuracy = 0.0
-        bais_confidence = "LOW"
+        base_accuracy = 0.0
+        base_confidence = "LOW"
         
         if engine:
             try:
@@ -650,8 +650,8 @@ class ContinuousABTestSuite:
                     domain=test_case.domain.value
                 )
                 
-                bais_accuracy = result.accuracy
-                bais_confidence = result.confidence
+                base_accuracy = result.accuracy
+                base_confidence = result.confidence
                 
                 # Extract issues from warnings
                 if result.warnings:
@@ -668,7 +668,7 @@ class ContinuousABTestSuite:
         
         # Determine winner
         if len(track_b_issues) > len(track_a_issues):
-            winner = "B"  # BAIS caught more
+            winner = "B"  # BASE caught more
         elif len(track_b_issues) < len(track_a_issues):
             winner = "A"  # Direct caught more (unlikely)
         else:
@@ -695,8 +695,8 @@ class ContinuousABTestSuite:
             track_b_issues=track_b_issues,
             track_b_inventions=track_b_inventions,
             winner=winner,
-            bais_accuracy=bais_accuracy,
-            bais_confidence=bais_confidence,
+            base_accuracy=base_accuracy,
+            base_confidence=base_confidence,
             execution_time_ms=execution_time,
             caught_expected=caught_expected,
             missed_expected=missed_expected,
@@ -731,9 +731,9 @@ class ContinuousABTestSuite:
         end_time = datetime.now()
         
         # Aggregate results
-        bais_wins = sum(1 for r in results if r.winner == "B")
+        base_wins = sum(1 for r in results if r.winner == "B")
         ties = sum(1 for r in results if r.winner == "tie")
-        bais_losses = sum(1 for r in results if r.winner == "A")
+        base_losses = sum(1 for r in results if r.winner == "A")
         total = len(results)
         
         # Per-domain results
@@ -780,10 +780,10 @@ class ContinuousABTestSuite:
         return SuiteResult(
             suite_name=suite_name,
             total_tests=total,
-            bais_wins=bais_wins,
+            base_wins=base_wins,
             ties=ties,
-            bais_losses=bais_losses,
-            overall_win_rate=bais_wins / max(1, total),
+            base_losses=base_losses,
+            overall_win_rate=base_wins / max(1, total),
             per_domain_results=per_domain,
             per_layer_results=per_layer,
             per_difficulty_results=per_difficulty,
@@ -802,7 +802,7 @@ class ContinuousABTestSuite:
         
         return {
             "total_tests_run": total,
-            "bais_wins": wins,
+            "base_wins": wins,
             "win_rate": round(wins / total, 3) if total > 0 else 0,
             "avg_execution_time_ms": round(
                 sum(r.execution_time_ms for r in self.results) / total, 2
@@ -811,7 +811,7 @@ class ContinuousABTestSuite:
         }
     
     def _calculate_catch_rate(self) -> float:
-        """Calculate how often BAIS catches expected issues."""
+        """Calculate how often BASE catches expected issues."""
         total_expected = sum(len(r.test_case.expected_issues) for r in self.results)
         total_caught = sum(len(r.caught_expected) for r in self.results)
         return round(total_caught / max(1, total_expected), 3)
@@ -821,7 +821,7 @@ class ContinuousABTestSuite:
 async def main():
     """Run the continuous A/B test suite."""
     print("=" * 80)
-    print("BAIS CONTINUOUS A/B TEST SUITE")
+    print("BASE CONTINUOUS A/B TEST SUITE")
     print("Phase 16D: Brain Architecture Effectiveness Verification")
     print("=" * 80)
     
@@ -840,9 +840,9 @@ async def main():
     print("RESULTS")
     print("=" * 80)
     print(f"Total Tests: {result.total_tests}")
-    print(f"BAIS Wins: {result.bais_wins}")
+    print(f"BASE Wins: {result.base_wins}")
     print(f"Ties: {result.ties}")
-    print(f"BAIS Losses: {result.bais_losses}")
+    print(f"BASE Losses: {result.base_losses}")
     print(f"Win Rate: {result.overall_win_rate:.1%}")
     
     print("\nPer-Layer Results:")

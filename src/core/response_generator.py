@@ -1,5 +1,5 @@
 """
-BAIS Response Generator (Layer 5 - Motor Cortex)
+BASE Response Generator (Layer 5 - Motor Cortex)
 
 Generates and formats responses based on governance decisions:
 1. Response synthesis
@@ -61,7 +61,7 @@ class GeneratedResponse:
 
 class ResponseGenerator:
     """
-    Generates and formats responses for BAIS.
+    Generates and formats responses for BASE.
     
     Brain Layer: 5 (Motor Cortex)
     

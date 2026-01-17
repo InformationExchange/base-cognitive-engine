@@ -1,5 +1,5 @@
 """
-BAIS Cross-Pathway Consistency Checker
+BASE Cross-Pathway Consistency Checker
 Migrated from Onyx Governance - Enhancement 6
 
 Validates consistency across all governance signals and resolves conflicts.
@@ -46,7 +46,7 @@ class ConsistencyResult:
 
 class CrossPathwayConsistencyChecker:
     """
-    Cross-Pathway Consistency Checker for BAIS.
+    Cross-Pathway Consistency Checker for BASE.
     
     Validates that signals from different detectors/pathways are consistent.
     Detects and resolves conflicts to improve decision quality.

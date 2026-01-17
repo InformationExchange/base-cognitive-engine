@@ -1,8 +1,8 @@
 """
-BAIS Cognitive Governance Engine - Skeptical Learning Manager
+BASE Cognitive Governance Engine - Skeptical Learning Manager
 Phase 5: Learning with skepticism towards user labels
 
-Key principle: User labels may be wrong. BAIS prioritizes:
+Key principle: User labels may be wrong. BASE prioritizes:
 1. Execution evidence (highest trust)
 2. Cross-validation (high trust)
 3. User feedback (discounted by skepticism factor)
@@ -32,7 +32,7 @@ class LearningSource(Enum):
     CROSS_VALIDATION = "cross_validation"  # Multiple LLMs agree/disagree
     USER_FEEDBACK = "user_feedback" # User said it's good/bad
     AUTOMATED_TEST = "automated_test"  # Test suite result
-    BAIS_ANALYSIS = "bais_analysis"    # BAIS own analysis
+    BASE_ANALYSIS = "base_analysis"    # BASE own analysis
 
 
 class EvidenceType(Enum):
@@ -124,7 +124,7 @@ class SkepticalLearningManager:
             LearningSource.AUTOMATED_TEST: 0.95,
             LearningSource.CROSS_VALIDATION: 0.85,
             LearningSource.USER_FEEDBACK: user_label_discount,
-            LearningSource.BAIS_ANALYSIS: 0.75
+            LearningSource.BASE_ANALYSIS: 0.75
         }
         
         # Learning history

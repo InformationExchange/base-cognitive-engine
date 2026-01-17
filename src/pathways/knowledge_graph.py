@@ -1,5 +1,5 @@
 """
-BAIS Knowledge Graph Pathway
+BASE Knowledge Graph Pathway
 Migrated from Onyx Governance - Enhancement 4
 
 Entity/relationship extraction and verification against source documents.
@@ -50,7 +50,7 @@ class KnowledgeAlignment:
 
 class KnowledgeGraphPathway:
     """
-    Knowledge Graph Governance Pathway for BAIS.
+    Knowledge Graph Governance Pathway for BASE.
     
     Implements:
     - Entity extraction from responses (NER-based)
@@ -58,7 +58,7 @@ class KnowledgeGraphPathway:
     - Knowledge graph alignment verification
     - Contradiction detection
     
-    Integrates with BAIS Module Registry for self-registration.
+    Integrates with BASE Module Registry for self-registration.
     """
     
     # Entity type patterns

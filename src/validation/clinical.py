@@ -1,8 +1,8 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 Clinical Validation Framework - Phase 3
 
-Provides rigorous statistical validation for BAIS effectiveness:
+Provides rigorous statistical validation for BASE effectiveness:
 1. A/B Testing infrastructure
 2. Real statistical significance tests (t-test, Welch's t-test)
 3. Effect size calculations (Cohen's d, Hedges' g)
@@ -583,7 +583,7 @@ class ABExperiment:
     """
     A/B Testing experiment.
     
-    Compares BAIS (treatment) vs raw LLM (control) with proper
+    Compares BASE (treatment) vs raw LLM (control) with proper
     statistical rigor.
     """
     
@@ -600,7 +600,7 @@ class ABExperiment:
         self.alpha = alpha
         self.target_power = target_power
         self.expected_effect_size = expected_effect_size
-        self.data_dir = data_dir or Path('/data/bais/experiments')
+        self.data_dir = data_dir or Path('/data/base/experiments')
         
         # Samples
         self.control_samples: List[Sample] = []
@@ -630,7 +630,7 @@ class ABExperiment:
         self._save()
     
     def add_treatment_sample(self, sample: Sample):
-        """Add a sample to treatment group (BAIS)."""
+        """Add a sample to treatment group (BASE)."""
         self.treatment_samples.append(sample)
         self._check_early_stopping()
         self._save()
@@ -760,9 +760,9 @@ class ABExperiment:
         """Generate human-readable conclusion."""
         if stat_result.is_significant:
             if improvement > 0:
-                verdict = "BAIS SIGNIFICANTLY IMPROVES accuracy"
+                verdict = "BASE SIGNIFICANTLY IMPROVES accuracy"
             else:
-                verdict = "BAIS SIGNIFICANTLY DECREASES accuracy (unexpected)"
+                verdict = "BASE SIGNIFICANTLY DECREASES accuracy (unexpected)"
         else:
             if abs(improvement) < 1:
                 verdict = "No significant difference detected"
@@ -775,7 +775,7 @@ class ABExperiment:
             'p_value': stat_result.p_value,
             'effect_size': stat_result.effect_size,
             'effect_interpretation': stat_result.effect_size_interpretation,
-            'recommendation': "Deploy BAIS" if stat_result.is_significant and improvement > 0 else 
+            'recommendation': "Deploy BASE" if stat_result.is_significant and improvement > 0 else 
                              "Continue testing" if not stat_result.is_significant else "Investigate"
         }
     
@@ -807,7 +807,7 @@ class ABExperiment:
     @classmethod
     def load(cls, name: str, data_dir: Path = None) -> Optional['ABExperiment']:
         """Load experiment from disk."""
-        data_dir = data_dir or Path('/data/bais/experiments')
+        data_dir = data_dir or Path('/data/base/experiments')
         exp_path = data_dir / f'{name}.json'
         
         if not exp_path.exists():
@@ -866,7 +866,7 @@ class ClinicalValidator:
     """
     
     def __init__(self, data_dir: Path = None):
-        self.data_dir = data_dir or Path('/data/bais/validation')
+        self.data_dir = data_dir or Path('/data/base/validation')
         self.experiments: Dict[str, ABExperiment] = {}
     
     def create_experiment(self, 
@@ -923,7 +923,7 @@ class ClinicalValidator:
                 'significance_rate': significant_count / len(all_results)
             },
             'experiments': all_results,
-            'recommendation': 'Deploy BAIS' if significant_count > len(all_results) / 2 else 'Continue testing'
+            'recommendation': 'Deploy BASE' if significant_count > len(all_results) / 2 else 'Continue testing'
         }
 
     # =========================================================================

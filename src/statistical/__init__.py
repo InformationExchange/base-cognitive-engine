@@ -1,5 +1,5 @@
 """
-BAIS Statistical Components - Phase 3 Implementation
+BASE Statistical Components - Phase 3 Implementation
 
 These will be implemented in Phase 3:
 - LCBCertificate (Lower Confidence Bound)

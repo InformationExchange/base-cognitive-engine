@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Multi-Framework Convergence Engine
 
 PPA-1 Invention 19: FULL IMPLEMENTATION

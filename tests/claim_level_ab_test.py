@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BAIS CLAIM-LEVEL A/B TEST SUITE
+BASE CLAIM-LEVEL A/B TEST SUITE
 Tests all 300 claims from the Master Patent Inventory
 Uses dual-track A/B approach with clinical objectivity
 
@@ -406,7 +406,7 @@ CLAIMS = [
         test_input="Response requiring must-pass predicates",
         expected_detection=["must_pass", "privacy", "evidence"],
         implementation_module="core.governance_rules",
-        implementation_class="BAISGovernanceRules"
+        implementation_class="BASEGovernanceRules"
     ),
     ClaimDefinition(
         claim_id="PPA2-C1-1",
@@ -791,7 +791,7 @@ class ClaimLevelTester:
             return False, f"Error: {str(e)[:50]}"
     
     async def test_claim_track_b(self, claim: ClaimDefinition) -> Tuple[bool, str]:
-        """Track B: BAIS-governed test (full governance)"""
+        """Track B: BASE-governed test (full governance)"""
         try:
             # Run through governance engine
             result = await self.engine.evaluate(
@@ -820,9 +820,9 @@ class ClaimLevelTester:
                     detected.append("factual_detected")
             
             if detected or result.accuracy > 0:
-                return True, f"BAIS evaluated: accuracy={result.accuracy:.1f}, detections={len(detected)}"
+                return True, f"BASE evaluated: accuracy={result.accuracy:.1f}, detections={len(detected)}"
             else:
-                return True, f"BAIS processed: accuracy={result.accuracy:.1f}"
+                return True, f"BASE processed: accuracy={result.accuracy:.1f}"
                 
         except Exception as e:
             return False, f"Governance error: {str(e)[:50]}"
@@ -835,7 +835,7 @@ class ClaimLevelTester:
         # Track A: Direct
         track_a_passed, track_a_evidence = await self.test_claim_track_a(claim)
         
-        # Track B: BAIS-governed
+        # Track B: BASE-governed
         track_b_passed, track_b_evidence = await self.test_claim_track_b(claim)
         
         # Determine winner
@@ -863,7 +863,7 @@ class ClaimLevelTester:
     async def run_all_tests(self):
         """Run all claim tests"""
         print("=" * 80)
-        print("BAIS CLAIM-LEVEL A/B TEST SUITE")
+        print("BASE CLAIM-LEVEL A/B TEST SUITE")
         print("Testing all 300 claims with clinical objectivity")
         print("NO OPTIMISM, NO BS")
         print("=" * 80)
@@ -905,19 +905,19 @@ class ClaimLevelTester:
         track_b_passed = sum(1 for r in self.results if r.track_b_passed)
         both_passed = sum(1 for r in self.results if r.track_a_passed and r.track_b_passed)
         both_failed = sum(1 for r in self.results if not r.track_a_passed and not r.track_b_passed)
-        bais_wins = sum(1 for r in self.results if r.winner == "B")
+        base_wins = sum(1 for r in self.results if r.winner == "B")
         direct_wins = sum(1 for r in self.results if r.winner == "A")
         ties = sum(1 for r in self.results if r.winner == "TIE")
         
         print(f"\nTotal Claims Tested: {total}")
         print(f"\n--- Track Results ---")
         print(f"Track A (Direct) Passed: {track_a_passed}/{total} ({100*track_a_passed/total:.1f}%)")
-        print(f"Track B (BAIS) Passed:   {track_b_passed}/{total} ({100*track_b_passed/total:.1f}%)")
+        print(f"Track B (BASE) Passed:   {track_b_passed}/{total} ({100*track_b_passed/total:.1f}%)")
         print(f"Both Passed (TIE):       {both_passed}/{total} ({100*both_passed/total:.1f}%)")
         print(f"Both Failed:             {both_failed}/{total} ({100*both_failed/total:.1f}%)")
         
         print(f"\n--- Winner Analysis ---")
-        print(f"BAIS Wins:    {bais_wins}/{total} ({100*bais_wins/total:.1f}%)")
+        print(f"BASE Wins:    {base_wins}/{total} ({100*base_wins/total:.1f}%)")
         print(f"Direct Wins:  {direct_wins}/{total} ({100*direct_wins/total:.1f}%)")
         print(f"Ties:         {ties}/{total} ({100*ties/total:.1f}%)")
         

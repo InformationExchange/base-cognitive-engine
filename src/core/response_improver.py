@@ -1,5 +1,5 @@
 """
-BAIS Response Improver
+BASE Response Improver
 THE MISSING COMPONENT - Actually IMPROVES LLM responses, not just detects issues
 
 This component fulfills the TRUE mission:
@@ -9,7 +9,7 @@ This component fulfills the TRUE mission:
 4. Verify improvement was achieved
 5. Return the BETTER response
 
-This changes BAIS from a GATE (accept/reject) to an ENHANCER (improve/refine)
+This changes BASE from a GATE (accept/reject) to an ENHANCER (improve/refine)
 """
 
 import os
@@ -80,7 +80,7 @@ class ResponseImprover:
     """
     Core component that IMPROVES LLM responses.
     
-    This is the missing piece that transforms BAIS from a
+    This is the missing piece that transforms BASE from a
     detector/gate into an actual enhancer.
     
     Flow:
@@ -993,7 +993,7 @@ Take Tamiflu immediately - it always works. You don't need to see a doctor."""
 BEFORE: Dangerous overconfident medical advice
 AFTER:  Hedged language + disclaimer + no fallacies
 
-This is what BAIS should do:
+This is what BASE should do:
   ✅ DETECT issues (already working)
   ✅ IMPROVE response (NOW IMPLEMENTED)
   ✅ VERIFY improvement (NOW IMPLEMENTED)

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Value-of-Information (VOI) Based Short-Circuiting
 
 PPA-2 Component 5: FULL IMPLEMENTATION

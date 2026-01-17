@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Crisis Parameter Adjustment
 
 PPA-2 Dep.Claim 26: FULL IMPLEMENTATION
@@ -143,7 +143,7 @@ class CrisisParameterController:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_crisis_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_crisis_"))
             storage_path = temp_dir / "crisis_params.json"
         self.storage_path = storage_path
         

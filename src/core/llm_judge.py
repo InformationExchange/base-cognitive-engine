@@ -1,5 +1,5 @@
 """
-BAIS LLM-as-Judge: Use LLMs for Detection, Not Keywords
+BASE LLM-as-Judge: Use LLMs for Detection, Not Keywords
 ========================================================
 
 This replaces hardcoded keyword/regex detection with LLM-based evaluation.
@@ -7,7 +7,7 @@ The key insight: LLMs are MUCH better at understanding context than regex.
 
 PHILOSOPHY:
 - Basic detection → Outsource to LLMs (they're trained for this)
-- BAIS value → Orchestration, audit, learning, governance
+- BASE value → Orchestration, audit, learning, governance
 
 This is the JIMINY CRICKET approach:
 - NOT: Hardcoded rules (Pinocchio knows lying is wrong)
@@ -26,7 +26,7 @@ from typing import List, Dict, Any, Optional, Tuple
 from enum import Enum
 import logging
 
-logger = logging.getLogger("BAIS.LLMJudge")
+logger = logging.getLogger("BASE.LLMJudge")
 
 
 class JudgmentCategory(Enum):
@@ -346,7 +346,7 @@ Respond in JSON format:
                 self._learned_patterns[pattern_key] = 0.9 * current_avg + 0.1 * j.score
     
     def get_learning_summary(self) -> Dict[str, Any]:
-        """Get summary of what BAIS has learned from judgments."""
+        """Get summary of what BASE has learned from judgments."""
         return {
             "total_judgments": len(self._judgment_history),
             "learned_patterns": self._learned_patterns,

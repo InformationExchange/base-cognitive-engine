@@ -1,10 +1,10 @@
 """
-BAIS Cognitive Governance Engine - Semantic Mode Selector
+BASE Cognitive Governance Engine - Semantic Mode Selector
 Auto-detects appropriate mode with manual override capability
 
 Features:
 - Analyzes query to detect task type
-- Auto-selects appropriate BAIS mode
+- Auto-selects appropriate BASE mode
 - Manual override via prompt keywords or API parameter
 - Learning from user corrections
 
@@ -52,7 +52,7 @@ class ContentType(Enum):
 # Mode Mapping
 # =============================================================================
 
-# Import BAISMode - but define string version for independence
+# Import BASEMode - but define string version for independence
 class RecommendedMode(Enum):
     AUDIT_ONLY = "audit_only"
     AUDIT_AND_REMEDIATE = "audit_and_remediate"
@@ -104,7 +104,7 @@ class OverrideRequest:
 
 class SemanticModeSelector:
     """
-    Automatically selects BAIS mode based on query/content analysis.
+    Automatically selects BASE mode based on query/content analysis.
     
     Priority:
     1. Explicit API override (highest)
@@ -184,7 +184,7 @@ class SemanticModeSelector:
         context: Optional[Dict] = None
     ) -> ModeSelection:
         """
-        Select appropriate BAIS mode.
+        Select appropriate BASE mode.
         
         Args:
             query: User's query/request
@@ -516,7 +516,7 @@ class SemanticModeSelector:
 
 def integrate_with_orchestrator(orchestrator, selector: SemanticModeSelector):
     """
-    Integrate SemanticModeSelector with BAISv2Orchestrator.
+    Integrate SemanticModeSelector with BASEv2Orchestrator.
     
     Modifies orchestrator.govern() to auto-select mode.
     """
@@ -540,11 +540,11 @@ def integrate_with_orchestrator(orchestrator, selector: SemanticModeSelector):
         )
         
         # Set mode on orchestrator
-        from core.governance_modes import BAISMode
+        from core.governance_modes import BASEMode
         mode_map = {
-            'audit_only': BAISMode.AUDIT_ONLY,
-            'audit_and_remediate': BAISMode.AUDIT_AND_REMEDIATE,
-            'direct_assistance': BAISMode.DIRECT_ASSISTANCE
+            'audit_only': BASEMode.AUDIT_ONLY,
+            'audit_and_remediate': BASEMode.AUDIT_AND_REMEDIATE,
+            'direct_assistance': BASEMode.DIRECT_ASSISTANCE
         }
         orchestrator.set_mode(mode_map[selection.mode.value])
         

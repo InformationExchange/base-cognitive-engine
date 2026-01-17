@@ -1,5 +1,5 @@
 """
-BAIS Performance Metrics Module
+BASE Performance Metrics Module
 
 Tracks per-invention and per-layer performance metrics.
 Enables continuous improvement through data-driven optimization.
@@ -32,7 +32,7 @@ from collections import defaultdict
 
 
 class BrainLayer(Enum):
-    """BAIS 10 Brain-Like Layers"""
+    """BASE 10 Brain-Like Layers"""
     PERCEPTION = "L1_perception"           # Sensory Cortex
     BEHAVIORAL = "L2_behavioral"           # Limbic System
     REASONING = "L3_reasoning"             # Prefrontal Cortex
@@ -315,7 +315,7 @@ class LayerMetrics:
 
 class PerformanceTracker:
     """
-    Central performance tracking for BAIS.
+    Central performance tracking for BASE.
     
     Tracks:
     - Per-invention metrics (67 inventions)

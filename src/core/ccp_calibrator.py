@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v22.0
+BASE Cognitive Governance Engine v22.0
 Calibrated Contextual Posterior (CCP) - Patent Implementation
 
 PPA-2 Component 9: Calibrated Posterior Output

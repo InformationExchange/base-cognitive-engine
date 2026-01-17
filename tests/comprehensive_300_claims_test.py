@@ -5,7 +5,7 @@ COMPREHENSIVE 300 CLAIMS VERIFICATION TEST
 Purpose: Test ALL 300 claims from MASTER_PATENT_CAPABILITIES_INVENTORY.md
          using dual-track A/B methodology with clinical objectivity.
          
-Objective: Ensure BAIS governance helps complete coding/testing tasks FULLY,
+Objective: Ensure BASE governance helps complete coding/testing tasks FULLY,
            not with fake completes, placeholders, or superficial passes.
 
 Testing Discipline:
@@ -19,7 +19,7 @@ Track A (Direct): Tests bare implementation
 - File exists? Class exists? Can instantiate? Basic function works?
 - Score = (checks_passed / 4) * 100
 
-Track B (BAIS-Governed): Tests through full governance pipeline
+Track B (BASE-Governed): Tests through full governance pipeline
 - Multi-detector signals (Grounding, Factual, Behavioral, Temporal)
 - Self-awareness loop, Evidence demand, Acceptance decision
 - Score = Accuracy assessment (0-100)
@@ -29,11 +29,11 @@ Results (December 24, 2025):
 - Total Claims: 300
 - Verified: 159 (53.0%)
 - Partial: 141 (47.0%)
-- BAIS Win Rate: 100% (300/300)
+- BASE Win Rate: 100% (300/300)
 
 See also:
 - /COMPREHENSIVE_300_CLAIMS_VERIFICATION.md - Full analysis
-- /BAIS_ENHANCEMENT_PLAN.md - Enhancement roadmap
+- /BASE_ENHANCEMENT_PLAN.md - Enhancement roadmap
 - /MASTER_PATENT_CAPABILITIES_INVENTORY.md - Claim definitions
 
 Created: December 24, 2025
@@ -66,7 +66,7 @@ class ClaimStatus(Enum):
 
 class TrackWinner(Enum):
     TRACK_A = "Track A (Direct)"
-    TRACK_B = "Track B (BAIS)"
+    TRACK_B = "Track B (BASE)"
     TIE = "Tie"
     BOTH_FAILED = "Both Failed"
 
@@ -103,13 +103,13 @@ class ClaimTestResult:
 
 class Comprehensive300ClaimsTest:
     """
-    Comprehensive test suite for all 300 BAIS patent claims.
+    Comprehensive test suite for all 300 BASE patent claims.
     
     Methodology:
     - Phase by phase execution (PPA1 → PPA2 → PPA3 → Utility → Novel)
     - Dual-track A/B testing for each claim
     - Track A: Direct verification (code existence, instantiation, basic function)
-    - Track B: BAIS-governed verification (full governance pipeline)
+    - Track B: BASE-governed verification (full governance pipeline)
     - Winner determination based on issue detection and accuracy
     """
     
@@ -965,7 +965,7 @@ class Comprehensive300ClaimsTest:
             ("NOVEL-15", "World Models", "research/world_models.py", "WorldModelsModule", 4),
             ("NOVEL-16", "Creative Reasoning", "research/creative_reasoning.py", "CreativeReasoningModule", 4),
             ("NOVEL-17", "Learning Memory", "core/learning_memory.py", "LearningMemory", 3),
-            ("NOVEL-18", "Governance Rules", "core/governance_rules.py", "BAISGovernanceRules", 3),
+            ("NOVEL-18", "Governance Rules", "core/governance_rules.py", "BASEGovernanceRules", 3),
             ("NOVEL-19", "LLM Registry", "core/llm_registry.py", "LLMRegistry", 3),
             ("NOVEL-20", "Response Improver", "core/response_improver.py", "ResponseImprover", 3),
             ("NOVEL-21", "Self-Awareness Loop", "core/self_awareness.py", "SelfAwarenessLoop", 4),
@@ -1001,13 +1001,13 @@ class Comprehensive300ClaimsTest:
         return claims
     
     async def initialize_engine(self):
-        """Initialize the BAIS governance engine."""
+        """Initialize the BASE governance engine."""
         import tempfile
         from core.integrated_engine import IntegratedGovernanceEngine
         # Use temp directory to avoid read-only filesystem issues
-        temp_dir = Path(tempfile.mkdtemp(prefix="bais_test_"))
+        temp_dir = Path(tempfile.mkdtemp(prefix="base_test_"))
         self.engine = IntegratedGovernanceEngine(data_dir=temp_dir)
-        print(f"✓ BAIS Governance Engine initialized (data_dir: {temp_dir})")
+        print(f"✓ BASE Governance Engine initialized (data_dir: {temp_dir})")
     
     async def run_track_a_test(self, claim: ClaimDefinition) -> Dict:
         """
@@ -1085,7 +1085,7 @@ class Comprehensive300ClaimsTest:
     
     async def run_track_b_test(self, claim: ClaimDefinition) -> Dict:
         """
-        Track B: BAIS-governed verification
+        Track B: BASE-governed verification
         - Full governance pipeline evaluation
         - Multi-detector signal fusion
         - Self-awareness and evidence demand
@@ -1352,7 +1352,7 @@ class Comprehensive300ClaimsTest:
                 "track_a_wins": total_a_wins,
                 "track_b_wins": total_b_wins,
                 "ties": total_ties,
-                "bais_advantage": (total_b_wins - total_a_wins) / len(all_claims) * 100
+                "base_advantage": (total_b_wins - total_a_wins) / len(all_claims) * 100
             },
             "phase_results": all_phase_results
         }
@@ -1370,9 +1370,9 @@ class Comprehensive300ClaimsTest:
         print(f"  💥 Errors:     {total_errors:3d} ({final_summary['overall_results']['errors_pct']:.1f}%)")
         print(f"\n--- Track Comparison ---")
         print(f"  Track A Wins: {total_a_wins}")
-        print(f"  Track B Wins: {total_b_wins} {'✅ BAIS SUPERIOR' if total_b_wins > total_a_wins else ''}")
+        print(f"  Track B Wins: {total_b_wins} {'✅ BASE SUPERIOR' if total_b_wins > total_a_wins else ''}")
         print(f"  Ties: {total_ties}")
-        print(f"  BAIS Advantage: {final_summary['track_comparison']['bais_advantage']:.1f}%")
+        print(f"  BASE Advantage: {final_summary['track_comparison']['base_advantage']:.1f}%")
         
         # Save results
         results_path = Path(__file__).parent.parent / "COMPREHENSIVE_300_CLAIMS_RESULTS.json"

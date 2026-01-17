@@ -3,15 +3,15 @@
 
 **Version:** 3.7.0  
 **Last Updated:** January 11, 2026  
-**Total Inventions:** 86 (71 original + 15 BAIS v2.0)  
+**Total Inventions:** 86 (71 original + 15 BASE v2.0)  
 **Total Claims:** 334+  
 **Functional Classes:** 239/239 (100%)  
 **Status:** ACTIVE - MCP Integration Complete  
 **Reports:**  
-- Scientific Analysis: `BAIS_SCIENTIFIC_ANALYSIS_FOR_ANTHROPIC_CURSOR.md`  
-- Error Metrics: `BAIS_COMPREHENSIVE_ERROR_METRICS_REPORT.md`  
-- Case Studies: `BAIS_VIBE_CODING_CASE_STUDY.md`  
-- **MCP Deployment Plan:** `/Users/richardoh/10.1-deployment/BAIS_PHASED_DEPLOYMENT_PLAN.md`
+- Scientific Analysis: `BASE_SCIENTIFIC_ANALYSIS_FOR_ANTHROPIC_CURSOR.md`  
+- Error Metrics: `BASE_COMPREHENSIVE_ERROR_METRICS_REPORT.md`  
+- Case Studies: `BASE_VIBE_CODING_CASE_STUDY.md`  
+- **MCP Deployment Plan:** `/Users/richardoh/10.1-deployment/BASE_PHASED_DEPLOYMENT_PLAN.md`
 
 ---
 
@@ -21,18 +21,18 @@
 
 | Tool | Patent | Status | Phase |
 |------|--------|--------|-------|
-| `bais_audit_response` | PPA1-Inv1-4 | ✅ Working | Core |
-| `bais_check_query` | NOVEL-9 | ✅ Working | Core |
-| `bais_improve_response` | NOVEL-20 | ✅ Working | Core |
-| `bais_verify_completion` | NOVEL-40 | ✅ Working | Core |
-| `bais_get_statistics` | - | ✅ Working | Core |
-| `bais_ab_test` | NOVEL-43 | ✅ Working | Core |
-| `bais_govern_and_regenerate` | NOVEL-41 | ✅ Working | Core |
-| `bais_ab_test_full` | NOVEL-43 | ✅ Working | Core |
-| `bais_multi_track_analyze` | NOVEL-43 | ✅ NEW | Phase 50 |
-| `bais_analyze_reasoning` | NOVEL-14/15 | ✅ NEW | Phase 50 |
-| `bais_enforce_completion` | NOVEL-40/41 | ✅ NEW | Phase 50 |
-| `bais_full_governance` | ALL 86 | ✅ NEW | Phase 50 |
+| `base_audit_response` | PPA1-Inv1-4 | ✅ Working | Core |
+| `base_check_query` | NOVEL-9 | ✅ Working | Core |
+| `base_improve_response` | NOVEL-20 | ✅ Working | Core |
+| `base_verify_completion` | NOVEL-40 | ✅ Working | Core |
+| `base_get_statistics` | - | ✅ Working | Core |
+| `base_ab_test` | NOVEL-43 | ✅ Working | Core |
+| `base_govern_and_regenerate` | NOVEL-41 | ✅ Working | Core |
+| `base_ab_test_full` | NOVEL-43 | ✅ Working | Core |
+| `base_multi_track_analyze` | NOVEL-43 | ✅ NEW | Phase 50 |
+| `base_analyze_reasoning` | NOVEL-14/15 | ✅ NEW | Phase 50 |
+| `base_enforce_completion` | NOVEL-40/41 | ✅ NEW | Phase 50 |
+| `base_full_governance` | ALL 86 | ✅ NEW | Phase 50 |
 
 ### Deployment Phases
 
@@ -47,7 +47,7 @@
 
 ---
 
-## BAIS v2.0 INVENTIONS (January 3, 2026)
+## BASE v2.0 INVENTIONS (January 3, 2026)
 
 ### New Enforcement Architecture Inventions
 
@@ -69,7 +69,7 @@
 | **NOVEL-53** | EvidenceVerificationModule | `core/evidence_verification_module.py` | ✅ | 5/5 |
 | **NOVEL-54** | DynamicPluginSystem | `core/dynamic_plugin_system.py` | ✅ | 5/5 |
 
-### BAIS v2.0 Claims
+### BASE v2.0 Claims
 
 | Invention | Claims | Description |
 |-----------|--------|-------------|
@@ -89,7 +89,7 @@
 | NOVEL-53 | 7 | Multi-LLM verification, track suggestion, user override, latest model checking, consensus decisions, second opinions, domain learning |
 | NOVEL-54 | 12 | Dynamic plugin creation, shared knowledge base, cross-domain intelligence, learning propagation, hybrid plugins, domain detection, inheritance hierarchy, pattern promotion, industry tuning, hybrid ML+AI rule generation, full context LLM queries, multi-track consensus rules |
 
-**Total BAIS v2.0 Claims:** 68
+**Total BASE v2.0 Claims:** 68
 
 ---
 
@@ -161,7 +161,7 @@ All new components integrated into `IntegratedGovernanceEngine v48.0.0`:
 - TemporalBiasDetector: `engine.temporal_bias_detector`
 - All learning algorithms available via `create_algorithm()`
 
-### BAIS Verification
-- Initial claim of "all missing" rejected by BAIS (TGTBT, overclaiming)
+### BASE Verification
+- Initial claim of "all missing" rejected by BASE (TGTBT, overclaiming)
 - Evidence refined with actual test results
 - Each component verified with functional tests

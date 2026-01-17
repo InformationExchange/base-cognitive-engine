@@ -1,6 +1,6 @@
 """
-BAIS Continuous Enhancement System
-Uses BAIS to:
+BASE Continuous Enhancement System
+Uses BASE to:
 1. Identify what's still broken
 2. Track WHY things were missed
 3. Implement fixes with verification
@@ -40,7 +40,7 @@ class EnhancementRecord:
 
 class ContinuousEnhancementSystem:
     """
-    BAIS-powered continuous enhancement.
+    BASE-powered continuous enhancement.
     
     This system embodies the core patent claim of self-improving AI governance.
     """
@@ -61,7 +61,7 @@ class ContinuousEnhancementSystem:
                 with open(self.enhancement_file, 'r') as f:
                     data = json.load(f)
                     # Don't reload as objects, just keep count
-                    print(f"[BAIS] Loaded {len(data)} prior enhancement records")
+                    print(f"[BASE] Loaded {len(data)} prior enhancement records")
             except:
                 pass
     
@@ -71,9 +71,9 @@ class ContinuousEnhancementSystem:
             json.dump([asdict(e) for e in self.enhancements], f, indent=2)
     
     def analyze_failures(self) -> Dict[str, Any]:
-        """Use BAIS to analyze current failures."""
+        """Use BASE to analyze current failures."""
         print("\n" + "=" * 70)
-        print("BAIS FAILURE ANALYSIS")
+        print("BASE FAILURE ANALYSIS")
         print("=" * 70)
         
         # Load evaluation results
@@ -154,7 +154,7 @@ class ContinuousEnhancementSystem:
             issue_description=issue,
             why_missed_before="Pattern not in detection list",
             why_llm_said_complete="Saw improvement, declared success prematurely",
-            why_recognized_now="BAIS failure analysis identified specific gap",
+            why_recognized_now="BASE failure analysis identified specific gap",
             fix_implemented=fix_code,
             verification_result="PENDING"
         )
@@ -177,10 +177,10 @@ class ContinuousEnhancementSystem:
                 break
     
     def run_continuous_enhancement_cycle(self):
-        """Run a full enhancement cycle using BAIS."""
+        """Run a full enhancement cycle using BASE."""
         
         print("\n" + "=" * 80)
-        print("BAIS CONTINUOUS ENHANCEMENT CYCLE")
+        print("BASE CONTINUOUS ENHANCEMENT CYCLE")
         print("=" * 80)
         
         # Step 1: Analyze failures
@@ -265,7 +265,7 @@ class ContinuousEnhancementSystem:
         )
         
         new_patterns = '''
-        # BAIS Enhancement: Unicode/Homoglyph attack detection
+        # BASE Enhancement: Unicode/Homoglyph attack detection
         (r'[\\u200b-\\u200f\\u2028-\\u202f\\u205f-\\u206f]',
          'Zero-width character injection', 0.9),
         (r'[а-яА-Я].*[a-zA-Z]|[a-zA-Z].*[а-яА-Я]',
@@ -309,7 +309,7 @@ class ContinuousEnhancementSystem:
         )
         
         new_patterns = '''
-        # BAIS Enhancement: Subtle coercion patterns
+        # BASE Enhancement: Subtle coercion patterns
         'subtle_coercion': [
             r'\\bI\\'m sure you\\'ll (?:agree|understand|see)\\b',
             r'\\b(?:obviously|clearly|surely) you\\b',

@@ -4,10 +4,10 @@ LLM Agent Configuration Module
 Patent: NOVEL-28 Enhancement - User-Configurable LLM Agents
 
 This module allows users to configure which LLM handles which function within
-the BAIS governance system. Users can assign different LLMs to different roles
+the BASE governance system. Users can assign different LLMs to different roles
 based on their preferences, availability, and cost considerations.
 
-Three Distinct LLM Roles in BAIS:
+Three Distinct LLM Roles in BASE:
 1. LLM for Dimension Identification - Discovers relevant dimensions (complex queries only)
 2. LLM for Task Execution - Performs the user's requested task (always)
 3. LLM for Governance - Monitors, audits, and improves output (always)
@@ -28,7 +28,7 @@ class AgentRole(Enum):
     """
     Defines the functional roles that LLMs can be assigned to.
     
-    Each role represents a distinct function in the BAIS pipeline.
+    Each role represents a distinct function in the BASE pipeline.
     Users can assign different LLMs to different roles.
     """
     # Dimension Identification Roles
@@ -104,7 +104,7 @@ class AgentConfigState:
 
 class AgentConfigManager:
     """
-    Manages LLM agent configurations for all BAIS roles.
+    Manages LLM agent configurations for all BASE roles.
     
     Provides:
     - User-configurable role-to-LLM assignments
@@ -146,7 +146,7 @@ class AgentConfigManager:
         if storage_path:
             self.storage_path = storage_path
         else:
-            self.storage_path = os.path.join(tempfile.gettempdir(), "bais_agent_config.json")
+            self.storage_path = os.path.join(tempfile.gettempdir(), "base_agent_config.json")
         
         self.assignments: Dict[AgentRole, AgentAssignment] = {}
         self._initialize_defaults()

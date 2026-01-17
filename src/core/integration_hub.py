@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v48.0
+BASE Cognitive Governance Engine v48.0
 Integration Hub with AI + Pattern + Learning
 
 Phase 48: Integration Infrastructure
@@ -457,7 +457,7 @@ if __name__ == "__main__":
     
     # Send messages through hub
     for dest in ["grok_1", "openai_1", "audit_1"]:
-        result = hub.send_message("bais_engine", dest, {"query": "test"})
+        result = hub.send_message("base_engine", dest, {"query": "test"})
         print(f"  -> {dest}: {result['status']} (msg: {result.get('message_id', 'N/A')})")
     
     print("\n[3] AI Orchestration")
@@ -478,7 +478,7 @@ if __name__ == "__main__":
     for k, v in insights.items():
         print(f"  {k}: {v}")
     
-    preferred = hub.learner.get_preferred_destination("bais_engine")
+    preferred = hub.learner.get_preferred_destination("base_engine")
     print(f"  Preferred destination: {preferred}")
     
     print("\n[5] Hub Status")

@@ -68,7 +68,7 @@ def run_phase(eval_instance, patent: str, batch_size: int = 20):
 def main():
     """Run phased evaluation with progress saving."""
     print("=" * 80)
-    print("BAIS PHASED CLINICAL EVALUATION")
+    print("BASE PHASED CLINICAL EVALUATION")
     print("Running in batches with progress saving")
     print("=" * 80)
     
@@ -102,12 +102,12 @@ def main():
                     "group": r.group,
                     "effectiveness_score": r.effectiveness_score,
                     "effectiveness_rating": r.effectiveness_rating,
-                    "bais_issues_found": r.bais_issues_found,
-                    "bais_would_block": r.bais_would_block,
+                    "base_issues_found": r.base_issues_found,
+                    "base_would_block": r.base_would_block,
                     "what_worked": r.what_worked,
                     "what_failed": r.what_failed,
                     "recommendations": r.recommendations,
-                    "bais_self_check_passed": r.bais_self_check_passed
+                    "base_self_check_passed": r.base_self_check_passed
                 })
             
             completed.append(patent)
@@ -136,7 +136,7 @@ def main():
     if total > 0:
         avg_score = sum(r["effectiveness_score"] for r in all_results) / total
         passed = sum(1 for r in all_results if r["effectiveness_score"] >= 70)
-        blocked = sum(1 for r in all_results if r["bais_would_block"])
+        blocked = sum(1 for r in all_results if r["base_would_block"])
         
         print(f"\nTotal Claims Tested: {total}")
         print(f"Average Effectiveness: {avg_score:.1f}%")

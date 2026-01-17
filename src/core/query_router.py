@@ -1,5 +1,5 @@
 """
-BAIS Query Router - Upfront Assessment & Module Selection
+BASE Query Router - Upfront Assessment & Module Selection
 Determines which governance modules to activate for each query.
 
 This is the FIRST component that runs, analyzing the query before

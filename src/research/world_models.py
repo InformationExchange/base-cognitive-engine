@@ -1,8 +1,8 @@
 """
-BAIS World Models Module
+BASE World Models Module
 Causal reasoning and forward prediction
 
-This module enables BAIS to:
+This module enables BASE to:
 1. Extract causal relationships from text
 2. Model cause-effect chains
 3. Generate predictions based on causal models
@@ -126,7 +126,7 @@ class CausalPrediction:
 
 class WorldModelsModule:
     """
-    World Models cognitive module for BAIS.
+    World Models cognitive module for BASE.
     
     Implements:
     - Causal relationship extraction
@@ -202,7 +202,7 @@ class WorldModelsModule:
     
     # Prediction language - ENHANCED with uncertain predictions
     PREDICTION_PATTERNS = [
-        # BAIS Enhancement: Expanded prediction markers
+        # BASE Enhancement: Expanded prediction markers
         r'\bultimately\b',
         r'\binevitably\b',
         r'\beventually\b',
@@ -347,7 +347,7 @@ class WorldModelsModule:
                             cause = groups[0].strip()
                             effect = groups[-1].strip()
                             
-                            # BAIS-GUIDED: Reduced minimum length from 3 to 1 for variable-style names
+                            # BASE-GUIDED: Reduced minimum length from 3 to 1 for variable-style names
                             if len(cause) < 1 or len(effect) < 1:
                                 continue
                             
@@ -519,7 +519,7 @@ class WorldModelsModule:
             for match in re.finditer(pattern, text_lower):
                 prediction_text = match.group(1) if match.groups() else match.group()
                 
-                # BAIS-GUIDED: Reduced minimum length from 10 to 5
+                # BASE-GUIDED: Reduced minimum length from 10 to 5
                 if len(prediction_text) < 5:
                     continue
                 

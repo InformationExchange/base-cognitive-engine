@@ -1,4 +1,4 @@
-"""BAIS Learning Components"""
+"""BASE Learning Components"""
 from .algorithms import (
     LearningAlgorithm, LearningOutcome, LearningState,
     OCOLearner, BayesianLearner, ThompsonSamplingLearner, UCBLearner, EXP3Learner,

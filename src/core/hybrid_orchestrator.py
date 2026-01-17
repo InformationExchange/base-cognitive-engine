@@ -1,5 +1,5 @@
 """
-BAIS Hybrid Orchestrator - Production-Ready Integration
+BASE Hybrid Orchestrator - Production-Ready Integration
 
 This module ACTUALLY integrates pattern matching with LLM fallback.
 Previous implementations had the pieces but were not wired together.

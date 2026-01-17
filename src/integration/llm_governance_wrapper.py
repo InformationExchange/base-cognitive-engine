@@ -1,12 +1,12 @@
 """
-BAIS Real-Time LLM Governance Wrapper
+BASE Real-Time LLM Governance Wrapper
 =====================================
-Intercepts LLM responses, runs BAIS governance, and triggers regeneration if needed.
+Intercepts LLM responses, runs BASE governance, and triggers regeneration if needed.
 
 This module provides:
 1. Pre-generation query analysis
 2. Post-generation response audit
-3. Automatic regeneration with BAIS feedback
+3. Automatic regeneration with BASE feedback
 4. Complete audit trail of all governance decisions
 """
 
@@ -21,11 +21,11 @@ from enum import Enum
 import logging
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("BAIS.Governance")
+logger = logging.getLogger("BASE.Governance")
 
 
 class GovernanceDecision(Enum):
-    """Decision outcomes from BAIS governance"""
+    """Decision outcomes from BASE governance"""
     APPROVED = "approved"
     REGENERATE = "regenerate"
     BLOCKED = "blocked"
@@ -34,7 +34,7 @@ class GovernanceDecision(Enum):
 
 @dataclass
 class GovernanceResult:
-    """Result of BAIS governance evaluation"""
+    """Result of BASE governance evaluation"""
     decision: GovernanceDecision
     original_response: str
     final_response: str
@@ -56,7 +56,7 @@ class GovernanceResult:
 
 @dataclass
 class GovernanceConfig:
-    """Configuration for BAIS governance"""
+    """Configuration for BASE governance"""
     min_accuracy_threshold: float = 0.65
     max_regeneration_attempts: int = 3
     high_risk_domains: List[str] = field(default_factory=lambda: ["medical", "financial", "legal", "safety"])
@@ -68,12 +68,12 @@ class GovernanceConfig:
     allow_factual_audit_content: bool = True  # Factual audit reports bypass TGTBT checks
     
 
-class BAISGovernanceWrapper:
+class BASEGovernanceWrapper:
     """
     Real-time governance wrapper for LLM responses.
     
     Usage:
-        wrapper = BAISGovernanceWrapper()
+        wrapper = BASEGovernanceWrapper()
         result = await wrapper.govern(
             query="What medication for headache?",
             llm_response="Take aspirin without consulting anyone.",
@@ -87,10 +87,10 @@ class BAISGovernanceWrapper:
         data_dir: Optional[Path] = None
     ):
         self.config = config or GovernanceConfig()
-        self.data_dir = data_dir or Path("/tmp/bais_governance")
+        self.data_dir = data_dir or Path("/tmp/base_governance")
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
-        # Lazy load BAIS engine to avoid circular imports
+        # Lazy load BASE engine to avoid circular imports
         self._engine = None
         self._query_analyzer = None
         self._response_improver = None
@@ -111,7 +111,7 @@ class BAISGovernanceWrapper:
             "false_positives_caught": 0,
         }
         
-        logger.info("BAIS Governance Wrapper initialized")
+        logger.info("BASE Governance Wrapper initialized")
         logger.info(f"Config: min_accuracy={self.config.min_accuracy_threshold}, "
                    f"max_regen={self.config.max_regeneration_attempts}")
     
@@ -458,7 +458,7 @@ class BAISGovernanceWrapper:
         self, query: str, response: str, 
         documents: List[str], trace: List
     ) -> Dict:
-        """Post-generation response audit using BAIS engine"""
+        """Post-generation response audit using BASE engine"""
         try:
             result = await self.engine.evaluate(
                 query=query,
@@ -844,7 +844,7 @@ class BAISGovernanceWrapper:
         llm_generator: Callable, documents: List[str],
         trace: List
     ) -> Dict:
-        """Regenerate response with BAIS feedback"""
+        """Regenerate response with BASE feedback"""
         
         feedback_prompt = self._create_feedback_prompt(query, issues, warnings)
         
@@ -1057,7 +1057,7 @@ async def govern_llm_response(
         print(result.decision)  # REGENERATE or BLOCKED
         print(result.final_response)  # Improved response
     """
-    wrapper = BAISGovernanceWrapper()
+    wrapper = BASEGovernanceWrapper()
     return await wrapper.govern(
         query=query,
         llm_response=response,

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v45.0
+BASE Cognitive Governance Engine v45.0
 Logging & Telemetry with AI + Pattern + Learning
 
 Phase 45: Observability Infrastructure

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 Algorithm Performance Monitoring - Phase 5
 
 Provides real-time monitoring of learning algorithm performance:
@@ -113,7 +113,7 @@ class AlgorithmMonitor:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if data_dir is None:
             import tempfile
-            data_dir = Path(tempfile.mkdtemp(prefix="bais_monitor_"))
+            data_dir = Path(tempfile.mkdtemp(prefix="base_monitor_"))
         self.data_dir = data_dir
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
@@ -504,9 +504,9 @@ class AlgorithmMonitor:
 
 class EffectivenessProver:
     """
-    Proves BAIS effectiveness compared to raw LLM.
+    Proves BASE effectiveness compared to raw LLM.
     
-    Provides statistical evidence that BAIS improves:
+    Provides statistical evidence that BASE improves:
     - Accuracy
     - Consistency
     - Safety (fewer false positives)
@@ -516,13 +516,13 @@ class EffectivenessProver:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if data_dir is None:
             import tempfile
-            data_dir = Path(tempfile.mkdtemp(prefix="bais_proof_"))
+            data_dir = Path(tempfile.mkdtemp(prefix="base_proof_"))
         self.data_dir = data_dir
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
         # Evidence records
         self.raw_llm_samples: List[Dict] = []
-        self.bais_samples: List[Dict] = []
+        self.base_samples: List[Dict] = []
     
     def record_raw_llm(self, accuracy: float, was_correct: bool, domain: str = 'general'):
         """Record raw LLM performance."""
@@ -533,9 +533,9 @@ class EffectivenessProver:
             'timestamp': datetime.utcnow().isoformat()
         })
     
-    def record_bais(self, accuracy: float, was_correct: bool, domain: str = 'general'):
-        """Record BAIS performance."""
-        self.bais_samples.append({
+    def record_base(self, accuracy: float, was_correct: bool, domain: str = 'general'):
+        """Record BASE performance."""
+        self.base_samples.append({
             'accuracy': accuracy,
             'was_correct': was_correct,
             'domain': domain,
@@ -543,46 +543,46 @@ class EffectivenessProver:
         })
     
     def generate_proof(self) -> Dict[str, Any]:
-        """Generate statistical proof of BAIS effectiveness."""
-        if len(self.raw_llm_samples) < 20 or len(self.bais_samples) < 20:
-            return {'status': 'insufficient_data', 'raw_n': len(self.raw_llm_samples), 'bais_n': len(self.bais_samples)}
+        """Generate statistical proof of BASE effectiveness."""
+        if len(self.raw_llm_samples) < 20 or len(self.base_samples) < 20:
+            return {'status': 'insufficient_data', 'raw_n': len(self.raw_llm_samples), 'base_n': len(self.base_samples)}
         
         # Extract accuracy lists
         raw_acc = [s['accuracy'] for s in self.raw_llm_samples]
-        bais_acc = [s['accuracy'] for s in self.bais_samples]
+        base_acc = [s['accuracy'] for s in self.base_samples]
         
         # Descriptive stats
         raw_mean = sum(raw_acc) / len(raw_acc)
-        bais_mean = sum(bais_acc) / len(bais_acc)
+        base_mean = sum(base_acc) / len(base_acc)
         
         raw_std = math.sqrt(sum((a - raw_mean)**2 for a in raw_acc) / len(raw_acc))
-        bais_std = math.sqrt(sum((a - bais_mean)**2 for a in bais_acc) / len(bais_acc))
+        base_std = math.sqrt(sum((a - base_mean)**2 for a in base_acc) / len(base_acc))
         
         # t-test
-        n1, n2 = len(raw_acc), len(bais_acc)
-        pooled_var = ((n1-1)*raw_std**2 + (n2-1)*bais_std**2) / (n1+n2-2)
+        n1, n2 = len(raw_acc), len(base_acc)
+        pooled_var = ((n1-1)*raw_std**2 + (n2-1)*base_std**2) / (n1+n2-2)
         se = math.sqrt(pooled_var * (1/n1 + 1/n2))
         
-        t_stat = (bais_mean - raw_mean) / se if se > 0 else 0
+        t_stat = (base_mean - raw_mean) / se if se > 0 else 0
         
         # Effect size (Cohen's d)
-        pooled_std = math.sqrt((raw_std**2 + bais_std**2) / 2)
-        effect_size = (bais_mean - raw_mean) / pooled_std if pooled_std > 0 else 0
+        pooled_std = math.sqrt((raw_std**2 + base_std**2) / 2)
+        effect_size = (base_mean - raw_mean) / pooled_std if pooled_std > 0 else 0
         
         # Correctness rates
         raw_correct = sum(1 for s in self.raw_llm_samples if s['was_correct']) / len(self.raw_llm_samples)
-        bais_correct = sum(1 for s in self.bais_samples if s['was_correct']) / len(self.bais_samples)
+        base_correct = sum(1 for s in self.base_samples if s['was_correct']) / len(self.base_samples)
         
         # Generate verdict
         is_significant = abs(t_stat) > 1.96  # ~p < 0.05
-        is_improvement = bais_mean > raw_mean
+        is_improvement = base_mean > raw_mean
         
         if is_significant and is_improvement:
-            verdict = "BAIS SIGNIFICANTLY IMPROVES accuracy over raw LLM"
+            verdict = "BASE SIGNIFICANTLY IMPROVES accuracy over raw LLM"
         elif is_improvement:
-            verdict = "BAIS shows improvement but not statistically significant (more samples needed)"
+            verdict = "BASE shows improvement but not statistically significant (more samples needed)"
         elif is_significant:
-            verdict = "BAIS shows significant difference but worse than raw LLM (investigate)"
+            verdict = "BASE shows significant difference but worse than raw LLM (investigate)"
         else:
             verdict = "No significant difference detected"
         
@@ -590,18 +590,18 @@ class EffectivenessProver:
             'status': 'proof_generated',
             'samples': {
                 'raw_llm': len(self.raw_llm_samples),
-                'bais': len(self.bais_samples)
+                'base': len(self.base_samples)
             },
             'accuracy': {
                 'raw_llm': {'mean': raw_mean, 'std': raw_std},
-                'bais': {'mean': bais_mean, 'std': bais_std},
-                'improvement': bais_mean - raw_mean,
-                'improvement_pct': ((bais_mean - raw_mean) / max(raw_mean, 1)) * 100
+                'base': {'mean': base_mean, 'std': base_std},
+                'improvement': base_mean - raw_mean,
+                'improvement_pct': ((base_mean - raw_mean) / max(raw_mean, 1)) * 100
             },
             'correctness': {
                 'raw_llm': raw_correct,
-                'bais': bais_correct,
-                'improvement': bais_correct - raw_correct
+                'base': base_correct,
+                'improvement': base_correct - raw_correct
             },
             'statistical_test': {
                 't_statistic': t_stat,
@@ -610,7 +610,7 @@ class EffectivenessProver:
                 'effect_interpretation': 'large' if abs(effect_size) > 0.8 else 'medium' if abs(effect_size) > 0.5 else 'small'
             },
             'verdict': verdict,
-            'recommendation': 'Deploy BAIS' if is_significant and is_improvement else 'Continue testing'
+            'recommendation': 'Deploy BASE' if is_significant and is_improvement else 'Continue testing'
         }
     
     def save_proof(self):
@@ -619,7 +619,7 @@ class EffectivenessProver:
             proof_path = self.data_dir / 'effectiveness_proof.json'
             data = {
                 'raw_llm_samples': self.raw_llm_samples[-1000:],
-                'bais_samples': self.bais_samples[-1000:],
+                'base_samples': self.base_samples[-1000:],
                 'proof': self.generate_proof()
             }
             with open(proof_path, 'w') as f:

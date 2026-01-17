@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v31.0
+BASE Cognitive Governance Engine v31.0
 Verifiable Audit - Tamper-Evident Hash-Chaining
 
 Phase 31: Addresses PPA2-C1-17, PPA2-C1-27
@@ -133,7 +133,7 @@ class HashChainAudit:
         genesis_data = {
             "type": "genesis",
             "timestamp": "2025-01-01T00:00:00Z",
-            "system": "BAIS-Cognitive-Engine",
+            "system": "BASE-Cognitive-Engine",
             "version": "31.0.0"
         }
         return self._hash_data(genesis_data)

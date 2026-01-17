@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v25.0
+BASE Cognitive Governance Engine v25.0
 Cross-Invention Orchestrator - Signal Flow Between Inventions
 
 Patent Alignment:
@@ -44,7 +44,7 @@ class SignalType(Enum):
 
 
 class InventionLayer(Enum):
-    """Brain layers for inventions (from BAIS_BRAIN_ARCHITECTURE.md)."""
+    """Brain layers for inventions (from BASE_BRAIN_ARCHITECTURE.md)."""
     INPUT = 1           # L1: Input Processing
     PERCEPTION = 2      # L2: Perception
     CLASSIFICATION = 3  # L3: Classification
@@ -107,7 +107,7 @@ class CrossInventionOrchestrator:
     """
     Cross-Invention Orchestrator.
     
-    Manages signal flow between BAIS inventions:
+    Manages signal flow between BASE inventions:
     1. Defines signal pathways
     2. Routes outputs to dependent inventions
     3. Detects and resolves conflicts
@@ -519,7 +519,7 @@ class CrossInventionOrchestrator:
     def get_signal_flow_diagram(self) -> str:
         """Generate ASCII diagram of signal flow."""
         lines = []
-        lines.append("BAIS Cross-Invention Signal Flow")
+        lines.append("BASE Cross-Invention Signal Flow")
         lines.append("=" * 60)
         
         # Group by layer

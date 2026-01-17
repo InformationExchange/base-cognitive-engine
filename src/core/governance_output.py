@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine - Governance Output
+BASE Cognitive Governance Engine - Governance Output
 Phase 7: Unified output structure across all modes
 
 Provides consistent output format for:
@@ -119,9 +119,9 @@ class ApprovalReport:
 @dataclass
 class GovernanceOutput:
     """
-    Unified output structure for all BAIS governance modes.
+    Unified output structure for all BASE governance modes.
     
-    This is the standard output format that all BAIS operations
+    This is the standard output format that all BASE operations
     should return, regardless of mode or platform.
     """
     
@@ -148,7 +148,7 @@ class GovernanceOutput:
     
     # Metadata
     processing_time_ms: float
-    bais_version: str = "2.0"
+    base_version: str = "2.0"
     
     # For user
     user_message: str = ""
@@ -171,7 +171,7 @@ class GovernanceOutput:
             'multi_track': asdict(self.multi_track) if self.multi_track else None,
             'approval': asdict(self.approval) if self.approval else None,
             'processing_time_ms': self.processing_time_ms,
-            'bais_version': self.bais_version,
+            'base_version': self.base_version,
             'user_message': self.user_message,
             'next_steps': self.next_steps
         }
@@ -185,7 +185,7 @@ class GovernanceOutput:
         lines = []
         
         # Header
-        lines.append(f"## BAIS Governance Report [{self.mode.upper()}]")
+        lines.append(f"## BASE Governance Report [{self.mode.upper()}]")
         lines.append(f"Status: **{self.status.value.upper()}**")
         
         if self.action_required != ActionRequired.NONE:
@@ -226,7 +226,7 @@ class GovernanceOutput:
         """Format for CLI display."""
         lines = []
         lines.append("=" * 60)
-        lines.append(f"BAIS Governance Report [{self.mode.upper()}]")
+        lines.append(f"BASE Governance Report [{self.mode.upper()}]")
         lines.append("=" * 60)
         lines.append(f"Status: {self.status.value}")
         lines.append(f"Action Required: {self.action_required.value}")
@@ -255,7 +255,7 @@ class GovernanceOutput:
         Resolves instantiation errors when all parameters aren't known.
         """
         return cls(
-            output_id=f"BAIS-{datetime.utcnow().strftime('%Y%m%d%H%M%S%f')[:17]}",
+            output_id=f"BASE-{datetime.utcnow().strftime('%Y%m%d%H%M%S%f')[:17]}",
             mode="audit_only",
             timestamp=datetime.utcnow().isoformat(),
             status=OutputStatus.SUCCESS,
@@ -275,7 +275,7 @@ class GovernanceOutput:
             multi_track=None,
             approval=None,
             processing_time_ms=0.0,
-            bais_version="2.0",
+            base_version="2.0",
             user_message="",
             next_steps=[]
         )
@@ -289,7 +289,7 @@ class GovernanceOutputManager:
     """
     Manager for GovernanceOutput creation with learning capabilities.
     
-    Implements the standard BAIS learning interface (5/5 methods).
+    Implements the standard BASE learning interface (5/5 methods).
     """
     
     def __init__(self):
@@ -440,7 +440,7 @@ class GovernanceOutputBuilder:
     """Builder pattern for constructing governance outputs."""
     
     def __init__(self):
-        self._output_id = f"BAIS-{datetime.utcnow().strftime('%Y%m%d%H%M%S%f')[:17]}"
+        self._output_id = f"BASE-{datetime.utcnow().strftime('%Y%m%d%H%M%S%f')[:17]}"
         self._mode = "audit_only"
         self._status = OutputStatus.SUCCESS
         self._action_required = ActionRequired.NONE

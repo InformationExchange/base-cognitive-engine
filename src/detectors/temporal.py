@@ -1,5 +1,5 @@
 """
-BAIS Temporal Detector (Core Module)
+BASE Temporal Detector (Core Module)
 
 Implements temporal pattern detection in text:
 1. Time reference detection

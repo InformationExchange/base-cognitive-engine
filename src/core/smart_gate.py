@@ -1,5 +1,5 @@
 """
-BAIS Smart Gate - Intelligent Analysis Routing
+BASE Smart Gate - Intelligent Analysis Routing
 
 This module implements cost-effective routing by determining when to use
 expensive LLM analysis vs cheap pattern matching.
@@ -27,9 +27,9 @@ import re
 
 # Import governance rules
 try:
-    from core.governance_rules import BAISGovernanceRules, DataFlowStep
+    from core.governance_rules import BASEGovernanceRules, DataFlowStep
 except ImportError:
-    BAISGovernanceRules = None
+    BASEGovernanceRules = None
     DataFlowStep = None
 
 
@@ -110,7 +110,7 @@ class SmartGate:
     
     def __init__(self, default_mode: AnalysisMode = AnalysisMode.STANDARD):
         self.default_mode = default_mode
-        self.governance_rules = BAISGovernanceRules() if BAISGovernanceRules else None
+        self.governance_rules = BASEGovernanceRules() if BASEGovernanceRules else None
         self._data_flow_steps = []
         
         # Learning state

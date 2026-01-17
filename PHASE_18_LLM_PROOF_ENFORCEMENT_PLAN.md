@@ -1,5 +1,5 @@
 # PHASE 18: LLM PROOF ENFORCEMENT & CLINICAL AUDIT SYSTEM
-## BAIS Enhancement Plan - Comprehensive Gap Analysis and Implementation Roadmap
+## BASE Enhancement Plan - Comprehensive Gap Analysis and Implementation Roadmap
 
 **Document Type:** Technical Specification  
 **Created:** December 26, 2025  
@@ -26,7 +26,7 @@
 | `evidence_demand.py` | Claim extraction and evidence matching | Pattern-based, not LLM-verified |
 | `llm_proof_validator.py` | Context classification (planning/final) | Does not enforce LLM proof analysis |
 | `hybrid_proof_validator.py` | Pattern + LLM combination | Not yet requiring LLM proof |
-| `mcp_server.py` | `bais_verify_completion` | Just added LLM proof - needs enhancement |
+| `mcp_server.py` | `base_verify_completion` | Just added LLM proof - needs enhancement |
 | `clinical.py` | Statistical A/B testing | No clinical report generation |
 | `performance_metrics.py` | Per-invention tracking | No audit trail storage |
 
@@ -34,7 +34,7 @@
 
 ## 2. DUAL-TRACK A/B ANALYSIS (Protocol Step 2)
 
-### TRACK A: What Would Happen Without BAIS Enhancement
+### TRACK A: What Would Happen Without BASE Enhancement
 
 ```
 USER CLAIM: "Phase 18 is complete"
@@ -53,7 +53,7 @@ PROBLEM:
 - No case/transaction tracking
 ```
 
-### TRACK B: What BAIS Should Do With Enhancement
+### TRACK B: What BASE Should Do With Enhancement
 
 ```
 USER CLAIM: "Phase 18 is complete"
@@ -127,7 +127,7 @@ Input → Claim Extraction → LLM Proof Analysis → Clinical Categorization
 
 | Task | Module | Implementation |
 |------|--------|----------------|
-| 1. Enhance `bais_verify_completion` | `mcp_server.py` | Require LLM proof analysis for ALL claims |
+| 1. Enhance `base_verify_completion` | `mcp_server.py` | Require LLM proof analysis for ALL claims |
 | 2. Add proof_required flag | `evidence_demand.py` | Mark claims requiring LLM verification |
 | 3. Create LLM proof template | `llm_proof_validator.py` | Structured prompt for proof analysis |
 | 4. Add retry on insufficient proof | `hybrid_proof_validator.py` | Loop until proof adequate |
@@ -205,7 +205,7 @@ class AuditRecord:
 **Report Template:**
 
 ```
-BAIS CLINICAL GOVERNANCE REPORT
+BASE CLINICAL GOVERNANCE REPORT
 ================================
 Case ID: {case_id}
 Transaction: {tx_id}
@@ -284,7 +284,7 @@ L10 (Output) → Deliver decision with reasoning
 
 ### User-Level Testing
 
-| Input | Expected BAIS Behavior | Pass Criteria |
+| Input | Expected BASE Behavior | Pass Criteria |
 |-------|------------------------|---------------|
 | "Task complete" (no evidence) | Reject, request proof | LLM reasoning provided |
 | "100% done" (with tests) | Analyze tests, verify | Clinical status assigned |
@@ -309,7 +309,7 @@ L10 (Output) → Deliver decision with reasoning
 | Document | Update |
 |----------|--------|
 | `MASTER_PATENT_CAPABILITIES_INVENTORY.md` | Add Phase 18 section |
-| `BAIS_BRAIN_ARCHITECTURE.md` | Add LLM Proof Enforcement layer detail |
+| `BASE_BRAIN_ARCHITECTURE.md` | Add LLM Proof Enforcement layer detail |
 | `README.md` | Add clinical report capability |
 
 ### New Inventions to Register
@@ -339,7 +339,7 @@ L10 (Output) → Deliver decision with reasoning
 
 ## SUMMARY
 
-This enhancement transforms BAIS from pattern-based verification to LLM-enforced proof analysis. The key changes:
+This enhancement transforms BASE from pattern-based verification to LLM-enforced proof analysis. The key changes:
 
 1. **LLM MUST show work** - No acceptance without reasoning
 2. **Clinical categories** - Explicit status for every output

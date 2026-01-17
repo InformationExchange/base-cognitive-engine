@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v47.0
+BASE Cognitive Governance Engine v47.0
 API Gateway with AI + Pattern + Learning
 
 Phase 47: API Infrastructure
@@ -286,7 +286,7 @@ class EnhancedAPIGateway:
         logger.info("[Gateway] Enhanced API Gateway initialized")
     
     def _register_default_routes(self):
-        """Register default BAIS routes."""
+        """Register default BASE routes."""
         default_routes = [
             Route("/api/evaluate", "evaluate_handler", ["POST"]),
             Route("/api/audit", "audit_handler", ["GET", "POST"]),

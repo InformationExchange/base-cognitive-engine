@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.0
+BASE Cognitive Governance Engine v16.0
 Behavioral Bias Detector - All 4 Types
 
 Per PPA 3, Inventions 2-5:
@@ -405,7 +405,7 @@ class ReinforcementImpairmentTracker:
     """
     
     def __init__(self, storage_path: Path = None):
-        self.storage_path = storage_path or Path("/data/bais/reinforcement.json")
+        self.storage_path = storage_path or Path("/data/base/reinforcement.json")
         
         # Outcome history
         self.outcomes: deque = deque(maxlen=1000)
@@ -615,7 +615,7 @@ class BehavioralBiasDetector:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if learning_path is None:
             import tempfile
-            learning_path = Path(tempfile.mkdtemp(prefix="bais_behavioral_"))
+            learning_path = Path(tempfile.mkdtemp(prefix="base_behavioral_"))
         self.learning_path = learning_path
         self.pattern_matcher = LearnedPatternMatcher(
             self.learning_path / "behavioral_patterns.json"

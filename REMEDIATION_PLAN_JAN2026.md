@@ -1,15 +1,15 @@
-# BAIS Remediation Plan: Enforcement & Learning Completion
+# BASE Remediation Plan: Enforcement & Learning Completion
 
 **Version:** 1.0  
 **Date:** January 3, 2026  
-**Target:** Fix PARTIAL items from BAIS effectiveness audit  
+**Target:** Fix PARTIAL items from BASE effectiveness audit  
 **Estimated Effort:** 8-12 hours
 
 ---
 
 ## Executive Summary
 
-This plan addresses the two PARTIAL categories from the BAIS effectiveness audit:
+This plan addresses the two PARTIAL categories from the BASE effectiveness audit:
 
 | Category | Current State | Target State | Effort |
 |----------|---------------|--------------|--------|
@@ -33,7 +33,7 @@ EnforcementLoop Status:
 ├── learn_from_feedback(): ❌ Missing
 ├── serialize_state(): ❌ Missing
 ├── deserialize_state(): ❌ Missing
-└── Integration with BAISv2Orchestrator: ⚠️ Partial
+└── Integration with BASEv2Orchestrator: ⚠️ Partial
 ```
 
 ### 1.2 Enforcement Tasks
@@ -44,7 +44,7 @@ EnforcementLoop Status:
 | **E2** | Add `learn_from_feedback()` to EnforcementLoop | HIGH | 30 min |
 | **E3** | Add `serialize_state()` / `deserialize_state()` | MEDIUM | 30 min |
 | **E4** | Fix GovernanceOutput instantiation | HIGH | 30 min |
-| **E5** | Complete BAISv2Orchestrator integration | HIGH | 1 hour |
+| **E5** | Complete BASEv2Orchestrator integration | HIGH | 1 hour |
 | **E6** | Add enforcement loop unit tests | MEDIUM | 1 hour |
 
 ### 1.3 Enforcement Implementation Details
@@ -130,7 +130,7 @@ def create_empty(cls) -> 'GovernanceOutput':
     """Create an empty GovernanceOutput with defaults."""
     return cls(
         request_id=str(uuid.uuid4()),
-        mode=BAISMode.AUDIT_ONLY,
+        mode=BASEMode.AUDIT_ONLY,
         status=OutputStatus.PENDING,
         action_required=ActionRequired.NONE,
         original_query="",
@@ -177,7 +177,7 @@ All modules must implement these 5 methods:
 
 ```python
 class LearningInterface(Protocol):
-    """Standard learning interface for all BAIS modules."""
+    """Standard learning interface for all BASE modules."""
     
     def record_outcome(self, outcome: Dict[str, Any]) -> None:
         """Record an outcome for this module's operation."""
@@ -202,7 +202,7 @@ class LearningInterface(Protocol):
 
 ### 2.3 Learning Tasks by Module
 
-#### Phase L1: BAIS v2.0 Modules (9 modules)
+#### Phase L1: BASE v2.0 Modules (9 modules)
 
 | Module | Missing Methods | Effort |
 |--------|-----------------|--------|
@@ -327,7 +327,7 @@ class ModuleName:
 |-------|-------|----------|------------|
 | **Phase 1** | E4 (Fix GovernanceOutput) | 30 min | None |
 | **Phase 2** | E1-E3 (EnforcementLoop learning) | 1.5 hours | Phase 1 |
-| **Phase 3** | E5 (BAISv2Orchestrator integration) | 1 hour | Phase 2 |
+| **Phase 3** | E5 (BASEv2Orchestrator integration) | 1 hour | Phase 2 |
 | **Phase 4** | L1 (v2.0 module learning) | 3.5 hours | Phase 1 |
 | **Phase 5** | L2 (original module learning) | 3.5 hours | Phase 4 |
 | **Phase 6** | E6 + Testing | 1 hour | All above |
@@ -373,7 +373,7 @@ def verify_module(module_path: str, class_name: str) -> Dict:
 | Modules with 5/5 learning | 3 (12.5%) | 24 (100%) |
 | EnforcementLoop complete | No | Yes |
 | GovernanceOutput instantiates | No | Yes |
-| BAISv2Orchestrator integrated | Partial | Full |
+| BASEv2Orchestrator integrated | Partial | Full |
 | All unit tests pass | N/A | 100% |
 
 ---
@@ -412,9 +412,9 @@ output = GovernanceOutput.create_empty()  # Should work
 5. Implement `serialize_state()`
 6. Implement `deserialize_state()`
 
-### Task E5: Complete BAISv2Orchestrator Integration
+### Task E5: Complete BASEv2Orchestrator Integration
 
-**File:** `src/core/bais_v2_orchestrator.py`
+**File:** `src/core/base_v2_orchestrator.py`
 
 **Changes:**
 1. Ensure all v2.0 components are wired
@@ -442,11 +442,11 @@ output = GovernanceOutput.create_empty()  # Should work
 | Test | Description |
 |------|-------------|
 | `test_enforcement_loop_integration` | Full enforcement cycle |
-| `test_bais_v2_orchestrator` | Complete governance flow |
+| `test_base_v2_orchestrator` | Complete governance flow |
 | `test_mode_switching` | Switch between AUDIT/ENFORCE/ASSIST |
 | `test_learning_persistence` | Save/load learning state |
 
-### 5.3 BAIS Self-Test
+### 5.3 BASE Self-Test
 
 After completion, run:
 ```bash
@@ -478,7 +478,7 @@ If issues arise:
 1. **Phase 1-3 Issues:** Revert `governance_output.py`, `enforcement_loop.py`
 2. **Phase 4 Issues:** Revert individual v2.0 module files
 3. **Phase 5 Issues:** Revert individual original module files
-4. **Integration Issues:** Check `bais_v2_orchestrator.py` wiring
+4. **Integration Issues:** Check `base_v2_orchestrator.py` wiring
 
 Git commands:
 ```bash
@@ -498,5 +498,5 @@ git stash pop  # Restore other changes
 ---
 
 *Plan generated: January 3, 2026*
-*Based on BAIS Effectiveness Audit results*
+*Based on BASE Effectiveness Audit results*
 

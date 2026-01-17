@@ -1,5 +1,5 @@
 """
-BAIS Domain-Agnostic Proof Engine (NOVEL-52)
+BASE Domain-Agnostic Proof Engine (NOVEL-52)
 
 Core proof validation engine that works across ALL industries.
 NOT pattern-specific - uses AI reasoning to validate evidence.
@@ -10,7 +10,7 @@ Architecture:
 - Enforcement: Forces LLM work completion
 
 Brain Layer: 7 (Executive Control - Decision Making)
-Patent Alignment: Novel invention extending BAIS governance
+Patent Alignment: Novel invention extending BASE governance
 """
 
 from dataclasses import dataclass, field
@@ -114,7 +114,7 @@ class IndustryPlugin(Protocol):
 
 class DomainAgnosticProofEngine:
     """
-    Core BAIS proof validation engine.
+    Core BASE proof validation engine.
     
     NOT pattern-specific. Uses AI reasoning to:
     1. Parse claims semantically

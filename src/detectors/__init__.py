@@ -1,5 +1,5 @@
 """
-BAIS Detectors - Phase 2 Implementation
+BASE Detectors - Phase 2 Implementation
 
 ML-based and pattern-learning detectors:
 - GroundingDetector: Semantic grounding verification

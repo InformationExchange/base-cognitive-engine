@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v33.0
+BASE Cognitive Governance Engine v33.0
 Counterfactual Reasoning & Explanation Generation
 
 Phase 33: Addresses PPA2-C1-28, PPA2-C1-29, PPA3-Comp1

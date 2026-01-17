@@ -1,6 +1,6 @@
 """
-BAIS Enhancement Executor
-Uses BAIS to identify gaps and implement fixes
+BASE Enhancement Executor
+Uses BASE to identify gaps and implement fixes
 """
 
 import sys
@@ -26,7 +26,7 @@ def enhance_theory_of_mind():
     
     # Find MANIPULATION_PATTERNS and add new patterns
     new_patterns = '''
-        # BAIS Enhancement: Subtle manipulation patterns (added by BAIS self-improvement)
+        # BASE Enhancement: Subtle manipulation patterns (added by BASE self-improvement)
         'hidden_agenda': [
             r'\\btrust\\s+me\\b',
             r'\\bjust\\s+between\\s+(?:us|you\\s+and\\s+me)\\b',
@@ -106,7 +106,7 @@ def enhance_query_analyzer():
     
     # Add new patterns for obfuscation detection
     new_injection_patterns = '''
-        # BAIS Enhancement: Character obfuscation patterns
+        # BASE Enhancement: Character obfuscation patterns
         (r'[\\u0400-\\u04FF]', 'Cyrillic character obfuscation', 0.7),
         (r'[\\u0370-\\u03FF]', 'Greek character obfuscation', 0.7),
         (r'[\\u2000-\\u206F]', 'Unicode whitespace manipulation', 0.6),
@@ -161,7 +161,7 @@ def enhance_world_models():
     
     # Add more prediction patterns
     new_prediction_patterns = '''
-        # BAIS Enhancement: Expanded prediction markers
+        # BASE Enhancement: Expanded prediction markers
         r'\\bultimately\\b',
         r'\\binevitably\\b',
         r'\\beventually\\b',
@@ -210,7 +210,7 @@ def enhance_neurosymbolic():
     
     # Add semantic contradiction patterns
     new_contradiction_patterns = '''
-        # BAIS Enhancement: Semantic contradiction patterns
+        # BASE Enhancement: Semantic contradiction patterns
         (r'\\bboth\\s+(?:[\\w\\s]+)\\s+and\\s+(?:not|never)\\s+\\1\\b',
          'Direct semantic contradiction', 0.9),
         (r'\\balways\\b.*\\bnever\\b|\\bnever\\b.*\\balways\\b',
@@ -237,7 +237,7 @@ def enhance_neurosymbolic():
         if insert_marker in content:
             idx = content.find(insert_marker)
             new_section = f'''
-# BAIS Enhancement: Semantic contradiction detection
+# BASE Enhancement: Semantic contradiction detection
 SEMANTIC_CONTRADICTION_PATTERNS = [
 {new_contradiction_patterns}
 ]
@@ -414,9 +414,9 @@ if __name__ == "__main__":
 
 
 def main():
-    """Execute all BAIS-guided enhancements."""
+    """Execute all BASE-guided enhancements."""
     print("=" * 70)
-    print("BAIS ENHANCEMENT EXECUTOR")
+    print("BASE ENHANCEMENT EXECUTOR")
     print("Implementing improvements based on failure analysis")
     print("=" * 70)
     

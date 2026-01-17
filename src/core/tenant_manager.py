@@ -1,5 +1,5 @@
 """
-BAIS Tenant Manager
+BASE Tenant Manager
 
 Manages multi-tenant operations including:
 - Tenant registration and authentication
@@ -117,7 +117,7 @@ TIER_LIMITS = {
 
 class TenantManager:
     """
-    Manages multi-tenant operations for BAIS.
+    Manages multi-tenant operations for BASE.
     
     In production, this would interface with PostgreSQL.
     For development, uses in-memory storage with file persistence.
@@ -245,7 +245,7 @@ class TenantManager:
     
     def _generate_api_key(self) -> str:
         """Generate a new API key."""
-        return f"bais_{secrets.token_hex(24)}"
+        return f"base_{secrets.token_hex(24)}"
     
     def _generate_tenant_id(self) -> str:
         """Generate a new tenant ID."""

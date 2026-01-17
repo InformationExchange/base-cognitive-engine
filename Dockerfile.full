@@ -1,4 +1,4 @@
-# BAIS Cognitive Governance Engine v16.2
+# BASE Cognitive Governance Engine v16.2
 # FULL Mode Dockerfile (ML-based)
 # Neural embeddings + NLI, ~90% accuracy
 # Image size: ~4GB
@@ -9,7 +9,7 @@ FROM python:3.11-slim
 LABEL maintainer="Invitas"
 LABEL version="16.2.0"
 LABEL mode="full"
-LABEL description="BAIS Cognitive Governance Engine - FULL Mode (ML)"
+LABEL description="BASE Cognitive Governance Engine - FULL Mode (ML)"
 
 # Set working directory
 WORKDIR /app
@@ -39,11 +39,11 @@ COPY src/ ./src/
 # Set Python path
 ENV PYTHONPATH=/app/src
 
-# Set BAIS mode
-ENV BAIS_MODE=full
+# Set BASE mode
+ENV BASE_MODE=full
 
 # Create data directory
-RUN mkdir -p /data/bais
+RUN mkdir -p /data/base
 
 # Expose port
 EXPOSE 8090

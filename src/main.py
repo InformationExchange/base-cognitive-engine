@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 Main Entry Point - Phase 4
 
 Production-ready FastAPI application with full integration.
@@ -15,7 +15,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # Environment setup
-DATA_DIR = Path(os.environ.get('BAIS_DATA_DIR', '/data/bais'))
+DATA_DIR = Path(os.environ.get('BASE_DATA_DIR', '/data/base'))
 LLM_API_KEY = os.environ.get('XAI_API_KEY', '')
 
 
@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
     """Application lifespan manager."""
     # Startup
     print("=" * 60)
-    print("BAIS Cognitive Governance Engine v16.2")
+    print("BASE Cognitive Governance Engine v16.2")
     print("=" * 60)
     
     # Ensure data directory exists
@@ -41,12 +41,12 @@ async def lifespan(app: FastAPI):
     yield
     
     # Shutdown
-    print("Shutting down BAIS engine...")
+    print("Shutting down BASE engine...")
 
 
 # Create FastAPI app
 app = FastAPI(
-    title="Invitas BAIS Cognitive Governance Engine",
+    title="Invitas BASE Cognitive Governance Engine",
     description="""
     Production-ready AI governance engine with full patent compliance.
     
@@ -83,7 +83,7 @@ app.include_router(router)
 @app.get("/ping")
 async def ping():
     """Simple ping endpoint for load balancer health checks."""
-    return {"status": "ok", "service": "bais"}
+    return {"status": "ok", "service": "base"}
 
 
 if __name__ == "__main__":

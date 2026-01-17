@@ -16,7 +16,7 @@ from core.learning_integrator import LearningIntegrator, EvaluationFeedback
 def run_learning_evaluation():
     """Run evaluation with learning enabled."""
     print("=" * 80)
-    print("BAIS LEARNING-ENABLED EVALUATION")
+    print("BASE LEARNING-ENABLED EVALUATION")
     print("Thresholds will adapt based on results")
     print("=" * 80)
     
@@ -50,13 +50,13 @@ def run_learning_evaluation():
     incorrect = 0
     
     for i, r in enumerate(results):
-        # Determine if BAIS made the right call
-        # If score >= 70 and issues found, BAIS was correct
-        # If score < 70 and no issues found, BAIS missed something
+        # Determine if BASE made the right call
+        # If score >= 70 and issues found, BASE was correct
+        # If score < 70 and no issues found, BASE missed something
         
         score = r['effectiveness_score']
-        issues = r.get('bais_issues_found', 0)
-        blocked = r.get('bais_would_block', False)
+        issues = r.get('base_issues_found', 0)
+        blocked = r.get('base_would_block', False)
         
         # Ground truth: higher score = more correct
         ground_truth_correct = score >= 60 or blocked
@@ -128,12 +128,12 @@ def run_learning_evaluation():
     # Check which domains need attention
     for domain, threshold in final_thresholds.items():
         if threshold < initial_thresholds.get(domain, 50.0) - 1:
-            print(f"  ⚠️ {domain}: Threshold lowered - BAIS is missing issues in this domain")
+            print(f"  ⚠️ {domain}: Threshold lowered - BASE is missing issues in this domain")
         elif threshold > initial_thresholds.get(domain, 50.0) + 1:
-            print(f"  ✓ {domain}: Threshold raised - BAIS is performing well")
+            print(f"  ✓ {domain}: Threshold raised - BASE is performing well")
     
-    # BAIS recommendations based on learning
-    print("\n[6] BAIS-RECOMMENDED ENHANCEMENTS (Based on Learning)")
+    # BASE recommendations based on learning
+    print("\n[6] BASE-RECOMMENDED ENHANCEMENTS (Based on Learning)")
     print("-" * 60)
     
     # Find domains where we're underperforming

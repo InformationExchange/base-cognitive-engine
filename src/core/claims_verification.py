@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine - Claims Verification System
+BASE Cognitive Governance Engine - Claims Verification System
 Phase G3: Complete verification system for all 309 claims
 
 This module provides:
@@ -1237,7 +1237,7 @@ class ClaimsVerificationRegistry:
                 invention_id="NOVEL-21",
                 category=ClaimCategory.CALIBRATION,
                 priority=ClaimPriority.CRITICAL,
-                claim_text="Self-awareness loop for BAIS error detection",
+                claim_text="Self-awareness loop for BASE error detection",
                 verification_method="core.self_awareness.SelfAwarenessLoop.check",
                 expected_behavior="Returns self-check result"
             ),

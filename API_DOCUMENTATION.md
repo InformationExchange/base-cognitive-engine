@@ -1,18 +1,18 @@
-# BAIS Cognitive Governance Engine - API Documentation
+# BASE Cognitive Governance Engine - API Documentation
 
 **Version:** 29.0.0  
 **Last Updated:** December 29, 2025
 
 ## Overview
 
-The BAIS (Bias-Aware Intelligence System) Cognitive Governance Engine provides AI governance, bias detection, and response quality assurance for LLM outputs.
+The BASE (Bias-Aware Intelligence System) Cognitive Governance Engine provides AI governance, bias detection, and response quality assurance for LLM outputs.
 
 ---
 
 ## Base URL
 
 - **Development:** `http://localhost:8000`
-- **Production:** `https://api.bais.io` (configured per deployment)
+- **Production:** `https://api.base.io` (configured per deployment)
 
 ---
 
@@ -90,21 +90,21 @@ Prometheus metrics endpoint.
 
 **Response (text/plain):**
 ```
-# HELP bais_uptime_seconds Uptime of the BAIS service
-# TYPE bais_uptime_seconds gauge
-bais_uptime_seconds 3600.5
+# HELP base_uptime_seconds Uptime of the BASE service
+# TYPE base_uptime_seconds gauge
+base_uptime_seconds 3600.5
 
-# HELP bais_info BAIS service information
-# TYPE bais_info gauge
-bais_info{version="29.0.0",environment="production"} 1
+# HELP base_info BASE service information
+# TYPE base_info gauge
+base_info{version="29.0.0",environment="production"} 1
 
-# HELP bais_engine_ready Whether the BAIS engine is ready
-# TYPE bais_engine_ready gauge
-bais_engine_ready 1
+# HELP base_engine_ready Whether the BASE engine is ready
+# TYPE base_engine_ready gauge
+base_engine_ready 1
 
-# HELP bais_providers_available Number of available LLM providers
-# TYPE bais_providers_available gauge
-bais_providers_available 3
+# HELP base_providers_available Number of available LLM providers
+# TYPE base_providers_available gauge
+base_providers_available 3
 ```
 
 ---

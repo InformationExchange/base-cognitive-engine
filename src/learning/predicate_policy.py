@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.4
+BASE Cognitive Governance Engine v16.4
 Configurable Predicate-Based Acceptance Policy
 
 PPA-1 Invention 21: FULL IMPLEMENTATION
@@ -308,7 +308,7 @@ class PredicatePolicyEngine:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_policy_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_policy_"))
             storage_path = temp_dir / "policies.json"
         self.storage_path = storage_path
         

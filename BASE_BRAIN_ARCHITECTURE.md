@@ -1,4 +1,4 @@
-# BAIS BRAIN ARCHITECTURE
+# BASE BRAIN ARCHITECTURE
 ## Mapping AI Governance Inventions to Human Cognitive Functions
 
 **Version:** 3.1.0  
@@ -11,41 +11,41 @@
 
 ## MCP CURSOR INTEGRATION (January 11, 2026)
 
-The BAIS cognitive architecture is now accessible through **12 MCP tools** in Cursor IDE:
+The BASE cognitive architecture is now accessible through **12 MCP tools** in Cursor IDE:
 
 ### Tier 1: Always-On (Every Response)
 | MCP Tool | Brain Layer | Inventions Invoked |
 |----------|-------------|-------------------|
-| `bais_audit_response` | All Layers | PPA1-Inv1-4, NOVEL-1, PPA3-Inv2 |
-| `bais_check_query` | Layer 1 (Input) | NOVEL-9, Phase 37 |
+| `base_audit_response` | All Layers | PPA1-Inv1-4, NOVEL-1, PPA3-Inv2 |
+| `base_check_query` | Layer 1 (Input) | NOVEL-9, Phase 37 |
 
 ### Tier 2: On-Demand
 | MCP Tool | Brain Layer | Inventions Invoked |
 |----------|-------------|-------------------|
-| `bais_improve_response` | Layer 6 (Improvement) | NOVEL-20, UP5 |
-| `bais_verify_completion` | Layer 9 (Evidence) | NOVEL-40, NOVEL-3 |
-| `bais_analyze_reasoning` | Layer 5 (Reasoning) | NOVEL-14, NOVEL-15 |
+| `base_improve_response` | Layer 6 (Improvement) | NOVEL-20, UP5 |
+| `base_verify_completion` | Layer 9 (Evidence) | NOVEL-40, NOVEL-3 |
+| `base_analyze_reasoning` | Layer 5 (Reasoning) | NOVEL-14, NOVEL-15 |
 
 ### Tier 3: High-Stakes
 | MCP Tool | Brain Layer | Inventions Invoked |
 |----------|-------------|-------------------|
-| `bais_multi_track_analyze` | Layer 8 (Challenge) | NOVEL-43, NOVEL-23 |
-| `bais_full_governance` | ALL 10 Layers | ALL 86 Inventions |
-| `bais_enforce_completion` | Layer 9 (Evidence) | NOVEL-40, NOVEL-41 |
+| `base_multi_track_analyze` | Layer 8 (Challenge) | NOVEL-43, NOVEL-23 |
+| `base_full_governance` | ALL 10 Layers | ALL 86 Inventions |
+| `base_enforce_completion` | Layer 9 (Evidence) | NOVEL-40, NOVEL-41 |
 
 ### Context Window Strategy
 - Tier 1: ~7KB (automatic)
 - Tier 2: 0-13KB (as needed)
 - Tier 3: 0-24KB (critical domains)
-- **Max BAIS Usage:** 44KB (within Claude's budget)
+- **Max BASE Usage:** 44KB (within Claude's budget)
 
 ---
 
-## BAIS v2.0 ARCHITECTURE: TASK COMPLETION ENFORCEMENT (January 3, 2026)
+## BASE v2.0 ARCHITECTURE: TASK COMPLETION ENFORCEMENT (January 3, 2026)
 
 ### Executive Summary
 
-BAIS v2.0 represents a fundamental shift from **suggesting corrections** to **forcing completion**. This addresses the critical gap where LLMs (including Claude) could acknowledge issues but not fix them.
+BASE v2.0 represents a fundamental shift from **suggesting corrections** to **forcing completion**. This addresses the critical gap where LLMs (including Claude) could acknowledge issues but not fix them.
 
 ### New Inventions Added (NOVEL-40 to NOVEL-48)
 
@@ -105,7 +105,7 @@ User Request
 [LLM Generates Response]
     │
     ▼
-[BAIS Evaluates with EXECUTION]
+[BASE Evaluates with EXECUTION]
     │
     ├──► VERIFIED → Return Success
     │
@@ -122,7 +122,7 @@ User Request
 
 ### Critical Safety Check (Bug Fix)
 
-BAIS v2.0 includes a critical safety check that prevents `DIRECT_ASSISTANCE` mode from masking failures:
+BASE v2.0 includes a critical safety check that prevents `DIRECT_ASSISTANCE` mode from masking failures:
 
 ```python
 # In _handle_direct_assistance():
@@ -134,11 +134,11 @@ else:
     return ENHANCED  # Safe to polish
 ```
 
-### BAIS v2.0 Verification
+### BASE v2.0 Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **New Inventions** | 9 (NOVEL-40 to NOVEL-48) |
 | **Modes Tested** | 3/3 |
 | **Enforcement Loop Verified** | ✅ |
@@ -201,11 +201,11 @@ User Input ─────────────► [Injection Detector]
          (risk≥0.7)           (risk≥0.4)             (risk<0.4)
 ```
 
-### Phase 37 BAIS Verification
+### Phase 37 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 92.5% |
 | **Clinical Status** | truly_working |
 
@@ -263,11 +263,11 @@ Governance Decision ─────► [Confidence Check]
                               [Update Calibration]
 ```
 
-### Phase 36 BAIS Verification
+### Phase 36 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 97.5% |
 | **LLM Proof** | 95% |
 
@@ -325,11 +325,11 @@ Participant Nodes ─────► [Local Governance Updates]
    [Global Model v+1]
 ```
 
-### Phase 35 BAIS Verification
+### Phase 35 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 95% |
 | **LLM Proof** | 90% |
 
@@ -384,11 +384,11 @@ Input Signals ─────► [Modality Classification]
               [Context & Session Tracking]
 ```
 
-### Phase 34 BAIS Verification
+### Phase 34 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 92.5% |
 | **LLM Proof** | 85% |
 
@@ -450,11 +450,11 @@ Decision Made ─────► [Feature Attribution] ─────► Top Co
               [Human-Readable Summary]
 ```
 
-### Phase 33 BAIS Verification
+### Phase 33 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 92.5% |
 | **LLM Proof** | 85% |
 | **Clinical Status** | truly_working |
@@ -519,11 +519,11 @@ Query Input ─────► [Environment Detector] ─────► Policy 
            OPEN      THROTTLED      BLOCKED
 ```
 
-### Phase 32 BAIS Verification
+### Phase 32 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 97.5% |
 | **LLM Proof** | 95% |
 | **Clinical Status** | truly_working |
@@ -579,11 +579,11 @@ Signal Stream ─────► [Rolling Window] ─────► [Statistics
               Confirm        Wait
 ```
 
-### Phase 31 BAIS Verification
+### Phase 31 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 92.95% |
 | **LLM Proof** | 95% |
 
@@ -633,11 +633,11 @@ If Drift Detected:
     └──► [Certificates] ──► Statistical Guarantees
 ```
 
-### Phase 30 BAIS Verification
+### Phase 30 BASE Verification
 
 | Metric | Value |
 |--------|-------|
-| **BAIS Verdict** | PROVEN |
+| **BASE Verdict** | PROVEN |
 | **Confidence** | 97.5% |
 | **LLM Proof** | 95% |
 | **Clinical Status** | truly_working |
@@ -667,7 +667,7 @@ Client Request
     │                    ─────► /startup (Startup)
     │                    ─────► /metrics (Prometheus)
     ▼
-[BAIS API Server]
+[BASE API Server]
     │
     ├──► PostgreSQL (State)
     ├──► Redis (Cache)
@@ -686,10 +686,10 @@ Client Request
 
 | Metric | Type | Description |
 |--------|------|-------------|
-| `bais_uptime_seconds` | Gauge | Service uptime |
-| `bais_info` | Gauge | Version and environment |
-| `bais_engine_ready` | Gauge | Engine initialization status |
-| `bais_providers_available` | Gauge | Number of LLM providers |
+| `base_uptime_seconds` | Gauge | Service uptime |
+| `base_info` | Gauge | Version and environment |
+| `base_engine_ready` | Gauge | Engine initialization status |
+| `base_providers_available` | Gauge | Number of LLM providers |
 
 ---
 
@@ -752,7 +752,7 @@ Fused Signal (raw score) → [CCP Calibrator]
 | Clean response | 0.850 | 0.733 | 0.00 | Calibrated down |
 | Medical domain | 0.500 | 0.549 | 0.00 | Wider uncertainty |
 
-**BAIS Verification:** 92.5% confidence, verdict PROVEN.
+**BASE Verification:** 92.5% confidence, verdict PROVEN.
 
 ---
 
@@ -1006,7 +1006,7 @@ Claim → LLM Proof Analysis → Clinical Classification → Audit Storage
 | Metric | Value |
 |--------|-------|
 | **Adversarial Scenarios** | 11 (from REAL_LLM_FAILURE_PATTERNS.md) |
-| **BAIS Win Rate** | 100% |
+| **BASE Win Rate** | 100% |
 | **Correct Detections** | 100% |
 | **Baseline Detection** | 45% |
 | **Enhanced Detection** | 100% |
@@ -1030,13 +1030,13 @@ Claim → LLM Proof Analysis → Clinical Classification → Audit Storage
 |--------|-------|-------|
 | **Total Claims Tested** | 300 | All claims verified |
 | **Adversarial Tests** | 11 | Real failure patterns |
-| **BAIS Win Rate** | 100% | Track B won every test |
+| **BASE Win Rate** | 100% | Track B won every test |
 | **Inventions Exercised per Test** | 4-6 | Consistent orchestration |
-| **Average Issues Found by BAIS** | 4.2 | Robust detection |
+| **Average Issues Found by BASE** | 4.2 | Robust detection |
 
 ### Layer Verification by Patent
 
-| Layer | Patent Coverage | Verified % | BAIS Wins |
+| Layer | Patent Coverage | Verified % | BASE Wins |
 |-------|-----------------|------------|-----------|
 | Perception | PPA1, UP1, UP2 | 75% | 100% |
 | Behavioral | PPA3-Inv2, NOVEL-1, **PPA2-Big5** | 100% | 100% |
@@ -1051,9 +1051,9 @@ Claim → LLM Proof Analysis → Clinical Classification → Audit Storage
 
 ## EXECUTIVE SUMMARY
 
-This document maps the BAIS invention suite to the human brain's cognitive architecture. Just as the human brain has specialized regions working in concert, BAIS has invention families that mirror these functions to create more effective AI cognition.
+This document maps the BASE invention suite to the human brain's cognitive architecture. Just as the human brain has specialized regions working in concert, BASE has invention families that mirror these functions to create more effective AI cognition.
 
-| Human Brain Region | BAIS Equivalent | Inventions | Function | A/B Test Status |
+| Human Brain Region | BASE Equivalent | Inventions | Function | A/B Test Status |
 |-------------------|-----------------|------------|----------|-----------------|
 | **Sensory Cortex** | Perception Layer | 8 | Raw signal detection | ✅ Verified |
 | **Prefrontal Cortex** | Reasoning Layer | 12 | Logical analysis | ✅ Verified |
@@ -1122,11 +1122,11 @@ Claim Extracted → Evidence Requirements → Active Retrieval
 
 ---
 
-## THE BAIS COGNITIVE ARCHITECTURE
+## THE BASE COGNITIVE ARCHITECTURE
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────┐
-│                         BAIS COGNITIVE BRAIN                                │
+│                         BASE COGNITIVE BRAIN                                │
 ├────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐                   │
@@ -1164,7 +1164,7 @@ Claim Extracted → Evidence Requirements → Active Retrieval
 
 **Human Function:** The sensory cortex receives and processes raw sensory information - sight, sound, touch.
 
-**BAIS Function:** Receives LLM inputs/outputs and extracts signal features for downstream processing.
+**BASE Function:** Receives LLM inputs/outputs and extracts signal features for downstream processing.
 
 ### Inventions in This Layer
 
@@ -1205,7 +1205,7 @@ Query/Response → [PPA1-Inv1: Fusion] → Signal Vector
 
 **Human Function:** The prefrontal cortex handles executive functions - planning, decision-making, logical reasoning.
 
-**BAIS Function:** Analyzes perception signals using logical frameworks to reach conclusions.
+**BASE Function:** Analyzes perception signals using logical frameworks to reach conclusions.
 
 ### Inventions in This Layer
 
@@ -1250,7 +1250,7 @@ Perception Signals → [PPA1-Inv7: Reasoning Trees]
 
 **Human Function:** The limbic system processes emotions, motivations, and behavioral patterns.
 
-**BAIS Function:** Detects biases, manipulations, and emotionally-charged content that could compromise objectivity.
+**BASE Function:** Detects biases, manipulations, and emotionally-charged content that could compromise objectivity.
 
 ### Inventions in This Layer
 
@@ -1301,7 +1301,7 @@ Response Text → [PPA1-Inv2: Bias Modeling]
 
 **Human Function:** The hippocampus is critical for forming new memories and learning from experience.
 
-**BAIS Function:** Stores outcomes, learns patterns, and adapts thresholds based on experience.
+**BASE Function:** Stores outcomes, learns patterns, and adapts thresholds based on experience.
 
 ### Inventions in This Layer
 
@@ -1338,7 +1338,7 @@ Decision Outcome → [PPA1-Inv22: Feedback Loop]
 
 **Human Function:** The anterior cingulate cortex monitors for errors, conflicts, and deviations from expectations.
 
-**BAIS Function:** Detects when BAIS itself is making errors, being overconfident, or off-track.
+**BASE Function:** Detects when BASE itself is making errors, being overconfident, or off-track.
 
 ### Inventions in This Layer
 
@@ -1352,7 +1352,7 @@ Decision Outcome → [PPA1-Inv22: Feedback Loop]
 ### Self-Awareness Flow
 
 ```
-BAIS Response → [NOVEL-21: Self-Awareness Loop]
+BASE Response → [NOVEL-21: Self-Awareness Loop]
                         │
                         ├──▶ Fabrication Detection
                         ├──▶ Overconfidence Detection
@@ -1364,7 +1364,7 @@ BAIS Response → [NOVEL-21: Self-Awareness Loop]
 
 | Condition | Inventions Activated | Priority |
 |-----------|---------------------|----------|
-| BAIS generates content | NOVEL-21 | P0 |
+| BASE generates content | NOVEL-21 | P0 |
 | Confidence scores computed | PPA2-Comp6 | P0 |
 | Improvement attempted | NOVEL-21 verification | P0 |
 
@@ -1374,7 +1374,7 @@ BAIS Response → [NOVEL-21: Self-Awareness Loop]
 
 **Human Function:** The cerebellum fine-tunes motor outputs and coordinates smooth execution.
 
-**BAIS Function:** Refines and improves LLM responses by applying corrections and enhancements.
+**BASE Function:** Refines and improves LLM responses by applying corrections and enhancements.
 
 ### Inventions in This Layer
 
@@ -1411,7 +1411,7 @@ Issues Detected → [NOVEL-20: Response Improver]
 
 **Human Function:** The thalamus routes sensory information to appropriate cortical areas.
 
-**BAIS Function:** Routes signals to appropriate detectors and orchestrates the governance flow.
+**BASE Function:** Routes signals to appropriate detectors and orchestrates the governance flow.
 
 ### Inventions in This Layer
 
@@ -1452,7 +1452,7 @@ Input → [NOVEL-10: Smart Gate] → Risk Classification
 
 **Human Function:** The amygdala processes threats and triggers fear/caution responses.
 
-**BAIS Function:** Adversarially challenges claims to find weaknesses and verify safety.
+**BASE Function:** Adversarially challenges claims to find weaknesses and verify safety.
 
 ### Inventions in This Layer
 
@@ -1497,7 +1497,7 @@ High-Stakes Claim → [NOVEL-22: LLM Challenger]
 
 **Human Function:** The basal ganglia helps select actions based on learned reward patterns.
 
-**BAIS Function:** Verifies claims against evidence and validates completion states.
+**BASE Function:** Verifies claims against evidence and validates completion states.
 
 ### Inventions in This Layer
 
@@ -1567,7 +1567,7 @@ Response with Claims → [NOVEL-3: Claim Extraction]
 
 **Human Function:** The motor cortex executes planned actions as physical movements.
 
-**BAIS Function:** Generates the final governance decision and improved response.
+**BASE Function:** Generates the final governance decision and improved response.
 
 ### Inventions in This Layer
 
@@ -1627,7 +1627,7 @@ All Layer Signals → [Signal Fusion] → Accuracy Score
    └──▶ Verify claims against evidence
    
 7. ANTERIOR CINGULATE (Self-Awareness)
-   └──▶ Check if BAIS itself is making errors
+   └──▶ Check if BASE itself is making errors
    
 8. CEREBELLUM (Improvement) - if issues found
    └──▶ Generate and apply corrections
@@ -1662,7 +1662,7 @@ All Layer Signals → [Signal Fusion] → Accuracy Score
 
 ## ADAPTIVE LEARNING PATHWAYS
 
-### How BAIS Learns Like a Brain
+### How BASE Learns Like a Brain
 
 1. **Short-Term Adaptation** (Cerebellum)
    - Per-request improvements

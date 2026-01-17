@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v36.0
+BASE Cognitive Governance Engine v36.0
 Active Learning & Human-in-the-Loop Escalation
 
 Phase 36: Addresses PPA2-C1-33, PPA2-C1-34, PPA3-Comp4

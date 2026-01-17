@@ -1,23 +1,23 @@
 """
-BAIS MCP (Model Context Protocol) Server for Cursor Integration
+BASE MCP (Model Context Protocol) Server for Cursor Integration
 ================================================================
 Provides real-time governance of LLM outputs within Cursor IDE.
 
-This MCP server exposes BAIS capabilities as tools that Cursor can invoke
+This MCP server exposes BASE capabilities as tools that Cursor can invoke
 to govern Claude's responses in real-time.
 
 Usage:
 1. Add to Cursor MCP config:
    {
      "mcpServers": {
-       "bais-governance": {
+       "base-governance": {
          "command": "python",
          "args": ["/path/to/mcp_server.py"]
        }
      }
    }
 
-2. BAIS tools will be available for Claude to call during generation
+2. BASE tools will be available for Claude to call during generation
 """
 
 import asyncio
@@ -34,7 +34,7 @@ import logging
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 logging.basicConfig(level=logging.INFO, stream=sys.stderr)
-logger = logging.getLogger("BAIS.MCP")
+logger = logging.getLogger("BASE.MCP")
 
 # Import Phase 18 components
 try:
@@ -46,17 +46,17 @@ except ImportError:
     logger.warning("Phase 18 components not available")
 
 
-class BAISMCPServer:
+class BASEMCPServer:
     """
-    MCP Server providing BAIS governance tools to Cursor.
+    MCP Server providing BASE governance tools to Cursor.
     
     Tools provided:
-    - bais_audit_response: Audit an LLM response before delivery
-    - bais_check_query: Pre-check a query for risks
-    - bais_improve_response: Improve a response based on detected issues
-    - bais_verify_completion: Verify a completion claim is valid
-    - bais_get_statistics: Get governance statistics
-    - bais_ab_test: A/B test with real LLM (Grok)
+    - base_audit_response: Audit an LLM response before delivery
+    - base_check_query: Pre-check a query for risks
+    - base_improve_response: Improve a response based on detected issues
+    - base_verify_completion: Verify a completion claim is valid
+    - base_get_statistics: Get governance statistics
+    - base_ab_test: A/B test with real LLM (Grok)
     """
     
     # Use centralized model provider for API keys
@@ -106,8 +106,8 @@ class BAISMCPServer:
     def governance_wrapper(self):
         """Lazy load governance wrapper"""
         if self._governance_wrapper is None:
-            from integration.llm_governance_wrapper import BAISGovernanceWrapper
-            self._governance_wrapper = BAISGovernanceWrapper()
+            from integration.llm_governance_wrapper import BASEGovernanceWrapper
+            self._governance_wrapper = BASEGovernanceWrapper()
         return self._governance_wrapper
     
     @property
@@ -129,7 +129,7 @@ class BAISMCPServer:
         """Return list of available MCP tools"""
         return [
             {
-                "name": "bais_audit_response",
+                "name": "base_audit_response",
                 "description": "Audit an LLM response for bias, factual errors, manipulation, and false positives. Call this before delivering any response to ensure quality.",
                 "inputSchema": {
                     "type": "object",
@@ -152,7 +152,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_check_query",
+                "name": "base_check_query",
                 "description": "Pre-check a user query for manipulation, prompt injection, or dangerous requests before processing.",
                 "inputSchema": {
                     "type": "object",
@@ -166,7 +166,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_improve_response",
+                "name": "base_improve_response",
                 "description": "Improve a response by adding hedging, disclaimers, or corrections based on detected issues.",
                 "inputSchema": {
                     "type": "object",
@@ -185,7 +185,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_verify_completion",
+                "name": "base_verify_completion",
                 "description": "Verify that a completion claim is valid (not a false positive). Use this before claiming something is 'complete', '100%', or 'fully working'.",
                 "inputSchema": {
                     "type": "object",
@@ -204,7 +204,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_get_statistics",
+                "name": "base_get_statistics",
                 "description": "Get governance statistics for the current session.",
                 "inputSchema": {
                     "type": "object",
@@ -212,8 +212,8 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_ab_test",
-                "description": "A/B test a query with real LLM (Grok) to compare governed vs unmonitored responses. Use this to validate BAIS effectiveness.",
+                "name": "base_ab_test",
+                "description": "A/B test a query with real LLM (Grok) to compare governed vs unmonitored responses. Use this to validate BASE effectiveness.",
                 "inputSchema": {
                     "type": "object",
                     "properties": {
@@ -230,7 +230,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_govern_and_regenerate",
+                "name": "base_govern_and_regenerate",
                 "description": "Govern a response and return regeneration instructions if issues detected. Use this to get specific correction instructions that Claude should follow to regenerate an improved response. Returns 'regeneration_required: true' with a 'correction_prompt' if regeneration is needed.",
                 "inputSchema": {
                     "type": "object",
@@ -253,8 +253,8 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_ab_test_full",
-                "description": "Full A/B test with feedback cycle: evaluates original responses, enhances both, re-evaluates enhanced versions, and compares all 4 versions (Claude original, Claude enhanced, Grok original, Grok enhanced). Shows true BAIS improvement value.",
+                "name": "base_ab_test_full",
+                "description": "Full A/B test with feedback cycle: evaluates original responses, enhances both, re-evaluates enhanced versions, and compares all 4 versions (Claude original, Claude enhanced, Grok original, Grok enhanced). Shows true BASE improvement value.",
                 "inputSchema": {
                     "type": "object",
                     "properties": {
@@ -271,11 +271,11 @@ class BAISMCPServer:
                 }
             },
             # =====================================================================
-            # NEW TOOLS: Full BAIS Orchestration (Phase 50)
+            # NEW TOOLS: Full BASE Orchestration (Phase 50)
             # =====================================================================
             {
-                "name": "bais_multi_track_analyze",
-                "description": "NOVEL-43: Query multiple LLMs in parallel, evaluate each with BAIS, and return consensus recommendation. Use this for high-stakes decisions requiring verification across multiple AI perspectives.",
+                "name": "base_multi_track_analyze",
+                "description": "NOVEL-43: Query multiple LLMs in parallel, evaluate each with BASE, and return consensus recommendation. Use this for high-stakes decisions requiring verification across multiple AI perspectives.",
                 "inputSchema": {
                     "type": "object",
                     "properties": {
@@ -298,7 +298,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_analyze_reasoning",
+                "name": "base_analyze_reasoning",
                 "description": "NOVEL-14/15: Analyze reasoning structure to detect anchoring bias, selective reasoning, premature certainty, and missing alternatives. Use this to verify logical soundness of AI responses.",
                 "inputSchema": {
                     "type": "object",
@@ -317,7 +317,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_enforce_completion",
+                "name": "base_enforce_completion",
                 "description": "NOVEL-40/41: Enforce task completion with proof verification. Blocks completion claims until evidence is verified. Returns specific remediation if incomplete.",
                 "inputSchema": {
                     "type": "object",
@@ -340,8 +340,8 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_full_governance",
-                "description": "Run the COMPLETE BAIS pipeline with all 86 inventions. This is the most thorough analysis: multi-track comparison, reasoning analysis, enforcement loop, and iterative improvement until quality threshold is met.",
+                "name": "base_full_governance",
+                "description": "Run the COMPLETE BASE pipeline with all 86 inventions. This is the most thorough analysis: multi-track comparison, reasoning analysis, enforcement loop, and iterative improvement until quality threshold is met.",
                 "inputSchema": {
                     "type": "object",
                     "properties": {
@@ -372,9 +372,9 @@ class BAISMCPServer:
                     "required": ["query", "response"]
                 }
             },
-            # BAIS v2.0 Enforcement Tools
+            # BASE v2.0 Enforcement Tools
             {
-                "name": "bais_verify_code",
+                "name": "base_verify_code",
                 "description": "NOVEL-5: Verify code quality in 'vibe coding' scenarios. Detects: incomplete implementations (stubs, TODOs), syntax errors, security vulnerabilities, performance anti-patterns, and intent misalignment.",
                 "inputSchema": {
                     "type": "object",
@@ -397,7 +397,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_select_mode",
+                "name": "base_select_mode",
                 "description": "NOVEL-48: Select optimal governance mode based on query semantics. Returns recommended mode (AUDIT_ONLY, AUDIT_AND_REMEDIATE, DIRECT_ASSISTANCE) and reasoning.",
                 "inputSchema": {
                     "type": "object",
@@ -415,7 +415,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_harmonize_output",
+                "name": "base_harmonize_output",
                 "description": "PPA1-Inv9: Harmonize governance output for different platforms (CLI, API, MCP, Jupyter, Slack, VSCode). Ensures consistent presentation across environments.",
                 "inputSchema": {
                     "type": "object",
@@ -434,7 +434,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_realtime_assist",
+                "name": "base_realtime_assist",
                 "description": "NOVEL-46: Get real-time assistance suggestions for improving a response. Returns specific enhancements: overconfidence removal, disclaimer addition, partial completion handling.",
                 "inputSchema": {
                     "type": "object",
@@ -457,7 +457,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_check_evidence",
+                "name": "base_check_evidence",
                 "description": "NOVEL-53: Verify evidence claims in a response. Uses multi-track verification and returns validation status.",
                 "inputSchema": {
                     "type": "object",
@@ -478,7 +478,7 @@ class BAISMCPServer:
             # PHASE 2: Layer 1 - Sensory Cortex Tools
             # =====================================================================
             {
-                "name": "bais_ground_check",
+                "name": "base_ground_check",
                 "description": "PPA1-Inv1/UP1: Check response grounding against source documents. Detects hallucinations, unsupported claims, and RAG failures.",
                 "inputSchema": {
                     "type": "object",
@@ -497,7 +497,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_fact_check",
+                "name": "base_fact_check",
                 "description": "UP2: Verify factual accuracy of claims in a response. Detects contradictions, unverified claims, and factual errors.",
                 "inputSchema": {
                     "type": "object",
@@ -520,7 +520,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_temporal_check",
+                "name": "base_temporal_check",
                 "description": "PPA3-Inv1/PPA1-Inv4: Detect temporal biases including recency bias, anchoring bias, and hindsight bias.",
                 "inputSchema": {
                     "type": "object",
@@ -538,7 +538,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_behavioral_analysis",
+                "name": "base_behavioral_analysis",
                 "description": "PPA1-Inv11/14/18: Deep behavioral bias analysis including bias formation patterns, high-fidelity capture, and all 11 bias types.",
                 "inputSchema": {
                     "type": "object",
@@ -564,7 +564,7 @@ class BAISMCPServer:
             # PHASE 3: Layer 2 - Prefrontal Cortex Tools (Reasoning & Logic)
             # =====================================================================
             {
-                "name": "bais_contradiction_check",
+                "name": "base_contradiction_check",
                 "description": "PPA1-Inv8: Detect and resolve contradictions in response. Identifies self-contradicting statements and logical inconsistencies.",
                 "inputSchema": {
                     "type": "object",
@@ -582,7 +582,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_neurosymbolic",
+                "name": "base_neurosymbolic",
                 "description": "UP3/NOVEL-15: Hybrid neuro-symbolic reasoning. Detects logical fallacies, verifies formal logic, and applies symbolic reasoning.",
                 "inputSchema": {
                     "type": "object",
@@ -600,7 +600,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_world_model",
+                "name": "base_world_model",
                 "description": "NOVEL-16: Verify response against world model. Checks causal consistency, physical plausibility, and common sense reasoning.",
                 "inputSchema": {
                     "type": "object",
@@ -623,7 +623,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_creative_reasoning",
+                "name": "base_creative_reasoning",
                 "description": "NOVEL-17: Analyze creative/novel reasoning. Validates unconventional approaches while detecting unsound creativity.",
                 "inputSchema": {
                     "type": "object",
@@ -641,7 +641,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_multi_framework",
+                "name": "base_multi_framework",
                 "description": "PPA1-Inv19: Multi-framework convergence analysis. Analyzes response through multiple analytical frameworks.",
                 "inputSchema": {
                     "type": "object",
@@ -664,7 +664,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_predicate_check",
+                "name": "base_predicate_check",
                 "description": "PPA2-Comp4/Inv26: Conformal predicate and lexicographic gate check. Verifies must-pass predicates and policy compliance.",
                 "inputSchema": {
                     "type": "object",
@@ -691,7 +691,7 @@ class BAISMCPServer:
             # PHASE 4: Layer 3 - Limbic System Tools (Emotion & Personality)
             # =====================================================================
             {
-                "name": "bais_personality_analysis",
+                "name": "base_personality_analysis",
                 "description": "PPA2-Big5: OCEAN personality trait analysis. Detects agreeableness bias, extraversion patterns, and personality-driven responses.",
                 "inputSchema": {
                     "type": "object",
@@ -710,7 +710,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_knowledge_graph",
+                "name": "base_knowledge_graph",
                 "description": "PPA1-Inv6/UP4: Bias-aware knowledge graph query. Extracts entities, validates relationships, and detects knowledge inconsistencies.",
                 "inputSchema": {
                     "type": "object",
@@ -728,7 +728,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_adaptive_difficulty",
+                "name": "base_adaptive_difficulty",
                 "description": "PPA1-Inv12/NOVEL-4: Zone of Proximal Development analysis. Checks if response complexity matches user level.",
                 "inputSchema": {
                     "type": "object",
@@ -751,7 +751,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_theory_of_mind",
+                "name": "base_theory_of_mind",
                 "description": "NOVEL-14: Theory of mind analysis. Models user intent, knowledge state, and perspective for appropriate responses.",
                 "inputSchema": {
                     "type": "object",
@@ -772,7 +772,7 @@ class BAISMCPServer:
             # PHASE 5-7: Layers 4-6 Tools (Memory, Self-Awareness, Improvement)
             # =====================================================================
             {
-                "name": "bais_feedback_loop",
+                "name": "base_feedback_loop",
                 "description": "PPA1-Inv22: Record and process feedback. Updates learning based on outcome signals.",
                 "inputSchema": {
                     "type": "object",
@@ -795,7 +795,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_crisis_mode",
+                "name": "base_crisis_mode",
                 "description": "PPA2-Comp5: Crisis mode detection and override. Triggers emergency protocols for life-threatening or critical situations.",
                 "inputSchema": {
                     "type": "object",
@@ -814,7 +814,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_self_aware",
+                "name": "base_self_aware",
                 "description": "NOVEL-21: Self-awareness loop check. Evaluates if response acknowledges limitations and uncertainties appropriately.",
                 "inputSchema": {
                     "type": "object",
@@ -833,7 +833,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_calibrate",
+                "name": "base_calibrate",
                 "description": "PPA2-Comp6/9: Confidence calibration. Adjusts confidence scores based on evidence and domain-specific factors.",
                 "inputSchema": {
                     "type": "object",
@@ -856,7 +856,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_cognitive_enhance",
+                "name": "base_cognitive_enhance",
                 "description": "UP5: Cognitive enhancement. Applies cognitive improvements to enhance response quality.",
                 "inputSchema": {
                     "type": "object",
@@ -882,7 +882,7 @@ class BAISMCPServer:
             # PHASE 8-9: Layers 7-8 Tools (Orchestration & Challenge)
             # =====================================================================
             {
-                "name": "bais_smart_gate",
+                "name": "base_smart_gate",
                 "description": "NOVEL-10: Smart gate routing. Determines optimal analysis depth based on query risk and complexity.",
                 "inputSchema": {
                     "type": "object",
@@ -901,7 +901,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_triangulate",
+                "name": "base_triangulate",
                 "description": "NOVEL-6: Multi-source triangulation. Cross-verifies claims across multiple sources and perspectives.",
                 "inputSchema": {
                     "type": "object",
@@ -924,7 +924,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_challenge",
+                "name": "base_challenge",
                 "description": "NOVEL-22/23: LLM challenge. Adversarially challenges response claims using another LLM perspective.",
                 "inputSchema": {
                     "type": "object",
@@ -947,7 +947,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_human_review",
+                "name": "base_human_review",
                 "description": "PPA1-Inv20: Human review escalation. Determines if response requires human oversight.",
                 "inputSchema": {
                     "type": "object",
@@ -973,7 +973,7 @@ class BAISMCPServer:
             # PHASE 10: Layer 9 - Basal Ganglia Tools (Evidence)
             # =====================================================================
             {
-                "name": "bais_claim_evidence",
+                "name": "base_claim_evidence",
                 "description": "NOVEL-3/GAP-1: Claim-evidence alignment. Verifies that claims are supported by evidence.",
                 "inputSchema": {
                     "type": "object",
@@ -992,7 +992,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_audit_trail",
+                "name": "base_audit_trail",
                 "description": "PPA2-Comp7: Verifiable audit trail. Returns audit record for a governance decision.",
                 "inputSchema": {
                     "type": "object",
@@ -1006,10 +1006,10 @@ class BAISMCPServer:
                 }
             },
             # =====================================================================
-            # REMAINING BAIS v2.0 & ADVANCED TOOLS
+            # REMAINING BASE v2.0 & ADVANCED TOOLS
             # =====================================================================
             {
-                "name": "bais_skeptical_learn",
+                "name": "base_skeptical_learn",
                 "description": "NOVEL-45: Skeptical learning. Applies conservative learning with discounted labels for potentially unreliable feedback.",
                 "inputSchema": {
                     "type": "object",
@@ -1033,7 +1033,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_approval_gate",
+                "name": "base_approval_gate",
                 "description": "NOVEL-49: User approval gate. Manages approval workflows for high-stakes decisions.",
                 "inputSchema": {
                     "type": "object",
@@ -1057,7 +1057,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_functional_complete",
+                "name": "base_functional_complete",
                 "description": "NOVEL-50: Functional completeness enforcer. Verifies code/implementation is truly complete with 100% testing enforcement.",
                 "inputSchema": {
                     "type": "object",
@@ -1076,7 +1076,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_interface_check",
+                "name": "base_interface_check",
                 "description": "NOVEL-51: Interface compliance checker. Verifies method placement, init attributes, and interface compliance.",
                 "inputSchema": {
                     "type": "object",
@@ -1094,7 +1094,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_domain_proof",
+                "name": "base_domain_proof",
                 "description": "NOVEL-52: Domain-agnostic proof engine. Validates claims with industry-specific plugins.",
                 "inputSchema": {
                     "type": "object",
@@ -1118,7 +1118,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_plugins",
+                "name": "base_plugins",
                 "description": "NOVEL-54: Dynamic plugin system. Manages domain-specific plugins for specialized analysis.",
                 "inputSchema": {
                     "type": "object",
@@ -1142,7 +1142,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_federated",
+                "name": "base_federated",
                 "description": "PPA1-Inv3/13: Federated privacy-preserving learning. Manages privacy budget and federated convergence.",
                 "inputSchema": {
                     "type": "object",
@@ -1161,7 +1161,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_neuroplasticity",
+                "name": "base_neuroplasticity",
                 "description": "PPA1-Inv24/NOVEL-7: Bias evolution and neuroplasticity tracking. Monitors bias drift over time.",
                 "inputSchema": {
                     "type": "object",
@@ -1184,7 +1184,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_conversation",
+                "name": "base_conversation",
                 "description": "NOVEL-12: Conversational orchestrator. Manages multi-turn conversation state and context.",
                 "inputSchema": {
                     "type": "object",
@@ -1207,7 +1207,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_governance_rules",
+                "name": "base_governance_rules",
                 "description": "NOVEL-18: Governance rules engine. Query and manage governance rules.",
                 "inputSchema": {
                     "type": "object",
@@ -1231,7 +1231,7 @@ class BAISMCPServer:
                 }
             },
             {
-                "name": "bais_llm_registry",
+                "name": "base_llm_registry",
                 "description": "NOVEL-19: LLM registry. Manage and query available LLM providers.",
                 "inputSchema": {
                     "type": "object",
@@ -1265,120 +1265,120 @@ class BAISMCPServer:
         })
         
         try:
-            if name == "bais_audit_response":
+            if name == "base_audit_response":
                 return await self._audit_response(arguments)
-            elif name == "bais_check_query":
+            elif name == "base_check_query":
                 return await self._check_query(arguments)
-            elif name == "bais_improve_response":
+            elif name == "base_improve_response":
                 return await self._improve_response(arguments)
-            elif name == "bais_verify_completion":
+            elif name == "base_verify_completion":
                 return await self._verify_completion(arguments)
-            elif name == "bais_get_statistics":
+            elif name == "base_get_statistics":
                 return self._get_statistics()
-            elif name == "bais_ab_test":
+            elif name == "base_ab_test":
                 return await self._ab_test(arguments)
-            elif name == "bais_govern_and_regenerate":
+            elif name == "base_govern_and_regenerate":
                 return await self._govern_and_regenerate(arguments)
-            elif name == "bais_ab_test_full":
+            elif name == "base_ab_test_full":
                 return await self._ab_test_full(arguments)
             # NEW Phase 50 tools
-            elif name == "bais_multi_track_analyze":
+            elif name == "base_multi_track_analyze":
                 return await self._multi_track_analyze(arguments)
-            elif name == "bais_analyze_reasoning":
+            elif name == "base_analyze_reasoning":
                 return await self._analyze_reasoning(arguments)
-            elif name == "bais_enforce_completion":
+            elif name == "base_enforce_completion":
                 return await self._enforce_completion(arguments)
-            elif name == "bais_full_governance":
+            elif name == "base_full_governance":
                 return await self._full_governance(arguments)
-            # BAIS v2.0 tools
-            elif name == "bais_verify_code":
+            # BASE v2.0 tools
+            elif name == "base_verify_code":
                 return await self._verify_code(arguments)
-            elif name == "bais_select_mode":
+            elif name == "base_select_mode":
                 return await self._select_mode(arguments)
-            elif name == "bais_harmonize_output":
+            elif name == "base_harmonize_output":
                 return await self._harmonize_output(arguments)
-            elif name == "bais_realtime_assist":
+            elif name == "base_realtime_assist":
                 return await self._realtime_assist(arguments)
-            elif name == "bais_check_evidence":
+            elif name == "base_check_evidence":
                 return await self._check_evidence(arguments)
             # PHASE 2: Layer 1 - Sensory Cortex Tools
-            elif name == "bais_ground_check":
+            elif name == "base_ground_check":
                 return await self._ground_check(arguments)
-            elif name == "bais_fact_check":
+            elif name == "base_fact_check":
                 return await self._fact_check(arguments)
-            elif name == "bais_temporal_check":
+            elif name == "base_temporal_check":
                 return await self._temporal_check(arguments)
-            elif name == "bais_behavioral_analysis":
+            elif name == "base_behavioral_analysis":
                 return await self._behavioral_analysis(arguments)
             # PHASE 3: Layer 2 - Prefrontal Cortex Tools
-            elif name == "bais_contradiction_check":
+            elif name == "base_contradiction_check":
                 return await self._contradiction_check(arguments)
-            elif name == "bais_neurosymbolic":
+            elif name == "base_neurosymbolic":
                 return await self._neurosymbolic(arguments)
-            elif name == "bais_world_model":
+            elif name == "base_world_model":
                 return await self._world_model(arguments)
-            elif name == "bais_creative_reasoning":
+            elif name == "base_creative_reasoning":
                 return await self._creative_reasoning(arguments)
-            elif name == "bais_multi_framework":
+            elif name == "base_multi_framework":
                 return await self._multi_framework(arguments)
-            elif name == "bais_predicate_check":
+            elif name == "base_predicate_check":
                 return await self._predicate_check(arguments)
             # PHASE 4: Layer 3 - Limbic System Tools
-            elif name == "bais_personality_analysis":
+            elif name == "base_personality_analysis":
                 return await self._personality_analysis(arguments)
-            elif name == "bais_knowledge_graph":
+            elif name == "base_knowledge_graph":
                 return await self._knowledge_graph(arguments)
-            elif name == "bais_adaptive_difficulty":
+            elif name == "base_adaptive_difficulty":
                 return await self._adaptive_difficulty(arguments)
-            elif name == "bais_theory_of_mind":
+            elif name == "base_theory_of_mind":
                 return await self._theory_of_mind(arguments)
             # PHASE 5-7: Layers 4-6 Tools
-            elif name == "bais_feedback_loop":
+            elif name == "base_feedback_loop":
                 return await self._feedback_loop(arguments)
-            elif name == "bais_crisis_mode":
+            elif name == "base_crisis_mode":
                 return await self._crisis_mode(arguments)
-            elif name == "bais_self_aware":
+            elif name == "base_self_aware":
                 return await self._self_aware(arguments)
-            elif name == "bais_calibrate":
+            elif name == "base_calibrate":
                 return await self._calibrate(arguments)
-            elif name == "bais_cognitive_enhance":
+            elif name == "base_cognitive_enhance":
                 return await self._cognitive_enhance(arguments)
             # PHASE 8-9: Layers 7-8 Tools
-            elif name == "bais_smart_gate":
+            elif name == "base_smart_gate":
                 return await self._smart_gate(arguments)
-            elif name == "bais_triangulate":
+            elif name == "base_triangulate":
                 return await self._triangulate(arguments)
-            elif name == "bais_challenge":
+            elif name == "base_challenge":
                 return await self._challenge(arguments)
-            elif name == "bais_human_review":
+            elif name == "base_human_review":
                 return await self._human_review(arguments)
             # PHASE 10: Layer 9 Tools
-            elif name == "bais_claim_evidence":
+            elif name == "base_claim_evidence":
                 return await self._claim_evidence(arguments)
-            elif name == "bais_audit_trail":
+            elif name == "base_audit_trail":
                 return await self._audit_trail(arguments)
-            # REMAINING BAIS v2.0 & ADVANCED TOOLS
-            elif name == "bais_skeptical_learn":
+            # REMAINING BASE v2.0 & ADVANCED TOOLS
+            elif name == "base_skeptical_learn":
                 return await self._skeptical_learn(arguments)
-            elif name == "bais_approval_gate":
+            elif name == "base_approval_gate":
                 return await self._approval_gate(arguments)
-            elif name == "bais_functional_complete":
+            elif name == "base_functional_complete":
                 return await self._functional_complete(arguments)
-            elif name == "bais_interface_check":
+            elif name == "base_interface_check":
                 return await self._interface_check(arguments)
-            elif name == "bais_domain_proof":
+            elif name == "base_domain_proof":
                 return await self._domain_proof(arguments)
-            elif name == "bais_plugins":
+            elif name == "base_plugins":
                 return await self._plugins(arguments)
-            elif name == "bais_federated":
+            elif name == "base_federated":
                 return await self._federated(arguments)
-            elif name == "bais_neuroplasticity":
+            elif name == "base_neuroplasticity":
                 return await self._neuroplasticity(arguments)
-            elif name == "bais_conversation":
+            elif name == "base_conversation":
                 return await self._conversation(arguments)
-            elif name == "bais_governance_rules":
+            elif name == "base_governance_rules":
                 return await self._governance_rules(arguments)
-            elif name == "bais_llm_registry":
+            elif name == "base_llm_registry":
                 return await self._llm_registry(arguments)
             else:
                 return {"error": f"Unknown tool: {name}"}
@@ -1413,7 +1413,7 @@ class BAISMCPServer:
             kw in str(i).upper() for kw in ['SAFETY', 'MEDICAL', 'FINANCIAL', 'LEGAL', 'MANIPULATION', 'DANGEROUS']
         )]
         
-        # BAIS Challenge-First: Never block, always challenge LLM to regenerate
+        # BASE Challenge-First: Never block, always challenge LLM to regenerate
         needs_challenge = (
             result.decision.value in ["regenerate", "blocked"] or
             result.accuracy_score < 50 or
@@ -1459,7 +1459,7 @@ class BAISMCPServer:
             "challenge_required": needs_challenge,
             "challenge_level": challenge_level,
             "verification_mode": verification_mode,
-            "next_action": f"Use bais_{verification_mode} to verify" if needs_challenge else "Response acceptable",
+            "next_action": f"Use base_{verification_mode} to verify" if needs_challenge else "Response acceptable",
             "incident_recorded": True,
             "incident": incident_record
         }
@@ -1499,7 +1499,7 @@ class BAISMCPServer:
         domain = args.get("domain", "general")
         
         # Use the integrated engine's evaluate_and_improve method
-        # This ensures proper sequencing of all BAIS inventions
+        # This ensures proper sequencing of all BASE inventions
         result = await self.governance_wrapper.engine.evaluate_and_improve(
             query=query,
             response=response,
@@ -1887,7 +1887,7 @@ Claims of "working" require evidence of execution, not just code presence."""
         Phase 28: Govern response and return regeneration instructions.
         
         This is the key tool for Cursor/Claude integration:
-        1. Governs the response using full BAIS pipeline
+        1. Governs the response using full BASE pipeline
         2. If issues detected, generates specific correction instructions
         3. Returns a correction_prompt that Claude should follow to regenerate
         
@@ -1956,7 +1956,7 @@ Claims of "working" require evidence of execution, not just code presence."""
                 "specific_fixes": specific_fixes,
                 "correction_prompt": correction_prompt,
                 "regeneration_guidance": self._get_regeneration_guidance(gov_result.issues_detected),
-                "instructions": "REGENERATE your response following the correction_prompt and specific_fixes. After regenerating, call bais_govern_and_regenerate again to verify the new response."
+                "instructions": "REGENERATE your response following the correction_prompt and specific_fixes. After regenerating, call base_govern_and_regenerate again to verify the new response."
             }
             
         except Exception as e:
@@ -2016,7 +2016,7 @@ Claims of "working" require evidence of execution, not just code presence."""
                                     specific_fixes: List[str]) -> str:
         """Generate a correction prompt for Claude to follow."""
         
-        prompt = f"""BAIS GOVERNANCE: REGENERATION REQUIRED
+        prompt = f"""BASE GOVERNANCE: REGENERATION REQUIRED
 
 ORIGINAL QUERY: {query}
 
@@ -2135,11 +2135,11 @@ REGENERATE NOW following these corrections."""
         
         Evaluates 4 responses:
         1. Claude Original
-        2. Claude Enhanced (by BAIS)
+        2. Claude Enhanced (by BASE)
         3. Grok Original
-        4. Grok Enhanced (by BAIS)
+        4. Grok Enhanced (by BASE)
         
-        Shows true BAIS improvement value.
+        Shows true BASE improvement value.
         """
         query = args.get("query", "")
         your_response = args.get("your_response", "")
@@ -2195,7 +2195,7 @@ REGENERATE NOW following these corrections."""
             your_issues = convert_issues(your_original_gov.issues_detected)
             grok_issues = convert_issues(grok_original_gov.issues_detected)
             
-            # Step 4: Enhance both responses using BAIS (async)
+            # Step 4: Enhance both responses using BASE (async)
             your_enhanced_result = await improver.improve(
                 query=query,
                 response=your_response,
@@ -2283,7 +2283,7 @@ REGENERATE NOW following these corrections."""
                 "summary": {
                     "winner": winner,
                     "winning_score": scores[winner],
-                    "bais_value": {
+                    "base_value": {
                         "claude_improvement": your_improvement,
                         "grok_improvement": grok_improvement,
                         "avg_improvement": (your_improvement + grok_improvement) / 2,
@@ -2313,7 +2313,7 @@ REGENERATE NOW following these corrections."""
         grok_improvement = grok_enh.accuracy_score - grok_orig.accuracy_score
         
         if winner == "claude_enhanced":
-            return f"Claude Enhanced is best. BAIS improved Claude by {your_improvement:.1f} points."
+            return f"Claude Enhanced is best. BASE improved Claude by {your_improvement:.1f} points."
         elif winner == "grok_enhanced":
             return f"Grok Enhanced is best. Consider regenerating with Grok's approach."
         elif winner == "claude_original":
@@ -2326,7 +2326,7 @@ REGENERATE NOW following these corrections."""
         if result.decision.value == "approved":
             return "Response approved. Safe to deliver."
         elif result.decision.value in ["blocked", "challenge_required"]:
-            # BAIS Challenge-First: Never block - always challenge LLM to regenerate
+            # BASE Challenge-First: Never block - always challenge LLM to regenerate
             issues = result.issues_detected[:3] if result.issues_detected else ["Review content"]
             return f"CHALLENGE REQUIRED: Regenerate addressing: {', '.join(str(i)[:50] for i in issues)}"
         elif result.decision.value == "regenerate":
@@ -2336,14 +2336,14 @@ REGENERATE NOW following these corrections."""
         return "Review response for potential improvements."
 
     # =========================================================================
-    # NEW PHASE 50 TOOLS: Full BAIS Orchestration
+    # NEW PHASE 50 TOOLS: Full BASE Orchestration
     # =========================================================================
     
     async def _multi_track_analyze(self, args: Dict) -> Dict:
         """
         NOVEL-43: Multi-Track Analysis with multiple LLMs.
         
-        Queries multiple LLMs in parallel, evaluates each response with BAIS,
+        Queries multiple LLMs in parallel, evaluates each response with BASE,
         and returns consensus recommendation.
         """
         query = args.get("query", "")
@@ -2367,9 +2367,9 @@ REGENERATE NOW following these corrections."""
             if not args.get("llms"):
                 llms = suggestion.suggested_llms
             
-            # Initialize orchestrator with BAIS evaluation
-            def bais_evaluator(response: str) -> Dict:
-                """Evaluate response with BAIS."""
+            # Initialize orchestrator with BASE evaluation
+            def base_evaluator(response: str) -> Dict:
+                """Evaluate response with BASE."""
                 import asyncio
                 loop = asyncio.get_event_loop()
                 gov_result = loop.run_until_complete(
@@ -2388,7 +2388,7 @@ REGENERATE NOW following these corrections."""
             
             orchestrator = MultiTrackOrchestrator(
                 max_parallel=3,
-                bais_evaluator=bais_evaluator
+                base_evaluator=base_evaluator
             )
             
             # Define LLM provider function
@@ -2409,7 +2409,7 @@ REGENERATE NOW following these corrections."""
                 try:
                     response = await get_llm_response(query, llm)
                     
-                    # Evaluate with BAIS
+                    # Evaluate with BASE
                     gov_result = await self.governance_wrapper.govern(
                         query=query,
                         llm_response=response,
@@ -2420,7 +2420,7 @@ REGENERATE NOW following these corrections."""
                         track_id=f"{llm}-{len(track_results)}",
                         llm_provider=llm,
                         response=response,
-                        bais_score=gov_result.accuracy_score / 100,
+                        base_score=gov_result.accuracy_score / 100,
                         issues_detected=gov_result.issues_detected,
                         evidence_strength="medium",
                         latency_ms=0,
@@ -2451,7 +2451,7 @@ REGENERATE NOW following these corrections."""
                 "track_results": [
                     {
                         "llm": t.llm_provider,
-                        "bais_score": t.bais_score,
+                        "base_score": t.base_score,
                         "issues": len(t.issues_detected),
                         "response_preview": t.response[:200] + "..." if len(t.response) > 200 else t.response
                     }
@@ -2798,7 +2798,7 @@ Be STRICT. In {domain} domain, overconfidence and missing alternatives are criti
     
     async def _full_governance(self, args: Dict) -> Dict:
         """
-        Run COMPLETE BAIS pipeline with all 86 inventions.
+        Run COMPLETE BASE pipeline with all 86 inventions.
         
         This is the most comprehensive analysis:
         1. Query analysis
@@ -2864,14 +2864,14 @@ Be STRICT. In {domain} domain, overconfidence and missing alternatives are criti
                 "issues_found": len(reasoning_result.get("issues", []))
             })
             
-            # Step 4: Full BAIS Audit
+            # Step 4: Full BASE Audit
             audit_result = await self._audit_response({
                 "query": query,
                 "response": current_response,
                 "domain": detected_domain
             })
             pipeline_trace.append({
-                "step": "bais_audit",
+                "step": "base_audit",
                 "decision": audit_result.get("decision", "unknown"),
                 "accuracy": audit_result.get("accuracy", 0),
                 "issues": len(audit_result.get("issues", []))
@@ -2980,7 +2980,7 @@ Please provide an improved response that addresses ALL the issues above."""
                     "PPA1-Inv1 (Signal Fusion)"
                 ],
                 "recommendation": (
-                    "Response verified through full BAIS pipeline" if final_decision == "VERIFIED"
+                    "Response verified through full BASE pipeline" if final_decision == "VERIFIED"
                     else f"Response needs improvement. Address: {', '.join(audit_result.get('issues', [])[:2])}"
                 )
             }
@@ -3013,7 +3013,7 @@ Please provide an improved response that addresses ALL the issues above."""
         return claims[:5]
     
     # ========================================
-    # BAIS v2.0 Tool Implementations
+    # BASE v2.0 Tool Implementations
     # ========================================
     
     async def _verify_code(self, args: Dict) -> Dict:
@@ -4607,7 +4607,7 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
             return {"error": str(e), "fallback_mode": True}
 
     # =========================================================================
-    # REMAINING BAIS v2.0 & ADVANCED TOOL HANDLERS
+    # REMAINING BASE v2.0 & ADVANCED TOOL HANDLERS
     # =========================================================================
 
     async def _skeptical_learn(self, args: Dict) -> Dict:
@@ -5054,9 +5054,9 @@ async def run_mcp_server():
     
     This implements a simplified MCP protocol for Cursor integration.
     """
-    server = BAISMCPServer()
+    server = BASEMCPServer()
     
-    logger.info("BAIS MCP Server starting...")
+    logger.info("BASE MCP Server starting...")
     
     # Output server capabilities
     capabilities = {
@@ -5067,7 +5067,7 @@ async def run_mcp_server():
                 "tools": {}
             },
             "serverInfo": {
-                "name": "bais-governance",
+                "name": "base-governance",
                 "version": "1.0.0"
             }
         },
@@ -5094,7 +5094,7 @@ async def run_mcp_server():
                     "jsonrpc": "2.0",
                     "result": {
                         "protocolVersion": "2024-11-05",
-                        "serverInfo": {"name": "bais-governance", "version": "1.0.0"},
+                        "serverInfo": {"name": "base-governance", "version": "1.0.0"},
                         "capabilities": {"tools": {}}
                     },
                     "id": req_id

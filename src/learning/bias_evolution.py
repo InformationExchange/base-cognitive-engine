@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Dynamic Bias Evolution System
 
 PPA-1 Invention 24: FULL IMPLEMENTATION
@@ -150,7 +150,7 @@ class DynamicBiasEvolution:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_bias_evo_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_bias_evo_"))
             storage_path = temp_dir / "bias_evolution.json"
         self.storage_path = storage_path
         

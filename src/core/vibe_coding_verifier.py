@@ -1,5 +1,5 @@
 """
-BAIS Vibe Coding Verifier (NOVEL-5)
+BASE Vibe Coding Verifier (NOVEL-5)
 
 Verifies code quality in "vibe coding" scenarios where AI generates code
 based on natural language descriptions. Detects:

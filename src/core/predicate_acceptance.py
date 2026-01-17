@@ -1,5 +1,5 @@
 """
-BAIS Predicate Acceptance (PPA2-Comp4, PPA2-Inv26, PPA1-Inv21)
+BASE Predicate Acceptance (PPA2-Comp4, PPA2-Inv26, PPA1-Inv21)
 
 Implements configurable predicate-based acceptance criteria:
 1. Conformal Must-Pass predicates (safety-critical checks)

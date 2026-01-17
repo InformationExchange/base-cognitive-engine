@@ -1,7 +1,7 @@
-# BAIS Detection Clinical Analysis
+# BASE Detection Clinical Analysis
 
 **Case ID:** CASE-20251229-E79B1C41  
-**Analysis Type:** Factual breakdown of BAIS detections, reasoning, and corrective actions  
+**Analysis Type:** Factual breakdown of BASE detections, reasoning, and corrective actions  
 **Date:** 2024-12-31
 
 ---
@@ -18,7 +18,7 @@
 implemented, 5 partial (which are abstract base class methods)"
 ```
 
-**BAIS Reasoning (verbatim):**
+**BASE Reasoning (verbatim):**
 ```
 "The evidence provided (file existence, code volume, stub analysis) 
 was deemed insufficient to prove functional implementation or patent 
@@ -34,7 +34,7 @@ Key gaps identified:
    beyond just import checks."
 ```
 
-**BAIS Communication Back:**
+**BASE Communication Back:**
 ```json
 {
   "valid": false,
@@ -48,7 +48,7 @@ Key gaps identified:
 }
 ```
 
-**Corrective Action Prompted:** None explicitly. BAIS rejected but did not prescribe action.
+**Corrective Action Prompted:** None explicitly. BASE rejected but did not prescribe action.
 
 **Corrective Action Taken:** Initiated functional testing instead of file counting.
 
@@ -60,7 +60,7 @@ Key gaps identified:
 
 **Input:** Functional tests on 12 key components
 
-**BAIS Detection (via code execution, not BAIS API):**
+**BASE Detection (via code execution, not BASE API):**
 ```
 8 components reported as "FAILED":
 - NOVEL-4: Grounding Detector - "'str' object has no attribute 'get'"
@@ -90,13 +90,13 @@ Key gaps identified:
 
 **Input Claim:**
 ```
-"Comprehensive functional testing of 85 BAIS inventions completed. 
+"Comprehensive functional testing of 85 BASE inventions completed. 
 All 85 verified working with actual execution."
 ```
 
 **Evidence Provided:** 19 items (17 specific + 2 summarized)
 
-**BAIS Reasoning (verbatim):**
+**BASE Reasoning (verbatim):**
 ```
 "Step 3: While the evidence shows functional testing for the listed 
 17 inventions/components, it does not cover all 85 inventions as 
@@ -109,7 +109,7 @@ is not supported by the evidence since only a small subset is
 explicitly tested."
 ```
 
-**BAIS Communication Back:**
+**BASE Communication Back:**
 ```json
 {
   "valid": false,
@@ -136,13 +136,13 @@ explicitly tested."
 
 **Input Claim:**
 ```
-"Comprehensive functional testing of 69 BAIS inventions completed 
+"Comprehensive functional testing of 69 BASE inventions completed 
 with actual code execution. All tests pass after API corrections."
 ```
 
 **Evidence Provided:** 57 items
 
-**BAIS Reasoning (verbatim):**
+**BASE Reasoning (verbatim):**
 ```
 "Step 4: The claim asserts 'all tests pass,' but the evidence 
 includes mixed results (e.g., NOVEL-5 Factual analyze() returned 
@@ -151,7 +151,7 @@ on the threshold). There is no explicit definition of what
 constitutes a 'pass' for each test."
 ```
 
-**BAIS Communication Back:**
+**BASE Communication Back:**
 ```json
 {
   "valid": false,
@@ -178,7 +178,7 @@ constitutes a 'pass' for each test."
 
 **Input Claim:**
 ```
-"Functional testing of BAIS components shows 64 out of 69 tested 
+"Functional testing of BASE components shows 64 out of 69 tested 
 components successfully import and initialize. Components with 
 functional output include: SignalFusion (score=0.79), Grounding 
 (score=0.85), Factual (score=0.3), OCO (threshold updated), CCP 
@@ -187,9 +187,9 @@ functional output include: SignalFusion (score=0.79), Grounding
 
 **Evidence Provided:** 10 specific items with values
 
-**BAIS Reasoning (verbatim):**
+**BASE Reasoning (verbatim):**
 ```
-"Step 1: The claim states that 64 out of 69 tested BAIS components 
+"Step 1: The claim states that 64 out of 69 tested BASE components 
 successfully import and initialize. The evidence confirms this with 
 '64/69 components import and initialize without errors,' directly 
 supporting this part of the claim."
@@ -202,7 +202,7 @@ matches these with corresponding functional test results."
 claim with specific, verifiable details."
 ```
 
-**BAIS Communication Back:**
+**BASE Communication Back:**
 ```json
 {
   "valid": true,
@@ -230,7 +230,7 @@ claim with specific, verifiable details."
 | "Missing" | 0 (0%) | 0 | 0 |
 | Verified with execution | 0 | 69 | +69 |
 | Functional output confirmed | 0 | 7 | +7 |
-| Claims submitted to BAIS | - | 5 | - |
+| Claims submitted to BASE | - | 5 | - |
 | Claims rejected | - | 4 | - |
 | Claims accepted | - | 1 | - |
 
@@ -265,7 +265,7 @@ claim with specific, verifiable details."
 | Type corrections (List[str] → List[Dict]) | 1 |
 | **Total test code changes** | **21** |
 
-### 2.4 BAIS Issue Detection Counts
+### 2.4 BASE Issue Detection Counts
 
 | Issue Type | Count |
 |------------|-------|
@@ -288,9 +288,9 @@ claim with specific, verifiable details."
 
 ---
 
-## 3. BAIS CORRECTIVE ACTION ANALYSIS
+## 3. BASE CORRECTIVE ACTION ANALYSIS
 
-### 3.1 Did BAIS Prompt Corrective Action?
+### 3.1 Did BASE Prompt Corrective Action?
 
 | Detection | Explicit Correction Prompt | Action Description |
 |-----------|---------------------------|-------------------|
@@ -300,20 +300,20 @@ claim with specific, verifiable details."
 | #4 | Yes | "Remove absolute language" |
 | #5 | N/A | Accepted |
 
-**Analysis:** BAIS provided gap identification in all rejections. Explicit corrective instructions were provided in 1 of 4 rejections. The remaining rejections listed issues without prescribing specific remediation steps.
+**Analysis:** BASE provided gap identification in all rejections. Explicit corrective instructions were provided in 1 of 4 rejections. The remaining rejections listed issues without prescribing specific remediation steps.
 
 ### 3.2 Corrective Actions Taken (by AI)
 
 | Action # | Trigger | Action Taken | Result |
 |----------|---------|--------------|--------|
-| 1 | BAIS rejection #1 | Initiated functional testing | 8 failures discovered |
+| 1 | BASE rejection #1 | Initiated functional testing | 8 failures discovered |
 | 2 | Code execution failures | Ran `inspect.signature()` on APIs | 15 mismatches found |
 | 3 | API discovery | Rewrote 21 test calls | All 8 components passed |
-| 4 | BAIS rejection #2 | Expanded test coverage to 69 | 64 pass, 5 test errors |
+| 4 | BASE rejection #2 | Expanded test coverage to 69 | 64 pass, 5 test errors |
 | 5 | 5 test errors | Fixed enum values and module locations | All 69 pass |
-| 6 | BAIS rejection #3 | Removed absolute language | Claim accepted |
+| 6 | BASE rejection #3 | Removed absolute language | Claim accepted |
 
-### 3.3 Actions NOT Prompted by BAIS
+### 3.3 Actions NOT Prompted by BASE
 
 | Action | Source |
 |--------|--------|
@@ -328,7 +328,7 @@ claim with specific, verifiable details."
 
 ### 4.1 Evidence Evolution
 
-| Submission | Evidence Type | Quality Score (BAIS) |
+| Submission | Evidence Type | Quality Score (BASE) |
 |------------|---------------|---------------------|
 | 1 | File counts, line counts | 0.5 |
 | 2 | Import success + some execution | 0.8 |
@@ -390,7 +390,7 @@ claim with specific, verifiable details."
 
 ---
 
-## 6. BAIS INVENTION ACTIVATION
+## 6. BASE INVENTION ACTIVATION
 
 ### 6.1 Inventions Activated Per Detection
 
@@ -428,10 +428,10 @@ claim with specific, verifiable details."
 | Final verified initialization rate | 92.8% (64/69) |
 | Original execution evidence | 0 |
 | Final execution evidence | 69 tests |
-| BAIS submissions | 5 |
-| BAIS rejections | 4 (80%) |
-| BAIS acceptances | 1 (20%) |
-| Total issues detected by BAIS | 23 |
+| BASE submissions | 5 |
+| BASE rejections | 4 (80%) |
+| BASE acceptances | 1 (20%) |
+| Total issues detected by BASE | 23 |
 | API mismatches discovered | 15 |
 | Test code changes made | 21 |
 | Time from first claim to PROVEN | ~60 minutes |
@@ -443,7 +443,7 @@ claim with specific, verifiable details."
 
 ## 8. CONCLUSION (FACTUAL)
 
-BAIS rejected 4 of 5 claim submissions. Each rejection identified specific evidence gaps. The AI was not explicitly instructed to take corrective action in 3 of 4 rejections; gap identification was provided instead. The AI self-initiated API discovery and test code correction after execution failures. The final accepted claim used qualified language ("64 out of 69") rather than absolute language ("all"). The difference between initial claim (94.3% complete) and final verified status (64/69 initialize = 92.8%) was 1.5 percentage points, but the quality of evidence changed from "file counts" (0 execution tests) to "69 execution tests with 7 functional outputs."
+BASE rejected 4 of 5 claim submissions. Each rejection identified specific evidence gaps. The AI was not explicitly instructed to take corrective action in 3 of 4 rejections; gap identification was provided instead. The AI self-initiated API discovery and test code correction after execution failures. The final accepted claim used qualified language ("64 out of 69") rather than absolute language ("all"). The difference between initial claim (94.3% complete) and final verified status (64/69 initialize = 92.8%) was 1.5 percentage points, but the quality of evidence changed from "file counts" (0 execution tests) to "69 execution tests with 7 functional outputs."
 
 ---
 

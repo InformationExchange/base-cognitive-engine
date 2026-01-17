@@ -1,12 +1,12 @@
 /**
- * BAIS JavaScript/TypeScript SDK Client
+ * BASE JavaScript/TypeScript SDK Client
  * 
- * Simple client for integrating BAIS governance into any JavaScript application.
+ * Simple client for integrating BASE governance into any JavaScript application.
  * 
  * Usage:
- *   import { BAISClient } from 'bais-client';
+ *   import { BASEClient } from 'base-client';
  *   
- *   const client = new BAISClient({ apiUrl: 'https://api.bais.invitas.ai' });
+ *   const client = new BASEClient({ apiUrl: 'https://api.base.invitas.ai' });
  *   
  *   const result = await client.audit({
  *     query: 'What is 2+2?',
@@ -19,12 +19,12 @@
  *   }
  */
 
-class BAISClient {
+class BASEClient {
   /**
-   * Initialize BAIS client.
+   * Initialize BASE client.
    * 
    * @param {Object} options - Configuration options
-   * @param {string} options.apiUrl - Base URL of BAIS API
+   * @param {string} options.apiUrl - Base URL of BASE API
    * @param {string} [options.apiKey] - Optional API key for authentication
    * @param {number} [options.timeout] - Request timeout in milliseconds (default: 30000)
    */
@@ -210,12 +210,12 @@ class BAISClient {
 
 // Export for different module systems
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { BAISClient };
+  module.exports = { BASEClient };
 }
 
 if (typeof window !== 'undefined') {
-  window.BAISClient = BAISClient;
+  window.BASEClient = BASEClient;
 }
 
-export { BAISClient };
+export { BASEClient };
 

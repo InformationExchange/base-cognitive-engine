@@ -1,5 +1,5 @@
 """
-BAIS Uncertainty Quantifier
+BASE Uncertainty Quantifier
 
 Ensures appropriate uncertainty is expressed in LLM outputs.
 Key principle: Know what you don't know.

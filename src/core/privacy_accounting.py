@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v23.0
+BASE Cognitive Governance Engine v23.0
 Privacy Accounting Module - RDP Composition & Budget Tracking
 
 Patent Alignment:

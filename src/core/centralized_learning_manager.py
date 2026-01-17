@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine - Centralized Learning Manager
+BASE Cognitive Governance Engine - Centralized Learning Manager
 Phase 49: Addresses the 35 learning gaps identified in audit
 
 This module provides:
@@ -83,7 +83,7 @@ class LearningStatistics:
 
 class CentralizedLearningManager:
     """
-    Unified learning manager for all BAIS modules.
+    Unified learning manager for all BASE modules.
     
     Features:
     - Single source of truth for all learning state

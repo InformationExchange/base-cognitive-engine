@@ -1,5 +1,5 @@
 """
-BAIS Expanded Patent Test Suite
+BASE Expanded Patent Test Suite
 
 Purpose: Comprehensive coverage of all 275 patent claims
 Classification: Factual, Non-Optimistic, Evidence-Based
@@ -19,7 +19,7 @@ from enum import Enum
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import BAIS modules
+# Import BASE modules
 from core.query_analyzer import QueryAnalyzer, QueryRisk
 from core.smart_gate import SmartGate, AnalysisMode
 from research.theory_of_mind import TheoryOfMindModule
@@ -79,7 +79,7 @@ class ExpandedPatentTestSuite:
     def run_all_tests(self) -> Dict[str, Any]:
         """Execute all claim tests."""
         print("=" * 80)
-        print("BAIS EXPANDED PATENT TEST SUITE")
+        print("BASE EXPANDED PATENT TEST SUITE")
         print(f"Target: 275 Claims across 50 Inventions")
         print(f"Timestamp: {self.run_timestamp}")
         print("=" * 80)
@@ -572,7 +572,7 @@ class ExpandedPatentTestSuite:
         self._test_claim("NOVEL-3-Ind1", "NOVEL-3", "NOVEL",
             "Self-audit capability",
             "System can audit itself",
-            {"query": "Audit BAIS"},
+            {"query": "Audit BASE"},
             {"self_audit": True},
             lambda d: True)  # This test suite is evidence
         

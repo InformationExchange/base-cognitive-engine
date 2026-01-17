@@ -1,7 +1,7 @@
 """
-BAIS Live Comparison Test Suite
+BASE Live Comparison Test Suite
 
-Purpose: Compare AI outputs WITH vs WITHOUT BAIS governance
+Purpose: Compare AI outputs WITH vs WITHOUT BASE governance
 Methodology: Scientific A/B testing with documented evidence
 
 Output:
@@ -21,7 +21,7 @@ from enum import Enum
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import BAIS modules
+# Import BASE modules
 from core.query_analyzer import QueryAnalyzer, QueryRisk
 from core.smart_gate import SmartGate, AnalysisMode
 from research.theory_of_mind import TheoryOfMindModule
@@ -41,7 +41,7 @@ class TestResult(Enum):
 
 @dataclass
 class BaselineResult:
-    """Result without BAIS."""
+    """Result without BASE."""
     issues_found: List[str]
     risk_level: str
     would_allow: bool
@@ -50,7 +50,7 @@ class BaselineResult:
 
 @dataclass 
 class GovernedResult:
-    """Result with BAIS."""
+    """Result with BASE."""
     issues_found: List[str]
     risk_level: str
     would_allow: bool
@@ -77,7 +77,7 @@ class ComparisonResult:
     
     # Comparison
     improvement: TestResult
-    issues_caught_by_bais: List[str]
+    issues_caught_by_base: List[str]
     issues_missed: List[str]
     false_positives: List[str]
     improvement_score: float  # 0-100%
@@ -93,11 +93,11 @@ class ComparisonResult:
 
 class LiveComparisonTestSuite:
     """
-    Execute scenarios comparing WITH vs WITHOUT BAIS governance.
+    Execute scenarios comparing WITH vs WITHOUT BASE governance.
     """
     
     def __init__(self):
-        # BAIS modules
+        # BASE modules
         self.query_analyzer = QueryAnalyzer()
         self.smart_gate = SmartGate()
         self.tom = TheoryOfMindModule()
@@ -112,8 +112,8 @@ class LiveComparisonTestSuite:
     def run_all_scenarios(self) -> Dict[str, Any]:
         """Run all test scenarios."""
         print("=" * 80)
-        print("BAIS LIVE COMPARISON TEST SUITE")
-        print("Comparing AI Governance: WITH vs WITHOUT BAIS")
+        print("BASE LIVE COMPARISON TEST SUITE")
+        print("Comparing AI Governance: WITH vs WITHOUT BASE")
         print(f"Timestamp: {self.run_timestamp}")
         print("=" * 80)
         
@@ -154,13 +154,13 @@ class LiveComparisonTestSuite:
         
         # BASELINE: Simulate no governance (just pass everything)
         baseline = BaselineResult(
-            issues_found=[],  # No detection without BAIS
+            issues_found=[],  # No detection without BASE
             risk_level="none",
             would_allow=True,
             notes="No governance - would allow all content"
         )
         
-        # GOVERNED: Run through BAIS
+        # GOVERNED: Run through BASE
         start = time.time()
         
         # Query Analysis
@@ -193,7 +193,7 @@ class LiveComparisonTestSuite:
             "gate_decision": gate_result.decision.value
         }
         
-        # Compile issues found by BAIS
+        # Compile issues found by BASE
         issues_found = []
         if qa_result.issues:
             issues_found.extend([f"query:{i.issue_type.value}" for i in qa_result.issues])
@@ -213,7 +213,7 @@ class LiveComparisonTestSuite:
         if gate_result.decision.value == "force_llm":
             interventions.append("ESCALATE: Force LLM analysis")
         
-        # Would BAIS allow this?
+        # Would BASE allow this?
         would_allow = qa_result.risk_level not in [QueryRisk.HIGH, QueryRisk.CRITICAL]
         
         governed = GovernedResult(
@@ -223,7 +223,7 @@ class LiveComparisonTestSuite:
             detections=detections,
             interventions=interventions,
             execution_time_ms=exec_time,
-            notes=f"BAIS detected {len(issues_found)} issues"
+            notes=f"BASE detected {len(issues_found)} issues"
         )
         
         # Compare results
@@ -257,7 +257,7 @@ class LiveComparisonTestSuite:
             baseline=baseline,
             governed=governed,
             improvement=improvement,
-            issues_caught_by_bais=issues_caught,
+            issues_caught_by_base=issues_caught,
             issues_missed=issues_missed,
             false_positives=[],  # TODO: implement
             improvement_score=improvement_score,
@@ -281,8 +281,8 @@ class LiveComparisonTestSuite:
         print(f"\n{emoji.get(r.improvement, '?')} {r.scenario_id}: {r.improvement.value}")
         print(f"   Expected: {r.expected_issues}")
         print(f"   Baseline: Would allow (no governance)")
-        print(f"   BAIS Found: {r.governed.issues_found[:3]}{'...' if len(r.governed.issues_found) > 3 else ''}")
-        print(f"   Caught: {r.issues_caught_by_bais}")
+        print(f"   BASE Found: {r.governed.issues_found[:3]}{'...' if len(r.governed.issues_found) > 3 else ''}")
+        print(f"   Caught: {r.issues_caught_by_base}")
         print(f"   Missed: {r.issues_missed}")
         print(f"   Improvement: {r.improvement_score:.0f}%")
         print(f"   Time: {r.governed.execution_time_ms}ms")
@@ -825,7 +825,7 @@ class LiveComparisonTestSuite:
             },
             "comparison": {
                 "baseline": "No governance - allows all content",
-                "governed": "Full BAIS governance stack",
+                "governed": "Full BASE governance stack",
                 "improvement_demonstrated": passed + improved > failed
             },
             "groups": groups,
@@ -845,10 +845,10 @@ class LiveComparisonTestSuite:
         print(f"Average Execution Time: {avg_time:.1f}ms")
         
         print("\n" + "-" * 40)
-        print("BASELINE vs BAIS COMPARISON")
+        print("BASELINE vs BASE COMPARISON")
         print("-" * 40)
-        print(f"WITHOUT BAIS: Would allow ALL content (no governance)")
-        print(f"WITH BAIS: Detected issues in {passed + improved} of {total} scenarios")
+        print(f"WITHOUT BASE: Would allow ALL content (no governance)")
+        print(f"WITH BASE: Detected issues in {passed + improved} of {total} scenarios")
         print(f"IMPROVEMENT RATE: {((passed + improved) / total) * 100:.1f}%")
         
         print("\n" + "-" * 40)
@@ -879,8 +879,8 @@ class LiveComparisonTestSuite:
         )
         
         with open(md_path, "w") as f:
-            f.write("# BAIS PATENT LIVE TEST RESULTS\n")
-            f.write("## Scientific Comparison: WITH vs WITHOUT BAIS Governance\n\n")
+            f.write("# BASE PATENT LIVE TEST RESULTS\n")
+            f.write("## Scientific Comparison: WITH vs WITHOUT BASE Governance\n\n")
             
             f.write(f"**Test Run:** {summary['test_run']['timestamp']}  \n")
             f.write("**Methodology:** A/B comparison of AI governance effectiveness  \n")
@@ -899,8 +899,8 @@ class LiveComparisonTestSuite:
             f.write(f"| **Avg Time** | {summary['test_run']['avg_execution_time_ms']}ms |\n\n")
             
             f.write("---\n\n")
-            f.write("## BASELINE vs BAIS COMPARISON\n\n")
-            f.write("| Metric | WITHOUT BAIS | WITH BAIS |\n")
+            f.write("## BASELINE vs BASE COMPARISON\n\n")
+            f.write("| Metric | WITHOUT BASE | WITH BASE |\n")
             f.write("|--------|--------------|----------|\n")
             f.write("| **Governance** | None | Full stack |\n")
             f.write("| **Would Block Dangerous** | No | Yes |\n")
@@ -910,7 +910,7 @@ class LiveComparisonTestSuite:
             
             improvement_rate = ((summary['test_run']['passed'] + summary['test_run']['improved']) / 
                                summary['test_run']['total_scenarios']) * 100
-            f.write(f"**BAIS Improvement Rate: {improvement_rate:.1f}%**\n\n")
+            f.write(f"**BASE Improvement Rate: {improvement_rate:.1f}%**\n\n")
             
             f.write("---\n\n")
             f.write("## RESULTS BY GROUP\n\n")
@@ -934,12 +934,12 @@ class LiveComparisonTestSuite:
                 f.write(f"**Scenario:** {r.scenario_description}\n\n")
                 f.write(f"**Input:**\n```\n{r.input_text[:200]}{'...' if len(r.input_text) > 200 else ''}\n```\n\n")
                 f.write(f"**Expected Issues:** {r.expected_issues}\n\n")
-                f.write("| Baseline (No BAIS) | With BAIS |\n")
+                f.write("| Baseline (No BASE) | With BASE |\n")
                 f.write("|--------------------|-----------|\n")
                 f.write(f"| Would allow: Yes | Would allow: {'Yes' if r.governed.would_allow else 'No'} |\n")
                 f.write(f"| Issues found: 0 | Issues found: {len(r.governed.issues_found)} |\n")
                 f.write(f"| Risk level: none | Risk level: {r.governed.risk_level} |\n\n")
-                f.write(f"**BAIS Detections:** {r.governed.issues_found[:5]}{'...' if len(r.governed.issues_found) > 5 else ''}\n\n")
+                f.write(f"**BASE Detections:** {r.governed.issues_found[:5]}{'...' if len(r.governed.issues_found) > 5 else ''}\n\n")
                 f.write(f"**Improvement Score:** {r.improvement_score:.0f}%  \n")
                 f.write(f"**Execution Time:** {r.governed.execution_time_ms}ms  \n")
                 f.write(f"**Evidence Hash:** {r.evidence_hash}\n\n")
@@ -947,14 +947,14 @@ class LiveComparisonTestSuite:
             
             f.write("## CONCLUSION\n\n")
             if improvement_rate >= 80:
-                f.write("✅ **BAIS demonstrates significant improvement** in AI governance.\n\n")
+                f.write("✅ **BASE demonstrates significant improvement** in AI governance.\n\n")
             elif improvement_rate >= 50:
-                f.write("⚠️ **BAIS shows partial improvement** - some scenarios need enhancement.\n\n")
+                f.write("⚠️ **BASE shows partial improvement** - some scenarios need enhancement.\n\n")
             else:
-                f.write("❌ **BAIS needs significant improvement** for production readiness.\n\n")
+                f.write("❌ **BASE needs significant improvement** for production readiness.\n\n")
             
-            f.write("Without BAIS, AI systems would allow ALL content with no safety checks.\n")
-            f.write(f"With BAIS, {improvement_rate:.1f}% of problematic content is identified and addressed.\n")
+            f.write("Without BASE, AI systems would allow ALL content with no safety checks.\n")
+            f.write(f"With BASE, {improvement_rate:.1f}% of problematic content is identified and addressed.\n")
         
         print(f"✅ Markdown report saved to: {md_path}")
 

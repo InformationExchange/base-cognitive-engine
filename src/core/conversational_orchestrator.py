@@ -1,5 +1,5 @@
 """
-BAIS Conversational Orchestrator
+BASE Conversational Orchestrator
 
 Implements the production-ready conversational loop:
 1. Pattern analysis (fast, free)
@@ -8,7 +8,7 @@ Implements the production-ready conversational loop:
 4. If user responds: Use LLM to incorporate context
 5. Return enriched analysis
 
-This is how BAIS works in production when people use the APIs.
+This is how BASE works in production when people use the APIs.
 """
 
 import asyncio

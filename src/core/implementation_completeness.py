@@ -1,10 +1,10 @@
 """
 Implementation Completeness Analyzer (PPA3-NEW-1)
 
-New BAIS invention to detect partial implementations by checking
+New BASE invention to detect partial implementations by checking
 interface compliance at the code level, not just text analysis.
 
-This addresses the gap where BAIS accepted "class exists" as proof
+This addresses the gap where BASE accepted "class exists" as proof
 of "fully implemented" when methods were actually missing.
 """
 
@@ -63,7 +63,7 @@ class ComplianceResult:
         }
 
 
-# Standard interface definitions for BAIS modules
+# Standard interface definitions for BASE modules
 LEARNING_INTERFACE = InterfaceDefinition(
     name="LearningCapable",
     required_methods=[
@@ -133,7 +133,7 @@ class ImplementationCompletenessAnalyzer:
     """
     Analyzes code implementations against expected interfaces.
     
-    This is a new BAIS invention (PPA3-NEW-1) that enables detection
+    This is a new BASE invention (PPA3-NEW-1) that enables detection
     of partial implementations at the code level.
     """
     
@@ -353,16 +353,16 @@ class ImplementationCompletenessAnalyzer:
         
         return "\n".join(lines)
     
-    def get_bais_prompt(self, result: ComplianceResult) -> str:
+    def get_base_prompt(self, result: ComplianceResult) -> str:
         """
-        Generate a BAIS-style prompt to correct the implementation.
+        Generate a BASE-style prompt to correct the implementation.
         
-        This is what BAIS would use to prompt the LLM to fix issues.
+        This is what BASE would use to prompt the LLM to fix issues.
         """
         if result.compliance_level == ComplianceLevel.FULL:
             return f"Class {result.class_name} has full {result.interface_name} compliance."
         
-        prompt = f"""BAIS IMPLEMENTATION GAP DETECTED
+        prompt = f"""BASE IMPLEMENTATION GAP DETECTED
 
 Class: {result.class_name}
 Interface: {result.interface_name}
@@ -467,12 +467,12 @@ if __name__ == "__main__":
     
     print(analyzer.generate_compliance_report(results))
     
-    # Show BAIS prompt for one partial
+    # Show BASE prompt for one partial
     for name, result in results.items():
         if result.compliance_level != ComplianceLevel.FULL:
             print("\n" + "=" * 70)
-            print("EXAMPLE BAIS CORRECTION PROMPT:")
+            print("EXAMPLE BASE CORRECTION PROMPT:")
             print("=" * 70)
-            print(analyzer.get_bais_prompt(result))
+            print(analyzer.get_base_prompt(result))
             break
 

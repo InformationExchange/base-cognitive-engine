@@ -1,5 +1,5 @@
 """
-BAIS Domain Router (Layer 4 - Thalamus)
+BASE Domain Router (Layer 4 - Thalamus)
 
 Routes queries to appropriate processing pipelines based on domain:
 1. Domain classification

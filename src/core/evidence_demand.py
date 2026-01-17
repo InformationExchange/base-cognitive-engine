@@ -1,5 +1,5 @@
 """
-BAIS Evidence Demand Loop - Claim Verification System
+BASE Evidence Demand Loop - Claim Verification System
 
 This module implements the core capability to distinguish between:
 - "Claimed 100%" (no evidence) → FLAG as UNVERIFIED
@@ -201,7 +201,7 @@ class EvidenceDemandLoop:
         # Use temp directory if no path provided
         if storage_path is None:
             import tempfile
-            storage_path = Path(tempfile.mkdtemp(prefix="bais_evidence_"))
+            storage_path = Path(tempfile.mkdtemp(prefix="base_evidence_"))
         self.storage_path = storage_path
         self.storage_path.mkdir(parents=True, exist_ok=True)
         
@@ -1439,7 +1439,7 @@ class EnhancedEvidenceDemandLoop(EvidenceDemandLoop):
         SYNCHRONOUS file existence verification.
         
         This is the CRITICAL function that actually checks if claimed files exist.
-        Without this, BAIS is just a word checker.
+        Without this, BASE is just a word checker.
         """
         import re
         from pathlib import Path

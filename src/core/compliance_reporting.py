@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v38.0
+BASE Cognitive Governance Engine v38.0
 Compliance & Regulatory Reporting with AI + Pattern + Learning
 
 Phase 38: Addresses PPA2-C1-37, PPA3-Comp5

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v27.1
+BASE Cognitive Governance Engine v27.1
 Advanced Security Module - Extended Hardening
 
 Patent Alignment:
@@ -425,7 +425,7 @@ class SecretsManager:
         
         # Derive encryption key from master key
         master = (master_key or secrets.token_hex(32)).encode()
-        salt = b'bais_secrets_salt_v1'  # Fixed salt (or store separately)
+        salt = b'base_secrets_salt_v1'  # Fixed salt (or store separately)
         
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),

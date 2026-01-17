@@ -1,8 +1,8 @@
 """
-BAIS Theory of Mind Module
+BASE Theory of Mind Module
 Advanced cognitive capability for mental state inference
 
-This module enables BAIS to:
+This module enables BASE to:
 1. Infer mental states (beliefs, desires, intentions)
 2. Model perspective-taking and empathy
 3. Detect manipulation/persuasion attempts
@@ -109,7 +109,7 @@ class MentalStateAnalysis:
 
 class TheoryOfMindModule:
     """
-    Theory of Mind cognitive module for BAIS.
+    Theory of Mind cognitive module for BASE.
     
     Implements:
     - Mental state inference (belief-desire-intention model)
@@ -159,7 +159,7 @@ class TheoryOfMindModule:
             r'\b(opinion|view|perspective|stance|position)\b',
             r'\b(thought|thinking|believed|believing)\b',
             r'\b(imagines?|suspects?|guesses?|reckons?|figures?)\b',
-            # BAIS-GUIDED: Hedged/political language
+            # BASE-GUIDED: Hedged/political language
             r'\b(sources?\s+(?:say|suggest|indicate|report|claim))\b',
             r'\b(may\s+be\s+considering|might\s+be\s+(?:thinking|planning))\b',
             r'\b(close\s+to\s+the\s+matter|familiar\s+with)\b',
@@ -249,7 +249,7 @@ class TheoryOfMindModule:
         'gaslighting': [
             r'\b(never happened|you\'re imagining|overreacting|too sensitive)\b',
             r'\b(crazy|paranoid|confused)\b',
-            # BAIS-GUIDED: Additional gaslighting patterns
+            # BASE-GUIDED: Additional gaslighting patterns
             r'\b(I\s+never\s+said|you\s+must\s+be\s+(?:mis)?remembering)\b',
             r'\b(your\s+memory|write\s+(?:it|things)\s+down)\b',
             r'\b(you\s+always\s+(?:do|say)\s+this|this\s+is\s+why)\b',
@@ -266,7 +266,7 @@ class TheoryOfMindModule:
             r'\b(always agree|everyone who knows|real experts)\b',
             r'\b(us|we|our team|people like us)\b',
         ],
-        # BAIS SELF-IMPROVEMENT: Added based on failure analysis
+        # BASE SELF-IMPROVEMENT: Added based on failure analysis
         'passive_aggression': [
             r'\b(it\'?s\s+fine|no,?\s+it\'?s\s+(?:fine|okay|ok))\b',
             r'\b(do\s+whatever\s+you\s+want|I\'?m\s+used\s+to\s+it)\b',
@@ -296,7 +296,7 @@ class TheoryOfMindModule:
             r"from the (\w+)'s view",
             r"(\w+) thinks",
             r"(\w+) believes",
-            # BAIS-GUIDED: Named entity perspectives
+            # BASE-GUIDED: Named entity perspectives
             r'\b(The\s+)?(\w+)\s+(?:believes?|thinks?|feels?|argues?|wants?|says?)\b',
             r'\b(\w+)\s+is\s+(?:caught|stuck|torn)\b',
             r'\b(\w+)\s+(?:are|is)\s+(?:concerned|worried|happy|angry|betrayed)\b',
@@ -550,7 +550,7 @@ class TheoryOfMindModule:
         perspective_counts = {pt: 0 for pt in PerspectiveType}
         perspective_markers = {pt: [] for pt in PerspectiveType}
         
-        # BAIS-GUIDED: Track unique named entities for multi-party detection
+        # BASE-GUIDED: Track unique named entities for multi-party detection
         named_entities = set()
         entity_patterns = [
             r'\b(The\s+)?(\w+)\s+(?:believes?|thinks?|feels?|argues?|wants?|says?)\b',
@@ -588,7 +588,7 @@ class TheoryOfMindModule:
                 perspective_counts[perspective_type] += len(markers)
                 perspective_markers[perspective_type].extend(markers)
         
-        # BAIS-GUIDED: Create separate perspectives for each named entity
+        # BASE-GUIDED: Create separate perspectives for each named entity
         if len(named_entities) > 1:
             empathy = self._calculate_empathy_score(text)
             for entity in list(named_entities)[:6]:  # Limit to 6 entities

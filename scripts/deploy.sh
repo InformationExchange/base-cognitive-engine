@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================================
-# BAIS Cognitive Governance Engine - Deployment Script
+# BASE Cognitive Governance Engine - Deployment Script
 # Phase 29: Production Deployment
 # =============================================================================
 
@@ -16,8 +16,8 @@ NC='\033[0m' # No Color
 # Configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-DOCKER_IMAGE="bais-governance"
-DOCKER_TAG="${BAIS_VERSION:-29.0.0}"
+DOCKER_IMAGE="base-governance"
+DOCKER_TAG="${BASE_VERSION:-29.0.0}"
 
 # Functions
 log_info() {
@@ -124,7 +124,7 @@ check_health() {
     
     local max_attempts=30
     local attempt=1
-    local health_url="http://localhost:${BAIS_PORT:-8000}/health"
+    local health_url="http://localhost:${BASE_PORT:-8000}/health"
     
     while [ $attempt -le $max_attempts ]; do
         if curl -s -f "$health_url" > /dev/null 2>&1; then
@@ -156,7 +156,7 @@ import asyncio
 from core.deployment import DeploymentVerifier
 
 async def verify():
-    verifier = DeploymentVerifier('http://localhost:${BAIS_PORT:-8000}')
+    verifier = DeploymentVerifier('http://localhost:${BASE_PORT:-8000}')
     results = await verifier.verify_all()
     print(f\"Passed: {results['passed']}/{results['total']}\")
     print(f\"Success Rate: {results['success_rate']:.1f}%\")
@@ -204,7 +204,7 @@ status() {
 # Main
 # =============================================================================
 print_usage() {
-    echo "BAIS Deployment Script"
+    echo "BASE Deployment Script"
     echo ""
     echo "Usage: $0 <command>"
     echo ""

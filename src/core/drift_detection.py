@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v30.0
+BASE Cognitive Governance Engine v30.0
 Drift Detection System - Statistical Change Detection Algorithms
 
 Phase 30: Addresses PPA2-C1-15, PPA2-C1-16

@@ -1,4 +1,4 @@
-# BAIS Cognitive Governance Engine
+# BASE Cognitive Governance Engine
 # Production Dockerfile
 
 FROM python:3.11-slim
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user
-RUN useradd --create-home --shell /bin/bash bais
+RUN useradd --create-home --shell /bin/bash base
 
 # Set working directory
 WORKDIR /app
@@ -37,10 +37,10 @@ RUN mkdir -p /app/data/audit_data \
     /app/data/learning_data \
     /app/data/llm_aware_learning \
     /app/data/multi_track_data \
-    && chown -R bais:bais /app
+    && chown -R base:base /app
 
 # Switch to non-root user
-USER bais
+USER base
 
 # Expose port
 EXPOSE 8000

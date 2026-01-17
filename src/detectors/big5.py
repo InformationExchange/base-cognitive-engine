@@ -1,5 +1,5 @@
 """
-BAIS Big5 Personality Traits Detector (PPA2-Big5)
+BASE Big5 Personality Traits Detector (PPA2-Big5)
 
 Implements OCEAN personality trait detection:
 1. Openness - creativity, curiosity, intellectual interests

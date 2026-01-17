@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.6
+BASE Cognitive Governance Engine v16.6
 Integrated API Routes - Phase 5
 
 Complete REST API with all endpoints for production use.
@@ -213,7 +213,7 @@ def initialize_engine(data_dir: Path = None, llm_api_key: str = None):
     from core.integrated_engine import IntegratedGovernanceEngine
     
     _engine = IntegratedGovernanceEngine(
-        data_dir=data_dir or Path(os.environ.get('BAIS_DATA_DIR', '/data/bais')),
+        data_dir=data_dir or Path(os.environ.get('BASE_DATA_DIR', '/data/base')),
         llm_api_key=llm_api_key or os.environ.get('XAI_API_KEY', '')
     )
     return _engine
@@ -230,7 +230,7 @@ async def root():
     config = engine.config
     
     return {
-        "service": "Invitas BAIS Cognitive Governance Engine",
+        "service": "Invitas BASE Cognitive Governance Engine",
         "version": "16.6.0",
         "mode": config.get_mode_description(),
         "description": "Production-ready AI governance with full patent compliance",
@@ -472,7 +472,7 @@ async def learning_feedback(request: LearningFeedbackRequest):
     """
     Enhanced feedback endpoint for learning from corrections.
     
-    This enables BAIS to learn from mistakes:
+    This enables BASE to learn from mistakes:
     - False positives: We accepted something bad
     - False negatives: We rejected something good
     
@@ -1276,10 +1276,10 @@ async def get_openapi_spec():
     from main import app
     
     return get_openapi(
-        title="BAIS Cognitive Governance API",
+        title="BASE Cognitive Governance API",
         version="16.6.0",
         description="""
-# BAIS - Cognitive AI Governance Engine
+# BASE - Cognitive AI Governance Engine
 
 Enterprise-grade AI governance with patent-backed algorithms.
 
@@ -1353,7 +1353,7 @@ async def govern_llm_response(request: GovernRequest):
     Use this endpoint to govern any LLM response before delivery.
     """
     try:
-        from integration.llm_governance_wrapper import BAISGovernanceWrapper, GovernanceConfig
+        from integration.llm_governance_wrapper import BASEGovernanceWrapper, GovernanceConfig
         
         config = GovernanceConfig(
             min_accuracy_threshold=0.65,
@@ -1361,7 +1361,7 @@ async def govern_llm_response(request: GovernRequest):
             block_on_critical_issues=True
         )
         
-        wrapper = BAISGovernanceWrapper(config=config)
+        wrapper = BASEGovernanceWrapper(config=config)
         
         result = await wrapper.govern(
             query=request.query,
@@ -1450,8 +1450,8 @@ async def get_python_sdk():
     """
     sdk_code = '''
 """
-BAIS Python SDK - Quick Integration
-Generated automatically by BAIS API
+BASE Python SDK - Quick Integration
+Generated automatically by BASE API
 """
 
 import requests
@@ -1464,7 +1464,7 @@ from dataclasses import dataclass
 
 @dataclass
 class GovernanceResult:
-    """Result from BAIS evaluation."""
+    """Result from BASE evaluation."""
     session_id: str
     accepted: bool
     accuracy: float
@@ -1484,8 +1484,8 @@ class GovernanceResult:
         )
 
 
-class BAISClient:
-    """BAIS Governance Engine Client."""
+class BASEClient:
+    """BASE Governance Engine Client."""
     
     def __init__(self, base_url: str = "http://localhost:8090"):
         self.base_url = base_url.rstrip("/")
@@ -1547,8 +1547,8 @@ class BAISClient:
         return r.json()
 
 
-class BAISAsyncClient:
-    """Async BAIS Client with WebSocket support."""
+class BASEAsyncClient:
+    """Async BASE Client with WebSocket support."""
     
     def __init__(self, base_url: str = "http://localhost:8090"):
         self.base_url = base_url.rstrip("/")
@@ -1577,7 +1577,7 @@ class BAISAsyncClient:
 # Usage Example
 if __name__ == "__main__":
     # Sync client
-    client = BAISClient("http://localhost:8090")
+    client = BASEClient("http://localhost:8090")
     
     # Single evaluation
     result = client.evaluate(
@@ -1599,7 +1599,7 @@ if __name__ == "__main__":
         "version": "1.0.0",
         "code": sdk_code,
         "installation": "pip install requests websockets",
-        "usage": "client = BAISClient(); result = client.evaluate(...)"
+        "usage": "client = BASEClient(); result = client.evaluate(...)"
     }
 
 
@@ -1620,7 +1620,7 @@ async def get_invention_metrics(invention_id: Optional[str] = None):
     Get per-invention performance metrics.
     
     Phase 16 Enhancement: Tracks latency, accuracy, F1, and A/B win rate
-    for each of the 67 BAIS inventions.
+    for each of the 67 BASE inventions.
     """
     engine = get_engine()
     if not hasattr(engine, 'performance_tracker') or not engine.performance_tracker:
@@ -1720,7 +1720,7 @@ async def get_unified_learning_status():
 @router.get("/learning/recommendations")
 async def get_learning_recommendations():
     """
-    Get recommendations for improving BAIS effectiveness.
+    Get recommendations for improving BASE effectiveness.
     
     Analyzes learning data and suggests actions to improve governance quality.
     """
@@ -1789,14 +1789,14 @@ class ABTestRequest(BaseModel):
 @router.post("/ab-test/run")
 async def run_ab_test(request: ABTestRequest):
     """
-    Run a dual-track A/B test comparing BAIS-governed vs unmonitored response.
+    Run a dual-track A/B test comparing BASE-governed vs unmonitored response.
     
     Phase 16D: Uses NOVEL-22 (LLM Challenger) and NOVEL-23 (Multi-Track) for
     comprehensive adversarial analysis.
     """
     engine = get_engine()
     
-    # Track A: Direct (unmonitored) - we simulate what would happen without BAIS
+    # Track A: Direct (unmonitored) - we simulate what would happen without BASE
     track_a = {
         "approach": "Direct/Unmonitored",
         "governance": "None",
@@ -1804,7 +1804,7 @@ async def run_ab_test(request: ABTestRequest):
         "response": request.response[:500] + "..." if len(request.response) > 500 else request.response
     }
     
-    # Track B: BAIS-governed
+    # Track B: BASE-governed
     try:
         result = await engine.evaluate(
             query=request.query,
@@ -1813,7 +1813,7 @@ async def run_ab_test(request: ABTestRequest):
         )
         
         track_b = {
-            "approach": "BAIS-Governed",
+            "approach": "BASE-Governed",
             "governance": "Full",
             "decision": result.decision.value if hasattr(result.decision, 'value') else str(result.decision),
             "accuracy": result.accuracy,
@@ -1824,7 +1824,7 @@ async def run_ab_test(request: ABTestRequest):
         }
     except Exception as e:
         track_b = {
-            "approach": "BAIS-Governed",
+            "approach": "BASE-Governed",
             "governance": "Error",
             "error": str(e)
         }
@@ -1832,10 +1832,10 @@ async def run_ab_test(request: ABTestRequest):
     # Determine winner
     if "error" in track_b:
         winner = "A"
-        reason = "BAIS encountered an error"
+        reason = "BASE encountered an error"
     elif track_b.get("issues_detected", 0) > 0:
         winner = "B"
-        reason = f"BAIS detected {track_b['issues_detected']} issues that would be missed"
+        reason = f"BASE detected {track_b['issues_detected']} issues that would be missed"
     else:
         winner = "tie"
         reason = "Both approaches produced similar results"
@@ -1872,8 +1872,8 @@ async def get_ab_test_statistics():
     
     stats = {
         "total_tests": 0,
-        "bais_wins": 0,
-        "bais_losses": 0,
+        "base_wins": 0,
+        "base_losses": 0,
         "ties": 0,
         "win_rate": 0.0,
         "per_invention": {}

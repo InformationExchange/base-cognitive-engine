@@ -1,5 +1,5 @@
 """
-BAIS LLM Provider Registry and Management
+BASE LLM Provider Registry and Management
 
 Features:
 1. Multi-provider support (Grok, OpenAI, Anthropic, Google, etc.)
@@ -146,7 +146,7 @@ class SecureKeyManager:
     
     def __init__(self, keys_file: Optional[Path] = None):
         self.key_info: Dict[LLMProvider, APIKeyInfo] = {}
-        self._keys_file = keys_file or Path("~/.bais/api_keys.json").expanduser()
+        self._keys_file = keys_file or Path("~/.base/api_keys.json").expanduser()
         self._load_key_info()
     
     def _load_key_info(self):
@@ -1168,7 +1168,7 @@ class MultiProviderLLMClient:
 def test_llm_registry():
     """Test the LLM registry and key management."""
     print("=" * 70)
-    print("BAIS LLM REGISTRY TEST")
+    print("BASE LLM REGISTRY TEST")
     print("=" * 70)
     
     registry = LLMRegistry()

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v43.0
+BASE Cognitive Governance Engine v43.0
 Documentation System with AI + Pattern + Learning
 
 Phase 43: Documentation Infrastructure
@@ -558,7 +558,7 @@ if __name__ == "__main__":
     # Simulate code elements
     elements = [
         CodeElement("evaluate", "function", "def evaluate(query, response) -> GovernanceDecision", "Evaluate a query-response pair for governance violations"),
-        CodeElement("IntegratedGovernanceEngine", "class", "class IntegratedGovernanceEngine", "Main governance engine integrating all BAIS modules"),
+        CodeElement("IntegratedGovernanceEngine", "class", "class IntegratedGovernanceEngine", "Main governance engine integrating all BASE modules"),
         CodeElement("detect_bias", "function", "def detect_bias(text) -> BiasSignal", "Detect various types of bias in text"),
         CodeElement("SignalFusion", "class", "class SignalFusion", "Fuses multiple detector signals into unified score"),
     ]

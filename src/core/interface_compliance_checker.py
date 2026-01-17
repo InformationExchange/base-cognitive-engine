@@ -1,5 +1,5 @@
 """
-BAIS Interface Compliance Checker (NOVEL-51)
+BASE Interface Compliance Checker (NOVEL-51)
 
 Ensures learning interface methods are:
 1. Actually inside the class (not module level)

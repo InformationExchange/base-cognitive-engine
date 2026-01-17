@@ -1,5 +1,5 @@
 """
-BAIS World Models (NOVEL-16)
+BASE World Models (NOVEL-16)
 
 Implements world model reasoning:
 1. Causal reasoning about world states
@@ -57,7 +57,7 @@ class SimulationResult:
 
 class WorldModelAnalyzer:
     """
-    World model reasoning for BAIS.
+    World model reasoning for BASE.
     
     Implements NOVEL-16: World Models
     Brain Layer: 2 (Prefrontal Cortex)

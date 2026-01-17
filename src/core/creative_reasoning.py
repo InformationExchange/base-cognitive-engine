@@ -1,5 +1,5 @@
 """
-BAIS Creative Reasoning (NOVEL-17)
+BASE Creative Reasoning (NOVEL-17)
 
 Implements creative problem-solving capabilities:
 1. Analogical reasoning
@@ -51,7 +51,7 @@ class CreativeAnalysisResult:
 
 class CreativeReasoning:
     """
-    Creative reasoning module for BAIS.
+    Creative reasoning module for BASE.
     
     Implements NOVEL-17: Creative Reasoning
     Brain Layer: 2 (Prefrontal Cortex)

@@ -1,7 +1,7 @@
 """
 ADVANCED LEARNING AND ADAPTIVE ENGINE
 ======================================
-Phase 1-5 Implementation for BAIS Enhancement
+Phase 1-5 Implementation for BASE Enhancement
 
 Core Capabilities:
 1. Content Safety Scorer - Penalizes dangerous advice heavily
@@ -420,7 +420,7 @@ class AdaptiveLearningEngine:
     """
     
     def __init__(self, data_dir: Path = None):
-        self.data_dir = data_dir or Path("/tmp/bais_learning")
+        self.data_dir = data_dir or Path("/tmp/base_learning")
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.state = self._load_state()
         
@@ -780,13 +780,13 @@ class RegenerationQualityVerifier:
 
 
 # Export main class
-class AdvancedBAISEngine:
+class AdvancedBASEEngine:
     """
-    Main entry point for Advanced BAIS with all enhancements
+    Main entry point for Advanced BASE with all enhancements
     """
     
     def __init__(self, data_dir: Path = None):
-        self.data_dir = data_dir or Path("/tmp/bais_advanced")
+        self.data_dir = data_dir or Path("/tmp/base_advanced")
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
         self.learning_engine = AdaptiveLearningEngine(self.data_dir)

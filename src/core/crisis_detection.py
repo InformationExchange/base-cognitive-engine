@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v32.0
+BASE Cognitive Governance Engine v32.0
 Crisis Detection & Environment Profiles
 
 Phase 32: Addresses PPA2-C1-24, PPA2-C1-25, PPA2-C1-26

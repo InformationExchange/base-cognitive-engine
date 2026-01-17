@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Enhancement Module
+BASE Cognitive Enhancement Module
 
 This module implements NOVEL cognitive capabilities:
 - Decision quality (improving judgment)

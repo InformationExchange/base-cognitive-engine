@@ -1,12 +1,12 @@
 #!/bin/bash
-# BAIS Governance Server Startup Script
+# BASE Governance Server Startup Script
 # Run this to enable real-time governance
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="$SCRIPT_DIR/src"
 
 echo "=========================================="
-echo "BAIS Cognitive Governance Engine"
+echo "BASE Cognitive Governance Engine"
 echo "=========================================="
 echo ""
 echo "Starting governance services..."
@@ -38,7 +38,7 @@ case "${1:-api}" in
         python3 integration/governance_proxy.py
         ;;
     "api")
-        echo "Starting BAIS API Server..."
+        echo "Starting BASE API Server..."
         echo "API available at: http://localhost:8090"
         echo ""
         cd "$SRC_DIR"
@@ -47,7 +47,7 @@ import uvicorn
 from api.integrated_routes import router
 from fastapi import FastAPI
 
-app = FastAPI(title='BAIS Governance Engine')
+app = FastAPI(title='BASE Governance Engine')
 app.include_router(router)
 
 if __name__ == '__main__':
@@ -60,10 +60,10 @@ if __name__ == '__main__':
         cd "$SRC_DIR"
         python3 << 'EOF'
 import asyncio
-from integration.llm_governance_wrapper import BAISGovernanceWrapper
+from integration.llm_governance_wrapper import BASEGovernanceWrapper
 
 async def quick_test():
-    wrapper = BAISGovernanceWrapper()
+    wrapper = BASEGovernanceWrapper()
     
     tests = [
         ("Test completion claim", "Is it done?", "Yes, 100% complete with zero errors!"),

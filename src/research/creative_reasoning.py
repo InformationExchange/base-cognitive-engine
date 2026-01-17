@@ -1,8 +1,8 @@
 """
-BAIS Creative Reasoning Module
+BASE Creative Reasoning Module
 Divergent thinking and novel solution generation
 
-This module enables BAIS to:
+This module enables BASE to:
 1. Detect and encourage divergent thinking
 2. Identify and evaluate analogical reasoning
 3. Assess creative quality and originality
@@ -135,7 +135,7 @@ class DivergentAnalysis:
 
 class CreativeReasoningModule:
     """
-    Creative Reasoning cognitive module for BAIS.
+    Creative Reasoning cognitive module for BASE.
     
     Implements:
     - Divergent thinking assessment (Torrance-inspired)
@@ -221,7 +221,7 @@ class CreativeReasoningModule:
         r'\b(win-win|game-changer|paradigm shift|synergy)\b',
         r'\b(it is what it is|best of both worlds|tip of the iceberg)\b',
         r'\b(take it to the next level|push the envelope|moving forward)\b',
-        # BAIS SELF-IMPROVEMENT: Added based on failure analysis
+        # BASE SELF-IMPROVEMENT: Added based on failure analysis
         r'\b(bite the bullet|face the music|burning bridges)\b',
         r'\b(ball is in your court|hit the ground running|wrap your head around)\b',
         r'\b(move the needle|circle back|leverage|core competencies)\b',
@@ -229,7 +229,7 @@ class CreativeReasoningModule:
         r'\b(synergize|actionable|optimize|streamline)\b',
     ]
     
-    # BAIS SELF-IMPROVEMENT: Detect mixed metaphors (multiple dead metaphors together)
+    # BASE SELF-IMPROVEMENT: Detect mixed metaphors (multiple dead metaphors together)
     MIXED_METAPHOR_PENALTY = 0.15  # Extra penalty when multiple cliches combined
     
     # Novelty indicators
@@ -345,7 +345,7 @@ class CreativeReasoningModule:
             # ENHANCED: Also extract substantial chunks even without explicit markers
             # if they describe concepts, products, or ideas (minimum word count)
             word_count = len(chunk.split())
-            # BAIS-GUIDED: Reduced from 5 to 3 to capture shorter innovation ideas
+            # BASE-GUIDED: Reduced from 5 to 3 to capture shorter innovation ideas
             is_substantive = word_count >= 3  # At least 3 words
             
             if creative_type or is_substantive:
@@ -369,7 +369,7 @@ class CreativeReasoningModule:
                 ideas.append(idea)
                 idea_id += 1
         
-        # BAIS-GUIDED: Extract comma-separated concepts
+        # BASE-GUIDED: Extract comma-separated concepts
         comma_patterns = [
             r'\bwith\s+([^,]+),\s+([^,]+),?\s+and\s+([^.]+)',  # "with A, B, and C"
             r'\bincluding\s+([^,]+),\s+([^,]+),?\s+and\s+([^.]+)',  # "including A, B, and C"
@@ -396,7 +396,7 @@ class CreativeReasoningModule:
                         ideas.append(idea)
                         idea_id += 1
         
-        # BAIS-GUIDED: Extract Phase/Step patterns
+        # BASE-GUIDED: Extract Phase/Step patterns
         phase_patterns = [
             r'(?:Phase|Step|Stage)\s*\d+[:\s]+([^.]+)',  # Phase 1: X
             r'(?:First|Second|Third|Fourth|Fifth|Then|Next|Finally)[,:\s]+([^.]+)',  # First, X
@@ -405,7 +405,7 @@ class CreativeReasoningModule:
             matches = re.findall(pattern, text, re.IGNORECASE)
             for match in matches:
                 item = match.strip()
-                # BAIS-GUIDED: Reduced from 5 to 2 for short names like MVP
+                # BASE-GUIDED: Reduced from 5 to 2 for short names like MVP
                 if len(item) >= 2:
                     creative_type = CreativeType.CONVERGENT  # Phases are structured thinking
                     originality = self._assess_originality(item)
@@ -432,7 +432,7 @@ class CreativeReasoningModule:
             r'(?:^|\n)\s*\d+:\s*(.+)',                 # 1: Item
         ]
         
-        # BAIS-GUIDED: Also extract inline numbered lists like "1. Email 2. Social 3. Influencer"
+        # BASE-GUIDED: Also extract inline numbered lists like "1. Email 2. Social 3. Influencer"
         inline_list_matches = re.findall(r'(\d+)[.)]\s*(\w+)', text)
         if len(inline_list_matches) >= 2:  # At least 2 items to be a list
             for num, item in inline_list_matches:

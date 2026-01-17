@@ -1,5 +1,5 @@
 """
-BAIS RAG Quality Scoring Pathway
+BASE RAG Quality Scoring Pathway
 Migrated from Onyx Governance - Enhancement 1
 
 Document quality scoring for RAG systems.
@@ -44,7 +44,7 @@ class RAGQualityScore:
 
 class RAGQualityPathway:
     """
-    RAG Quality Scoring Pathway for BAIS.
+    RAG Quality Scoring Pathway for BASE.
     
     Implements:
     - Document relevance scoring
@@ -53,7 +53,7 @@ class RAGQualityPathway:
     - Document recency assessment
     - Response-document alignment
     
-    Supports adaptive weight learning via BAIS OCO learner.
+    Supports adaptive weight learning via BASE OCO learner.
     """
     
     def __init__(self,
@@ -338,7 +338,7 @@ class RAGQualityPathway:
         """
         Update weights (for adaptive learning integration).
         
-        Can be called by BAIS OCO learner to adjust weights based on outcomes.
+        Can be called by BASE OCO learner to adjust weights based on outcomes.
         """
         if relevance is not None:
             self.alpha_r = relevance

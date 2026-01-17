@@ -1,5 +1,5 @@
 """
-BAIS FULL INVENTION AUDIT
+BASE FULL INVENTION AUDIT
 =========================
 
 Tests ALL 64 inventions to determine REAL implementation status.
@@ -98,7 +98,7 @@ INVENTION_REGISTRY = [
     
     # ============ PPA2: Adaptive Acceptance Controller (3 inventions + 18 components) ============
     {"id": "PPA2-Inv26", "name": "Lexicographic Gate (Must-Pass)", "patent": "PPA2",
-     "module": "core.governance_rules", "class": "BAISGovernanceRules"},
+     "module": "core.governance_rules", "class": "BASEGovernanceRules"},
     {"id": "PPA2-Inv27", "name": "OCO Threshold Adapter", "patent": "PPA2",
      "module": "learning.algorithms", "class": "OCOLearner"},
     {"id": "PPA2-Inv28", "name": "Cognitive Window (Real-time)", "patent": "PPA2",
@@ -178,7 +178,7 @@ INVENTION_REGISTRY = [
     {"id": "NOVEL-17", "name": "Creative Reasoning", "patent": "NOVEL",
      "module": "research.creative_reasoning", "class": "CreativeReasoningModule"},
     {"id": "NOVEL-18", "name": "Governance Rules Engine", "patent": "NOVEL",
-     "module": "core.governance_rules", "class": "BAISGovernanceRules"},
+     "module": "core.governance_rules", "class": "BASEGovernanceRules"},
     {"id": "NOVEL-19", "name": "LLM Registry", "patent": "NOVEL",
      "module": "core.llm_registry", "class": "LLMRegistry"},
     {"id": "NOVEL-20", "name": "Response Improver", "patent": "NOVEL",
@@ -308,8 +308,8 @@ async def test_invention_works(invention: dict) -> tuple:
             return True, "Engine initialized"
             
         elif "governance_rules" in invention["module"]:
-            from core.governance_rules import BAISGovernanceRules
-            rules = BAISGovernanceRules()
+            from core.governance_rules import BASEGovernanceRules
+            rules = BASEGovernanceRules()
             return True, f"Loaded {len(rules.rules)} rules"
             
         elif "algorithms" in invention["module"]:
@@ -392,7 +392,7 @@ async def test_invention_works(invention: dict) -> tuple:
 async def audit_all_inventions():
     """Audit all inventions and report status."""
     print("=" * 80)
-    print("BAIS FULL INVENTION AUDIT - REAL IMPLEMENTATION STATUS")
+    print("BASE FULL INVENTION AUDIT - REAL IMPLEMENTATION STATUS")
     print("=" * 80)
     print()
     

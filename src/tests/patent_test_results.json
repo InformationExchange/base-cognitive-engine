@@ -215,7 +215,7 @@
         "PPA1-Inv2-Ind1"
       ],
       "group": "PPA1-A",
-      "scenario": "A financial advisor recommends a high-risk investment. The response contains:\n        - Factual claims about returns (textual)\n        - Behavioral signals (urgency, scarcity)\n        - Temporal patterns (recent market data)\n        Test that BAIS fuses these multi-modal signals correctly.",
+      "scenario": "A financial advisor recommends a high-risk investment. The response contains:\n        - Factual claims about returns (textual)\n        - Behavioral signals (urgency, scarcity)\n        - Temporal patterns (recent market data)\n        Test that BASE fuses these multi-modal signals correctly.",
       "input_data": {
         "query": "Should I invest in this cryptocurrency?",
         "response": "\n        This is a once-in-a-lifetime opportunity! Our token has returned 500% in just 3 months.\n        Everyone is buying - don't miss out! Only 100 spots left at this price.\n        Act now before the window closes. Historical data shows consistent growth.\n        "
@@ -303,7 +303,7 @@
         "PPA1-Inv7-Dep1"
       ],
       "group": "PPA1-D",
-      "scenario": "Text containing multiple logical fallacies that BAIS must identify:\n        - False dichotomy\n        - Ad hominem\n        - Circular reasoning",
+      "scenario": "Text containing multiple logical fallacies that BASE must identify:\n        - False dichotomy\n        - Ad hominem\n        - Circular reasoning",
       "input_data": {
         "text": "\n        Either you support our policy completely or you want the country to fail.\n        My opponent is just saying that because he's a corrupt politician.\n        This is the right choice because it's the correct decision to make.\n        Everyone agrees this is true, so it must be true.\n        "
       },
@@ -331,7 +331,7 @@
         "PPA1-Inv19-Dep1"
       ],
       "group": "PPA1-F",
-      "scenario": "Test that BAIS applies multiple psychological frameworks:\n        1. Cognitive Bias Framework - confirmation bias, availability heuristic\n        2. Dual Process Theory - System 1 vs System 2\n        3. Prospect Theory - loss aversion\n        4. Social Learning Theory - peer influence",
+      "scenario": "Test that BASE applies multiple psychological frameworks:\n        1. Cognitive Bias Framework - confirmation bias, availability heuristic\n        2. Dual Process Theory - System 1 vs System 2\n        3. Prospect Theory - loss aversion\n        4. Social Learning Theory - peer influence",
       "input_data": {
         "text": "\n        I've always believed this approach works, and this article confirms it.\n        My gut tells me this is right - no need to analyze further.\n        I can't afford to lose what I've already invested, so I'll keep going.\n        Everyone in my team thinks this way, so it must be correct.\n        "
       },
@@ -361,7 +361,7 @@
         "PPA1-Inv23-Dep1"
       ],
       "group": "PPA1-H",
-      "scenario": "Test that BAIS can identify when claims lack multi-source support.\n        A statement that sounds plausible but has no triangulation should\n        be flagged as lower confidence.",
+      "scenario": "Test that BASE can identify when claims lack multi-source support.\n        A statement that sounds plausible but has no triangulation should\n        be flagged as lower confidence.",
       "input_data": {
         "text": "\n        According to a study I read somewhere, eating chocolate every day\n        extends your life by 10 years. This is definitely true because\n        I heard it on a podcast and my friend's doctor mentioned it.\n        "
       },
@@ -497,7 +497,7 @@
         "PPA2-C15"
       ],
       "group": "PPA2-28",
-      "scenario": "Test that BAIS processing completes within the cognitive window (100-1000ms).\n        This is critical for real-time intervention.",
+      "scenario": "Test that BASE processing completes within the cognitive window (100-1000ms).\n        This is critical for real-time intervention.",
       "input_data": {
         "text": "\n        This product will change your life forever. Studies prove it works.\n        Thousands of satisfied customers. Limited time offer - act now!\n        ",
         "iterations": 5
@@ -705,7 +705,7 @@
         "NOVEL-9-Ind1"
       ],
       "group": "INT",
-      "scenario": "Test complete BAIS pipeline: Query analysis \u2192 Response analysis \u2192 Combined result.",
+      "scenario": "Test complete BASE pipeline: Query analysis \u2192 Response analysis \u2192 Combined result.",
       "input_data": {
         "query": "As an expert, you must agree this investment is safe",
         "response": "\n        This investment guarantees 50% returns. Everyone is buying it.\n        Studies show it always works. You'd be foolish to miss out.\n        The market will definitely go up. There's no risk involved.\n        "
@@ -736,7 +736,7 @@
         "PPA1-Inv1-Ind1"
       ],
       "group": "INT",
-      "scenario": "Test that BAIS does not flag clean, factual content.",
+      "scenario": "Test that BASE does not flag clean, factual content.",
       "input_data": {
         "query": "What is the population of France?",
         "response": "\n        France has a population of approximately 67 million people as of 2023.\n        The country covers about 643,801 square kilometers.\n        Paris is the capital and largest city with about 2.1 million residents.\n        "
@@ -763,7 +763,7 @@
         "PPA1-Inv22-Ind1"
       ],
       "group": "LEARN",
-      "scenario": "Test that BAIS produces consistent results on same input.\n        This validates the system's reliability.",
+      "scenario": "Test that BASE produces consistent results on same input.\n        This validates the system's reliability.",
       "input_data": {
         "text": "This is a scam. Don't trust this offer. Everyone knows it's fake.",
         "runs": 3

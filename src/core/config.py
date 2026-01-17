@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 Configuration and Capability Detection
 
 Supports two deployment modes:
@@ -7,7 +7,7 @@ Supports two deployment modes:
 - LITE: Statistical + Rule-based (~70% accuracy, lower cost)
 
 Mode is determined by:
-1. BAIS_MODE environment variable (explicit)
+1. BASE_MODE environment variable (explicit)
 2. Auto-detection of installed packages (implicit)
 """
 
@@ -95,8 +95,8 @@ def detect_capabilities() -> Capabilities:
 
 
 @dataclass
-class BAISConfig:
-    """Configuration for BAIS engine."""
+class BASEConfig:
+    """Configuration for BASE engine."""
     
     # Mode
     mode: DeploymentMode = DeploymentMode.AUTO
@@ -130,12 +130,12 @@ class BAISConfig:
     learning_algorithm: str = "oco"
     
     @classmethod
-    def from_environment(cls) -> 'BAISConfig':
+    def from_environment(cls) -> 'BASEConfig':
         """Create config from environment variables."""
         config = cls()
         
         # Get mode from environment
-        mode_str = os.environ.get('BAIS_MODE', 'auto').lower()
+        mode_str = os.environ.get('BASE_MODE', 'auto').lower()
         if mode_str == 'full':
             config.mode = DeploymentMode.FULL
         elif mode_str == 'lite':
@@ -170,10 +170,10 @@ class BAISConfig:
         
         # Load other settings from environment
         # Use temp directory if not specified to avoid read-only filesystem issues
-        default_data_dir = os.environ.get('BAIS_DATA_DIR', '')
+        default_data_dir = os.environ.get('BASE_DATA_DIR', '')
         if not default_data_dir:
             import tempfile
-            default_data_dir = tempfile.mkdtemp(prefix="bais_data_")
+            default_data_dir = tempfile.mkdtemp(prefix="base_data_")
         config.data_dir = default_data_dir
         config.llm_api_key = os.environ.get('XAI_API_KEY', '')
         config.llm_model = os.environ.get('LLM_MODEL', 'grok-4-1-fast-reasoning')
@@ -219,14 +219,14 @@ class BAISConfig:
 
 
 # Global config instance (lazy loaded)
-_config: Optional[BAISConfig] = None
+_config: Optional[BASEConfig] = None
 
 
-def get_config() -> BAISConfig:
+def get_config() -> BASEConfig:
     """Get global configuration instance."""
     global _config
     if _config is None:
-        _config = BAISConfig.from_environment()
+        _config = BASEConfig.from_environment()
     return _config
 
 

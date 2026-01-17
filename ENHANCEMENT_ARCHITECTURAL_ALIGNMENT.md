@@ -2,7 +2,7 @@
 
 ## Phase 15 Enhancements: December 25, 2025
 
-This document verifies that all proposed enhancements align with the BAIS architecture, existing inventions, and proper orchestration pathways.
+This document verifies that all proposed enhancements align with the BASE architecture, existing inventions, and proper orchestration pathways.
 
 ---
 
@@ -12,7 +12,7 @@ This document verifies that all proposed enhancements align with the BAIS archit
 
 | Attribute | Value |
 |-----------|-------|
-| **Problem** | BAIS flags legitimate cited statistics as "metric_gaming" |
+| **Problem** | BASE flags legitimate cited statistics as "metric_gaming" |
 | **Root Cause** | Pattern detector lacks citation context awareness |
 | **Solution** | Add citation proximity check before flagging |
 
@@ -247,7 +247,7 @@ Persist learning for future use
 
 ### Test 1: Citation-Aware Metric Gaming
 
-**Input:** "67 Inventions, 300 Claims (Source: BAIS_BRAIN_ARCHITECTURE.md)"
+**Input:** "67 Inventions, 300 Claims (Source: BASE_BRAIN_ARCHITECTURE.md)"
 
 **Expected Outcome:**
 - Track A: Would flag as METRIC_GAMING

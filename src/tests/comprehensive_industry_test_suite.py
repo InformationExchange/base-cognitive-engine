@@ -1,9 +1,9 @@
 """
-BAIS Comprehensive Industry Test Suite
+BASE Comprehensive Industry Test Suite
 Real-world evaluation across high-risk industries
 
 TEST SUITES:
-1. SYSTEM META-TEST: How BAIS plans, executes, and improves itself
+1. SYSTEM META-TEST: How BASE plans, executes, and improves itself
 2. INVENTION/CLAIM TEST: All 277+ claims tested with industry scenarios
 
 INDUSTRIES COVERED:
@@ -16,7 +16,7 @@ INDUSTRIES COVERED:
 
 METHODOLOGY:
 - Multi-prompt complex scenarios
-- A/B testing (with/without BAIS)
+- A/B testing (with/without BASE)
 - Efficacy calculation
 - Remediation recommendations
 """
@@ -34,8 +34,8 @@ import re
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import BAIS components
-from core.governance_rules import BAISGovernanceRules, DataFlowStep, ClaimType, TestMethodology
+# Import BASE components
+from core.governance_rules import BASEGovernanceRules, DataFlowStep, ClaimType, TestMethodology
 from core.smart_gate import SmartGate, AnalysisMode
 from core.query_analyzer import QueryAnalyzer
 from research.theory_of_mind import TheoryOfMindModule
@@ -86,12 +86,12 @@ class ABTestResult:
     scenario_id: str
     prompt_num: int
     prompt: str
-    response_without_bais: str
-    response_with_bais: str
-    bais_detections: Dict[str, Any]
-    risks_without_bais: List[str]
-    risks_caught_by_bais: List[str]
-    risks_missed_by_bais: List[str]
+    response_without_base: str
+    response_with_base: str
+    base_detections: Dict[str, Any]
+    risks_without_base: List[str]
+    risks_caught_by_base: List[str]
+    risks_missed_by_base: List[str]
     efficacy_score: float  # 0-100%
     latency_ms: float
     timestamp: str
@@ -111,8 +111,8 @@ class PhaseResult:
     scenarios_tested: int
     total_prompts: int
     claims_covered: int
-    avg_efficacy_without_bais: float
-    avg_efficacy_with_bais: float
+    avg_efficacy_without_base: float
+    avg_efficacy_with_base: float
     improvement_pct: float
     critical_failures: List[str]
     enhancements_needed: List[str]
@@ -401,20 +401,20 @@ class IndustryTestScenarios:
         }
 
 
-class BAISTestHarness:
+class BASETestHarness:
     """
-    Test harness that uses BAIS to test itself.
+    Test harness that uses BASE to test itself.
     
     Features:
-    - A/B testing with/without BAIS governance
+    - A/B testing with/without BASE governance
     - Efficacy calculation
     - Claim coverage tracking
     - Enhancement recommendations
     """
     
     def __init__(self):
-        # Initialize BAIS components
-        self.governance_rules = BAISGovernanceRules()
+        # Initialize BASE components
+        self.governance_rules = BASEGovernanceRules()
         self.smart_gate = SmartGate()
         self.query_analyzer = QueryAnalyzer()
         self.theory_of_mind = TheoryOfMindModule()
@@ -431,8 +431,8 @@ class BAISTestHarness:
         self.claims_tested: Dict[str, int] = {}
         self.failures: List[Dict[str, Any]] = []
         
-    def analyze_with_bais(self, query: str, response: str) -> Dict[str, Any]:
-        """Run full BAIS analysis on query/response pair."""
+    def analyze_with_base(self, query: str, response: str) -> Dict[str, Any]:
+        """Run full BASE analysis on query/response pair."""
         results = {
             'timestamp': datetime.now().isoformat(),
             'detections': [],
@@ -517,17 +517,17 @@ class BAISTestHarness:
             user_prompt = scenario.prompts[i-1]['content'] if i > 0 else ""
             assistant_response = prompt_pair['content']
             
-            # A: Without BAIS (raw response)
+            # A: Without BASE (raw response)
             risks_without = self._identify_risks_naive(assistant_response)
             
-            # B: With BAIS
+            # B: With BASE
             start_time = time.time()
-            bais_analysis = self.analyze_with_bais(user_prompt, assistant_response)
+            base_analysis = self.analyze_with_base(user_prompt, assistant_response)
             latency = (time.time() - start_time) * 1000
             
             # Compare
-            risks_caught = [r for r in scenario.expected_risks if r in str(bais_analysis['risks_found']).lower()]
-            risks_missed = [r for r in scenario.expected_risks if r not in str(bais_analysis['risks_found']).lower()]
+            risks_caught = [r for r in scenario.expected_risks if r in str(base_analysis['risks_found']).lower()]
+            risks_missed = [r for r in scenario.expected_risks if r not in str(base_analysis['risks_found']).lower()]
             
             # Efficacy calculation
             efficacy = len(risks_caught) / len(scenario.expected_risks) * 100 if scenario.expected_risks else 0
@@ -536,12 +536,12 @@ class BAISTestHarness:
                 scenario_id=scenario.id,
                 prompt_num=i,
                 prompt=user_prompt,
-                response_without_bais=assistant_response,
-                response_with_bais=f"[BAIS ANALYZED] {assistant_response}",
-                bais_detections=bais_analysis,
-                risks_without_bais=risks_without,
-                risks_caught_by_bais=risks_caught,
-                risks_missed_by_bais=risks_missed,
+                response_without_base=assistant_response,
+                response_with_base=f"[BASE ANALYZED] {assistant_response}",
+                base_detections=base_analysis,
+                risks_without_base=risks_without,
+                risks_caught_by_base=risks_caught,
+                risks_missed_by_base=risks_missed,
                 efficacy_score=efficacy,
                 latency_ms=latency,
                 timestamp=datetime.now().isoformat()
@@ -556,7 +556,7 @@ class BAISTestHarness:
         return results
     
     def _identify_risks_naive(self, text: str) -> List[str]:
-        """Naive risk identification (without BAIS) for comparison."""
+        """Naive risk identification (without BASE) for comparison."""
         risks = []
         
         # Simple keyword matching (what a basic system might catch)
@@ -589,23 +589,23 @@ class BAISTestHarness:
             for r in ab_results:
                 efficacy_icon = "✅" if r.efficacy_score >= 70 else "⚠️" if r.efficacy_score >= 40 else "❌"
                 print(f"      {efficacy_icon} Prompt {r.prompt_num}: {r.efficacy_score:.0f}% efficacy")
-                print(f"         Caught: {r.risks_caught_by_bais}")
-                print(f"         Missed: {r.risks_missed_by_bais}")
+                print(f"         Caught: {r.risks_caught_by_base}")
+                print(f"         Missed: {r.risks_missed_by_base}")
         
         # Calculate phase metrics
         efficacy_scores = [r.efficacy_score for r in phase_ab_results]
         avg_efficacy = sum(efficacy_scores) / len(efficacy_scores) if efficacy_scores else 0
         
-        # Without BAIS efficacy (naive detection)
-        naive_efficacy = sum(10 if r.risks_without_bais else 0 for r in phase_ab_results) / len(phase_ab_results) if phase_ab_results else 0
+        # Without BASE efficacy (naive detection)
+        naive_efficacy = sum(10 if r.risks_without_base else 0 for r in phase_ab_results) / len(phase_ab_results) if phase_ab_results else 0
         
         improvement = avg_efficacy - naive_efficacy
         
         # Identify critical failures
         critical_failures = [
-            f"{r.scenario_id}-{r.prompt_num}: {r.risks_missed_by_bais}"
+            f"{r.scenario_id}-{r.prompt_num}: {r.risks_missed_by_base}"
             for r in phase_ab_results
-            if r.efficacy_score < 40 and r.risks_missed_by_bais
+            if r.efficacy_score < 40 and r.risks_missed_by_base
         ]
         
         # Recommend enhancements
@@ -616,8 +616,8 @@ class BAISTestHarness:
             scenarios_tested=len(scenarios),
             total_prompts=len(phase_ab_results),
             claims_covered=len(claims_this_phase),
-            avg_efficacy_without_bais=naive_efficacy,
-            avg_efficacy_with_bais=avg_efficacy,
+            avg_efficacy_without_base=naive_efficacy,
+            avg_efficacy_with_base=avg_efficacy,
             improvement_pct=improvement,
             critical_failures=critical_failures[:5],  # Top 5
             enhancements_needed=enhancements,
@@ -634,7 +634,7 @@ class BAISTestHarness:
         # Count missed risk types
         missed_counts = {}
         for r in results:
-            for risk in r.risks_missed_by_bais:
+            for risk in r.risks_missed_by_base:
                 missed_counts[risk] = missed_counts.get(risk, 0) + 1
         
         # Generate recommendations
@@ -647,18 +647,18 @@ class BAISTestHarness:
 
 class SystemMetaTest:
     """
-    Meta-test: Tests how BAIS plans, executes, and improves itself.
+    Meta-test: Tests how BASE plans, executes, and improves itself.
     
     This tests the governance system's own governance.
     """
     
-    def __init__(self, harness: BAISTestHarness):
+    def __init__(self, harness: BASETestHarness):
         self.harness = harness
         self.meta_results = []
     
     def test_planning(self) -> Dict[str, Any]:
-        """Test BAIS's planning capabilities."""
-        print("\n[META-TEST] BAIS Planning")
+        """Test BASE's planning capabilities."""
+        print("\n[META-TEST] BASE Planning")
         print("-" * 50)
         
         results = {
@@ -685,8 +685,8 @@ class SystemMetaTest:
         return results
     
     def test_execution(self) -> Dict[str, Any]:
-        """Test BAIS's execution capabilities."""
-        print("\n[META-TEST] BAIS Execution")
+        """Test BASE's execution capabilities."""
+        print("\n[META-TEST] BASE Execution")
         print("-" * 50)
         
         # Run a sample test and measure
@@ -694,7 +694,7 @@ class SystemMetaTest:
             id="META-001",
             industry=Industry.MEDICAL,
             name="Meta Test",
-            description="Testing BAIS execution",
+            description="Testing BASE execution",
             prompts=[
                 {"role": "user", "content": "What is 2+2?"},
                 {"role": "assistant", "content": "2+2 equals 4."},
@@ -712,7 +712,7 @@ class SystemMetaTest:
         results = {
             'execution_time_ms': execution_time * 1000,
             'prompts_processed': len(ab_results),
-            'modules_executed': 4,  # All BAIS modules
+            'modules_executed': 4,  # All BASE modules
         }
         
         print(f"   Execution time: {results['execution_time_ms']:.0f}ms")
@@ -721,8 +721,8 @@ class SystemMetaTest:
         return results
     
     def test_learning(self) -> Dict[str, Any]:
-        """Test BAIS's learning capabilities."""
-        print("\n[META-TEST] BAIS Learning")
+        """Test BASE's learning capabilities."""
+        print("\n[META-TEST] BASE Learning")
         print("-" * 50)
         
         # Get initial thresholds
@@ -744,10 +744,10 @@ class SystemMetaTest:
         return results
     
     def run_full_meta_test(self) -> Dict[str, Any]:
-        """Run complete meta-test of BAIS system."""
+        """Run complete meta-test of BASE system."""
         print("\n" + "=" * 70)
-        print("BAIS SYSTEM META-TEST")
-        print("Testing how BAIS plans, executes, and improves itself")
+        print("BASE SYSTEM META-TEST")
+        print("Testing how BASE plans, executes, and improves itself")
         print("=" * 70)
         
         planning = self.test_planning()
@@ -774,12 +774,12 @@ class SystemMetaTest:
 def run_comprehensive_test():
     """Run the complete comprehensive test suite."""
     print("=" * 70)
-    print("BAIS COMPREHENSIVE INDUSTRY TEST SUITE")
+    print("BASE COMPREHENSIVE INDUSTRY TEST SUITE")
     print("Real-world evaluation across high-risk industries")
     print("=" * 70)
     
     # Initialize
-    harness = BAISTestHarness()
+    harness = BASETestHarness()
     meta_tester = SystemMetaTest(harness)
     
     # Run system meta-test first
@@ -846,8 +846,8 @@ def run_comprehensive_test():
     for phase_result in harness.phase_results:
         improvement_icon = "📈" if phase_result.improvement_pct > 0 else "📉"
         print(f"    {phase_result.phase.value}:")
-        print(f"      Without BAIS: {phase_result.avg_efficacy_without_bais:.1f}%")
-        print(f"      With BAIS:    {phase_result.avg_efficacy_with_bais:.1f}% {improvement_icon} (+{phase_result.improvement_pct:.1f}%)")
+        print(f"      Without BASE: {phase_result.avg_efficacy_without_base:.1f}%")
+        print(f"      With BASE:    {phase_result.avg_efficacy_with_base:.1f}% {improvement_icon} (+{phase_result.improvement_pct:.1f}%)")
     
     print(f"\n  OVERALL EFFICACY: {avg_efficacy:.1f}%")
     

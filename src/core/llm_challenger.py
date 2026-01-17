@@ -1,5 +1,5 @@
 """
-BAIS LLM Challenger - Adversarial Analysis for Claim Verification
+BASE LLM Challenger - Adversarial Analysis for Claim Verification
 
 Instead of using LLM as a passive judge ("Is this good?"), 
 this module uses LLM as an active CHALLENGER:

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v48.0
+BASE Cognitive Governance Engine v48.0
 Performance Benchmark Suite
 
 Measures latency, throughput, and scalability.
@@ -65,7 +65,7 @@ async def benchmark_async_component(results: BenchmarkResults, name: str, func, 
 def run_benchmarks():
     """Run all performance benchmarks."""
     print("=" * 70)
-    print("BAIS v48.0 PERFORMANCE BENCHMARK SUITE")
+    print("BASE v48.0 PERFORMANCE BENCHMARK SUITE")
     print("=" * 70)
     print(f"Started: {datetime.now().isoformat()}")
     

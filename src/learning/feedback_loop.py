@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Feedback Loop with Continuous Learning
 
 PPA-1 Invention 22: FULL IMPLEMENTATION
@@ -170,7 +170,7 @@ class ContinuousFeedbackLoop:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None and data_dir is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_feedback_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_feedback_"))
             storage_path = temp_dir / "feedback_loop.json"
         self.storage_path = storage_path or (data_dir / "feedback_loop.json" if data_dir else None)
         

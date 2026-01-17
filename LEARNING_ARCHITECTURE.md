@@ -1,14 +1,14 @@
-# BAIS Learning Architecture
+# BASE Learning Architecture
 
 ## Overview
 
-The BAIS Cognitive Governance Engine implements a **hybrid AI + statistical learning** architecture that connects all learning components to a centralized LLM registry, enabling users to switch LLM providers while maintaining consistent governance.
+The BASE Cognitive Governance Engine implements a **hybrid AI + statistical learning** architecture that connects all learning components to a centralized LLM registry, enabling users to switch LLM providers while maintaining consistent governance.
 
 ## Architecture Diagram
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         BAIS LEARNING ARCHITECTURE                          │
+│                         BASE LEARNING ARCHITECTURE                          │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌──────────────────┐      ┌─────────────────────────────────────────────┐ │
@@ -114,7 +114,7 @@ provider = registry.get_preferred_provider()
 
 ### 3. Learning Interface
 
-All BAIS modules implement the standard learning interface:
+All BASE modules implement the standard learning interface:
 
 ```python
 class LearningCapable:
@@ -179,7 +179,7 @@ class MyLLMProvider:
 registry.register_provider("my_llm", MyLLMProvider())
 registry.set_preferred_provider("my_llm")
 
-# All BAIS components using learning will now use the new LLM
+# All BASE components using learning will now use the new LLM
 ```
 
 ## Patent Claims Covered

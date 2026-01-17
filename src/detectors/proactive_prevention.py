@@ -1,5 +1,5 @@
 """
-BAIS Proactive Hallucination Prevention
+BASE Proactive Hallucination Prevention
 Migrated from Onyx Governance - Enhancement 5
 
 Pre-emptive risk assessment BEFORE response generation.
@@ -48,7 +48,7 @@ class RiskAssessment:
 
 class ProactiveHallucinationPrevention:
     """
-    Proactive Hallucination Prevention for BAIS.
+    Proactive Hallucination Prevention for BASE.
     
     Runs BEFORE response generation to:
     1. Assess query risk

@@ -1,5 +1,5 @@
 """
-BAIS LLM-Derived Proof Validator
+BASE LLM-Derived Proof Validator
 ================================
 
 Phase 17: Context-aware proof validation using LLMs.

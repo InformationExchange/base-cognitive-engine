@@ -14,7 +14,7 @@ Key Principle: Dimensions provide contextual awareness proportional to task comp
 Three Distinct LLM Roles (as documented):
 1. LLM for Dimension Identification - Pattern-based for simple, LLM for complex
 2. LLM for Task Execution - Always (performs the actual task)
-3. LLM for Governance - Always (BAIS monitors output)
+3. LLM for Governance - Always (BASE monitors output)
 """
 
 from dataclasses import dataclass, field
@@ -266,7 +266,7 @@ class DimensionalExpander:
         else:
             self.storage_path = os.path.join(
                 tempfile.gettempdir(),
-                "bais_dimensional_learning.json"
+                "base_dimensional_learning.json"
             )
         
         self._learning_state = LearningState()

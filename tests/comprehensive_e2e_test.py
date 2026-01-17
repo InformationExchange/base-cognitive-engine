@@ -1,10 +1,10 @@
 """
-BAIS Comprehensive End-to-End System Test
+BASE Comprehensive End-to-End System Test
 ==========================================
 
 This is the FULL system validation with Two-Track A/B Testing:
-- Track A: Direct execution (no BAIS governance)
-- Track B: BAIS-governed execution (full pipeline)
+- Track A: Direct execution (no BASE governance)
+- Track B: BASE-governed execution (full pipeline)
 
 Tests all 64 inventions across 7 brain-like layers.
 
@@ -69,7 +69,7 @@ class TestCase:
 
 @dataclass
 class TrackAResult:
-    """Result from direct execution (no BAIS)."""
+    """Result from direct execution (no BASE)."""
     test_id: str
     my_assessment: str
     issues_found: List[str]
@@ -81,7 +81,7 @@ class TrackAResult:
 
 @dataclass
 class TrackBResult:
-    """Result from BAIS-governed execution."""
+    """Result from BASE-governed execution."""
     test_id: str
     decision: Optional[GovernanceDecision]
     inventions_applied: List[str]
@@ -316,7 +316,7 @@ class ComprehensiveE2ETest:
     async def initialize(self):
         """Initialize all components."""
         print("=" * 80)
-        print("BAIS COMPREHENSIVE END-TO-END SYSTEM TEST")
+        print("BASE COMPREHENSIVE END-TO-END SYSTEM TEST")
         print("=" * 80)
         print(f"Start Time: {self.start_time}")
         print(f"Test Cases: {len(TEST_CASES)}")
@@ -325,7 +325,7 @@ class ComprehensiveE2ETest:
         # Initialize engine
         print("Initializing IntegratedGovernanceEngine...")
         self.engine = IntegratedGovernanceEngine(
-            data_dir=Path("/tmp/bais_e2e_test"),
+            data_dir=Path("/tmp/base_e2e_test"),
             llm_api_key=self.api_key
         )
         
@@ -348,7 +348,7 @@ class ComprehensiveE2ETest:
         
     async def run_track_a(self, test: TestCase) -> TrackAResult:
         """
-        Track A: MY direct assessment without BAIS governance.
+        Track A: MY direct assessment without BASE governance.
         This represents what an LLM would conclude on its own.
         """
         start = time.time()
@@ -406,8 +406,8 @@ class ComprehensiveE2ETest:
     
     async def run_track_b(self, test: TestCase) -> TrackBResult:
         """
-        Track B: BAIS-governed analysis using the full engine pipeline.
-        This represents what BAIS governance would conclude.
+        Track B: BASE-governed analysis using the full engine pipeline.
+        This represents what BASE governance would conclude.
         """
         start = time.time()
         
@@ -467,13 +467,13 @@ class ComprehensiveE2ETest:
             # Should have rejected - who caught more issues?
             if not track_b_accepted and track_a.accepted:
                 winner = "B"
-                reason = "BAIS correctly rejected while Track A accepted"
+                reason = "BASE correctly rejected while Track A accepted"
             elif not track_a.accepted and track_b_accepted:
                 winner = "A"
-                reason = "Track A correctly rejected while BAIS accepted"
+                reason = "Track A correctly rejected while BASE accepted"
             elif track_b_issues > track_a_issues:
                 winner = "B"
-                reason = f"BAIS found {track_b_found_more} more issues"
+                reason = f"BASE found {track_b_found_more} more issues"
             elif track_a_issues > track_b_issues:
                 winner = "A"
                 reason = f"Track A found {-track_b_found_more} more issues"
@@ -481,13 +481,13 @@ class ComprehensiveE2ETest:
             # Should have accepted - who correctly accepted without false positives?
             if track_b_accepted and not track_a.accepted:
                 winner = "B"
-                reason = "BAIS correctly accepted (no false positive)"
+                reason = "BASE correctly accepted (no false positive)"
             elif track_a.accepted and not track_b_accepted:
                 winner = "A"
-                reason = "Track A correctly accepted (BAIS had false positive)"
+                reason = "Track A correctly accepted (BASE had false positive)"
             elif track_b_issues < track_a_issues:
                 winner = "B"
-                reason = f"BAIS had fewer false positives"
+                reason = f"BASE had fewer false positives"
         
         return ABComparison(
             test_id=test.test_id,
@@ -524,7 +524,7 @@ class ComprehensiveE2ETest:
             print(f"Time: {track_a.execution_time_ms:.0f}ms")
             
             # Run Track B
-            print("\n--- TRACK B: BAIS-Governed ---")
+            print("\n--- TRACK B: BASE-Governed ---")
             track_b = await self.run_track_b(test)
             if track_b.decision:
                 print(f"Accuracy: {track_b.decision.accuracy:.2f}")
@@ -544,7 +544,7 @@ class ComprehensiveE2ETest:
             print("\n--- A/B COMPARISON ---")
             comparison = self.compare_results(test, track_a, track_b)
             print(f"Agreement: {'✓' if comparison.agreement else '✗'}")
-            print(f"BAIS Found More: {comparison.track_b_found_more:+d} issues")
+            print(f"BASE Found More: {comparison.track_b_found_more:+d} issues")
             print(f"Winner: {comparison.winner}")
             print(f"Reason: {comparison.track_b_better_reason}")
             
@@ -570,7 +570,7 @@ class ComprehensiveE2ETest:
         print(f"Track A vs B Agreement: {agreements}/{total} ({100*agreements/total:.1f}%)")
         print(f"\nWinners:")
         print(f"  Track A (Direct): {a_wins} ({100*a_wins/total:.1f}%)")
-        print(f"  Track B (BAIS):   {b_wins} ({100*b_wins/total:.1f}%)")
+        print(f"  Track B (BASE):   {b_wins} ({100*b_wins/total:.1f}%)")
         print(f"  Tie:              {ties} ({100*ties/total:.1f}%)")
         
         print("\n--- Results by Category ---")
@@ -580,7 +580,7 @@ class ComprehensiveE2ETest:
                 cat_a_wins = sum(1 for c in cat_results if c.winner == "A")
                 print(f"\n{cat_name.upper()}:")
                 print(f"  Tests: {len(cat_results)}")
-                print(f"  BAIS Wins: {cat_b_wins}")
+                print(f"  BASE Wins: {cat_b_wins}")
                 print(f"  Direct Wins: {cat_a_wins}")
         
         # Inventions tested
@@ -638,7 +638,7 @@ async def main():
     results = await tester.run_all_tests()
     
     # Save results
-    output_path = Path("/tmp/bais_e2e_results.json")
+    output_path = Path("/tmp/base_e2e_results.json")
     with open(output_path, 'w') as f:
         json.dump(results, f, indent=2, default=str)
     print(f"\nResults saved to: {output_path}")

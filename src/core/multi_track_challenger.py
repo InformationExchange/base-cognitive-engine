@@ -1,5 +1,5 @@
 """
-BAIS Multi-Track LLM Challenger - Parallel Analysis Across Multiple LLMs
+BASE Multi-Track LLM Challenger - Parallel Analysis Across Multiple LLMs
 
 Enables A/B/C/...N track analysis where multiple LLMs challenge a response
 in parallel, then results are aggregated for consensus decision.

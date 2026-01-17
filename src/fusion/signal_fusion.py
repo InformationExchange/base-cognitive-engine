@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.4
+BASE Cognitive Governance Engine v16.4
 Signal Fusion Module - Multi-Modal Behavioral Data Fusion
 
 PPA-1 Invention 1: Multi-Modal Behavioral Data Fusion - FULL IMPLEMENTATION
@@ -282,7 +282,7 @@ class SignalFusion:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if data_dir is None:
             import tempfile
-            data_dir = Path(tempfile.mkdtemp(prefix="bais_fusion_"))
+            data_dir = Path(tempfile.mkdtemp(prefix="base_fusion_"))
         self.data_dir = data_dir
         self.method = method
         

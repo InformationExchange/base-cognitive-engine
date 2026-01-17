@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Information Literacy Standards Integration
 
 PPA-1 Invention 5: FULL IMPLEMENTATION

@@ -1,5 +1,5 @@
 """
-BAIS Query Analyzer
+BASE Query Analyzer
 
 Analyzes user queries/prompts for:
 - Manipulation attempts
@@ -84,7 +84,7 @@ class QueryAnalyzer:
     """
     Analyzes user queries for manipulation, injection, and bias.
     
-    This addresses the gap where BAIS only analyzed LLM responses.
+    This addresses the gap where BASE only analyzed LLM responses.
     Now we analyze BOTH query and response for complete governance.
     """
     

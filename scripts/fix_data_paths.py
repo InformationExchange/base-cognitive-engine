@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to fix all /data/bais hardcoded paths in the codebase.
+Script to fix all /data/base hardcoded paths in the codebase.
 This ensures modules can instantiate in any filesystem environment.
 
 Run: python scripts/fix_data_paths.py
@@ -33,14 +33,14 @@ FILES_TO_FIX = [
 
 # Pattern to find and replace
 PATTERNS = [
-    # Pattern: Path("/data/bais/filename.json")
+    # Pattern: Path("/data/base/filename.json")
     (
-        r'(\s+self\.(?:storage_path|db_path|data_dir|path|config_path|log_path)\s*=\s*(?:storage_path|db_path|data_dir|path|config_path|log_path)\s*or\s*)Path\("/data/bais[^"]*"\)',
+        r'(\s+self\.(?:storage_path|db_path|data_dir|path|config_path|log_path)\s*=\s*(?:storage_path|db_path|data_dir|path|config_path|log_path)\s*or\s*)Path\("/data/base[^"]*"\)',
         lambda m: m.group(1) + 'self._get_default_storage_path()'
     ),
     # Direct assignment
     (
-        r'Path\("/data/bais[^"]*"\)',
+        r'Path\("/data/base[^"]*"\)',
         'self._get_default_storage_path()'
     ),
 ]
@@ -50,7 +50,7 @@ STORAGE_METHOD = '''
     def _get_default_storage_path(self) -> Path:
         """Get default storage path, using temp directory if needed."""
         import tempfile
-        temp_dir = Path(tempfile.mkdtemp(prefix="bais_"))
+        temp_dir = Path(tempfile.mkdtemp(prefix="base_"))
         return temp_dir / "data.json"
 '''
 
@@ -66,13 +66,13 @@ def main():
             
         content = full_path.read_text()
         
-        # Check if file contains /data/bais
-        if "/data/bais" not in content:
-            print(f"SKIP: {file_path} (no /data/bais found)")
+        # Check if file contains /data/base
+        if "/data/base" not in content:
+            print(f"SKIP: {file_path} (no /data/base found)")
             continue
         
         # Count occurrences
-        count = content.count("/data/bais")
+        count = content.count("/data/base")
         print(f"FIX: {file_path} ({count} occurrences)")
         fixed_files.append(file_path)
     

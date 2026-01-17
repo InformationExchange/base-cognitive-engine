@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.0
+BASE Cognitive Governance Engine v16.0
 State Machine with Hysteresis
 
 Per PPA 3, Invention 1:
@@ -166,7 +166,7 @@ class StateMachineWithHysteresis:
         # Use temp file if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_state_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_state_"))
             storage_path = temp_dir / "state.json"
         self.storage_path = storage_path
         self.violation_window_minutes = violation_window_minutes

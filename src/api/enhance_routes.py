@@ -1,8 +1,8 @@
 """
-BAIS Cognitive Enhancement API
+BASE Cognitive Enhancement API
 
 The main API endpoint for enhancing LLM outputs.
-This transforms BAIS from a "gate" to an "enhancer".
+This transforms BASE from a "gate" to an "enhancer".
 
 Usage:
   POST /enhance - Enhance an LLM response
@@ -91,7 +91,7 @@ _recent_enhancements: Dict[str, CognitiveEnhancementResult] = {}
 @router.post("/", response_model=EnhanceResponse)
 async def enhance_response(request: EnhanceRequest):
     """
-    Enhance an LLM response using BAIS cognitive capabilities.
+    Enhance an LLM response using BASE cognitive capabilities.
     
     This endpoint IMPROVES responses, it doesn't just detect issues.
     
@@ -213,7 +213,7 @@ async def submit_feedback(feedback: EnhancementFeedback):
     """
     Submit feedback on an enhancement.
     
-    This helps BAIS learn and improve over time.
+    This helps BASE learn and improve over time.
     """
     enhancer = get_enhancer()
     
@@ -227,14 +227,14 @@ async def submit_feedback(feedback: EnhancementFeedback):
     
     return {
         "status": "recorded",
-        "message": "Thank you for your feedback. BAIS will learn from this."
+        "message": "Thank you for your feedback. BASE will learn from this."
     }
 
 
 @router.get("/capabilities", response_model=CapabilitiesResponse)
 async def get_capabilities():
     """
-    Get BAIS enhancement capabilities.
+    Get BASE enhancement capabilities.
     """
     enhancer = get_enhancer()
     

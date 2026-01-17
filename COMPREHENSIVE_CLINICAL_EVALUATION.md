@@ -1,8 +1,8 @@
-# BAIS Comprehensive Clinical Evaluation
+# BASE Comprehensive Clinical Evaluation
 ## Professional Patent Claim Testing Report
 
 **Evaluation Date:** 2025-12-19T18:58:09.118291  
-**Methodology:** BAIS-Guided A/B Testing with Grok 4  
+**Methodology:** BASE-Guided A/B Testing with Grok 4  
 **Total Claims Tested:** 268  
 **API Calls:** 268  
 **Tokens Used:** 169506  

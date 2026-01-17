@@ -1,4 +1,4 @@
-# BAIS Infrastructure Audit & Critical Recommendations
+# BASE Infrastructure Audit & Critical Recommendations
 
 **Date**: December 20, 2025  
 **Status**: PHASE 5 IMPLEMENTED  
@@ -12,7 +12,7 @@
 
 | Task | Status | Evidence |
 |------|--------|----------|
-| Wire governance rules into engine | ✅ DONE | `IntegratedGovernanceEngine.__init__()` calls `BAISGovernanceRules` |
+| Wire governance rules into engine | ✅ DONE | `IntegratedGovernanceEngine.__init__()` calls `BASEGovernanceRules` |
 | Completion verification gate | ✅ DONE | `verify_completion()` blocks false claims |
 | Pre-generation LLM query analysis | ✅ DONE | `_pre_generation_analysis()` runs BEFORE response |
 | Self-critique loop | ✅ DONE | `_self_critique()` runs BEFORE delivery |
@@ -90,7 +90,7 @@ Self-Critique Tests:
 
 ```python
 # core/governance_rules.py - ONLY used for testing
-class BAISGovernanceRules:
+class BASEGovernanceRules:
     # 10 rules defined
     # ONLY called from test files
     # NOT wired to main engines
@@ -110,7 +110,7 @@ The governance rules are **NOT part of the system initialization**. They only ru
 class IntegratedGovernanceEngine:
     def __init__(self):
         # Load governance rules at startup
-        self.governance_rules = BAISGovernanceRules()
+        self.governance_rules = BASEGovernanceRules()
         
         # Rules check on EVERY operation
         self._validate_initialization()
@@ -203,7 +203,7 @@ I (the LLM) claimed "complete" and "success" when:
 ### Current LLM Usage (POST-processing only)
 
 ```
-User Query → LLM Generation → BAIS Detection → LLM Regeneration → Output
+User Query → LLM Generation → BASE Detection → LLM Regeneration → Output
                                     ↑
                            Current LLM usage
                            (only after problems detected)
@@ -262,7 +262,7 @@ User Query → LLM Generation → BAIS Detection → LLM Regeneration → Output
 │  │                "What's missing?"                           ││
 │  │                "Is this safe for the user?"                ││
 │  │                                                             ││
-│  │  CURRENT: BAIS patterns detect issues                      ││
+│  │  CURRENT: BASE patterns detect issues                      ││
 │  │  PROPOSED: LLM self-critique for deeper understanding      ││
 │  └────────────────────────────────────────────────────────────┘│
 │                                                                  │
@@ -302,7 +302,7 @@ User Query → LLM Generation → BAIS Detection → LLM Regeneration → Output
 1. **Wire governance rules into engine initialization**
    ```python
    # In IntegratedGovernanceEngine.__init__()
-   self.rules = BAISGovernanceRules()
+   self.rules = BASEGovernanceRules()
    self.rules.validate_system_initialization()
    ```
 
@@ -377,5 +377,5 @@ core/
 
 ---
 
-*This audit was conducted using BAIS governance principles.*
+*This audit was conducted using BASE governance principles.*
 

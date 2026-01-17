@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Enhancer - Hard Real-World Test Scenarios
+BASE Cognitive Enhancer - Hard Real-World Test Scenarios
 
 These are intentionally difficult scenarios designed to truly test
 the cognitive enhancement capabilities. NO OPTIMISM - just facts.
@@ -263,7 +263,7 @@ HARD_SCENARIOS = [
 class CognitiveEnhancerHardTests:
     """Run hard tests on the cognitive enhancer"""
     
-    def __init__(self, storage_path: str = "/tmp/bais_hard_tests"):
+    def __init__(self, storage_path: str = "/tmp/base_hard_tests"):
         self.enhancer = CognitiveEnhancer(
             storage_path=storage_path,
             enable_learning=True
@@ -273,7 +273,7 @@ class CognitiveEnhancerHardTests:
     def run_all_tests(self) -> Dict:
         """Run all test scenarios"""
         print("=" * 70)
-        print("BAIS COGNITIVE ENHANCER - HARD TEST SUITE")
+        print("BASE COGNITIVE ENHANCER - HARD TEST SUITE")
         print("=" * 70)
         print(f"Running {len(HARD_SCENARIOS)} scenarios...")
         print()
@@ -459,7 +459,7 @@ def main():
     summary = tester.run_all_tests()
     
     # Save results
-    results_file = "/tmp/bais_hard_test_results.json"
+    results_file = "/tmp/base_hard_test_results.json"
     with open(results_file, 'w') as f:
         json.dump({
             'summary': summary,

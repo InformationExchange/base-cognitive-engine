@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.0
+BASE Cognitive Governance Engine v16.0
 Outcome Memory - Persistent Decision Database
 
 Stores all governance decisions and their outcomes for:
@@ -102,7 +102,7 @@ class OutcomeMemory:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if db_path is None and data_dir is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_outcomes_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_outcomes_"))
             db_path = temp_dir / "outcomes.db"
         self.db_path = db_path or (data_dir / "outcomes.db" if data_dir else None)
         self.db_path.parent.mkdir(parents=True, exist_ok=True)

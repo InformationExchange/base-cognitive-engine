@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.0
+BASE Cognitive Governance Engine v16.0
 Pluggable Learning Algorithms
 
 This module provides swappable learning algorithms for threshold optimization.
@@ -2405,7 +2405,7 @@ class AlgorithmRegistry:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_algo_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_algo_"))
             storage_path = temp_dir / "algorithm_state.json"
         self.storage_path = storage_path
         self.current_algorithm: Optional[LearningAlgorithm] = None

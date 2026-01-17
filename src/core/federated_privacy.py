@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v35.0
+BASE Cognitive Governance Engine v35.0
 Federated Learning & Privacy-Preserving Aggregation
 
 Phase 35: Addresses PPA2-C1-30, PPA2-C1-31, PPA3-Comp3

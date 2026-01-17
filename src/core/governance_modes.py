@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine - Governance Modes
+BASE Cognitive Governance Engine - Governance Modes
 Phase 1 & 2: Mode Controller and Evidence Classification
 
 Three operational modes:
@@ -26,8 +26,8 @@ logger = logging.getLogger(__name__)
 # Core Enums
 # =============================================================================
 
-class BAISMode(Enum):
-    """BAIS operational modes."""
+class BASEMode(Enum):
+    """BASE operational modes."""
     AUDIT_ONLY = "audit_only"
     AUDIT_AND_REMEDIATE = "audit_and_remediate"
     DIRECT_ASSISTANCE = "direct_assistance"
@@ -79,10 +79,10 @@ class IssueSeverity(Enum):
 
 @dataclass
 class GovernanceConfig:
-    """Configuration for BAIS governance."""
+    """Configuration for BASE governance."""
     
     # Mode settings
-    mode: BAISMode = BAISMode.AUDIT_ONLY
+    mode: BASEMode = BASEMode.AUDIT_ONLY
     approval_mode: ApprovalMode = ApprovalMode.API_CALLBACK
     
     # Evidence settings
@@ -263,7 +263,7 @@ class EvidenceClassifier:
     def meets_requirements(
         self, 
         report: EvidenceReport, 
-        mode: BAISMode
+        mode: BASEMode
     ) -> tuple:
         """
         Check if evidence meets requirements for the given mode.
@@ -273,15 +273,15 @@ class EvidenceClassifier:
         min_strength = self.config.minimum_evidence_strength
         
         # AUDIT_ONLY: Always continues, just reports
-        if mode == BAISMode.AUDIT_ONLY:
+        if mode == BASEMode.AUDIT_ONLY:
             return True, f"AUDIT_ONLY mode - evidence: {report.strength.value}"
         
         # DIRECT_ASSISTANCE: Enhances regardless, doesn't block
-        if mode == BAISMode.DIRECT_ASSISTANCE:
+        if mode == BASEMode.DIRECT_ASSISTANCE:
             return True, f"DIRECT_ASSISTANCE mode - will enhance"
         
         # AUDIT_AND_REMEDIATE: May block based on config
-        if mode == BAISMode.AUDIT_AND_REMEDIATE:
+        if mode == BASEMode.AUDIT_AND_REMEDIATE:
             if report.strength == EvidenceStrength.NONE:
                 return False, "No evidence provided - BLOCKED"
             
@@ -478,7 +478,7 @@ class CLIApproval(ApprovalInterface):
     ) -> Dict[str, Any]:
         """Request approval via CLI."""
         print("\n" + "=" * 60)
-        print("BAIS APPROVAL REQUIRED")
+        print("BASE APPROVAL REQUIRED")
         print("=" * 60)
         print(f"\nApproval ID: {approval_id}")
         print("\nAction Items:")
@@ -527,7 +527,7 @@ class AutoApproval(ApprovalInterface):
 
 class GovernanceModeController:
     """
-    Central controller for BAIS governance modes.
+    Central controller for BASE governance modes.
     
     Handles:
     - Mode selection and configuration
@@ -549,7 +549,7 @@ class GovernanceModeController:
             'blocked': 0,
             'approved': 0,
             'enhanced': 0,
-            'by_mode': {m.value: 0 for m in BAISMode}
+            'by_mode': {m.value: 0 for m in BASEMode}
         }
     
     def _create_approval_provider(self) -> ApprovalInterface:
@@ -557,16 +557,16 @@ class GovernanceModeController:
         mode = self.config.approval_mode
         
         if mode == ApprovalMode.API_CALLBACK:
-            return APICallbackApproval(self.config.api_callback_url or "http://localhost:8000/bais/approve")
+            return APICallbackApproval(self.config.api_callback_url or "http://localhost:8000/base/approve")
         elif mode == ApprovalMode.CLI_PROMPT:
             return CLIApproval()
         elif mode == ApprovalMode.AUTO:
             return AutoApproval()
         else:
             # Default to API callback
-            return APICallbackApproval(self.config.api_callback_url or "http://localhost:8000/bais/approve")
+            return APICallbackApproval(self.config.api_callback_url or "http://localhost:8000/base/approve")
     
-    def set_mode(self, mode: BAISMode) -> None:
+    def set_mode(self, mode: BASEMode) -> None:
         """Set the governance mode."""
         self.config.mode = mode
         logger.info(f"[ModeController] Mode set to: {mode.value}")
@@ -598,18 +598,18 @@ class GovernanceModeController:
         high_issues = [i for i in issues if i.severity == IssueSeverity.HIGH]
         
         # Mode-specific handling
-        if self.config.mode == BAISMode.AUDIT_ONLY:
+        if self.config.mode == BASEMode.AUDIT_ONLY:
             return self._handle_audit_only(
                 response, evidence_report, issues, meets_req, reason
             )
         
-        elif self.config.mode == BAISMode.AUDIT_AND_REMEDIATE:
+        elif self.config.mode == BASEMode.AUDIT_AND_REMEDIATE:
             return self._handle_audit_remediate(
                 response, evidence_report, issues, meets_req, reason,
                 critical_issues, high_issues
             )
         
-        elif self.config.mode == BAISMode.DIRECT_ASSISTANCE:
+        elif self.config.mode == BASEMode.DIRECT_ASSISTANCE:
             return self._handle_direct_assistance(
                 response, evidence_report, issues, meets_req, reason
             )
@@ -631,7 +631,7 @@ class GovernanceModeController:
                 action_items.append(f"{issue.severity.value.upper()}: {issue.remediation_suggestion}")
         
         return {
-            'mode': BAISMode.AUDIT_ONLY.value,
+            'mode': BASEMode.AUDIT_ONLY.value,
             'blocked': False,
             'continue_execution': True,
             'evidence_strength': evidence_report.strength.value,
@@ -678,7 +678,7 @@ class GovernanceModeController:
             action_items = [i.description for i in critical_issues + high_issues]
             
             return {
-                'mode': BAISMode.AUDIT_AND_REMEDIATE.value,
+                'mode': BASEMode.AUDIT_AND_REMEDIATE.value,
                 'blocked': True,
                 'continue_execution': False,
                 'block_reason': block_reason,
@@ -693,7 +693,7 @@ class GovernanceModeController:
         else:
             self._stats['approved'] += 1
             return {
-                'mode': BAISMode.AUDIT_AND_REMEDIATE.value,
+                'mode': BASEMode.AUDIT_AND_REMEDIATE.value,
                 'blocked': False,
                 'continue_execution': True,
                 'evidence_strength': evidence_report.strength.value,
@@ -727,7 +727,7 @@ class GovernanceModeController:
                 changes_to_make.append(issue.remediation_suggestion)
         
         return {
-            'mode': BAISMode.DIRECT_ASSISTANCE.value,
+            'mode': BASEMode.DIRECT_ASSISTANCE.value,
             'blocked': False,
             'continue_execution': True,
             'enhancement_level': enhancement_level,
@@ -745,7 +745,7 @@ class GovernanceModeController:
         remediation_prompts: List[str]
     ) -> Dict[str, Any]:
         """Request approval using configured provider."""
-        approval_id = f"BAIS-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        approval_id = f"BASE-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
         
         timeout = (
             self.config.approval_timeout_seconds 
@@ -831,7 +831,7 @@ class GovernanceModeController:
 # =============================================================================
 
 def create_mode_controller(
-    mode: BAISMode = BAISMode.AUDIT_ONLY,
+    mode: BASEMode = BASEMode.AUDIT_ONLY,
     **kwargs
 ) -> GovernanceModeController:
     """Factory function to create mode controller."""
@@ -850,7 +850,7 @@ if __name__ == "__main__":
     
     # Test AUDIT_ONLY mode
     print("\n[1] Testing AUDIT_ONLY mode...")
-    controller = create_mode_controller(mode=BAISMode.AUDIT_ONLY)
+    controller = create_mode_controller(mode=BASEMode.AUDIT_ONLY)
     
     result = controller.evaluate(
         response="I implemented the class",
@@ -874,7 +874,7 @@ if __name__ == "__main__":
     
     # Test AUDIT_AND_REMEDIATE mode
     print("\n[2] Testing AUDIT_AND_REMEDIATE mode with critical issue...")
-    controller.set_mode(BAISMode.AUDIT_AND_REMEDIATE)
+    controller.set_mode(BASEMode.AUDIT_AND_REMEDIATE)
     
     result2 = controller.evaluate(
         response="I implemented the class",
@@ -898,7 +898,7 @@ if __name__ == "__main__":
     
     # Test DIRECT_ASSISTANCE mode
     print("\n[3] Testing DIRECT_ASSISTANCE mode...")
-    controller.set_mode(BAISMode.DIRECT_ASSISTANCE)
+    controller.set_mode(BASEMode.DIRECT_ASSISTANCE)
     
     result3 = controller.evaluate(
         response="Here is the code",

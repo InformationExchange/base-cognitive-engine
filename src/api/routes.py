@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 API Routes
 
 RESTful API for the governance engine.
@@ -74,7 +74,7 @@ async def root():
     mode_info = config.get_capabilities_summary() if config else {"mode": "unknown"}
     
     return {
-        "service": "Invitas BAIS Cognitive Governance Engine",
+        "service": "Invitas BASE Cognitive Governance Engine",
         "version": "16.2.0",
         "mode": mode_info.get('mode_description', 'unknown'),
         "description": "Clinical-grade AI governance with true learning",

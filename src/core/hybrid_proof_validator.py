@@ -1,5 +1,5 @@
 """
-BAIS Hybrid Proof Validator
+BASE Hybrid Proof Validator
 ===========================
 
 Phase 17: Integrates pattern-based evidence demand with LLM contextual validation.

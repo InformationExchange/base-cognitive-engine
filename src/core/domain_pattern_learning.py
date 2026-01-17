@@ -1,5 +1,5 @@
 """
-BAIS Domain Pattern Learning Module
+BASE Domain Pattern Learning Module
 
 Learns domain-specific patterns from exposure and tracks their effectiveness.
 Patterns are discovered through analysis, not prescribed.
@@ -27,7 +27,7 @@ import re
 
 
 class PatternType(Enum):
-    """Types of patterns BAIS detects."""
+    """Types of patterns BASE detects."""
     COMMON = "common"                    # Apply to all domains
     DOMAIN_SPECIFIC = "domain_specific"  # Learned per domain
     CIRCUMSTANCE = "circumstance"        # Context-dependent

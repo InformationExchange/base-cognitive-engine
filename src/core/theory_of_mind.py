@@ -1,5 +1,5 @@
 """
-BAIS Theory of Mind (NOVEL-14)
+BASE Theory of Mind (NOVEL-14)
 
 Implements theory of mind capabilities:
 1. Intent inference - what does the user really want?
@@ -64,7 +64,7 @@ class TheoryOfMindResult:
 
 class TheoryOfMind:
     """
-    Theory of Mind module for BAIS.
+    Theory of Mind module for BASE.
     
     Implements NOVEL-14: Theory of Mind
     Brain Layer: 3 (Limbic System)

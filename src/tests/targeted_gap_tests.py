@@ -248,7 +248,7 @@ def test_api_functionality():
 def main():
     """Run all targeted gap tests."""
     print("=" * 70)
-    print("BAIS TARGETED GAP TESTS")
+    print("BASE TARGETED GAP TESTS")
     print("Functional tests for claims that cannot be A/B tested")
     print("=" * 70)
     

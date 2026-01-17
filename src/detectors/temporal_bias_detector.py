@@ -1,9 +1,9 @@
 """
-BAIS Cognitive Governance Engine
+BASE Cognitive Governance Engine
 Temporal Bias Detector (PPA1-Inv4)
 
 Detects time-based bias shifts and temporal patterns in responses.
-This is a CRITICAL missing implementation identified by BAIS governance.
+This is a CRITICAL missing implementation identified by BASE governance.
 
 Patent Reference: PPA1-Inv4 - Temporal Bias Detection
 """

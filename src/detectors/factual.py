@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 Factual Detector - Entailment and Contradiction
 
 Per PPA 2, Invention 1 (Must-Pass Predicates):
@@ -8,7 +8,7 @@ Per PPA 2, Invention 1 (Must-Pass Predicates):
 - Checks claim-by-claim entailment
 - Identifies unsupported assertions
 
-Mode determined by BAISConfig:
+Mode determined by BASEConfig:
 - FULL: NLI model for entailment (CrossEncoder, ~90% accuracy)
 - LITE: Rule-based + word overlap (~70% accuracy)
 """
@@ -176,7 +176,7 @@ class FactualDetector:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if learning_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_factual_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_factual_"))
             learning_path = temp_dir / "factual_learning.json"
         self.learning_path = learning_path
         

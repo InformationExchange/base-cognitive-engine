@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.0
+BASE Cognitive Governance Engine v16.0
 Main Engine - Orchestrates All Components
 
 This is the central orchestrator that:
@@ -27,7 +27,7 @@ from learning.outcome_memory import OutcomeMemory, DecisionRecord
 from learning.algorithms import LearningOutcome
 
 # Configuration (dual-mode support)
-from core.config import get_config, BAISConfig
+from core.config import get_config, BASEConfig
 
 # Phase 2 detectors (ML or statistical based on config)
 from detectors.grounding import GroundingDetector
@@ -184,7 +184,7 @@ class CognitiveGovernanceEngine:
                  llm_api_key: str = None,
                  llm_model: str = None,
                  algorithm: str = None,
-                 config: BAISConfig = None):
+                 config: BASEConfig = None):
         
         # Load configuration (determines FULL vs LITE mode)
         self.config = config or get_config()

@@ -1,5 +1,5 @@
 """
-BAIS External Services Interface
+BASE External Services Interface
 Phase 13: External Verification Service Abstraction
 
 Provides interfaces for external verification services that can be

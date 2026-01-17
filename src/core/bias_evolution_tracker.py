@@ -1,9 +1,9 @@
 """
-BAIS Cognitive Governance Engine
+BASE Cognitive Governance Engine
 Bias Evolution Tracker (PPA1-Inv1)
 
 Tracks bias patterns over time, detects drift, and learns from feedback.
-This is a CRITICAL missing implementation identified by BAIS governance.
+This is a CRITICAL missing implementation identified by BASE governance.
 
 Patent Reference: PPA1-Inv1 - Bias Evolution Tracking
 """

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.3
+BASE Cognitive Governance Engine v16.3
 Conformal Must-Pass Screening - Statistical Guarantee Implementation
 
 PPA-2 Component 2: Conformal Must-Pass Screening
@@ -103,7 +103,7 @@ class ConformalMustPassScreener:
         # Use temp file if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_conformal_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_conformal_"))
             storage_path = temp_dir / "conformal.json"
         self.storage_path = storage_path
         

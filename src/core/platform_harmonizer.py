@@ -1,5 +1,5 @@
 """
-BAIS Platform Harmonizer (PPA1-Inv9)
+BASE Platform Harmonizer (PPA1-Inv9)
 
 Ensures consistent governance behavior across different platforms and
 deployment environments. Harmonizes:

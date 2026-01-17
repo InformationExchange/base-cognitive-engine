@@ -1,5 +1,5 @@
 """
-BAIS Learning Memory System
+BASE Learning Memory System
 
 Persistent memory that enables learning across sessions.
 Not just pattern matching - actual accumulated knowledge.
@@ -414,7 +414,7 @@ class LearningMemory:
 
 # Pre-seed with foundational learnings
 def seed_foundational_memories(memory: LearningMemory):
-    """Seed memory with foundational learnings from BAIS development"""
+    """Seed memory with foundational learnings from BASE development"""
     
     foundational = [
         # Medical domain
@@ -465,7 +465,7 @@ def seed_foundational_memories(memory: LearningMemory):
             'priority': MemoryPriority.HIGH
         },
         
-        # BAIS self-improvement learnings
+        # BASE self-improvement learnings
         {
             'domain': 'development',
             'trigger': 'declaring completion prematurely',

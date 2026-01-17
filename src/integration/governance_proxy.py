@@ -1,7 +1,7 @@
 """
-BAIS Governance Proxy API
+BASE Governance Proxy API
 =========================
-HTTP proxy that intercepts LLM API calls and applies BAIS governance.
+HTTP proxy that intercepts LLM API calls and applies BASE governance.
 
 This proxy can be deployed between any application and an LLM API to provide
 real-time governance without modifying the application code.
@@ -9,7 +9,7 @@ real-time governance without modifying the application code.
 Usage:
     1. Start the proxy: python governance_proxy.py
     2. Point your application to http://localhost:8081 instead of the LLM API
-    3. All requests/responses will be governed by BAIS
+    3. All requests/responses will be governed by BASE
 
 Example with OpenAI:
     Original: openai.api_base = "https://api.openai.com/v1"
@@ -32,17 +32,17 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from integration.llm_governance_wrapper import (
-    BAISGovernanceWrapper, 
+    BASEGovernanceWrapper, 
     GovernanceConfig,
     GovernanceDecision
 )
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("BAIS.Proxy")
+logger = logging.getLogger("BASE.Proxy")
 
 app = FastAPI(
-    title="BAIS Governance Proxy",
-    description="Real-time LLM governance proxy using BAIS",
+    title="BASE Governance Proxy",
+    description="Real-time LLM governance proxy using BASE",
     version="1.0.0"
 )
 
@@ -55,7 +55,7 @@ app.add_middleware(
 )
 
 # Global governance wrapper
-governance = BAISGovernanceWrapper(
+governance = BASEGovernanceWrapper(
     config=GovernanceConfig(
         min_accuracy_threshold=0.65,
         max_regeneration_attempts=2,
@@ -71,7 +71,7 @@ class ProxyConfig(BaseModel):
     target_url: str = "https://api.openai.com"
     governance_enabled: bool = True
     log_all_requests: bool = True
-    audit_storage_path: str = "/tmp/bais_proxy_audit"
+    audit_storage_path: str = "/tmp/base_proxy_audit"
 
 
 class GovernedRequest(BaseModel):
@@ -90,7 +90,7 @@ audit_log: List[Dict] = []
 async def root():
     """Proxy status"""
     return {
-        "service": "BAIS Governance Proxy",
+        "service": "BASE Governance Proxy",
         "status": "running",
         "governance_enabled": proxy_config.governance_enabled,
         "target": proxy_config.target_url,
@@ -189,7 +189,7 @@ async def proxy_chat_completions(request: Request):
     
     audit_entry["original_response"] = response_content[:200]
     
-    # Apply BAIS governance if enabled
+    # Apply BASE governance if enabled
     if proxy_config.governance_enabled and response_content:
         gov_result = await governance.govern(
             query=query,
@@ -235,7 +235,7 @@ async def govern_response(request: Request):
     """
     Direct governance endpoint.
     
-    Send a query and response to get BAIS governance analysis.
+    Send a query and response to get BASE governance analysis.
     """
     body = await request.json()
     
@@ -316,7 +316,7 @@ async def check_claim(request: Request):
 
 def run_proxy(host: str = "0.0.0.0", port: int = 8081):
     """Run the governance proxy server"""
-    logger.info(f"Starting BAIS Governance Proxy on {host}:{port}")
+    logger.info(f"Starting BASE Governance Proxy on {host}:{port}")
     uvicorn.run(app, host=host, port=port)
 
 

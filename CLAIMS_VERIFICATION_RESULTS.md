@@ -1,4 +1,4 @@
-# BAIS 300 CLAIMS VERIFICATION RESULTS
+# BASE 300 CLAIMS VERIFICATION RESULTS
 ## Dual-Track A/B Testing of All Patent Claims
 
 **Date:** December 23, 2025  
@@ -14,7 +14,7 @@
 |--------|-------|
 | **Total Claims Tested** | 295 |
 | **Track A (Direct) Passed** | 287 (97.3%) |
-| **Track B (BAIS) Passed** | 295 (100.0%) |
+| **Track B (BASE) Passed** | 295 (100.0%) |
 | **Both Tracks Passed** | 287 (97.3%) |
 | **Both Failed** | 0 (0.0%) |
 
@@ -108,23 +108,23 @@
 - Verify basic functionality
 - Pass if module exists and instantiates
 
-### Track B: BAIS-Governed Testing
+### Track B: BASE-Governed Testing
 - Run through IntegratedGovernanceEngine
 - Evaluate with test input
 - Check signals and accuracy
-- Pass if BAIS processes successfully
+- Pass if BASE processes successfully
 
 ### Winner Determination
 - **TIE:** Both tracks pass
 - **A:** Only Track A passes
-- **B:** Only Track B passes (BAIS compensates)
+- **B:** Only Track B passes (BASE compensates)
 - **BOTH_FAIL:** Neither passes
 
 ---
 
 ## CLINICAL OBSERVATIONS
 
-1. **BAIS Track B achieved 100% pass rate** - The governance engine successfully processed all test inputs
+1. **BASE Track B achieved 100% pass rate** - The governance engine successfully processed all test inputs
 2. **Track A had 97.3% pass rate** - Some optional dependencies not installed
 3. **No claims failed both tracks** - All implementations have at least one working path
 4. **PPA3 and NOVEL achieved 100%** - Most recent implementations fully verified
@@ -135,7 +135,7 @@
 ## REPLICABLE TEST COMMAND
 
 ```bash
-cd bais-cognitive-engine && python3 tests/full_300_claims_test.py
+cd base-cognitive-engine && python3 tests/full_300_claims_test.py
 ```
 
 ---

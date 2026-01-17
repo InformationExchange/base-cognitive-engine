@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v31.0
+BASE Cognitive Governance Engine v31.0
 K-of-M Constraint Acceptance - Configurable Multi-Predicate Gates
 
 Phase 31: Addresses PPA2-C1-32
@@ -306,7 +306,7 @@ class KofMConstraintEngine:
 
 class PredicateLibrary:
     """
-    Library of common predicates for BAIS governance.
+    Library of common predicates for BASE governance.
     """
     
     @staticmethod

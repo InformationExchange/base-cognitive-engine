@@ -131,7 +131,7 @@ class DimensionalLearning:
         else:
             self.storage_path = os.path.join(
                 tempfile.gettempdir(),
-                "bais_dimensional_learning.json"
+                "base_dimensional_learning.json"
             )
         
         self.learning_rate = learning_rate

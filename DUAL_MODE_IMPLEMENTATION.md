@@ -1,4 +1,4 @@
-# BAIS v16.2 Dual-Mode Implementation
+# BASE v16.2 Dual-Mode Implementation
 
 ## Summary
 
@@ -25,12 +25,12 @@ caps = detect_capabilities()
 
 # Config resolves mode
 config = get_config()
-# Uses env BAIS_MODE or auto-detects
+# Uses env BASE_MODE or auto-detects
 ```
 
 ### 2. Graceful Fallback
 
-When `BAIS_MODE=full` is set but ML packages aren't installed:
+When `BASE_MODE=full` is set but ML packages aren't installed:
 ```
 WARNING: FULL mode requested but ML packages not installed.
          Falling back to statistical methods.
@@ -73,7 +73,7 @@ fd = FactualDetector(use_nli=None)  # Auto from config
 ### LITE Mode (Default)
 ```bash
 # Build
-docker build -t invitas-bais:lite .
+docker build -t invitas-base:lite .
 
 # Or with compose
 docker-compose up -d
@@ -82,7 +82,7 @@ docker-compose up -d
 ### FULL Mode
 ```bash
 # Build
-docker build -t invitas-bais:full -f Dockerfile.full .
+docker build -t invitas-base:full -f Dockerfile.full .
 
 # Or with compose
 docker-compose -f docker-compose.yml -f docker-compose.full.yml up -d
@@ -179,7 +179,7 @@ docker-compose -f docker-compose.yml -f docker-compose.full.yml down
 docker-compose up -d
 ```
 
-**Note**: Learning data in `/data/bais` is preserved across mode changes.
+**Note**: Learning data in `/data/base` is preserved across mode changes.
 
 ## No Breaking Changes
 
@@ -197,8 +197,8 @@ python3 -c "from core.config import get_config; print(get_config().get_mode_desc
 # Output: LITE (Statistical: TF-IDF + rules)
 
 # Test explicit modes
-BAIS_MODE=lite python3 -c "..."
-BAIS_MODE=full python3 -c "..."  # Falls back if packages missing
+BASE_MODE=lite python3 -c "..."
+BASE_MODE=full python3 -c "..."  # Falls back if packages missing
 ```
 
 

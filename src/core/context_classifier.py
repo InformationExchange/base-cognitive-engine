@@ -1,5 +1,5 @@
 """
-BAIS Context Classifier Module
+BASE Context Classifier Module
 
 Classifies the context of text to enable context-aware detection.
 Prevents false positives by understanding the PURPOSE of the content.

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.2
+BASE Cognitive Governance Engine v16.2
 Grounding Detector - Semantic Verification
 
 Per PPA 1, Invention 2 & PPA 2, Invention 1:
@@ -8,7 +8,7 @@ Per PPA 1, Invention 2 & PPA 2, Invention 1:
 - Tracks entity preservation (numbers, names, dates)
 - Verifies individual claims against sources
 
-Supports two modes (controlled by BAISConfig):
+Supports two modes (controlled by BASEConfig):
 1. LITE: TF-IDF based similarity (no heavy dependencies, ~70% accuracy)
 2. FULL: Sentence transformer embeddings (~90% accuracy)
 """
@@ -159,7 +159,7 @@ class GroundingDetector:
     4. Claim-by-claim verification
     5. Contradiction detection
     
-    Mode determined by BAISConfig:
+    Mode determined by BASEConfig:
     - FULL: Neural embeddings (sentence-transformers)
     - LITE: TF-IDF statistical similarity
     
@@ -208,7 +208,7 @@ class GroundingDetector:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if learning_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_grounding_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_grounding_"))
             learning_path = temp_dir / "grounding_learning.json"
         self.learning_path = learning_path
         

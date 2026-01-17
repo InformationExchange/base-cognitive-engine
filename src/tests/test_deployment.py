@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v29.0
+BASE Cognitive Governance Engine v29.0
 Deployment Verification Tests
 
 Phase 29: Production deployment testing and validation.
@@ -9,7 +9,7 @@ These tests verify:
 2. Health probes return correct responses
 3. Authentication works correctly
 4. Rate limiting is operational
-5. Core BAIS functionality is accessible
+5. Core BASE functionality is accessible
 
 NO PLACEHOLDERS. NO STUBS. FULL IMPLEMENTATION.
 """
@@ -85,14 +85,14 @@ class DeploymentVerificationTests:
     """
     Comprehensive deployment verification tests.
     
-    Tests all aspects of the deployed BAIS service.
+    Tests all aspects of the deployed BASE service.
     """
     
     def __init__(self, base_url: str = "http://localhost:8000"):
         """Initialize tests."""
         self.base_url = base_url
         self.results: List[TestResult] = []
-        self.api_key = os.environ.get("BAIS_API_KEY", "dev-api-key-for-testing-only")
+        self.api_key = os.environ.get("BASE_API_KEY", "dev-api-key-for-testing-only")
     
     def _record(self, name: str, passed: bool, duration_ms: float, message: str, details: Dict = None):
         """Record a test result."""
@@ -191,7 +191,7 @@ class DeploymentVerificationTests:
                 
                 if response.status_code == 200:
                     content = response.text
-                    has_metrics = "bais_uptime_seconds" in content
+                    has_metrics = "base_uptime_seconds" in content
                     self._record("metrics_endpoint", has_metrics, duration,
                                "Metrics exported" if has_metrics else "Missing expected metrics")
                 else:
@@ -434,8 +434,8 @@ def print_results(results: Dict):
 if __name__ == "__main__":
     import argparse
     
-    parser = argparse.ArgumentParser(description="BAIS Deployment Verification Tests")
-    parser.add_argument("--url", default="http://localhost:8000", help="Base URL of BAIS API")
+    parser = argparse.ArgumentParser(description="BASE Deployment Verification Tests")
+    parser.add_argument("--url", default="http://localhost:8000", help="Base URL of BASE API")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     args = parser.parse_args()
     

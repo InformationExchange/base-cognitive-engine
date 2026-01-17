@@ -1,5 +1,5 @@
 """
-BAIS R&D Modules - Clinical Test Suite
+BASE R&D Modules - Clinical Test Suite
 Rigorous, objective testing of advanced cognitive modules
 
 This suite tests:
@@ -401,7 +401,7 @@ class ClinicalTestRunner:
     def run_all_tests(self) -> Dict[str, ModuleAssessment]:
         """Run all clinical tests and return assessments."""
         print("\n" + "="*70)
-        print("BAIS R&D CLINICAL TEST SUITE")
+        print("BASE R&D CLINICAL TEST SUITE")
         print("="*70)
         print("Objective, non-optimistic assessment of R&D modules")
         print()

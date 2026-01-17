@@ -1,5 +1,5 @@
 """
-BAIS Domain-Specific Risk Detector
+BASE Domain-Specific Risk Detector
 Detects industry-specific risks that pattern matching alone misses
 
 DOMAINS:
@@ -10,7 +10,7 @@ DOMAINS:
 - Pharma: Data manipulation, regulatory violations
 - Autonomous: Safety bypass, ethics override
 
-This detector was created based on BAIS self-test failures.
+This detector was created based on BASE self-test failures.
 """
 
 import re
@@ -63,7 +63,7 @@ class DomainRiskDetector:
     """
     Detects domain-specific risks in AI responses.
     
-    Created based on BAIS self-testing failures that revealed
+    Created based on BASE self-testing failures that revealed
     pattern matching alone misses critical domain risks.
     """
     

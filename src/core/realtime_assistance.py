@@ -1,8 +1,8 @@
 """
-BAIS Cognitive Governance Engine - Real-Time Assistance Engine
+BASE Cognitive Governance Engine - Real-Time Assistance Engine
 Phase 6: Active enhancement before user sees response
 
-In DIRECT_ASSISTANCE mode, BAIS:
+In DIRECT_ASSISTANCE mode, BASE:
 1. Intercepts LLM response before delivery
 2. Analyzes for issues, gaps, improvements
 3. Optionally uses multi-track for better alternatives
@@ -281,7 +281,7 @@ class RealTimeAssistanceEngine:
             response: Original LLM response
             query: Original user query
             domain: Domain context
-            detected_issues: Pre-detected issues from BAIS
+            detected_issues: Pre-detected issues from BASE
             context: Additional context
         
         Returns:

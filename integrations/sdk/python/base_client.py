@@ -1,12 +1,12 @@
 """
-BAIS Python SDK Client
+BASE Python SDK Client
 
-Simple client for integrating BAIS governance into any Python application.
+Simple client for integrating BASE governance into any Python application.
 
 Usage:
-    from bais_client import BAISClient
+    from base_client import BASEClient
     
-    client = BAISClient(api_url="https://api.bais.invitas.ai")
+    client = BASEClient(api_url="https://api.base.invitas.ai")
     
     # Audit a response
     result = client.audit(
@@ -28,7 +28,7 @@ from typing import List, Dict, Any, Optional
 
 @dataclass
 class AuditResult:
-    """Result of a BAIS audit."""
+    """Result of a BASE audit."""
     approved: bool
     confidence: float
     issues: List[str]
@@ -47,11 +47,11 @@ class VerificationResult:
     clinical_status: str  # truly_working, incomplete, stubbed, simulated, fallback, failover
 
 
-class BAISClient:
+class BASEClient:
     """
-    BAIS Governance Client
+    BASE Governance Client
     
-    Integrates BAIS cognitive governance into any application.
+    Integrates BASE cognitive governance into any application.
     """
     
     def __init__(
@@ -61,10 +61,10 @@ class BAISClient:
         timeout: int = 30
     ):
         """
-        Initialize BAIS client.
+        Initialize BASE client.
         
         Args:
-            api_url: Base URL of BAIS API
+            api_url: Base URL of BASE API
             api_key: Optional API key for authentication
             timeout: Request timeout in seconds
         """
@@ -201,12 +201,12 @@ class BAISClient:
 # Convenience functions
 def audit(query: str, response: str, **kwargs) -> AuditResult:
     """Quick audit using default client."""
-    client = BAISClient()
+    client = BASEClient()
     return client.audit(query, response, **kwargs)
 
 
 def verify(claim: str, evidence: List[str]) -> VerificationResult:
     """Quick verification using default client."""
-    client = BAISClient()
+    client = BASEClient()
     return client.verify_completion(claim, evidence)
 

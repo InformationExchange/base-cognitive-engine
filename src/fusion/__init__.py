@@ -1,4 +1,4 @@
-"""BAIS Fusion Module - Signal fusion and clinical validation."""
+"""BASE Fusion Module - Signal fusion and clinical validation."""
 
 from .signal_fusion import (
     SignalFusion, SignalVector, FusedSignal, 

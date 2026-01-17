@@ -1,10 +1,10 @@
 """
-BAIS Cognitive Governance Engine - Multi-Track Orchestrator
+BASE Cognitive Governance Engine - Multi-Track Orchestrator
 Phase 3: A/B/N LLM comparison with consensus and user selection
 
 Features:
 - User configures which LLMs to use
-- BAIS suggests track count based on complexity/risk
+- BASE suggests track count based on complexity/risk
 - Multiple LLMs evaluate in parallel
 - Consensus algorithm for best output
 - User can select preferred track or accept consensus
@@ -32,7 +32,7 @@ class TrackSelectionMode(Enum):
     """How final track is selected."""
     CONSENSUS = "consensus"         # Algorithmic consensus
     USER_SELECT = "user_select"     # User picks
-    HIGHEST_SCORE = "highest_score" # Highest BAIS score
+    HIGHEST_SCORE = "highest_score" # Highest BASE score
     LOWEST_ISSUES = "lowest_issues" # Fewest issues detected
 
 
@@ -58,8 +58,8 @@ class TrackResult:
     llm_provider: str
     response: str
     
-    # BAIS evaluation
-    bais_score: float
+    # BASE evaluation
+    base_score: float
     issues_detected: List[Dict[str, Any]]
     evidence_strength: str
     
@@ -96,7 +96,7 @@ class ConsensusResult:
 
 @dataclass
 class TrackSuggestion:
-    """BAIS suggestion for track configuration."""
+    """BASE suggestion for track configuration."""
     suggested_track_count: int
     suggested_llms: List[str]
     reason: str
@@ -277,11 +277,11 @@ class ConsensusEngine:
     
     def _best_single_consensus(self, tracks: List[TrackResult]) -> ConsensusResult:
         """Select best single track based on score and issues."""
-        # Score = BAIS score - (issue penalty)
+        # Score = BASE score - (issue penalty)
         scored_tracks = []
         for track in tracks:
             issue_penalty = len(track.issues_detected) * 0.05
-            effective_score = track.bais_score - issue_penalty
+            effective_score = track.base_score - issue_penalty
             scored_tracks.append((track, effective_score))
         
         # Sort by effective score
@@ -289,7 +289,7 @@ class ConsensusEngine:
         best_track, best_score = scored_tracks[0]
         
         # Calculate agreement
-        scores = [t.bais_score for t in tracks]
+        scores = [t.base_score for t in tracks]
         score_variance = self._calculate_variance(scores)
         agreement_score = max(0, 1 - score_variance)
         
@@ -331,7 +331,7 @@ class ConsensusEngine:
             divergence.append(f"Issue detection varies: {min(issue_counts)}-{max(issue_counts)}")
         
         # Check if scores differ significantly
-        scores = [t.bais_score for t in tracks]
+        scores = [t.base_score for t in tracks]
         if max(scores) - min(scores) > 0.2:
             divergence.append(f"Scores vary: {min(scores):.2f}-{max(scores):.2f}")
         
@@ -392,7 +392,7 @@ class MultiTrackOrchestrator:
     
     Features:
     - User configures LLMs
-    - BAIS suggests based on complexity
+    - BASE suggests based on complexity
     - Parallel execution
     - Consensus generation
     - User selection option
@@ -402,11 +402,11 @@ class MultiTrackOrchestrator:
         self,
         available_llms: Optional[List[str]] = None,
         max_parallel: int = 3,
-        bais_evaluator: Optional[Callable] = None
+        base_evaluator: Optional[Callable] = None
     ):
         self.available_llms = available_llms or ["grok", "openai", "anthropic", "google"]
         self.max_parallel = max_parallel
-        self.bais_evaluator = bais_evaluator
+        self.base_evaluator = base_evaluator
         
         self.complexity_analyzer = ComplexityAnalyzer()
         self.consensus_engine = ConsensusEngine()
@@ -484,16 +484,16 @@ class MultiTrackOrchestrator:
             # Get LLM response
             response = llm_provider(query, llm)
             
-            # Evaluate with BAIS if evaluator provided
-            if self.bais_evaluator:
-                evaluation = self.bais_evaluator(response)
-                bais_score = evaluation.get('score', 0.5)
+            # Evaluate with BASE if evaluator provided
+            if self.base_evaluator:
+                evaluation = self.base_evaluator(response)
+                base_score = evaluation.get('score', 0.5)
                 issues = evaluation.get('issues', [])
                 evidence = evaluation.get('evidence_strength', 'medium')
                 confidence = evaluation.get('confidence', 0.5)
             else:
                 # Default evaluation
-                bais_score = 0.5
+                base_score = 0.5
                 issues = []
                 evidence = 'medium'
                 confidence = 0.5
@@ -504,7 +504,7 @@ class MultiTrackOrchestrator:
                 track_id=track_id,
                 llm_provider=llm,
                 response=response,
-                bais_score=bais_score,
+                base_score=base_score,
                 issues_detected=issues,
                 evidence_strength=evidence,
                 latency_ms=latency,
@@ -519,7 +519,7 @@ class MultiTrackOrchestrator:
                 track_id=track_id,
                 llm_provider=llm,
                 response=f"ERROR: {str(e)}",
-                bais_score=0.0,
+                base_score=0.0,
                 issues_detected=[{'type': 'execution_error', 'detail': str(e)}],
                 evidence_strength='none',
                 latency_ms=latency,
@@ -598,7 +598,7 @@ class MultiTrackOrchestrator:
                 {
                     'track_id': t.track_id,
                     'llm': t.llm_provider,
-                    'bais_score': t.bais_score,
+                    'base_score': t.base_score,
                     'issues_count': len(t.issues_detected),
                     'latency_ms': t.latency_ms,
                     'confidence': t.confidence,

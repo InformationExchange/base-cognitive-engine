@@ -1,5 +1,5 @@
 """
-BAIS Mission Alignment Checker
+BASE Mission Alignment Checker
 
 Prevents drift from stated objectives during complex operations.
 This is the component that would have caught "blocking instead of improving".

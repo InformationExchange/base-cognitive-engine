@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v31.0
+BASE Cognitive Governance Engine v31.0
 Temporal Robustness - Rolling Window & Hysteresis Control
 
 Phase 31: Addresses PPA2-C1-9, PPA2-C1-10, PPA2-C1-21, PPA2-C1-31

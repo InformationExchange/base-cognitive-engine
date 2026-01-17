@@ -1,4 +1,4 @@
-# BAIS Cognitive Governance Engine v16.2
+# BASE Cognitive Governance Engine v16.2
 # FULL Mode Dependencies (ML-based, higher accuracy)
 # Requires ~4GB Docker image and t3.xlarge+ EC2 instance
 

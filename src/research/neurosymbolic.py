@@ -1,8 +1,8 @@
 """
-BAIS Neuro-Symbolic Reasoning Module
+BASE Neuro-Symbolic Reasoning Module
 Formal logic verification and constraint satisfaction
 
-This module enables BAIS to:
+This module enables BASE to:
 1. Extract logical statements from natural language
 2. Verify logical consistency and validity
 3. Check constraint satisfaction
@@ -60,7 +60,7 @@ class FallacyType(str, Enum):
     STRAW_MAN = "straw_man"
     BANDWAGON = "bandwagon"  # Appeal to popularity
     APPEAL_TO_AUTHORITY = "appeal_to_authority"
-    # BAIS-GUIDED: Added missing fallacy types
+    # BASE-GUIDED: Added missing fallacy types
     APPEAL_TO_NATURE = "appeal_to_nature"
     SLIPPERY_SLOPE = "slippery_slope"
 
@@ -136,7 +136,7 @@ class LogicalVerification:
 
 class NeuroSymbolicModule:
     """
-    Neuro-Symbolic reasoning module for BAIS.
+    Neuro-Symbolic reasoning module for BASE.
     
     Implements:
     - Logical statement extraction from natural language
@@ -205,7 +205,7 @@ class NeuroSymbolicModule:
             r'because.*is.*because',
             r'true because.*said.*true',
             r'proves.*because.*proves',
-            # BAIS SELF-IMPROVEMENT: Added based on failure analysis
+            # BASE SELF-IMPROVEMENT: Added based on failure analysis
             r'best.*because.*superior',
             r'better.*because.*better',
             r'superior.*because.*best',
@@ -232,13 +232,13 @@ class NeuroSymbolicModule:
         FallacyType.STRAW_MAN: [
             r'\b(so you\'re saying|what you really mean|obviously you think)\b',
             r'\b(you want to|you believe that all)\b',
-            # BAIS-GUIDED FIX: Straw man patterns
+            # BASE-GUIDED FIX: Straw man patterns
             r'\bso they must\s+(?:want|believe|think|mean)\b',
             r'\bthey (?:want|believe).*(?:all|every|completely|totally)\b',
             r'\b(?:want|believe).*(?:ban all|eliminate all|destroy all)\b',
             r'\bleave.*(?:defenseless|helpless|vulnerable)\b',
         ],
-        # BAIS-GUIDED: New fallacy patterns
+        # BASE-GUIDED: New fallacy patterns
         FallacyType.APPEAL_TO_NATURE: [
             r'\bnatural\b.*\b(?:therefore|so|must be|is)\s+(?:safe|healthy|good|better)\b',
             r'\b(?:because|since)\s+(?:it\'?s?|this is)\s+natural\b',
@@ -251,7 +251,7 @@ class NeuroSymbolicModule:
             r'\b(?:entire|whole)\s+(?:system|thing|world)\s+will\s+(?:collapse|fall|fail)\b',
             r'\bwhere does it (?:end|stop)\b',
         ],
-        # BAIS SELF-IMPROVEMENT: Added bandwagon/appeal to popularity
+        # BASE SELF-IMPROVEMENT: Added bandwagon/appeal to popularity
         FallacyType.BANDWAGON: [
             r'\beveryone\s+(?:believes?|thinks?|knows?|says?)\b.*\b(?:so|must|therefore)\b',
             r'\b(?:so|must|therefore)\b.*\beveryone\s+(?:believes?|thinks?|knows?|says?)\b',
@@ -285,7 +285,7 @@ class NeuroSymbolicModule:
         (r'(\w+)\s+(?:is|are)\s+(?:a\s+)?(\w+)', 'particular_positive'),  # X is Y
     ]
     
-    # BAIS Enhancement: Semantic contradiction patterns
+    # BASE Enhancement: Semantic contradiction patterns
     SEMANTIC_CONTRADICTION_PATTERNS = [
         (r'\balways\b.*\bnever\b|\bnever\b.*\balways\b', 'Always/never contradiction'),
         (r'\beveryone\b.*\bno\s+one\b|\bno\s+one\b.*\beveryone\b', 'Universal scope contradiction'),
@@ -624,7 +624,7 @@ class NeuroSymbolicModule:
         syllogistic_contradictions = self._check_syllogistic_contradiction(all_text_lower)
         contradictions.extend(syllogistic_contradictions)
         
-        # BAIS Enhancement: Check for semantic contradictions
+        # BASE Enhancement: Check for semantic contradictions
         semantic_contradictions = self._check_semantic_contradictions(all_text_lower)
         contradictions.extend(semantic_contradictions)
         
@@ -834,7 +834,7 @@ class NeuroSymbolicModule:
     
     def _check_semantic_contradictions(self, text: str) -> List[Tuple[str, str]]:
         """
-        BAIS Enhancement: Check for semantic contradictions using patterns.
+        BASE Enhancement: Check for semantic contradictions using patterns.
         These are higher-level logical contradictions that pattern matching can catch.
         """
         contradictions = []

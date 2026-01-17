@@ -1,5 +1,5 @@
 """
-BAIS API Key Configuration
+BASE API Key Configuration
 
 Configure API keys via environment variables:
 - GROK_API_KEY or XAI_API_KEY

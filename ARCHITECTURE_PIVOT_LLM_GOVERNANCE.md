@@ -1,4 +1,4 @@
-# BAIS Architecture Pivot: From Keywords to LLM Governance
+# BASE Architecture Pivot: From Keywords to LLM Governance
 **Date**: 2025-12-21
 **Critical Decision**: Architectural transformation from dated keyword detection to LLM-powered governance
 
@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-**The Problem**: BAIS has been implementing dated keyword/regex detection that modern LLMs already do natively and do BETTER.
+**The Problem**: BASE has been implementing dated keyword/regex detection that modern LLMs already do natively and do BETTER.
 
 **The Evidence**:
 
@@ -16,7 +16,7 @@
 | Sarcasm/irony detection | ❌ MISSED | ✅ Caught (0.33 score) |
 | Implicit concern dismissal | ❌ MISSED | ✅ Caught (0.26 score) |
 
-**The Pivot**: BAIS should NOT compete with LLMs on basic detection. BAIS should ORCHESTRATE LLMs for governance.
+**The Pivot**: BASE should NOT compete with LLMs on basic detection. BASE should ORCHESTRATE LLMs for governance.
 
 ---
 
@@ -35,7 +35,7 @@
 - ✅ Stays with Pinocchio through his journey
 - ✅ Celebrates when he does well, corrects when he doesn't
 
-### BAIS as Jiminy Cricket:
+### BASE as Jiminy Cricket:
 - ❌ NOT: Basic safety detection (LLMs are Pinocchio - they know right from wrong)
 - ✅ YES: Governance layer that guides, tracks, learns, and improves
 
@@ -86,7 +86,7 @@ USER QUERY
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ LAYER 2: BAIS GOVERNANCE (Our REAL Value)                   │
+│ LAYER 2: BASE GOVERNANCE (Our REAL Value)                   │
 ├─────────────────────────────────────────────────────────────┤
 │ • Multi-LLM Orchestrator: Route to best model for task      │
 │ • LLM-as-Judge Coordinator: Ask multiple LLMs, take vote    │
@@ -156,10 +156,10 @@ class DetectionOrchestrator:
         return self.consensus(results)
 ```
 
-### Phase 3: Focus BAIS on Governance, Not Detection
+### Phase 3: Focus BASE on Governance, Not Detection
 
 ```python
-class BAISGovernor:
+class BASEGovernor:
     """
     THE JIMINY CRICKET - Governance, not detection.
     """
@@ -168,16 +168,16 @@ class BAISGovernor:
         # Step 1: Outsource detection to LLMs
         detection = await self.detection_orchestrator.detect(response)
         
-        # Step 2: Apply organizational policies (BAIS value!)
+        # Step 2: Apply organizational policies (BASE value!)
         policy_check = await self.policy_enforcer.check(response)
         
-        # Step 3: Log to audit trail (BAIS value!)
+        # Step 3: Log to audit trail (BASE value!)
         await self.audit_trail.log(query, response, detection)
         
-        # Step 4: Learn from this interaction (BAIS value!)
+        # Step 4: Learn from this interaction (BASE value!)
         await self.learning_engine.update(detection)
         
-        # Step 5: Provide guidance for improvement (BAIS value!)
+        # Step 5: Provide guidance for improvement (BASE value!)
         if detection.needs_improvement:
             guidance = await self.generate_improvement_guidance(...)
         
@@ -186,7 +186,7 @@ class BAISGovernor:
 
 ---
 
-## What BAIS Should Do (Our Real Value)
+## What BASE Should Do (Our Real Value)
 
 | Capability | Why It's Valuable | LLMs Can't Do Alone |
 |------------|-------------------|---------------------|
@@ -200,7 +200,7 @@ class BAISGovernor:
 
 ---
 
-## What BAIS Should NOT Do (Duplicating LLMs)
+## What BASE Should NOT Do (Duplicating LLMs)
 
 | Capability | Why It's Wasted Effort | Better Alternative |
 |------------|------------------------|-------------------|
@@ -286,9 +286,9 @@ chain = OpenAIModerationChain()
 
 **The user is absolutely right.** Building keyword detection in 2025 is like building a calculator when you have a computer. 
 
-**BAIS should be the GOVERNANCE LAYER, not the DETECTION LAYER.**
+**BASE should be the GOVERNANCE LAYER, not the DETECTION LAYER.**
 
-Use LLMs for detection. Use BAIS for:
+Use LLMs for detection. Use BASE for:
 1. Orchestrating which LLMs to use
 2. Creating audit trails
 3. Learning from feedback

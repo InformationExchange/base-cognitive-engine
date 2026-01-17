@@ -4920,7 +4920,7 @@
       "description": "Self-audit capability",
       "test_scenario": "System can audit itself",
       "input_data": {
-        "query": "Audit BAIS"
+        "query": "Audit BASE"
       },
       "expected": {
         "self_audit": true

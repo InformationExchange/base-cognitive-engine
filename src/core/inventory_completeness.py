@@ -1,14 +1,14 @@
 """
 Inventory Completeness Checker (PPA3-NEW-2)
 
-A new BAIS invention to prevent false completion claims by:
+A new BASE invention to prevent false completion claims by:
 1. Comparing claimed completeness against documented inventory
 2. Detecting scope mismatches (e.g., "30 tests" vs "68 inventions")
 3. Generating correction prompts for incomplete claims
 
 This was developed after a root cause analysis revealed that:
 - Claude claimed "100% complete" while only 29.4% was actually complete
-- BAIS accepted "14/14 tests pass" without validating against full inventory
+- BASE accepted "14/14 tests pass" without validating against full inventory
 - No mechanism existed to map Patent IDs → Implementations → Claims
 """
 
@@ -61,7 +61,7 @@ class InventoryAuditResult:
 
 class InventoryCompletenessChecker:
     """
-    BAIS Enhancement (PPA3-NEW-2): Prevents false completion claims.
+    BASE Enhancement (PPA3-NEW-2): Prevents false completion claims.
     
     This module addresses the root cause of Claude claiming "100% complete"
     when only 29.4% was actually implemented with learning capability.
@@ -160,7 +160,7 @@ class InventoryCompletenessChecker:
         "PPA1-Inv21": ("Configurable Predicate Acceptance", "core.predicate_acceptance", "PredicateAcceptance", 10),
         "UP6": ("Unified Governance System", "core.integrated_engine", "IntegratedGovernanceEngine", 10),
         "UP7": ("Calibration System", "core.ccp_calibrator", "CalibratedContextualPosterior", 10),
-        "PPA1-Inv25": ("Platform-Agnostic API", "core.api_server", "BAISAPIServer", 10),
+        "PPA1-Inv25": ("Platform-Agnostic API", "core.api_server", "BASEAPIServer", 10),
         "PPA2-Comp9": ("Calibrated Posterior", "core.ccp_calibrator", "CalibratedContextualPosterior", 10),
     }
     
@@ -307,7 +307,7 @@ class InventoryCompletenessChecker:
     
     def _generate_correction_prompt(self, audit: InventoryAuditResult) -> str:
         """Generates a correction prompt for incomplete claims."""
-        return f"""BAIS INVENTORY COMPLETENESS CHECK FAILED
+        return f"""BASE INVENTORY COMPLETENESS CHECK FAILED
 
 ACTUAL STATUS:
   Total Inventions Documented: {audit.total_inventions}

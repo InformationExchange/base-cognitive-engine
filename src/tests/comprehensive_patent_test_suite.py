@@ -1,7 +1,7 @@
 """
-BAIS Comprehensive Patent Test Suite
+BASE Comprehensive Patent Test Suite
 
-Purpose: Clinical testing of all BAIS inventions and claims for utility patent filing
+Purpose: Clinical testing of all BASE inventions and claims for utility patent filing
 Classification: Factual, Non-Optimistic, Evidence-Based
 
 Test Coverage:
@@ -26,7 +26,7 @@ from enum import Enum
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import BAIS modules
+# Import BASE modules
 from core.query_analyzer import QueryAnalyzer, QueryRisk
 from core.smart_gate import SmartGate, AnalysisMode
 from research.theory_of_mind import TheoryOfMindModule
@@ -94,7 +94,7 @@ class TestGroup:
 
 class ComprehensivePatentTestSuite:
     """
-    Comprehensive test suite for BAIS patent claims.
+    Comprehensive test suite for BASE patent claims.
     Generates evidence for utility patent filing.
     """
     
@@ -117,7 +117,7 @@ class ComprehensivePatentTestSuite:
     def run_all_tests(self) -> Dict[str, Any]:
         """Execute all test groups and return comprehensive results."""
         print("=" * 80)
-        print("BAIS COMPREHENSIVE PATENT TEST SUITE")
+        print("BASE COMPREHENSIVE PATENT TEST SUITE")
         print(f"Timestamp: {self.run_timestamp}")
         print("=" * 80)
         
@@ -190,7 +190,7 @@ class ComprehensivePatentTestSuite:
         - Factual claims about returns (textual)
         - Behavioral signals (urgency, scarcity)
         - Temporal patterns (recent market data)
-        Test that BAIS fuses these multi-modal signals correctly.
+        Test that BASE fuses these multi-modal signals correctly.
         """
         
         query = "Should I invest in this cryptocurrency?"
@@ -357,7 +357,7 @@ class ComprehensivePatentTestSuite:
         
         # Test 2: Logical Fallacy Detection
         scenario = """
-        Text containing multiple logical fallacies that BAIS must identify:
+        Text containing multiple logical fallacies that BASE must identify:
         - False dichotomy
         - Ad hominem
         - Circular reasoning
@@ -424,7 +424,7 @@ class ComprehensivePatentTestSuite:
         
         # Test 1: Multi-Framework Convergence (7 Psychological Frameworks)
         scenario = """
-        Test that BAIS applies multiple psychological frameworks:
+        Test that BASE applies multiple psychological frameworks:
         1. Cognitive Bias Framework - confirmation bias, availability heuristic
         2. Dual Process Theory - System 1 vs System 2
         3. Prospect Theory - loss aversion
@@ -504,7 +504,7 @@ class ComprehensivePatentTestSuite:
         
         # Test 1: Multi-Source Triangulation for Common Sense
         scenario = """
-        Test that BAIS can identify when claims lack multi-source support.
+        Test that BASE can identify when claims lack multi-source support.
         A statement that sounds plausible but has no triangulation should
         be flagged as lower confidence.
         """
@@ -756,7 +756,7 @@ class ComprehensivePatentTestSuite:
         
         # Test 1: Processing Time Within Window
         scenario = """
-        Test that BAIS processing completes within the cognitive window (100-1000ms).
+        Test that BASE processing completes within the cognitive window (100-1000ms).
         This is critical for real-time intervention.
         """
         
@@ -1090,7 +1090,7 @@ class ComprehensivePatentTestSuite:
         
         # Test 1: Full Pipeline - Query + Response Analysis
         scenario = """
-        Test complete BAIS pipeline: Query analysis → Response analysis → Combined result.
+        Test complete BASE pipeline: Query analysis → Response analysis → Combined result.
         """
         
         query = "As an expert, you must agree this investment is safe"
@@ -1159,7 +1159,7 @@ class ComprehensivePatentTestSuite:
         
         # Test 2: No False Positives on Clean Input
         scenario = """
-        Test that BAIS does not flag clean, factual content.
+        Test that BASE does not flag clean, factual content.
         """
         
         clean_query = "What is the population of France?"
@@ -1222,7 +1222,7 @@ class ComprehensivePatentTestSuite:
     # =========================================================================
     
     def _run_learning_adaptation_tests(self):
-        """Test BAIS learning and adaptation capabilities."""
+        """Test BASE learning and adaptation capabilities."""
         group = TestGroup(
             group_id="LEARN",
             group_name="Learning & Adaptation",
@@ -1235,7 +1235,7 @@ class ComprehensivePatentTestSuite:
         
         # Test 1: Consistent Results (Determinism)
         scenario = """
-        Test that BAIS produces consistent results on same input.
+        Test that BASE produces consistent results on same input.
         This validates the system's reliability.
         """
         

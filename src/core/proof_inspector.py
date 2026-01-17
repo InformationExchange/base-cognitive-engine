@@ -3,7 +3,7 @@ PROOF INSPECTOR (NOVEL-24)
 ==========================
 Actually verify claims against evidence instead of analyzing words.
 
-This module moves BAIS from pattern detection to proof verification:
+This module moves BASE from pattern detection to proof verification:
 - FILE claims: Check if files actually exist
 - CODE claims: Verify code structure and completeness
 - COMPLETION claims: Enumerate and verify each item
@@ -241,7 +241,7 @@ class ProofInspector:
                 Path(file_path),
                 self.workspace_path / file_path,
                 self.workspace_path / "src" / file_path,
-                self.workspace_path / "bais-cognitive-engine" / "src" / file_path,
+                self.workspace_path / "base-cognitive-engine" / "src" / file_path,
             ]
             
             found = False
@@ -277,7 +277,7 @@ class ProofInspector:
         # Search for classes/functions in workspace
         search_paths = [
             self.workspace_path / "src",
-            self.workspace_path / "bais-cognitive-engine" / "src",
+            self.workspace_path / "base-cognitive-engine" / "src",
         ]
         
         for class_name in analysis.class_names:
@@ -455,7 +455,7 @@ class ProofInspector:
         
         search_paths = [
             self.workspace_path / "src",
-            self.workspace_path / "bais-cognitive-engine" / "src",
+            self.workspace_path / "base-cognitive-engine" / "src",
         ]
         
         for search_path in search_paths:

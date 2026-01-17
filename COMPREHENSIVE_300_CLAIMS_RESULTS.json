@@ -19,7 +19,7 @@
     "track_a_wins": 0,
     "track_b_wins": 300,
     "ties": 0,
-    "bais_advantage": 100.0
+    "base_advantage": 100.0
   },
   "phase_results": [
     {

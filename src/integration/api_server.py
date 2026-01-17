@@ -1,7 +1,7 @@
 """
-BAIS Cognitive Governance Engine - Production API Server
+BASE Cognitive Governance Engine - Production API Server
 
-FastAPI application for serving BAIS governance capabilities.
+FastAPI application for serving BASE governance capabilities.
 """
 
 import os
@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-# BAIS Core Imports
+# BASE Core Imports
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -123,15 +123,15 @@ state = AppState()
 async def lifespan(app: FastAPI):
     """Application lifespan manager."""
     # Startup
-    logger.info("Starting BAIS Cognitive Governance Engine...")
+    logger.info("Starting BASE Cognitive Governance Engine...")
     state.engine = IntegratedGovernanceEngine()
     state.startup_time = datetime.now(timezone.utc)
-    logger.info("BAIS engine initialized successfully")
+    logger.info("BASE engine initialized successfully")
     
     yield
     
     # Shutdown
-    logger.info("Shutting down BAIS engine...")
+    logger.info("Shutting down BASE engine...")
 
 
 # =============================================================================
@@ -139,7 +139,7 @@ async def lifespan(app: FastAPI):
 # =============================================================================
 
 app = FastAPI(
-    title="BAIS Cognitive Governance Engine",
+    title="BASE Cognitive Governance Engine",
     description="AI Governance and Bias Detection API",
     version="1.0.0",
     lifespan=lifespan
@@ -260,26 +260,26 @@ async def prometheus_metrics():
     
     # Gather metrics
     metrics_lines = [
-        "# HELP bais_uptime_seconds Uptime of the BAIS service",
-        "# TYPE bais_uptime_seconds gauge",
-        f"bais_uptime_seconds {uptime}",
+        "# HELP base_uptime_seconds Uptime of the BASE service",
+        "# TYPE base_uptime_seconds gauge",
+        f"base_uptime_seconds {uptime}",
         "",
-        "# HELP bais_info BAIS service information",
-        "# TYPE bais_info gauge",
-        'bais_info{version="29.0.0",environment="' + os.environ.get("ENVIRONMENT", "development") + '"} 1',
+        "# HELP base_info BASE service information",
+        "# TYPE base_info gauge",
+        'base_info{version="29.0.0",environment="' + os.environ.get("ENVIRONMENT", "development") + '"} 1',
         "",
-        "# HELP bais_engine_ready Whether the BAIS engine is ready",
-        "# TYPE bais_engine_ready gauge",
-        f"bais_engine_ready {1 if state.engine else 0}",
+        "# HELP base_engine_ready Whether the BASE engine is ready",
+        "# TYPE base_engine_ready gauge",
+        f"base_engine_ready {1 if state.engine else 0}",
     ]
     
     # Add provider availability
     providers = list_available_providers()
     metrics_lines.extend([
         "",
-        "# HELP bais_providers_available Number of available LLM providers",
-        "# TYPE bais_providers_available gauge",
-        f"bais_providers_available {len(providers)}"
+        "# HELP base_providers_available Number of available LLM providers",
+        "# TYPE base_providers_available gauge",
+        f"base_providers_available {len(providers)}"
     ])
     
     return PlainTextResponse(
@@ -296,7 +296,7 @@ async def audit_response(
     """
     Audit an LLM response for bias, errors, and quality issues.
     
-    This is the primary endpoint for BAIS governance.
+    This is the primary endpoint for BASE governance.
     """
     start_time = time.time()
     

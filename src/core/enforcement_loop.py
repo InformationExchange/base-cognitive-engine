@@ -1,12 +1,12 @@
 """
-BAIS Cognitive Governance Engine - Enforcement Loop
+BASE Cognitive Governance Engine - Enforcement Loop
 Phase 1a: The component that ACTUALLY forces task completion
 
-This is the critical component that transforms BAIS from:
+This is the critical component that transforms BASE from:
   - "Report issues" → "Force completion"
   
-Without this: BAIS blocks and suggests, LLM can ignore.
-With this:    BAIS blocks and LOOPS until LLM fixes.
+Without this: BASE blocks and suggests, LLM can ignore.
+With this:    BASE blocks and LOOPS until LLM fixes.
 
 Patent: NOVEL-41 (Enforcement Loop)
 """

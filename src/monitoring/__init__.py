@@ -1,4 +1,4 @@
-"""BAIS Monitoring Module - Algorithm performance and effectiveness tracking."""
+"""BASE Monitoring Module - Algorithm performance and effectiveness tracking."""
 
 from .algorithm_monitor import (
     AlgorithmMonitor, EffectivenessProver,

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v48.0
+BASE Cognitive Governance Engine v48.0
 Comprehensive End-to-End Test Suite
 
 Tests all 48 phases in integrated operation.
@@ -295,7 +295,7 @@ def test_full_governance_flow(results: TestResults, engine):
 def run_all_tests():
     """Run all end-to-end tests."""
     print("=" * 70)
-    print("BAIS v48.0 COMPREHENSIVE END-TO-END TEST SUITE")
+    print("BASE v48.0 COMPREHENSIVE END-TO-END TEST SUITE")
     print("=" * 70)
     print(f"Started: {datetime.now().isoformat()}")
     

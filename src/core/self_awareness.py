@@ -1,5 +1,5 @@
 """
-BAIS Self-Awareness Loop - Cognitive Self-Correction System
+BASE Self-Awareness Loop - Cognitive Self-Correction System
 
 This module creates the "cognitive capability in the AI brain to realize it's
 BSing, distorting, or off-track and correct to produce smarter outcomes."

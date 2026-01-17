@@ -1,5 +1,5 @@
 """
-BAIS Contradiction Resolver (PPA1-Inv8)
+BASE Contradiction Resolver (PPA1-Inv8)
 
 Detects and resolves contradictions in LLM responses:
 1. Internal contradictions (response contradicts itself)

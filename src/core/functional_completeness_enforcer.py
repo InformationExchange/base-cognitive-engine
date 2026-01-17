@@ -1,5 +1,5 @@
 """
-BAIS Functional Completeness Enforcer (NOVEL-50)
+BASE Functional Completeness Enforcer (NOVEL-50)
 
 This module addresses gaps identified in Case Study 3:
 - RC-1: Static vs Functional gap detection
@@ -239,7 +239,7 @@ class FunctionalCompletenessEnforcer:
                 "message": f"Only {tested_count}/{claimed_count} ({coverage:.1f}%) tested. "
                           f"100% functional testing required.",
                 "recommendation": "Execute functional tests for ALL classes before claiming completion",
-                "bais_invention": "NOVEL-50: FunctionalCompletenessEnforcer",
+                "base_invention": "NOVEL-50: FunctionalCompletenessEnforcer",
                 "case_study_reference": "Case Study 3: Static vs Functional Gap"
             }
         
@@ -457,12 +457,12 @@ class FunctionalCompletenessEnforcer:
         self._learning_params = state.get('learning_params', {})
 
 
-# Integration with existing BAIS components
-class BAISFunctionalValidator:
+# Integration with existing BASE components
+class BASEFunctionalValidator:
     """
-    BAIS integration for functional validation.
+    BASE integration for functional validation.
     
-    Enhances bais_verify_completion to reject sample-based claims
+    Enhances base_verify_completion to reject sample-based claims
     and require 100% functional testing.
     """
     
@@ -500,7 +500,7 @@ class BAISFunctionalValidator:
                 'message': sample_check['message'],
                 'recommendation': sample_check['recommendation'],
                 'evidence_type': 'SAMPLE_REJECTED',
-                'bais_enhancement': 'NOVEL-50'
+                'base_enhancement': 'NOVEL-50'
             }
         
         # Check evidence quality

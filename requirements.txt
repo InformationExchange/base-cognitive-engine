@@ -1,4 +1,4 @@
-# BAIS Cognitive Governance Engine
+# BASE Cognitive Governance Engine
 # Python Dependencies
 
 # =============================================================================

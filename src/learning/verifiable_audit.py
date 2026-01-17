@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.4
+BASE Cognitive Governance Engine v16.4
 Verifiable Audit System with Merkle Trees
 
 PPA-2 Component 7: FULL IMPLEMENTATION
@@ -331,7 +331,7 @@ class VerifiableAuditSystem:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            storage_path = Path(tempfile.mkdtemp(prefix="bais_audit_"))
+            storage_path = Path(tempfile.mkdtemp(prefix="base_audit_"))
         self.storage_path = storage_path
         self.storage_path.mkdir(parents=True, exist_ok=True)
         

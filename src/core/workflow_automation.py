@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v46.0
+BASE Cognitive Governance Engine v46.0
 Workflow Automation with AI + Pattern + Learning
 
 Phase 46: Workflow Infrastructure

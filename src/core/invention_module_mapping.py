@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine - Invention to Module Mapping
+BASE Cognitive Governance Engine - Invention to Module Mapping
 Phase G2: Explicit mapping of all 71 inventions to implementing modules
 
 This module provides:
@@ -631,7 +631,7 @@ class InventionModuleRegistry:
             primary_class="SelfAwarenessLoop",
             status=ImplementationStatus.FULLY_IMPLEMENTED,
             claims=["NOVEL-21-C1", "NOVEL-21-C2", "NOVEL-21-C3"],
-            description="Error monitoring for BAIS itself"
+            description="Error monitoring for BASE itself"
         )
         
         self.inventions["NOVEL-2"] = InventionMapping(

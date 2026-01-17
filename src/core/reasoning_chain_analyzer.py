@@ -1,5 +1,5 @@
 """
-BAIS Reasoning Chain Analyzer
+BASE Reasoning Chain Analyzer
 
 Detects structural reasoning problems WITHOUT requiring domain knowledge.
 Analyzes the logical flow of arguments to detect:

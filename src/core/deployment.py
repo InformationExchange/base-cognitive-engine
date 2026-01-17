@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v29.0
+BASE Cognitive Governance Engine v29.0
 Deployment Module - Production Configuration & Health Management
 
 Phase 29: Deployment & Production Testing
@@ -109,7 +109,7 @@ class DeploymentConfig:
         
         return cls(
             environment=Environment(env_name),
-            version=os.environ.get('BAIS_VERSION', '29.0.0'),
+            version=os.environ.get('BASE_VERSION', '29.0.0'),
             api_port=int(os.environ.get('PORT', '8000')),
             log_level=os.environ.get('LOG_LEVEL', 'INFO'),
             enable_metrics=os.environ.get('ENABLE_METRICS', 'true').lower() == 'true',
@@ -645,9 +645,9 @@ if __name__ == "__main__":
     # Test metrics
     print("\n[Metrics]")
     metrics = MetricsExporter()
-    metrics.increment('bais_requests_total')
-    metrics.set_gauge('bais_active_sessions', 5)
-    metrics.observe('bais_request_duration_seconds', 0.15)
+    metrics.increment('base_requests_total')
+    metrics.set_gauge('base_active_sessions', 5)
+    metrics.observe('base_request_duration_seconds', 0.15)
     
     prom_output = metrics.export_prometheus()
     print(f"  Prometheus output lines: {len(prom_output.split())}")

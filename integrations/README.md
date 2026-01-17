@@ -1,6 +1,6 @@
-# BAIS Integration Components
+# BASE Integration Components
 
-Pre-built components for integrating BAIS governance into any RAG or LLM application.
+Pre-built components for integrating BASE governance into any RAG or LLM application.
 
 ## Directory Structure
 
@@ -14,9 +14,9 @@ integrations/
 │   └── audit_api.py
 └── sdk/                # Client SDKs
     ├── python/
-    │   └── bais_client.py
+    │   └── base_client.py
     └── javascript/
-        └── bais-client.js
+        └── base-client.js
 ```
 
 ## Quick Start
@@ -24,9 +24,9 @@ integrations/
 ### Python SDK
 
 ```python
-from bais_client import BAISClient
+from base_client import BASEClient
 
-client = BAISClient(api_url="https://api.bais.invitas.ai", api_key="your-key")
+client = BASEClient(api_url="https://api.base.invitas.ai", api_key="your-key")
 
 # Audit an LLM response
 result = client.audit(
@@ -44,10 +44,10 @@ else:
 ### JavaScript SDK
 
 ```javascript
-import { BAISClient } from 'bais-client';
+import { BASEClient } from 'base-client';
 
-const client = new BAISClient({ 
-  apiUrl: 'https://api.bais.invitas.ai',
+const client = new BASEClient({ 
+  apiUrl: 'https://api.base.invitas.ai',
   apiKey: 'your-key'
 });
 
@@ -68,7 +68,7 @@ if (result.approved) {
 import { AuditModeToggle } from './integrations/react/AuditModeToggle';
 import { CognitiveComparisonDashboard } from './integrations/react/CognitiveComparisonDashboard';
 
-// Toggle BAIS audit mode
+// Toggle BASE audit mode
 <AuditModeToggle 
   enabled={auditMode} 
   onToggle={setAuditMode} 

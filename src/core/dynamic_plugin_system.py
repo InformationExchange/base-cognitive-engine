@@ -1,5 +1,5 @@
 """
-BAIS Dynamic Plugin System with Shared Learning (NOVEL-54)
+BASE Dynamic Plugin System with Shared Learning (NOVEL-54)
 
 Enables:
 1. Dynamic plugin creation from semantic understanding

@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Behavioral Signal Vector
 
 PPA-2 Dep.Claim 23: FULL IMPLEMENTATION
@@ -202,7 +202,7 @@ class BehavioralSignalComputer:
             storage_path: Path to persist baseline data
             history_window: Number of observations for baseline computation
         """
-        self.storage_path = storage_path or Path("/data/bais/behavioral_signals.json")
+        self.storage_path = storage_path or Path("/data/base/behavioral_signals.json")
         self.history_window = history_window
         
         # Baseline tracking

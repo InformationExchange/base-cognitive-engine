@@ -1,5 +1,5 @@
 """
-BAIS LLM Helper for R&D Modules
+BASE LLM Helper for R&D Modules
 Provides LLM-assisted semantic analysis when pattern matching is insufficient
 
 This module enables R&D modules to:

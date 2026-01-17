@@ -1,5 +1,5 @@
 """
-BAIS Fact-Checking Pathway
+BASE Fact-Checking Pathway
 Migrated from Onyx Governance - Enhancement 2
 
 Claim extraction and verification against source documents.
@@ -54,7 +54,7 @@ class FactCheckResult:
 
 class FactCheckingPathway:
     """
-    Fact-Checking Governance Pathway for BAIS.
+    Fact-Checking Governance Pathway for BASE.
     
     Implements:
     - Claim extraction from responses

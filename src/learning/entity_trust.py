@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.4
+BASE Cognitive Governance Engine v16.4
 Entity Trust Inheritance System
 
 PPA-2 Component 1: FULL IMPLEMENTATION
@@ -149,7 +149,7 @@ class EntityTrustSystem:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_trust_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_trust_"))
             storage_path = temp_dir / "entity_trust.json"
         self.storage_path = storage_path
         

@@ -1,5 +1,5 @@
 """
-BAIS Threshold Optimizer (Layer 6 - Basal Ganglia)
+BASE Threshold Optimizer (Layer 6 - Basal Ganglia)
 
 Alias module that provides documentation compatibility.
 The actual implementation is in learning/threshold_optimizer.py

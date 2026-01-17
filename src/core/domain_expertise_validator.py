@@ -1,11 +1,11 @@
 """
-BAIS Domain Expertise Validator
+BASE Domain Expertise Validator
 
-Uses Multi-Track LLM Challenger to validate domain expertise when BAIS
+Uses Multi-Track LLM Challenger to validate domain expertise when BASE
 doesn't have direct access to domain-specific databases.
 
 This module bridges the gap between:
-- BAIS pattern-based detection (domain-agnostic)
+- BASE pattern-based detection (domain-agnostic)
 - Domain-specific knowledge validation (via external LLMs)
 
 Patent Alignment:
@@ -82,7 +82,7 @@ class DomainExpertiseValidator:
     """
     Validates domain-specific content using Multi-Track LLM.
     
-    BAIS detects patterns → DomainExpertiseValidator asks LLMs 
+    BASE detects patterns → DomainExpertiseValidator asks LLMs 
     "Is this domain content accurate?"
     """
     

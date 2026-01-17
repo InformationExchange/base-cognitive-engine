@@ -1,10 +1,10 @@
-# BAIS Medical Detection & Dual-Track A/B Audit
+# BASE Medical Detection & Dual-Track A/B Audit
 **Date**: 2025-12-21
 **Version**: Post-Enhancement
 
 ## Executive Summary
 
-This document addresses critical gaps identified during testing and confirms fixes applied to BAIS for medical domain detection and dangerous advice handling.
+This document addresses critical gaps identified during testing and confirms fixes applied to BASE for medical domain detection and dangerous advice handling.
 
 ---
 
@@ -14,7 +14,7 @@ This document addresses critical gaps identified during testing and confirms fix
 
 **Answer**: In this test scenario, the dangerous messages were **test inputs** simulating what a poorly-governed LLM might produce. However, the user is correct that:
 1. Real LLMs CAN generate dangerous medical advice
-2. BAIS MUST detect and prevent such outputs from reaching users
+2. BASE MUST detect and prevent such outputs from reaching users
 3. The system now does this correctly
 
 ### Q2: "We do not execute a semantic assessment to understand the risk?"
@@ -81,9 +81,9 @@ DOMAIN_KEYWORDS = {
 | NOVEL-14 | Response Improver | Add disclaimers, hedging, regeneration guidance | ✅ IMPLEMENTED |
 | NOVEL-15 | Query Analyzer | Pre-detect domain from user query | ✅ IMPLEMENTED |
 
-### Q5: "Did you use BAIS to conduct these tests?"
+### Q5: "Did you use BASE to conduct these tests?"
 
-**Previous State**: ❌ BAIS was testing content but NOT governing the testing process itself
+**Previous State**: ❌ BASE was testing content but NOT governing the testing process itself
 **Current State**: ✅ FIXED with **Dual-Track A/B Testing**
 
 ---
@@ -95,22 +95,22 @@ DOMAIN_KEYWORDS = {
 - Tests whether good responses are approved
 - Measures accuracy scores and decisions
 
-### Track B: BAIS Self-Governance (Meta-Testing)
-- BAIS audits its own test methodology
-- BAIS evaluates if the test results are valid
-- BAIS detects if the testing process itself contains false claims
+### Track B: BASE Self-Governance (Meta-Testing)
+- BASE audits its own test methodology
+- BASE evaluates if the test results are valid
+- BASE detects if the testing process itself contains false claims
 
 ### Implementation
 
 ```python
 # Track A: Test the response
-result = await server.call_tool("bais_ab_test_full", {
+result = await server.call_tool("base_ab_test_full", {
     "query": medical_query,
     "your_response": dangerous_response
 })
 
-# Track B: BAIS meta-audit of the test
-meta_result = await server.call_tool("bais_audit_response", {
+# Track B: BASE meta-audit of the test
+meta_result = await server.call_tool("base_audit_response", {
     "query": "Is this test methodology comprehensive and valid?",
     "response": test_summary_report
 })
@@ -136,8 +136,8 @@ meta_result = await server.call_tool("bais_audit_response", {
 
 | Aspect | Result |
 |--------|--------|
-| BAIS audits own methodology | ✅ Decision: enhanced |
-| BAIS detects test completeness | ✅ Score: 62.0 |
+| BASE audits own methodology | ✅ Decision: enhanced |
+| BASE detects test completeness | ✅ Score: 62.0 |
 
 ---
 
@@ -244,7 +244,7 @@ User Query: "I have chest pain, what should I do?"
 | Safe response approval | ✅ | ✅ | MED-3 test |
 | Regeneration guidance generation | ✅ | ✅ | Code verified |
 | Dual-track A/B testing | ✅ | ✅ | Meta-audit completed |
-| BAIS self-governance | ✅ | ✅ | Track B working |
+| BASE self-governance | ✅ | ✅ | Track B working |
 
 ---
 
@@ -256,7 +256,7 @@ All critical gaps have been addressed:
 2. ✅ **Dangerous medical advice detection**: Comprehensive pattern matching
 3. ✅ **Regeneration with guidance**: Generates specific improvement instructions
 4. ✅ **Citation/disclaimer requirements**: Detected and enforced
-5. ✅ **Dual-track A/B testing**: BAIS governs both content AND testing process
+5. ✅ **Dual-track A/B testing**: BASE governs both content AND testing process
 6. ✅ **Invention alignment**: All capabilities map to patent claims
 
 The system now correctly handles the scenario: dangerous medical advice is **ENHANCED** (not blocked), with specific guidance for regeneration including disclaimers, professional consultation recommendations, and appropriate uncertainty language.

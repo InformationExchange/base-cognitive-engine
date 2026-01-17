@@ -1,5 +1,5 @@
 """
-BAIS Evidence Verification Module (NOVEL-53)
+BASE Evidence Verification Module (NOVEL-53)
 
 Actually VERIFIES evidence is real, not just checks format.
 Uses multi-track AI for independent verification.
@@ -12,7 +12,7 @@ Key Capabilities:
 5. Consensus-based verification decisions
 
 Brain Layer: 8 (Verification & Validation)
-Patent Alignment: Novel invention extending BAIS governance
+Patent Alignment: Novel invention extending BASE governance
 """
 
 from dataclasses import dataclass, field

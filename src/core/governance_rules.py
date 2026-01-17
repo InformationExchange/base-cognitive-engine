@@ -1,8 +1,8 @@
 """
-BAIS Governance Rules
+BASE Governance Rules
 Codified lessons learned from self-improvement cycles
 
-These rules are used by BAIS to govern its own development and testing,
+These rules are used by BASE to govern its own development and testing,
 ensuring the same mistakes are not repeated.
 
 ALL 10 RULES IMPLEMENTED:
@@ -70,9 +70,9 @@ class DataFlowStep:
     connected_to_next: bool
 
 
-class BAISGovernanceRules:
+class BASEGovernanceRules:
     """
-    Codified governance rules for BAIS self-improvement.
+    Codified governance rules for BASE self-improvement.
     
     These rules encode lessons learned to prevent repeated mistakes.
     ALL 10 RULES IMPLEMENTED.
@@ -573,7 +573,7 @@ class BAISGovernanceRules:
     def get_rules_summary(self) -> str:
         """Get summary of all 10 rules."""
         return """
-BAIS Governance Rules (All 10 Implemented):
+BASE Governance Rules (All 10 Implemented):
 
 RULE 1: Integration > Existence
    Components must be called in production flow, not just exist.
@@ -642,10 +642,10 @@ RULE 10: Learning Direction Matters
 def test_governance_rules():
     """Test the governance rules system."""
     print("=" * 70)
-    print("TESTING ALL 10 BAIS GOVERNANCE RULES")
+    print("TESTING ALL 10 BASE GOVERNANCE RULES")
     print("=" * 70)
     
-    rules = BAISGovernanceRules()
+    rules = BASEGovernanceRules()
     print(rules.get_rules_summary())
     
     # Test context with violations

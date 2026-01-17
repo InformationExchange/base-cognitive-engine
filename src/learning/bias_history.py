@@ -1,5 +1,5 @@
 """
-BAIS Bias History (Layer 8 - Hippocampus)
+BASE Bias History (Layer 8 - Hippocampus)
 
 Alias module that provides documentation compatibility.
 The actual implementation is in core/bias_evolution_tracker.py

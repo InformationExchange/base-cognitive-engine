@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v30.0
+BASE Cognitive Governance Engine v30.0
 Conservative Certificates - Statistical Bounds & Guarantees
 
 Phase 30: Addresses PPA2-C1-18, PPA2-C1-19, PPA2-C1-20

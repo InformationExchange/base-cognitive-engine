@@ -31,7 +31,7 @@
 | 8 | Layer 8: Amygdala | 4 inventions | Challenge and verification |
 | 9 | Layer 9: Basal Ganglia | 4 inventions | Evidence and proof |
 | 10 | Layer 10: Motor | 5 inventions | Output and delivery |
-| 11 | BAIS v2.0 | 15 inventions | Enforcement and compliance |
+| 11 | BASE v2.0 | 15 inventions | Enforcement and compliance |
 
 **Total: 82 inventions + 4 UP inventions = 86**
 
@@ -242,12 +242,12 @@ LAYER_2_TRIGGERS = {
 | PPA1-Inv21 | Configurable Predicate Acceptance | `core.predicate_acceptance.PredicateAcceptance` | 4 | 🔲 |
 | UP6 | Unified Governance System | `core.integrated_engine.IntegratedGovernanceEngine` | 5 | 🔲 |
 | UP7 | Calibration System | `core.ccp_calibrator.CalibratedContextualPosterior` | 3 | 🔲 |
-| PPA1-Inv25 | Platform-Agnostic API | `core.api_server.BAISAPIServer` | 4 | 🔲 |
+| PPA1-Inv25 | Platform-Agnostic API | `core.api_server.BASEAPIServer` | 4 | 🔲 |
 | PPA2-Comp9 | Calibrated Posterior | `core.ccp_calibrator.CalibratedContextualPosterior` | 3 | 🔲 |
 
 ---
 
-## PHASE 11: BAIS v2.0 ENFORCEMENT (15 Inventions)
+## PHASE 11: BASE v2.0 ENFORCEMENT (15 Inventions)
 
 ### Inventions to Wire
 
@@ -397,7 +397,7 @@ TRIGGER_PROFILE = {
 | 8 | 4 | 4 | 0 | ✅ Complete |
 | 9 | 4 | 4 | 0 | ✅ Complete |
 | 10 | 5 | 4 | 0 | ✅ Complete (API external) |
-| 11 | 15 | 15 | 11 | ✅ Complete (+11 BAIS v2.0) |
+| 11 | 15 | 15 | 11 | ✅ Complete (+11 BASE v2.0) |
 | **TOTAL** | **82** | **78** | **13** | **95%** |
 
 *Note: 82 unique inventions + 4 UP utilities = 86 total*
@@ -406,7 +406,7 @@ TRIGGER_PROFILE = {
 
 **Modules Added This Session:**
 - Phase 3: ZPDManager, BiasAwareKnowledgeGraph (2 fixed)
-- Phase 11: ALL 11 BAIS v2.0 modules now wired:
+- Phase 11: ALL 11 BASE v2.0 modules now wired:
   - GovernanceModeController (NOVEL-42/43/49)
   - SkepticalLearningManager (NOVEL-45)
   - RealTimeAssistanceEngine (NOVEL-46)
@@ -427,11 +427,11 @@ TRIGGER_PROFILE = {
 - ✅ PPA1-Inv9: Platform Harmonizer - CREATED and WIRED
 
 **New MCP Tools Added:**
-- `bais_verify_code` - NOVEL-5 Vibe Coding Verification
-- `bais_select_mode` - NOVEL-48 Semantic Mode Selection
-- `bais_harmonize_output` - PPA1-Inv9 Platform Harmonization
-- `bais_realtime_assist` - NOVEL-46 Real-Time Assistance
-- `bais_check_evidence` - NOVEL-53 Evidence Verification
+- `base_verify_code` - NOVEL-5 Vibe Coding Verification
+- `base_select_mode` - NOVEL-48 Semantic Mode Selection
+- `base_harmonize_output` - PPA1-Inv9 Platform Harmonization
+- `base_realtime_assist` - NOVEL-46 Real-Time Assistance
+- `base_check_evidence` - NOVEL-53 Evidence Verification
 
 ---
 

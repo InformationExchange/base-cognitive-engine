@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v27.0
+BASE Cognitive Governance Engine v27.0
 Production Hardening Module - Security, Observability, Resilience
 
 Patent Alignment:
@@ -147,7 +147,7 @@ class APIKeyManager:
             hashlib.sha256
         ).hexdigest()[:16]
         
-        api_key = f"bais_{key_id}_{random_part}_{signature}"
+        api_key = f"base_{key_id}_{random_part}_{signature}"
         
         with self._lock:
             self._key_store[key_id] = {
@@ -170,7 +170,7 @@ class APIKeyManager:
         Returns:
             Key metadata if valid, None otherwise
         """
-        if not api_key or not api_key.startswith('bais_'):
+        if not api_key or not api_key.startswith('base_'):
             return None
         
         try:
@@ -426,18 +426,18 @@ class MetricsCollector:
         self._histograms: Dict[str, List[float]] = defaultdict(list)
         self._lock = threading.Lock()
         
-        # Pre-defined BAIS metrics
+        # Pre-defined BASE metrics
         self._metric_definitions = {
-            'bais_requests_total': MetricType.COUNTER,
-            'bais_request_duration_seconds': MetricType.HISTOGRAM,
-            'bais_governance_decisions': MetricType.COUNTER,
-            'bais_biases_detected': MetricType.COUNTER,
-            'bais_active_sessions': MetricType.GAUGE,
-            'bais_error_rate': MetricType.GAUGE,
-            'bais_accuracy_score': MetricType.GAUGE,
-            'bais_rate_limit_hits': MetricType.COUNTER,
-            'bais_auth_failures': MetricType.COUNTER,
-            'bais_llm_calls': MetricType.COUNTER,
+            'base_requests_total': MetricType.COUNTER,
+            'base_request_duration_seconds': MetricType.HISTOGRAM,
+            'base_governance_decisions': MetricType.COUNTER,
+            'base_biases_detected': MetricType.COUNTER,
+            'base_active_sessions': MetricType.GAUGE,
+            'base_error_rate': MetricType.GAUGE,
+            'base_accuracy_score': MetricType.GAUGE,
+            'base_rate_limit_hits': MetricType.COUNTER,
+            'base_auth_failures': MetricType.COUNTER,
+            'base_llm_calls': MetricType.COUNTER,
         }
     
     def increment(self, name: str, value: float = 1.0, labels: Dict = None) -> None:
@@ -508,7 +508,7 @@ class MetricsCollector:
 class StructuredLogger:
     """Structured JSON logger for observability."""
     
-    def __init__(self, service_name: str = "bais-governance"):
+    def __init__(self, service_name: str = "base-governance"):
         """
         Initialize structured logger.
         
@@ -938,7 +938,7 @@ class ProductionHardeningManager:
     """
     
     def __init__(self, 
-                 service_name: str = "bais-governance",
+                 service_name: str = "base-governance",
                  rate_limit_config: RateLimitConfig = None):
         """
         Initialize production hardening.
@@ -1043,7 +1043,7 @@ class ProductionHardeningManager:
         key_data = self.api_key_manager.validate_key(api_key)
         
         if not key_data:
-            self.metrics.increment('bais_auth_failures')
+            self.metrics.increment('base_auth_failures')
             return None
         
         return SecurityContext(
@@ -1073,7 +1073,7 @@ class ProductionHardeningManager:
         allowed, metadata = limiter.allow_request(identifier)
         
         if not allowed:
-            self.metrics.increment('bais_rate_limit_hits', labels={'identifier': identifier[:8]})
+            self.metrics.increment('base_rate_limit_hits', labels={'identifier': identifier[:8]})
         
         return allowed, metadata
     
@@ -1138,7 +1138,7 @@ class ProductionHardeningManager:
 
 
 # Convenience functions
-def create_production_manager(service_name: str = "bais-governance") -> ProductionHardeningManager:
+def create_production_manager(service_name: str = "base-governance") -> ProductionHardeningManager:
     """Create a production hardening manager."""
     return ProductionHardeningManager(service_name=service_name)
 
@@ -1203,8 +1203,8 @@ if __name__ == "__main__":
     
     # Test metrics
     print("\n[Metrics]")
-    manager.metrics.increment('bais_requests_total')
-    manager.metrics.observe('bais_request_duration_seconds', 0.5)
+    manager.metrics.increment('base_requests_total')
+    manager.metrics.observe('base_request_duration_seconds', 0.5)
     metrics = manager.metrics.get_metrics()
     print(f"  Counters: {list(metrics['counters'].keys())}")
     

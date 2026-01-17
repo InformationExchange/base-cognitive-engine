@@ -1,8 +1,8 @@
 """
-BAIS v2.0 Orchestrator - Unified Integration
+BASE v2.0 Orchestrator - Unified Integration
 Phase 8: Integrates all v2.0 components into a single orchestrator
 
-This is the main entry point for BAIS v2.0 governance.
+This is the main entry point for BASE v2.0 governance.
 
 Components integrated:
 - EnforcementLoop (Phase 1a)
@@ -14,7 +14,7 @@ Components integrated:
 - RealTimeAssistanceEngine (Phase 6)
 - GovernanceOutput (Phase 7)
 
-Patent: NOVEL-47 (BAIS v2.0 Orchestrator)
+Patent: NOVEL-47 (BASE v2.0 Orchestrator)
 """
 
 import logging
@@ -35,7 +35,7 @@ from core.enforcement_loop import (
 from core.governance_modes import (
     GovernanceModeController,
     GovernanceConfig,
-    BAISMode,
+    BASEMode,
     EvidenceClassifier,
     Issue,
     IssueSeverity,
@@ -76,11 +76,11 @@ logger = logging.getLogger(__name__)
 # =============================================================================
 
 @dataclass
-class BAISv2Config:
-    """Configuration for BAIS v2.0."""
+class BASEv2Config:
+    """Configuration for BASE v2.0."""
     
     # Mode settings
-    mode: BAISMode = BAISMode.AUDIT_ONLY
+    mode: BASEMode = BASEMode.AUDIT_ONLY
     
     # Enforcement settings
     enforce_completion: bool = True
@@ -106,12 +106,12 @@ class BAISv2Config:
 
 
 # =============================================================================
-# BAIS v2.0 Orchestrator
+# BASE v2.0 Orchestrator
 # =============================================================================
 
-class BAISv2Orchestrator:
+class BASEv2Orchestrator:
     """
-    BAIS v2.0 Orchestrator - Unified governance layer.
+    BASE v2.0 Orchestrator - Unified governance layer.
     
     Modes:
     - AUDIT_ONLY: Evaluate, report, continue
@@ -126,8 +126,8 @@ class BAISv2Orchestrator:
     - Enforcement loops (in remediate mode)
     """
     
-    def __init__(self, config: Optional[BAISv2Config] = None):
-        self.config = config or BAISv2Config()
+    def __init__(self, config: Optional[BASEv2Config] = None):
+        self.config = config or BASEv2Config()
         
         # Initialize components
         self._init_components()
@@ -135,7 +135,7 @@ class BAISv2Orchestrator:
         # Statistics
         self._stats = {
             'total_requests': 0,
-            'by_mode': {m.value: 0 for m in BAISMode},
+            'by_mode': {m.value: 0 for m in BASEMode},
             'blocked': 0,
             'enhanced': 0,
             'enforcement_loops': 0,
@@ -143,7 +143,7 @@ class BAISv2Orchestrator:
             'learning_signals': 0
         }
         
-        logger.info(f"[BAISv2] Orchestrator initialized in {self.config.mode.value} mode")
+        logger.info(f"[BASEv2] Orchestrator initialized in {self.config.mode.value} mode")
     
     def _init_components(self) -> None:
         """Initialize all components."""
@@ -164,7 +164,7 @@ class BAISv2Orchestrator:
         # Multi-track
         self.multi_track = MultiTrackOrchestrator(
             available_llms=self.config.available_llms,
-            bais_evaluator=self._evaluate_for_multi_track
+            base_evaluator=self._evaluate_for_multi_track
         )
         
         # Learning
@@ -233,11 +233,11 @@ class BAISv2Orchestrator:
             auto_select_best=self.config.auto_select_best_track
         )
     
-    def set_mode(self, mode: BAISMode) -> None:
+    def set_mode(self, mode: BASEMode) -> None:
         """Set governance mode."""
         self.config.mode = mode
         self.mode_controller.set_mode(mode)
-        logger.info(f"[BAISv2] Mode changed to: {mode.value}")
+        logger.info(f"[BASEv2] Mode changed to: {mode.value}")
     
     def govern(
         self,
@@ -267,15 +267,15 @@ class BAISv2Orchestrator:
         self._stats['by_mode'][self.config.mode.value] += 1
         
         # Route to appropriate handler
-        if self.config.mode == BAISMode.AUDIT_ONLY:
+        if self.config.mode == BASEMode.AUDIT_ONLY:
             return self._handle_audit_only(query, response, evidence or [], domain, start_time)
         
-        elif self.config.mode == BAISMode.AUDIT_AND_REMEDIATE:
+        elif self.config.mode == BASEMode.AUDIT_AND_REMEDIATE:
             return self._handle_audit_remediate(
                 query, response, evidence or [], domain, context, llm_provider, start_time
             )
         
-        elif self.config.mode == BAISMode.DIRECT_ASSISTANCE:
+        elif self.config.mode == BASEMode.DIRECT_ASSISTANCE:
             return self._handle_direct_assistance(
                 query, response, evidence or [], domain, start_time
             )
@@ -603,9 +603,9 @@ class BAISv2Orchestrator:
         """Record learning signal."""
         self._stats['learning_signals'] += 1
         
-        # Record execution-based learning (from BAIS analysis)
+        # Record execution-based learning (from BASE analysis)
         self.learning_manager.learn_from_execution(
-            module_name="bais_v2",
+            module_name="base_v2",
             input_data={'response_preview': response[:100]},
             output_data={'issues_count': len(issues), 'evidence': evidence_strength},
             execution_succeeded=was_correct,
@@ -658,13 +658,13 @@ class BAISv2Orchestrator:
 # Factory
 # =============================================================================
 
-def create_bais_v2(
-    mode: BAISMode = BAISMode.AUDIT_ONLY,
+def create_base_v2(
+    mode: BASEMode = BASEMode.AUDIT_ONLY,
     **kwargs
-) -> BAISv2Orchestrator:
-    """Factory function to create BAIS v2.0 orchestrator."""
-    config = BAISv2Config(mode=mode, **kwargs)
-    return BAISv2Orchestrator(config)
+) -> BASEv2Orchestrator:
+    """Factory function to create BASE v2.0 orchestrator."""
+    config = BASEv2Config(mode=mode, **kwargs)
+    return BASEv2Orchestrator(config)
 
 
 # =============================================================================
@@ -673,15 +673,15 @@ def create_bais_v2(
 
 if __name__ == "__main__":
     print("=" * 80)
-    print("BAIS v2.0 ORCHESTRATOR TEST")
+    print("BASE v2.0 ORCHESTRATOR TEST")
     print("=" * 80)
     
     # Test all three modes
     
     # 1. AUDIT_ONLY
     print("\n[1] Testing AUDIT_ONLY mode...")
-    bais = create_bais_v2(mode=BAISMode.AUDIT_ONLY)
-    output1 = bais.govern(
+    base = create_base_v2(mode=BASEMode.AUDIT_ONLY)
+    output1 = base.govern(
         query="How do I implement authentication?",
         response="Just use JWT tokens. It's 100% secure and guaranteed to work.",
         evidence=["Implementation complete"]
@@ -693,8 +693,8 @@ if __name__ == "__main__":
     
     # 2. AUDIT_AND_REMEDIATE
     print("\n[2] Testing AUDIT_AND_REMEDIATE mode...")
-    bais.set_mode(BAISMode.AUDIT_AND_REMEDIATE)
-    output2 = bais.govern(
+    base.set_mode(BASEMode.AUDIT_AND_REMEDIATE)
+    output2 = base.govern(
         query="How do I treat a headache?",
         response="Take aspirin. It will definitely cure your headache.",
         evidence=["Doctor recommended"],
@@ -709,8 +709,8 @@ if __name__ == "__main__":
     
     # 3. DIRECT_ASSISTANCE
     print("\n[3] Testing DIRECT_ASSISTANCE mode...")
-    bais.set_mode(BAISMode.DIRECT_ASSISTANCE)
-    output3 = bais.govern(
+    base.set_mode(BASEMode.DIRECT_ASSISTANCE)
+    output3 = base.govern(
         query="How do I configure Redis?",
         response="Configure Redis with these settings. This is 100% the best approach...",
         evidence=["Tests passed", "Performance verified"]
@@ -724,7 +724,7 @@ if __name__ == "__main__":
     
     # Statistics
     print("\n[4] Statistics:")
-    stats = bais.get_statistics()
+    stats = base.get_statistics()
     print(f"    Total requests: {stats['total_requests']}")
     print(f"    By mode: {stats['by_mode']}")
     print(f"    Blocked: {stats['blocked']}")
@@ -736,6 +736,6 @@ if __name__ == "__main__":
     print(output2.to_cursor_format()[:400] + "...")
     
     print("\n" + "=" * 80)
-    print("✓ BAIS v2.0 ORCHESTRATOR TEST COMPLETE")
+    print("✓ BASE v2.0 ORCHESTRATOR TEST COMPLETE")
     print("=" * 80)
 

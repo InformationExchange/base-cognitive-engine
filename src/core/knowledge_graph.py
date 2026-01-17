@@ -1,5 +1,5 @@
 """
-BAIS Bias-Aware Knowledge Graph (PPA1-Inv6)
+BASE Bias-Aware Knowledge Graph (PPA1-Inv6)
 
 Implements a knowledge graph with bias awareness:
 1. Entity extraction and linking
@@ -77,7 +77,7 @@ class KnowledgeQueryResult:
 
 class BiasAwareKnowledgeGraph:
     """
-    Bias-Aware Knowledge Graph for BAIS.
+    Bias-Aware Knowledge Graph for BASE.
     
     Implements PPA1-Inv6: Bias-Aware Knowledge Graph
     Brain Layer: 3 (Limbic System)

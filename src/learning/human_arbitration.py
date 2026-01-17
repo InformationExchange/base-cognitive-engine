@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Human-AI Arbitration Workflow
 
 PPA-1 Sys.Claim 21: FULL IMPLEMENTATION
@@ -171,7 +171,7 @@ class HumanAIArbitrationWorkflow:
         # Use temp directory if no path provided (fixes read-only filesystem issues)
         if storage_path is None:
             import tempfile
-            temp_dir = Path(tempfile.mkdtemp(prefix="bais_arbitration_"))
+            temp_dir = Path(tempfile.mkdtemp(prefix="base_arbitration_"))
             storage_path = temp_dir / "arbitration.json"
         self.storage_path = storage_path
         

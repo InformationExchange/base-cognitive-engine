@@ -1,4 +1,4 @@
-# BAIS PROOF VERIFICATION ORCHESTRATION FLOW
+# BASE PROOF VERIFICATION ORCHESTRATION FLOW
 ## How Proof-Based Verification is Called and Triggered
 
 **Created:** December 24, 2025  
@@ -157,6 +157,6 @@ Response: The payment module is complete. All 15 tests pass.
 
 The proof-based verification is automatically called whenever 
 `IntegratedGovernanceEngine.evaluate_and_improve()` is invoked. No manual
-trigger needed - it's part of the standard BAIS evaluation pipeline.
+trigger needed - it's part of the standard BASE evaluation pipeline.
 
 

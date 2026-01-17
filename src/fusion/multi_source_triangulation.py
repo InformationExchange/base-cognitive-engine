@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.5
+BASE Cognitive Governance Engine v16.5
 Multi-Source Bias Triangulation
 
 PPA-1 Sys.Claim 2: FULL IMPLEMENTATION

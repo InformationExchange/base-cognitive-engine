@@ -1,5 +1,5 @@
 """
-BAIS Centralized Model & API Key Provider
+BASE Centralized Model & API Key Provider
 
 SINGLE SOURCE OF TRUTH for all LLM configurations across the codebase.
 - Auto-discovers latest models from provider APIs
@@ -448,7 +448,7 @@ def get_reasoning_model(provider: str) -> str:
 # CONVENIENCE FUNCTIONS
 # ============================================================================
 
-# Primary provider for BAIS (Vertex AI as main, matching ai.invitas.com)
+# Primary provider for BASE (Vertex AI as main, matching ai.invitas.com)
 PRIMARY_PROVIDER = "vertex"
 PROVIDER_PRIORITY = ["vertex", "google", "openai", "grok"]  # Preferred order
 
@@ -596,7 +596,7 @@ _auto_initialize()
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("BAIS CENTRALIZED MODEL PROVIDER")
+    print("BASE CENTRALIZED MODEL PROVIDER")
     print("=" * 70)
     
     print("\n[Supported Providers]")

@@ -1,4 +1,4 @@
-# BAIS Cognitive Governance Engine v16.2
+# BASE Cognitive Governance Engine v16.2
 # FULL Mode Docker Compose Override
 #
 # Usage:
@@ -10,14 +10,14 @@
 version: '3.8'
 
 services:
-  bais:
+  base:
     build:
       context: .
       dockerfile: Dockerfile.full
-    image: invitas-bais:full
-    container_name: invitas-bais-full
+    image: invitas-base:full
+    container_name: invitas-base-full
     environment:
-      - BAIS_MODE=full
+      - BASE_MODE=full
       # Model selection
       - EMBEDDING_MODEL=${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
       - NLI_MODEL=${NLI_MODEL:-cross-encoder/nli-deberta-v3-small}

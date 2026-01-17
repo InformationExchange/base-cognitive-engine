@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BAIS FULL 300 CLAIMS A/B TEST SUITE
+BASE FULL 300 CLAIMS A/B TEST SUITE
 Tests ALL 300 claims from the Master Patent Inventory
 Uses dual-track A/B approach with clinical objectivity
 
@@ -155,13 +155,13 @@ def generate_all_claims() -> List[ClaimDefinition]:
     # ============ PPA2: 71 CLAIMS ============
     ppa2_claims = [
         # Independent claims (9)
-        ("PPA2-Ind1", "PPA2-Inv26", "Lexicographic must-pass gate", "core.governance_rules", "BAISGovernanceRules"),
-        ("PPA2-Ind2", "PPA2-Inv26", "Formal gate variant", "core.governance_rules", "BAISGovernanceRules"),
+        ("PPA2-Ind1", "PPA2-Inv26", "Lexicographic must-pass gate", "core.governance_rules", "BASEGovernanceRules"),
+        ("PPA2-Ind2", "PPA2-Inv26", "Formal gate variant", "core.governance_rules", "BASEGovernanceRules"),
         ("PPA2-Ind3", "PPA2-Inv26", "Pre-screened method", "learning.threshold_optimizer", "AdaptiveThresholdOptimizer"),
-        ("PPA2-Ind3A", "PPA2-Inv26", "Core gate method", "core.governance_rules", "BAISGovernanceRules"),
+        ("PPA2-Ind3A", "PPA2-Inv26", "Core gate method", "core.governance_rules", "BASEGovernanceRules"),
         ("PPA2-Ind3B", "PPA2-Inv28", "Cognitive window 17-D", "detectors.cognitive_intervention", "CognitiveWindowInterventionSystem"),
         ("PPA2-Ind4", "PPA2-Inv26", "Apparatus claim", "core.integrated_engine", "IntegratedGovernanceEngine"),
-        ("PPA2-Ind4A", "PPA2-Inv26", "Core gate system", "core.governance_rules", "BAISGovernanceRules"),
+        ("PPA2-Ind4A", "PPA2-Inv26", "Core gate system", "core.governance_rules", "BASEGovernanceRules"),
         ("PPA2-Ind4B", "PPA2-Inv28", "Cognitive window system", "detectors.cognitive_intervention", "CognitiveWindowInterventionSystem"),
         ("PPA2-Ind18", "PPA2-Inv26", "System claim", "core.integrated_engine", "IntegratedGovernanceEngine"),
     ]
@@ -351,7 +351,7 @@ def generate_all_claims() -> List[ClaimDefinition]:
         15: ("research.world_models", "WorldModelsModule"),
         16: ("research.creative_reasoning", "CreativeReasoningModule"),
         17: ("core.learning_memory", "LearningMemory"),
-        18: ("core.governance_rules", "BAISGovernanceRules"),
+        18: ("core.governance_rules", "BASEGovernanceRules"),
         19: ("core.llm_registry", "LLMRegistry"),
         20: ("core.response_improver", "ResponseImprover"),
         21: ("core.self_awareness", "SelfAwarenessLoop"),
@@ -417,14 +417,14 @@ class Full300ClaimsTester:
             return False, str(e)[:50]
     
     async def test_claim_track_b(self, claim: ClaimDefinition) -> Tuple[bool, str]:
-        """Track B: BAIS-governed test"""
+        """Track B: BASE-governed test"""
         try:
             result = await self.engine.evaluate(
                 query=f"Test claim {claim.claim_id}",
                 response=claim.test_input,
                 context={"domain": "general"}
             )
-            return True, f"BAIS evaluated: {result.accuracy:.1f}"
+            return True, f"BASE evaluated: {result.accuracy:.1f}"
         except Exception as e:
             return False, str(e)[:50]
     
@@ -456,7 +456,7 @@ class Full300ClaimsTester:
     
     async def run_all_tests(self):
         print("=" * 80)
-        print("BAIS FULL 300 CLAIMS A/B TEST")
+        print("BASE FULL 300 CLAIMS A/B TEST")
         print("Clinical objectivity - Evidence-based - Empirical data only")
         print("=" * 80)
         
@@ -503,7 +503,7 @@ class Full300ClaimsTester:
         print(f"\nTotal Claims: {total}")
         print(f"\n--- Track Results ---")
         print(f"Track A (Direct): {track_a}/{total} ({100*track_a/total:.1f}%)")
-        print(f"Track B (BAIS):   {track_b}/{total} ({100*track_b/total:.1f}%)")
+        print(f"Track B (BASE):   {track_b}/{total} ({100*track_b/total:.1f}%)")
         print(f"Both Passed:      {both}/{total} ({100*both/total:.1f}%)")
         print(f"Both Failed:      {neither}/{total} ({100*neither/total:.1f}%)")
         

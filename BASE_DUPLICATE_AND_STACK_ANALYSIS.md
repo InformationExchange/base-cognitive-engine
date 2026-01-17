@@ -1,7 +1,7 @@
-# BAIS Governance: Duplicate & AI Stack Analysis
+# BASE Governance: Duplicate & AI Stack Analysis
 
 **Date**: December 20, 2025  
-**Governance Method**: BAIS Self-Audit  
+**Governance Method**: BASE Self-Audit  
 **Status**: VERIFIED
 
 ---
@@ -76,7 +76,7 @@ factual.py should be EXTENDED with:
 
 ## 3. AI STACK ANALYSIS
 
-### Where BAIS Inventions Apply
+### Where BASE Inventions Apply
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -87,7 +87,7 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  User Query → [Query Analyzer] → Validated Query               │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ✅ query_analyzer.py                            │ │
+│  │  BASE APPLIES: ✅ query_analyzer.py                            │ │
 │  │  Detects: Injection, manipulation, dangerous requests          │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                              ↓                                       │
@@ -95,7 +95,7 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  Query Router → [Smart Gate] → Module Selection                │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ✅ query_router.py, smart_gate.py               │ │
+│  │  BASE APPLIES: ✅ query_router.py, smart_gate.py               │ │
 │  │  Decides: Which modules to activate, analysis depth            │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                              ↓                                       │
@@ -103,15 +103,15 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  LLM Generation → Raw Response                                 │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ❌ Does NOT modify LLM generation               │ │
-│  │  Reason: BAIS is post-processing, not prompt engineering       │ │
+│  │  BASE APPLIES: ❌ Does NOT modify LLM generation               │ │
+│  │  Reason: BASE is post-processing, not prompt engineering       │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                              ↓                                       │
 │  DETECTION LAYER                                                     │
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  Response → [Multiple Detectors] → Issues Found                │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ✅ All detectors/                               │ │
+│  │  BASE APPLIES: ✅ All detectors/                               │ │
 │  │  - behavioral.py: Sycophancy, optimism, simulation             │ │
 │  │  - factual.py: Factual claims                                  │ │
 │  │  - domain_risk_detector.py: Medical, financial, legal risks    │ │
@@ -123,7 +123,7 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  Response → [R&D Modules] → Deep Analysis                      │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ✅ All research/                                │ │
+│  │  BASE APPLIES: ✅ All research/                                │ │
 │  │  - theory_of_mind.py: Mental states, manipulation              │ │
 │  │  - neurosymbolic.py: Logic, fallacies                          │ │
 │  │  - world_models.py: Causal reasoning ⬅️ CONSOLIDATE HERE       │ │
@@ -139,7 +139,7 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  Issues Found → [Response Improver] → Enhanced Response        │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ✅ response_improver.py                         │ │
+│  │  BASE APPLIES: ✅ response_improver.py                         │ │
 │  │  Actions: Add disclaimers, hedge overconfidence, correct       │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                              ↓                                       │
@@ -147,7 +147,7 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  Enhancement → [Learning Systems] → Adaptation                 │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ✅ All learning/                                │ │
+│  │  BASE APPLIES: ✅ All learning/                                │ │
 │  │  - algorithms.py: OCO threshold adaptation                     │ │
 │  │  - conformal.py: Conformal prediction                          │ │
 │  │  - verifiable_audit.py: Tamper-evident logging                 │ │
@@ -160,7 +160,7 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  All Components → [Orchestrators] → Unified Result             │ │
 │  │                                                                 │ │
-│  │  BAIS APPLIES: ✅                                              │ │
+│  │  BASE APPLIES: ✅                                              │ │
 │  │  - hybrid_orchestrator.py: Pattern + LLM fallback              │ │
 │  │  - conversational_orchestrator.py: User feedback loop          │ │
 │  │                                                                 │ │
@@ -172,7 +172,7 @@ factual.py should be EXTENDED with:
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  Enhanced Response → User                                      │ │
 │  │                                                                 │ │
-│  │  BAIS OUTPUT: Improved, verified, disclaimed response          │ │
+│  │  BASE OUTPUT: Improved, verified, disclaimed response          │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘
@@ -180,15 +180,15 @@ factual.py should be EXTENDED with:
 
 ---
 
-## 4. WHERE BAIS DOES NOT APPLY
+## 4. WHERE BASE DOES NOT APPLY
 
-| Layer | Why BAIS Does Not Apply |
+| Layer | Why BASE Does Not Apply |
 |-------|------------------------|
-| **Prompt Engineering** | BAIS is post-processing, not pre-LLM |
-| **Model Training** | BAIS doesn't retrain models |
-| **Model Selection** | BAIS doesn't choose which LLM to use |
-| **Raw Generation** | BAIS doesn't modify during generation |
-| **Infrastructure** | BAIS is application layer, not infra |
+| **Prompt Engineering** | BASE is post-processing, not pre-LLM |
+| **Model Training** | BASE doesn't retrain models |
+| **Model Selection** | BASE doesn't choose which LLM to use |
+| **Raw Generation** | BASE doesn't modify during generation |
+| **Infrastructure** | BASE is application layer, not infra |
 
 ---
 
@@ -257,12 +257,12 @@ factual.py should be EXTENDED with:
 
 ### Root Cause of Duplication
 - **Did not thoroughly search codebase before creating**
-- **BAIS should have been used BEFORE coding, not after**
-- This is the exact issue BAIS is meant to prevent
+- **BASE should have been used BEFORE coding, not after**
+- This is the exact issue BASE is meant to prevent
 
 ---
 
-*This analysis was conducted using BAIS self-governance principles.*
+*This analysis was conducted using BASE self-governance principles.*
 
 
 

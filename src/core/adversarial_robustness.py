@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v37.0
+BASE Cognitive Governance Engine v37.0
 Adversarial Robustness & Attack Detection
 
 Phase 37: Addresses PPA2-C1-35, PPA2-C1-36, PPA3-Comp5

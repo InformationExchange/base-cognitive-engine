@@ -16,7 +16,7 @@ Purpose:
 Integration:
 - Receives DimensionalAnalysis from DimensionalExpander
 - Produces CorrelationResult for governance decisions
-- Works with existing BAIS detectors for comprehensive analysis
+- Works with existing BASE detectors for comprehensive analysis
 """
 
 from dataclasses import dataclass, field
@@ -199,7 +199,7 @@ class DimensionCorrelator:
         else:
             self.storage_path = os.path.join(
                 tempfile.gettempdir(),
-                "bais_correlation_learning.json"
+                "base_correlation_learning.json"
             )
         
         self._learned_correlations: Dict[str, float] = {}

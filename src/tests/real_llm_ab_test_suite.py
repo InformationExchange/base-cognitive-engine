@@ -1,10 +1,10 @@
 """
-BAIS Real LLM A/B Test Suite
+BASE Real LLM A/B Test Suite
 
 Purpose: Clinical A/B testing with REAL Grok LLM calls
 Methodology:
-  A) Send prompt to Grok WITHOUT BAIS governance
-  B) Send prompt to Grok WITH BAIS governance analyzing the response
+  A) Send prompt to Grok WITHOUT BASE governance
+  B) Send prompt to Grok WITH BASE governance analyzing the response
   Compare results to measure actual governance value
 
 NO SIMULATED INPUTS OR OUTPUTS - All LLM calls are real.
@@ -23,7 +23,7 @@ from enum import Enum
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import BAIS modules
+# Import BASE modules
 from core.query_analyzer import QueryAnalyzer, QueryRisk
 from core.smart_gate import SmartGate, AnalysisMode
 from research.theory_of_mind import TheoryOfMindModule
@@ -72,19 +72,19 @@ class ABTestResult:
     # The actual query sent to LLM
     query: str
     
-    # A: Without BAIS (raw LLM response)
-    response_without_bais: str
-    without_bais_latency_ms: int
+    # A: Without BASE (raw LLM response)
+    response_without_base: str
+    without_base_latency_ms: int
     
-    # B: With BAIS (LLM response + governance analysis)
-    response_with_bais: str
-    with_bais_latency_ms: int
-    bais_analysis: Dict[str, Any]
-    bais_interventions: List[str]
-    bais_would_block: bool
-    bais_risk_level: str
+    # B: With BASE (LLM response + governance analysis)
+    response_with_base: str
+    with_base_latency_ms: int
+    base_analysis: Dict[str, Any]
+    base_interventions: List[str]
+    base_would_block: bool
+    base_risk_level: str
     
-    # BAIS Self-Check: Did BAIS detect any issues with THIS test?
+    # BASE Self-Check: Did BASE detect any issues with THIS test?
     self_check_issues: List[str]
     
     # Comparison
@@ -97,7 +97,7 @@ class ABTestResult:
     evidence_hash: str = ""
     
     def __post_init__(self):
-        content = f"{self.test_id}{self.query}{self.response_without_bais}{self.timestamp}"
+        content = f"{self.test_id}{self.query}{self.response_without_base}{self.timestamp}"
         self.evidence_hash = hashlib.sha256(content.encode()).hexdigest()[:16]
 
 
@@ -108,7 +108,7 @@ class RealLLMABTestSuite:
     """
     
     def __init__(self):
-        # BAIS modules
+        # BASE modules
         self.query_analyzer = QueryAnalyzer()
         self.smart_gate = SmartGate()
         self.tom = TheoryOfMindModule()
@@ -180,8 +180,8 @@ class RealLLMABTestSuite:
                 raw_response={"error": str(e)}
             )
     
-    def _analyze_with_bais(self, query: str, response: str) -> Dict[str, Any]:
-        """Run full BAIS analysis on query and response."""
+    def _analyze_with_base(self, query: str, response: str) -> Dict[str, Any]:
+        """Run full BASE analysis on query and response."""
         start = time.time()
         
         # Query analysis
@@ -243,7 +243,7 @@ class RealLLMABTestSuite:
     
     def _self_check_test(self, query: str, response: str) -> List[str]:
         """
-        BAIS checks if THIS TEST ITSELF has issues.
+        BASE checks if THIS TEST ITSELF has issues.
         This is the meta-check the user asked for.
         """
         issues = []
@@ -286,21 +286,21 @@ class RealLLMABTestSuite:
         print(f"Query: {query[:50]}...")
         print(f"{'─' * 60}")
         
-        # A: Get response WITHOUT BAIS (raw LLM)
+        # A: Get response WITHOUT BASE (raw LLM)
         print("  [A] Calling Grok WITHOUT governance...")
         response_a = self._call_grok(query)
         
-        # B: Get response WITH BAIS (same response, but analyzed)
-        print("  [B] Analyzing response WITH BAIS...")
-        bais_start = time.time()
-        bais_analysis = self._analyze_with_bais(query, response_a.content)
-        bais_latency = int((time.time() - bais_start) * 1000) + response_a.latency_ms
+        # B: Get response WITH BASE (same response, but analyzed)
+        print("  [B] Analyzing response WITH BASE...")
+        base_start = time.time()
+        base_analysis = self._analyze_with_base(query, response_a.content)
+        base_latency = int((time.time() - base_start) * 1000) + response_a.latency_ms
         
-        # Self-check: Does BAIS detect issues with this test?
+        # Self-check: Does BASE detect issues with this test?
         self_check = self._self_check_test(query, response_a.content)
         
-        # Determine if BAIS added value
-        governance_added_value = len(bais_analysis["issues"]) > 0 or bais_analysis["would_block"]
+        # Determine if BASE added value
+        governance_added_value = len(base_analysis["issues"]) > 0 or base_analysis["would_block"]
         
         result = ABTestResult(
             test_id=test_id,
@@ -308,17 +308,17 @@ class RealLLMABTestSuite:
             invention_ids=invention_ids,
             claim_ids=claim_ids,
             query=query,
-            response_without_bais=response_a.content,
-            without_bais_latency_ms=response_a.latency_ms,
-            response_with_bais=response_a.content,  # Same response, different analysis
-            with_bais_latency_ms=bais_latency,
-            bais_analysis=bais_analysis,
-            bais_interventions=bais_analysis["interventions"],
-            bais_would_block=bais_analysis["would_block"],
-            bais_risk_level=bais_analysis["query_risk"],
+            response_without_base=response_a.content,
+            without_base_latency_ms=response_a.latency_ms,
+            response_with_base=response_a.content,  # Same response, different analysis
+            with_base_latency_ms=base_latency,
+            base_analysis=base_analysis,
+            base_interventions=base_analysis["interventions"],
+            base_would_block=base_analysis["would_block"],
+            base_risk_level=base_analysis["query_risk"],
             self_check_issues=self_check,
             governance_added_value=governance_added_value,
-            issues_detected=bais_analysis["issues"],
+            issues_detected=base_analysis["issues"],
             improvement_notes=description,
             timestamp=datetime.now().isoformat()
         )
@@ -331,17 +331,17 @@ class RealLLMABTestSuite:
     def _print_result(self, r: ABTestResult):
         """Print test result."""
         emoji = "✅" if r.governance_added_value else "➖"
-        block_emoji = "🚫" if r.bais_would_block else "✓"
+        block_emoji = "🚫" if r.base_would_block else "✓"
         
-        print(f"\n{emoji} Result: {'BAIS Added Value' if r.governance_added_value else 'No Issues Detected'}")
-        print(f"   {block_emoji} Would Block: {r.bais_would_block}")
-        print(f"   Risk Level: {r.bais_risk_level}")
+        print(f"\n{emoji} Result: {'BASE Added Value' if r.governance_added_value else 'No Issues Detected'}")
+        print(f"   {block_emoji} Would Block: {r.base_would_block}")
+        print(f"   Risk Level: {r.base_risk_level}")
         print(f"   Issues Found: {len(r.issues_detected)}")
         if r.issues_detected:
             print(f"   Issues: {r.issues_detected[:3]}{'...' if len(r.issues_detected) > 3 else ''}")
         if r.self_check_issues:
             print(f"   ⚠️ SELF-CHECK: {r.self_check_issues}")
-        print(f"   LLM Latency: {r.without_bais_latency_ms}ms | Total: {r.with_bais_latency_ms}ms")
+        print(f"   LLM Latency: {r.without_base_latency_ms}ms | Total: {r.with_base_latency_ms}ms")
     
     def run_phase_1_safety(self):
         """Phase 1: Safety & Injection Tests"""
@@ -517,7 +517,7 @@ class RealLLMABTestSuite:
     def run_all_phases(self) -> Dict[str, Any]:
         """Run all test phases."""
         print("=" * 80)
-        print("BAIS REAL LLM A/B TEST SUITE")
+        print("BASE REAL LLM A/B TEST SUITE")
         print("All tests use REAL Grok API calls - NO SIMULATION")
         print(f"Timestamp: {self.run_timestamp}")
         print("=" * 80)
@@ -534,8 +534,8 @@ class RealLLMABTestSuite:
     def _generate_report(self) -> Dict[str, Any]:
         """Generate comprehensive report."""
         total = len(self.results)
-        bais_added_value = sum(1 for r in self.results if r.governance_added_value)
-        would_block = sum(1 for r in self.results if r.bais_would_block)
+        base_added_value = sum(1 for r in self.results if r.governance_added_value)
+        would_block = sum(1 for r in self.results if r.base_would_block)
         self_check_issues = sum(1 for r in self.results if r.self_check_issues)
         
         # By phase
@@ -546,7 +546,7 @@ class RealLLMABTestSuite:
             phases[r.phase]["total"] += 1
             if r.governance_added_value:
                 phases[r.phase]["value_added"] += 1
-            if r.bais_would_block:
+            if r.base_would_block:
                 phases[r.phase]["blocked"] += 1
         
         summary = {
@@ -555,10 +555,10 @@ class RealLLMABTestSuite:
                 "total_tests": total,
                 "total_api_calls": self.total_api_calls,
                 "total_tokens_used": self.total_tokens,
-                "bais_added_value_count": bais_added_value,
+                "base_added_value_count": base_added_value,
                 "would_block_count": would_block,
                 "self_check_issues_count": self_check_issues,
-                "governance_effectiveness": round((bais_added_value / total) * 100, 1) if total > 0 else 0
+                "governance_effectiveness": round((base_added_value / total) * 100, 1) if total > 0 else 0
             },
             "methodology": {
                 "type": "Real LLM A/B Test",
@@ -579,7 +579,7 @@ class RealLLMABTestSuite:
         print(f"\nTotal Tests: {total}")
         print(f"Total API Calls: {self.total_api_calls}")
         print(f"Total Tokens Used: {self.total_tokens}")
-        print(f"\nBAIS Added Value: {bais_added_value}/{total} ({summary['test_run']['governance_effectiveness']}%)")
+        print(f"\nBASE Added Value: {base_added_value}/{total} ({summary['test_run']['governance_effectiveness']}%)")
         print(f"Would Block: {would_block} queries")
         print(f"Self-Check Issues: {self_check_issues} (tests with potential problems)")
         
@@ -610,7 +610,7 @@ class RealLLMABTestSuite:
         )
         
         with open(md_path, "w") as f:
-            f.write("# BAIS Real LLM A/B Test Results\n")
+            f.write("# BASE Real LLM A/B Test Results\n")
             f.write("## Clinical Evidence with Actual Grok API Calls\n\n")
             
             f.write(f"**Test Run:** {summary['test_run']['timestamp']}  \n")
@@ -627,7 +627,7 @@ class RealLLMABTestSuite:
             f.write(f"| **Total Tests** | {summary['test_run']['total_tests']} |\n")
             f.write(f"| **API Calls** | {summary['test_run']['total_api_calls']} |\n")
             f.write(f"| **Tokens Used** | {summary['test_run']['total_tokens_used']} |\n")
-            f.write(f"| **BAIS Added Value** | {summary['test_run']['bais_added_value_count']} |\n")
+            f.write(f"| **BASE Added Value** | {summary['test_run']['base_added_value_count']} |\n")
             f.write(f"| **Would Block** | {summary['test_run']['would_block_count']} |\n")
             f.write(f"| **Governance Effectiveness** | {summary['test_run']['governance_effectiveness']}% |\n\n")
             
@@ -645,7 +645,7 @@ class RealLLMABTestSuite:
             
             for r in self.results:
                 emoji = "✅" if r.governance_added_value else "➖"
-                block_emoji = "🚫" if r.bais_would_block else "✓"
+                block_emoji = "🚫" if r.base_would_block else "✓"
                 
                 f.write(f"### {emoji} {r.test_id}: {r.phase}\n\n")
                 f.write(f"**Inventions:** {', '.join(r.invention_ids)}  \n")
@@ -653,26 +653,26 @@ class RealLLMABTestSuite:
                 
                 f.write(f"**Query:**\n```\n{r.query}\n```\n\n")
                 
-                f.write(f"**LLM Response (Grok):**\n```\n{r.response_without_bais[:500]}{'...' if len(r.response_without_bais) > 500 else ''}\n```\n\n")
+                f.write(f"**LLM Response (Grok):**\n```\n{r.response_without_base[:500]}{'...' if len(r.response_without_base) > 500 else ''}\n```\n\n")
                 
-                f.write("**BAIS Analysis:**\n")
-                f.write(f"- {block_emoji} Would Block: {r.bais_would_block}\n")
-                f.write(f"- Risk Level: {r.bais_risk_level}\n")
+                f.write("**BASE Analysis:**\n")
+                f.write(f"- {block_emoji} Would Block: {r.base_would_block}\n")
+                f.write(f"- Risk Level: {r.base_risk_level}\n")
                 f.write(f"- Issues Detected: {len(r.issues_detected)}\n")
                 if r.issues_detected:
                     f.write(f"- Issues: {r.issues_detected}\n")
-                if r.bais_interventions:
-                    f.write(f"- Interventions: {r.bais_interventions}\n")
+                if r.base_interventions:
+                    f.write(f"- Interventions: {r.base_interventions}\n")
                 if r.self_check_issues:
                     f.write(f"- ⚠️ Self-Check: {r.self_check_issues}\n")
                 
-                f.write(f"\n**Timing:** LLM {r.without_bais_latency_ms}ms | Total {r.with_bais_latency_ms}ms  \n")
+                f.write(f"\n**Timing:** LLM {r.without_base_latency_ms}ms | Total {r.with_base_latency_ms}ms  \n")
                 f.write(f"**Evidence Hash:** {r.evidence_hash}\n\n")
                 f.write("---\n\n")
             
             f.write("## CONCLUSION\n\n")
             f.write("This test used **REAL Grok API calls** with no simulated inputs or outputs.\n\n")
-            f.write(f"BAIS governance added value in **{summary['test_run']['governance_effectiveness']}%** of test scenarios.\n")
+            f.write(f"BASE governance added value in **{summary['test_run']['governance_effectiveness']}%** of test scenarios.\n")
         
         print(f"✅ Markdown saved to: {md_path}")
 

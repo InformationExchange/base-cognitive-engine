@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.6
+BASE Cognitive Governance Engine v16.6
 Big Five (OCEAN) Personality Trait Detector
 
 PPA-2 Personality Trait Modeling: FULL IMPLEMENTATION
@@ -229,7 +229,7 @@ class Big5PersonalityTraitDetector:
         # Use temp directory if no path provided
         if learning_path is None:
             import tempfile
-            learning_path = Path(tempfile.mkdtemp(prefix="bais_big5_"))
+            learning_path = Path(tempfile.mkdtemp(prefix="base_big5_"))
         self.learning_path = learning_path
         
         # Initialize detection patterns

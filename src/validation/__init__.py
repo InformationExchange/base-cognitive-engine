@@ -1,4 +1,4 @@
-"""BAIS Validation Module - Clinical validation and A/B testing."""
+"""BASE Validation Module - Clinical validation and A/B testing."""
 
 from .clinical import (
     StatisticalEngine, ABExperiment, ClinicalValidator,

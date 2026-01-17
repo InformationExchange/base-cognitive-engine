@@ -1,7 +1,7 @@
 """
-BAIS Research Modules - Advanced Cognitive Governance
+BASE Research Modules - Advanced Cognitive Governance
 
-These modules represent advanced R&D capabilities that extend BAIS
+These modules represent advanced R&D capabilities that extend BASE
 beyond standard governance into cognitive AI territory.
 
 Modules:

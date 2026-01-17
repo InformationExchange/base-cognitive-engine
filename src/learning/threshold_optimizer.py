@@ -1,5 +1,5 @@
 """
-BAIS Cognitive Governance Engine v16.0
+BASE Cognitive Governance Engine v16.0
 Adaptive Threshold Optimizer
 
 Orchestrates threshold learning using pluggable algorithms.
@@ -75,7 +75,7 @@ class AdaptiveThresholdOptimizer:
         # Use temp directory if none provided (fixes read-only filesystem issues)
         if data_dir is None:
             import tempfile
-            data_dir = Path(tempfile.mkdtemp(prefix="bais_threshold_"))
+            data_dir = Path(tempfile.mkdtemp(prefix="base_threshold_"))
         self.data_dir = data_dir
         self.data_dir.mkdir(parents=True, exist_ok=True)
         

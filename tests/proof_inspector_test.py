@@ -4,7 +4,7 @@ PROOF INSPECTOR TEST SUITE
 ==========================
 Test the new proof-based verification system against adversarial scenarios.
 
-This tests whether BAIS can move beyond word analysis to actual proof verification.
+This tests whether BASE can move beyond word analysis to actual proof verification.
 
 Created: December 24, 2025
 """
@@ -202,7 +202,7 @@ async def test_objective_comparator():
 
 
 async def test_adversarial_scenarios():
-    """Test against the actual adversarial scenarios that fooled BAIS."""
+    """Test against the actual adversarial scenarios that fooled BASE."""
     print("\n" + "="*60)
     print("TEST 6: ADVERSARIAL SCENARIOS (Previously Failed)")
     print("="*60)
