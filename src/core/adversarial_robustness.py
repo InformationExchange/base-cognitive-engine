@@ -667,7 +667,7 @@ Respond with JSON:
                 async with session.post(
                     "https://api.x.ai/v1/chat/completions",
                     headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
-                    json={"model": "grok-beta", "messages": [{"role": "user", "content": prompt}], "temperature": 0.1}
+                    json={"model": "grok-3", "messages": [{"role": "user", "content": prompt}], "temperature": 0.1}
                 ) as resp:
                     if resp.status == 200:
                         data = await resp.json()
