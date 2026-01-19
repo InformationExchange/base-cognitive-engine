@@ -178,7 +178,7 @@ PROVIDER_CONFIGS: Dict[str, ProviderConfig] = {
         alt_env_vars=["VERTEX_API_KEY", "GCP_PROJECT_ID"],
         default_model="gemini-3-flash-preview",
         reasoning_model="gemini-3-pro-preview",
-        fallback_models=["gemini-2.5-pro", "gemini-2.5-flash", "claude-3-5-sonnet-v2"]
+        fallback_models=["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash"]
     ),
 }
 
@@ -554,7 +554,7 @@ def get_default_anthropic_model() -> str:
 DEFAULT_GROK = "grok-3"
 DEFAULT_OPENAI = "gpt-4o"
 DEFAULT_ANTHROPIC = "claude-sonnet-4-20250514"
-DEFAULT_GOOGLE = "gemini-2.0-flash"
+DEFAULT_GOOGLE = "gemini-3-flash-preview"
 DEFAULT_MISTRAL = "mistral-large-latest"
 
 

@@ -447,7 +447,7 @@ class LLMRegistry:
                 cost_per_1k_input=0.0001,
                 cost_per_1k_output=0.0004,
                 capabilities=["chat", "code", "analysis", "vision", "audio", "reasoning"],
-                release_date="2025-12",
+                release_date="2026-01",
                 is_latest=True,
                 reasoning_capable=True
             ),
@@ -460,7 +460,7 @@ class LLMRegistry:
                 cost_per_1k_input=0.00125,
                 cost_per_1k_output=0.01,
                 capabilities=["chat", "code", "analysis", "vision", "audio", "reasoning", "agentic"],
-                release_date="2025-12",
+                release_date="2026-01",
                 is_latest=True,
                 reasoning_capable=True
             ),
@@ -469,26 +469,26 @@ class LLMRegistry:
             LLMModel(
                 provider=LLMProvider.VERTEX,
                 model_id="gemini-3-flash-preview",
-                display_name="Gemini 3 Flash (Vertex)",
+                display_name="Gemini 3 Flash Preview (Vertex)",
                 context_window=1000000,
                 max_output_tokens=65536,
                 cost_per_1k_input=0.0001,
                 cost_per_1k_output=0.0004,
                 capabilities=["chat", "code", "analysis", "vision", "audio", "reasoning"],
-                release_date="2025-12",
+                release_date="2026-01",
                 is_latest=True,
                 reasoning_capable=True
             ),
             LLMModel(
                 provider=LLMProvider.VERTEX,
                 model_id="gemini-3-pro-preview",
-                display_name="Gemini 3 Pro (Vertex)",
+                display_name="Gemini 3 Pro Preview (Vertex)",
                 context_window=1000000,
                 max_output_tokens=65536,
                 cost_per_1k_input=0.00125,
                 cost_per_1k_output=0.01,
                 capabilities=["chat", "code", "analysis", "vision", "audio", "reasoning", "agentic"],
-                release_date="2025-12",
+                release_date="2026-01",
                 is_latest=True,
                 reasoning_capable=True
             ),

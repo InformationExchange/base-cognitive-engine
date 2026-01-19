@@ -1,4 +1,4 @@
--- BAIS Cognitive Governance Engine
+-- BASE Cognitive Governance Engine
 -- PostgreSQL Database Schema
 -- Version: 1.0.0
 
@@ -306,6 +306,6 @@ GROUP BY pattern_type, domain;
 -- GRANTS (For Application User)
 -- =============================================================================
 -- In production, create a separate application user with limited privileges
--- GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO bais_app;
--- GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO bais_app;
+-- GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO base_app;
+-- GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO base_app;
 
