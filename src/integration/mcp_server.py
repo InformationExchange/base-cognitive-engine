@@ -4316,11 +4316,19 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
                 except (TypeError, AttributeError):
                     result = gate.evaluate(query)
             
+            # Safely convert Enum values to strings for JSON serialization
+            def safe_value(val, default="unknown"):
+                if val is None:
+                    return default
+                if hasattr(val, 'value'):
+                    return val.value
+                return str(val)
+            
             return {
-                "routing_decision": result.decision if hasattr(result, 'decision') else "pattern_then_llm",
-                "risk_level": result.risk if hasattr(result, 'risk') else "low",
-                "complexity": result.complexity if hasattr(result, 'complexity') else "medium",
-                "recommended_depth": result.depth if hasattr(result, 'depth') else "standard",
+                "routing_decision": safe_value(result.decision, "pattern_then_llm") if hasattr(result, 'decision') else "pattern_then_llm",
+                "risk_level": safe_value(result.risk, "low") if hasattr(result, 'risk') else "low",
+                "complexity": safe_value(result.complexity, "medium") if hasattr(result, 'complexity') else "medium",
+                "recommended_depth": safe_value(result.depth, "standard") if hasattr(result, 'depth') else "standard",
                 "risk_factors": result.factors if hasattr(result, 'factors') else [],
                 "invention": "NOVEL-10 (Smart Gate)"
             }
@@ -4398,12 +4406,20 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
                 domain=domain
             )
             
+            # Safely convert Enum values to strings
+            def safe_val(val, default="unknown"):
+                if val is None:
+                    return default
+                if hasattr(val, 'value'):
+                    return val.value
+                return str(val) if not isinstance(val, (int, float, list, dict, bool)) else val
+            
             return {
                 "triangulation_score": round(result.score, 3) if hasattr(result, 'score') else 0.5,
                 "sources_checked": result.sources if hasattr(result, 'sources') else 0,
-                "agreement_level": result.agreement if hasattr(result, 'agreement') else "unknown",
+                "agreement_level": safe_val(result.agreement, "unknown") if hasattr(result, 'agreement') else "unknown",
                 "conflicting_sources": result.conflicts if hasattr(result, 'conflicts') else [],
-                "verification_status": result.status if hasattr(result, 'status') else "unverified",
+                "verification_status": safe_val(result.status, "unverified") if hasattr(result, 'status') else "unverified",
                 "invention": "NOVEL-6 (Triangulation Verification)"
             }
         except Exception as e:
