@@ -1,4 +1,4 @@
-# BAIS → BASE Rename - COMPLETED
+# BASE → BASE Rename - COMPLETED
 
 ## Summary
 
@@ -17,25 +17,25 @@ The Bias-Aware Intelligent System (BAIS) has been renamed to **BASE** (Bias-Awar
 | Component | Before | After |
 |-----------|--------|-------|
 | Class Names | `BAISMCPServer` | `BASEMCPServer` |
-| Tool Prefix | `bais_*` | `base_*` |
+| Tool Prefix | `base_*` | `base_*` |
 | Logger | `BAIS.MCP` | `BASE.MCP` |
-| Server Info | `bais-governance` | `base-governance` |
+| Server Info | `base-governance` | `base-governance` |
 
 ### Infrastructure Changes
 
 | File | Changes |
 |------|---------|
-| `nginx/nginx.conf` | `bais_api` → `base_api`, `bais-api` → `base-api` |
+| `nginx/nginx.conf` | `base_api` → `base_api`, `base-api` → `base-api` |
 | `env.example` | `BAIS_PORT` → `BASE_PORT`, `bais` db → `base` db |
-| `db/init.sql` | `bais_app` → `base_app` |
-| `~/.cursor/mcp.json` | `bais-governance` → `base-governance` |
+| `db/init.sql` | `base_app` → `base_app` |
+| `~/.cursor/mcp.json` | `base-governance` → `base-governance` |
 
 ### MCP Tool Calls
 
 **Before:**
 ```
-mcp_bais-governance_base_get_statistics
-mcp_bais-governance_base_smart_gate
+mcp_base-governance_base_get_statistics
+mcp_base-governance_base_smart_gate
 ```
 
 **After:**
@@ -46,7 +46,7 @@ mcp_base-governance_base_smart_gate
 
 ## Commits
 
-1. `d19c4ab` - Initial commit: BAIS Cognitive Governance Engine v1.0
+1. `d19c4ab` - Initial commit: BASE Cognitive Governance Engine v1.0
 2. `482713d` - refactor: Rename BAIS to BASE
 3. `683168c` - fix: Add JSON serialization for Enum return values in MCP handlers
 4. `[pending]` - chore: Complete BAIS to BASE rename in infrastructure files
