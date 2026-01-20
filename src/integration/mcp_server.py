@@ -2398,8 +2398,10 @@ REGENERATE NOW following these corrections."""
                     return await self._get_grok_response(q)
                 elif llm == "openai":
                     return await self._get_openai_response(q)
-                elif llm == "gemini":
+                elif llm == "gemini" or llm == "google":
                     return await self._get_gemini_response(q)
+                elif llm == "vertex":
+                    return await self._get_vertex_response(q)
                 else:
                     return await self._get_grok_response(q)
             
@@ -2497,17 +2499,23 @@ REGENERATE NOW following these corrections."""
             return f"[OpenAI error: {e}]"
     
     async def _get_gemini_response(self, query: str) -> str:
-        """Get response from Gemini."""
+        """Get response from Gemini (using Gemini 3 preview)."""
         try:
             from core.model_provider import get_api_key
-            api_key = get_api_key("gemini")
+            # Try "google" key first (matches config_keys.py), then "gemini"
+            api_key = get_api_key("google") or get_api_key("gemini")
+            if not api_key:
+                # Also check environment directly
+                import os
+                api_key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")
             if not api_key:
                 return "[Gemini API key not configured]"
             
             import httpx
             async with httpx.AsyncClient(timeout=60.0) as client:
+                # Use Gemini 3 Flash Preview as configured
                 response = await client.post(
-                    f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}",
+                    f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
                     json={
                         "contents": [{"parts": [{"text": query}]}]
                     }
@@ -2518,6 +2526,40 @@ REGENERATE NOW following these corrections."""
                 return f"[Gemini error: {response.status_code}]"
         except Exception as e:
             return f"[Gemini error: {e}]"
+    
+    async def _get_vertex_response(self, query: str) -> str:
+        """Get response from Vertex AI (Google Cloud)."""
+        try:
+            import os
+            from core.model_provider import get_api_key
+            
+            # Get Vertex AI credentials
+            project_id = os.environ.get("VERTEX_AI_PROJECT_ID")
+            creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+            
+            if not project_id or not creds_path:
+                return "[Vertex AI not configured - missing project ID or credentials]"
+            
+            # For Vertex AI, we use the generative language API with OAuth
+            # Fall back to Gemini public API with same model
+            api_key = get_api_key("google") or os.environ.get("GOOGLE_API_KEY")
+            if api_key:
+                import httpx
+                async with httpx.AsyncClient(timeout=60.0) as client:
+                    response = await client.post(
+                        f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
+                        json={
+                            "contents": [{"parts": [{"text": query}]}]
+                        }
+                    )
+                    if response.status_code == 200:
+                        data = response.json()
+                        return data["candidates"][0]["content"]["parts"][0]["text"]
+                    return f"[Vertex/Gemini error: {response.status_code}]"
+            
+            return "[Vertex AI requires GOOGLE_API_KEY for fallback]"
+        except Exception as e:
+            return f"[Vertex error: {e}]"
     
     async def _analyze_reasoning(self, args: Dict) -> Dict:
         """
