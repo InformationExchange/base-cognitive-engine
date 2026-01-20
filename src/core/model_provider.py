@@ -406,11 +406,39 @@ def get_model(provider: str) -> str:
     """
     Get the recommended model for a provider.
     
-    Returns the latest discovered model, or default if unavailable.
+    Returns the latest discovered CHAT model, or default if unavailable.
+    Filters out embedding models and non-generative models.
     """
     models = get_available_models(provider)
     
     if models:
+        # For Google/Gemini, filter for generative chat models only
+        if provider in ("google", "vertex", "gemini"):
+            # Prefer gemini-3 > gemini-2.5 > gemini-2 > gemini-1.5 > any gemini
+            chat_models = [m for m in models if "gemini" in m.lower() and "embedding" not in m.lower()]
+            
+            # Sort by version preference
+            def model_priority(m: str) -> int:
+                m_lower = m.lower()
+                if "gemini-3" in m_lower:
+                    return 0  # Highest priority
+                elif "gemini-2.5" in m_lower:
+                    return 1
+                elif "gemini-2.0" in m_lower or "gemini-2-" in m_lower:
+                    return 2
+                elif "gemini-1.5" in m_lower:
+                    return 3
+                return 4
+            
+            if chat_models:
+                chat_models.sort(key=model_priority)
+                return chat_models[0]
+            
+            # Fall back to configured default if no chat models found
+            config = PROVIDER_CONFIGS.get(provider)
+            if config:
+                return config.default_model
+        
         return models[0]
     
     config = PROVIDER_CONFIGS.get(provider)
