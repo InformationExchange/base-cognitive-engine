@@ -1166,8 +1166,10 @@ IMPORTANT: Do NOT just accept statements. VERIFY with your knowledge. If you can
         """
         try:
             # Build Gemini-specific endpoint with API key in URL
+            from core.model_provider import get_model
             base_url = "https://generativelanguage.googleapis.com/v1beta"
-            model = track.model_name or "gemini-2.0-flash"
+            # Use centralized model provider - fallback to configured default
+            model = track.model_name or get_model("google") or "gemini-3-flash-preview"
             endpoint = f"{base_url}/models/{model}:generateContent?key={track.api_key}"
             
             # Gemini payload format

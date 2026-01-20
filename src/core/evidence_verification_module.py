@@ -167,12 +167,13 @@ class EvidenceVerificationModule:
         Only uses the most advanced models from each provider.
         """
         if self.llm_registry is None:
-            # Default fallback
+            # Default fallback - using centralized model provider defaults
+            from core.model_provider import DEFAULT_GROK, DEFAULT_OPENAI, DEFAULT_ANTHROPIC, DEFAULT_GOOGLE
             self._available_llms = [
-                {"provider": "grok", "model": "grok-3", "tier": "advanced"},
-                {"provider": "openai", "model": "gpt-4o", "tier": "advanced"},
-                {"provider": "anthropic", "model": "claude-sonnet-4-20250514", "tier": "advanced"},
-                {"provider": "google", "model": "gemini-2.0-flash", "tier": "advanced"},
+                {"provider": "grok", "model": DEFAULT_GROK, "tier": "advanced"},
+                {"provider": "openai", "model": DEFAULT_OPENAI, "tier": "advanced"},
+                {"provider": "anthropic", "model": DEFAULT_ANTHROPIC, "tier": "advanced"},
+                {"provider": "google", "model": DEFAULT_GOOGLE, "tier": "advanced"},
             ]
             return
         

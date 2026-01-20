@@ -5571,10 +5571,11 @@ Return JSON: {{"issues": [], "is_safe": true/false, "assessment": "reason"}}"""
         gemini_api_key = get_api_key("google")
         if gemini_api_key:
             try:
+                from core.model_provider import get_model
                 gemini_track = TrackConfig(
                     track_id="gemini_challenger",
                     provider=MTProvider.GEMINI,
-                    model_name="gemini-2.0-flash",
+                    model_name=get_model("google") or "gemini-3-flash-preview",
                     api_key=gemini_api_key,
                     weight=0.8,  # Slightly lower weight as Gemini API has different auth
                     enabled=True,

@@ -2512,10 +2512,12 @@ REGENERATE NOW following these corrections."""
                 return "[Gemini API key not configured]"
             
             import httpx
+            from core.model_provider import get_model
+            # Use centralized model provider for Gemini model
+            model = get_model("google") or "gemini-3-flash-preview"
             async with httpx.AsyncClient(timeout=60.0) as client:
-                # Use Gemini 3 Flash Preview as configured
                 response = await client.post(
-                    f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
+                    f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}",
                     json={
                         "contents": [{"parts": [{"text": query}]}]
                     }
@@ -2545,9 +2547,12 @@ REGENERATE NOW following these corrections."""
             api_key = get_api_key("google") or os.environ.get("GOOGLE_API_KEY")
             if api_key:
                 import httpx
+                from core.model_provider import get_model
+                # Use centralized model provider
+                model = get_model("vertex") or get_model("google") or "gemini-3-flash-preview"
                 async with httpx.AsyncClient(timeout=60.0) as client:
                     response = await client.post(
-                        f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
+                        f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}",
                         json={
                             "contents": [{"parts": [{"text": query}]}]
                         }
