@@ -349,9 +349,16 @@ def _discover_models(provider: str) -> List[str]:
                 _provider_status[provider] = ProviderStatus.ACTIVE
                 return [m["id"] for m in models]
             
-            # Some providers use different response formats
+            # Some providers use different response formats (Google returns "models/gemini-..." format)
             if "models" in data:
-                return [m.get("name", m.get("id", "")) for m in data["models"]]
+                model_names = []
+                for m in data["models"]:
+                    name = m.get("name", m.get("id", ""))
+                    # Strip "models/" prefix from Google's response format
+                    if name.startswith("models/"):
+                        name = name[7:]  # len("models/") == 7
+                    model_names.append(name)
+                return model_names
         
         elif response.status_code == 401:
             _provider_status[provider] = ProviderStatus.ERROR
