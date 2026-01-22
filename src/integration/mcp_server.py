@@ -85,6 +85,11 @@ class BASEMCPServer:
         self._audit_trail = None
         self._clinical_classifier = None
         self._current_case_id = None
+        
+        # Singleton detector instances (lazy loaded for performance)
+        # These are expensive to instantiate due to numpy/regex compilation
+        self._temporal_bias_detector = None
+        self._behavioral_detector = None
     
     @property
     def audit_trail(self):
@@ -3489,49 +3494,64 @@ Please provide an improved response that addresses ALL the issues above."""
     async def _temporal_check(self, args: Dict) -> Dict:
         """
         PPA3-Inv1/PPA1-Inv4: Detect temporal biases.
+        
+        Uses singleton pattern for TemporalBiasDetector to avoid
+        expensive numpy import and regex compilation on every call.
         """
         response = args.get("response", "")
         query = args.get("query", "")
         
         try:
-            # Try enhanced temporal bias detector first
-            try:
-                from detectors.temporal_bias_detector import TemporalBiasDetector
-                detector = TemporalBiasDetector()
-                result = detector.detect(response=response, query=query)
+            # Lazy-load singleton instance (expensive due to numpy + regex compilation)
+            if self._temporal_bias_detector is None:
+                try:
+                    from detectors.temporal_bias_detector import TemporalBiasDetector
+                    self._temporal_bias_detector = TemporalBiasDetector()
+                    logger.info("[MCP] TemporalBiasDetector singleton initialized")
+                except ImportError:
+                    logger.warning("[MCP] TemporalBiasDetector not available, using fallback")
+                    self._temporal_bias_detector = "fallback"
+            
+            # Use enhanced detector if available
+            if self._temporal_bias_detector != "fallback":
+                result = self._temporal_bias_detector.detect(query=query, response=response)
                 
                 return {
                     "recency_bias": {
-                        "detected": result.recency_detected if hasattr(result, 'recency_detected') else False,
-                        "score": round(result.recency_score, 3) if hasattr(result, 'recency_score') else 0.0
+                        "detected": result.recency_bias_score > 0.3 if hasattr(result, 'recency_bias_score') else False,
+                        "score": round(result.recency_bias_score, 3) if hasattr(result, 'recency_bias_score') else 0.0
                     },
                     "anchoring_bias": {
-                        "detected": result.anchoring_detected if hasattr(result, 'anchoring_detected') else False,
-                        "score": round(result.anchoring_score, 3) if hasattr(result, 'anchoring_score') else 0.0
+                        "detected": result.anchoring_bias_score > 0.3 if hasattr(result, 'anchoring_bias_score') else False,
+                        "score": round(result.anchoring_bias_score, 3) if hasattr(result, 'anchoring_bias_score') else 0.0
                     },
                     "hindsight_bias": {
-                        "detected": result.hindsight_detected if hasattr(result, 'hindsight_detected') else False,
-                        "score": round(result.hindsight_score, 3) if hasattr(result, 'hindsight_score') else 0.0
+                        "detected": result.hindsight_bias_score > 0.3 if hasattr(result, 'hindsight_bias_score') else False,
+                        "score": round(result.hindsight_bias_score, 3) if hasattr(result, 'hindsight_bias_score') else 0.0
                     },
-                    "overall_temporal_bias": round(result.overall_score, 3) if hasattr(result, 'overall_score') else 0.0,
-                    "time_references_found": result.time_references if hasattr(result, 'time_references') else [],
+                    "overall_temporal_bias": round(result.score, 3) if hasattr(result, 'score') else 0.0,
+                    "time_references_found": {k.value: v for k, v in result.time_references.items()} if hasattr(result, 'time_references') else {},
+                    "patterns_detected": [p.value for p in result.patterns_detected] if hasattr(result, 'patterns_detected') else [],
+                    "temporal_consistency": round(result.temporal_consistency, 3) if hasattr(result, 'temporal_consistency') else 1.0,
                     "recommendation": result.recommendation if hasattr(result, 'recommendation') else "No significant temporal bias detected",
                     "inventions": ["PPA3-Inv1 (Temporal Detection)", "PPA1-Inv4 (Temporal Bias Detector)"]
                 }
-            except ImportError:
+            else:
                 # Fallback to basic temporal detector
                 from detectors.temporal import TemporalDetector
                 detector = TemporalDetector()
-                signal = detector.get_signal()
+                result = detector.detect(response, context={"query": query})
                 
                 return {
-                    "temporal_score": round(signal.score, 3) if signal else 0.5,
-                    "drift_detected": signal.drift_detected if signal and hasattr(signal, 'drift_detected') else False,
+                    "temporal_score": round(result.bias_score, 3) if hasattr(result, 'bias_score') else 0.5,
+                    "detected_biases": [b.value for b in result.detected_biases] if hasattr(result, 'detected_biases') else [],
+                    "temporal_span": result.temporal_span if hasattr(result, 'temporal_span') else "unknown",
                     "recommendation": "Basic temporal analysis - enhanced detector not available",
                     "invention": "PPA3-Inv1 (Temporal Detection)"
                 }
                 
         except Exception as e:
+            logger.error(f"[MCP] Temporal check error: {e}")
             return {"error": str(e), "fallback_mode": True}
     
     async def _behavioral_analysis(self, args: Dict) -> Dict:
@@ -3573,11 +3593,14 @@ Please provide an improved response that addresses ALL the issues above."""
         )
         
         try:
-            from detectors.behavioral import BehavioralBiasDetector
+            # Lazy-load singleton instance for behavioral detector
+            if self._behavioral_detector is None:
+                from detectors.behavioral import BehavioralBiasDetector
+                self._behavioral_detector = BehavioralBiasDetector()
+                logger.info("[MCP] BehavioralBiasDetector singleton initialized")
             
             # === LAYER 1: Pattern-based detection (fast) ===
-            detector = BehavioralBiasDetector()
-            result = detector.detect_all(query=query, response=response, domain=domain)
+            result = self._behavioral_detector.detect_all(query=query, response=response, domain=domain)
             
             # Extract pattern-based bias detections
             biases_detected = []
