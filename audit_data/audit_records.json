@@ -4254,5 +4254,86 @@
       9
     ],
     "metadata": {}
+  },
+  "TX-20260121005630-9F2C42": {
+    "case_id": "CASE-20260121-6B8C1797",
+    "transaction_id": "TX-20260121005630-9F2C42",
+    "timestamp": "2026-01-21T00:56:30.951688",
+    "action": "verify_completion",
+    "query": "This may strengthen your position but doesn't ensure success",
+    "response": "",
+    "decision": "reject",
+    "confidence": 0.0,
+    "clinical_status": "unknown",
+    "llm_reasoning": "",
+    "proof_analysis": {},
+    "gaps_identified": [],
+    "warnings": [],
+    "inventions_used": [
+      "NOVEL-31",
+      "NOVEL-32",
+      "NOVEL-33"
+    ],
+    "brain_layers_activated": [
+      6,
+      8,
+      4,
+      9
+    ],
+    "metadata": {}
+  },
+  "TX-20260121052014-0712FA": {
+    "case_id": "CASE-20260121-6B8C1797",
+    "transaction_id": "TX-20260121052014-0712FA",
+    "timestamp": "2026-01-21T05:20:14.220744",
+    "action": "verify_completion",
+    "query": ", partial profits at 50-100% gains), as reversals are common",
+    "response": "",
+    "decision": "reject",
+    "confidence": 0.0,
+    "clinical_status": "incomplete",
+    "llm_reasoning": "",
+    "proof_analysis": {},
+    "gaps_identified": [],
+    "warnings": [],
+    "inventions_used": [
+      "NOVEL-31",
+      "NOVEL-32",
+      "NOVEL-33"
+    ],
+    "brain_layers_activated": [
+      6,
+      8,
+      4,
+      9
+    ],
+    "metadata": {}
+  },
+  "TX-20260121151631-C3A78D": {
+    "case_id": "CASE-20260121-6B8C1797",
+    "transaction_id": "TX-20260121151631-C3A78D",
+    "timestamp": "2026-01-21T15:16:31.357919",
+    "action": "verify_completion",
+    "query": ", 100% MC/DC coverage, fault injection)",
+    "response": "",
+    "decision": "reject",
+    "confidence": 0.0,
+    "clinical_status": "unknown",
+    "llm_reasoning": "",
+    "proof_analysis": {},
+    "gaps_identified": [],
+    "warnings": [],
+    "inventions_used": [
+      "NOVEL-31",
+      "NOVEL-32",
+      "NOVEL-33"
+    ],
+    "brain_layers_activated": [
+      6,
+      8,
+      4,
+      9
+    ],
+    "metadata": {}
   }
 }

@@ -395,5 +395,20 @@
     ],
     "tags": [],
     "metadata": {}
+  },
+  "CASE-20260121-6B8C1797": {
+    "case_id": "CASE-20260121-6B8C1797",
+    "created": "2026-01-21T00:56:30.934928",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260121005630-9F2C42",
+      "TX-20260121052014-0712FA",
+      "TX-20260121151631-C3A78D"
+    ],
+    "tags": [],
+    "metadata": {}
   }
 }

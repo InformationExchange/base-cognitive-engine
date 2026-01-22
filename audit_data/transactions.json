@@ -782,5 +782,26 @@
     "action": "verify_completion",
     "decision": "reject",
     "timestamp": "2026-01-16T20:33:04.093691"
+  },
+  {
+    "transaction_id": "TX-20260121005630-9F2C42",
+    "case_id": "CASE-20260121-6B8C1797",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-21T00:56:30.951688"
+  },
+  {
+    "transaction_id": "TX-20260121052014-0712FA",
+    "case_id": "CASE-20260121-6B8C1797",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-21T05:20:14.220744"
+  },
+  {
+    "transaction_id": "TX-20260121151631-C3A78D",
+    "case_id": "CASE-20260121-6B8C1797",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-21T15:16:31.357919"
   }
 ]
