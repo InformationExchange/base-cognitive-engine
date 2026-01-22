@@ -838,5 +838,12 @@
     "action": "verify_completion",
     "decision": "reject",
     "timestamp": "2026-01-22T07:25:12.542628"
+  },
+  {
+    "transaction_id": "TX-20260122085710-BC9737",
+    "case_id": "CASE-20260122-907245E7",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-22T08:57:10.070653"
   }
 ]

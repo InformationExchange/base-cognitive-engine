@@ -427,5 +427,18 @@
     ],
     "tags": [],
     "metadata": {}
+  },
+  "CASE-20260122-907245E7": {
+    "case_id": "CASE-20260122-907245E7",
+    "created": "2026-01-22T08:57:10.050523",
+    "status": "open",
+    "domain": "governance",
+    "description": "Completion verification session",
+    "related_cases": [],
+    "audit_records": [
+      "TX-20260122085710-BC9737"
+    ],
+    "tags": [],
+    "metadata": {}
   }
 }
