@@ -3383,7 +3383,7 @@ Please provide an improved response that addresses ALL the issues above."""
             verifier = EvidenceVerificationModule()
             request = VerificationRequest(
                 content=response,
-                verification_type=VerificationType.CLAIM,
+                verification_type=VerificationType.FACTUAL,  # CLAIM doesn't exist, use FACTUAL
                 context=query,
                 domain="general"
             )
@@ -4043,17 +4043,19 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
             detector = Big5PersonalityTraitDetector()
             result = detector.analyze(text=response, domain=domain)
             
+            # TraitScore has .score attribute for the actual float value
             return {
                 "ocean_scores": {
-                    "openness": round(result.openness, 3) if hasattr(result, 'openness') else 0.5,
-                    "conscientiousness": round(result.conscientiousness, 3) if hasattr(result, 'conscientiousness') else 0.5,
-                    "extraversion": round(result.extraversion, 3) if hasattr(result, 'extraversion') else 0.5,
-                    "agreeableness": round(result.agreeableness, 3) if hasattr(result, 'agreeableness') else 0.5,
-                    "neuroticism": round(result.neuroticism, 3) if hasattr(result, 'neuroticism') else 0.5
+                    "openness": round(result.openness.score, 3) if hasattr(result, 'openness') and hasattr(result.openness, 'score') else 0.5,
+                    "conscientiousness": round(result.conscientiousness.score, 3) if hasattr(result, 'conscientiousness') and hasattr(result.conscientiousness, 'score') else 0.5,
+                    "extraversion": round(result.extraversion.score, 3) if hasattr(result, 'extraversion') and hasattr(result.extraversion, 'score') else 0.5,
+                    "agreeableness": round(result.agreeableness.score, 3) if hasattr(result, 'agreeableness') and hasattr(result.agreeableness, 'score') else 0.5,
+                    "neuroticism": round(result.neuroticism.score, 3) if hasattr(result, 'neuroticism') and hasattr(result.neuroticism, 'score') else 0.5
                 },
-                "dominant_trait": result.dominant if hasattr(result, 'dominant') else "balanced",
-                "bias_risk": result.bias_risk if hasattr(result, 'bias_risk') else "low",
-                "personality_flags": result.flags if hasattr(result, 'flags') else [],
+                "overall_bias_risk": round(result.overall_bias_risk, 3) if hasattr(result, 'overall_bias_risk') else 0.0,
+                "trait_extremes": result.trait_extremes if hasattr(result, 'trait_extremes') else [],
+                "bias_warnings": [r.value if hasattr(r, 'value') else str(r) for r in (result.cognitive_bias_warnings if hasattr(result, 'cognitive_bias_warnings') else [])],
+                "recommendations": result.recommendations if hasattr(result, 'recommendations') else [],
                 "invention": "PPA2-Big5 (OCEAN Personality Traits)"
             }
         except Exception as e:
