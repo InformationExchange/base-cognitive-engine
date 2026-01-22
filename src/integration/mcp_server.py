@@ -1361,7 +1361,7 @@ class BASEMCPServer:
             elif name == "base_claim_evidence":
                 return await self._claim_evidence(arguments)
             elif name == "base_audit_trail":
-                return await self._audit_trail(arguments)
+                return await self._get_audit_trail_record(arguments)
             # REMAINING BASE v2.0 & ADVANCED TOOLS
             elif name == "base_skeptical_learn":
                 return await self._skeptical_learn(arguments)
@@ -3419,6 +3419,13 @@ Please provide an improved response that addresses ALL the issues above."""
                 "recommendation": "Full verification requires EvidenceVerificationModule",
                 "fallback_mode": True
             }
+        except Exception as e:
+            # General exception fallback
+            return {
+                "error": str(e),
+                "verification_status": "error",
+                "fallback_mode": True
+            }
 
     # =========================================================================
     # PHASE 2: Layer 1 - Sensory Cortex Tools
@@ -3964,7 +3971,7 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
         response = args.get("response", "")
         
         try:
-            from core.creative_reasoning import CreativeReasoningModule
+            from research.creative_reasoning import CreativeReasoningModule
             module = CreativeReasoningModule()
             result = module.analyze(query=query, response=response)
             
@@ -3986,7 +3993,7 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
         frameworks = args.get("frameworks", [])
         
         try:
-            from core.multi_framework import MultiFrameworkEngine
+            from detectors.multi_framework import MultiFrameworkConvergenceEngine as MultiFrameworkEngine
             engine = MultiFrameworkEngine()
             result = engine.analyze(query=query, response=response)
             
@@ -4032,7 +4039,7 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
         domain = args.get("domain", "general")
         
         try:
-            from detectors.big5 import Big5PersonalityTraitDetector
+            from detectors.big5_personality import Big5PersonalityTraitDetector
             detector = Big5PersonalityTraitDetector()
             result = detector.analyze(text=response, domain=domain)
             
@@ -4723,7 +4730,7 @@ Be thorough. In {domain} domain, missing safety warnings is a critical bias."""
                 "fallback_mode": True
             }
     
-    async def _audit_trail(self, args: Dict) -> Dict:
+    async def _get_audit_trail_record(self, args: Dict) -> Dict:
         """PPA2-Comp7: Retrieve audit trail."""
         audit_id = args.get("audit_id", "")
         

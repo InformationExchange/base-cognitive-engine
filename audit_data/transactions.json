@@ -803,5 +803,40 @@
     "action": "verify_completion",
     "decision": "reject",
     "timestamp": "2026-01-21T15:16:31.357919"
+  },
+  {
+    "transaction_id": "TX-20260122063420-5AA027",
+    "case_id": "CASE-20260122-FDB14371",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-22T06:34:20.986886"
+  },
+  {
+    "transaction_id": "TX-20260122063547-FAD3B5",
+    "case_id": "CASE-20260122-FDB14371",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-22T06:35:47.135826"
+  },
+  {
+    "transaction_id": "TX-20260122071913-00398A",
+    "case_id": "CASE-20260122-FDB14371",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-22T07:19:13.570490"
+  },
+  {
+    "transaction_id": "TX-20260122072508-E419F0",
+    "case_id": "CASE-20260122-FDB14371",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-22T07:25:08.380566"
+  },
+  {
+    "transaction_id": "TX-20260122072512-5CEA72",
+    "case_id": "CASE-20260122-FDB14371",
+    "action": "verify_completion",
+    "decision": "reject",
+    "timestamp": "2026-01-22T07:25:12.542628"
   }
 ]
